@@ -29,7 +29,7 @@
       "tags": [],
       "implicitDependencies": ["blitz-basic-script"]
     },
-    "api": {
+    "blitz-basic-script-api": {
       "tags": []
     },
     "api-interfaces": {

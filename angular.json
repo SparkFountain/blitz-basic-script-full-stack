@@ -128,20 +128,20 @@
         }
       }
     },
-    "api": {
-      "root": "apps/api",
-      "sourceRoot": "apps/api/src",
+    "blitz-basic-script-api": {
+      "root": "apps/blitz-basic-script-api",
+      "sourceRoot": "apps/blitz-basic-script-api/src",
       "projectType": "application",
-      "prefix": "api",
+      "prefix": "blitz-basic-script-api",
       "schematics": {},
       "architect": {
         "build": {
           "builder": "@nrwl/node:build",
           "options": {
-            "outputPath": "dist/apps/api",
-            "main": "apps/api/src/main.ts",
-            "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": ["apps/api/src/assets"]
+            "outputPath": "dist/apps/blitz-basic-script-api",
+            "main": "apps/blitz-basic-script-api/src/main.ts",
+            "tsConfig": "apps/blitz-basic-script-api/tsconfig.app.json",
+            "assets": ["apps/blitz-basic-script-api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -150,8 +150,8 @@
               "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "apps/api/src/environments/environment.ts",
-                  "with": "apps/api/src/environments/environment.prod.ts"
+                  "replace": "apps/blitz-basic-script-api/src/environments/environment.ts",
+                  "with": "apps/blitz-basic-script-api/src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -160,24 +160,24 @@
         "serve": {
           "builder": "@nrwl/node:execute",
           "options": {
-            "buildTarget": "api:build"
+            "buildTarget": "blitz-basic-script-api:build"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/api/tsconfig.app.json",
-              "apps/api/tsconfig.spec.json"
+              "apps/blitz-basic-script-api/tsconfig.app.json",
+              "apps/blitz-basic-script-api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/api/**/*"]
+            "exclude": ["**/node_modules/**", "!apps/blitz-basic-script-api/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/api/jest.config.js",
-            "tsConfig": "apps/api/tsconfig.spec.json",
+            "jestConfig": "apps/blitz-basic-script-api/jest.config.js",
+            "tsConfig": "apps/blitz-basic-script-api/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
