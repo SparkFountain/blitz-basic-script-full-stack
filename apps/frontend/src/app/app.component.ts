@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@spark-fountain/api-interfaces';
+import { Message } from '@blitz-basic-script/api-interfaces';
 
 @Component({
-  selector: 'spark-fountain-root',
+  selector: 'blitz-basic-script-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

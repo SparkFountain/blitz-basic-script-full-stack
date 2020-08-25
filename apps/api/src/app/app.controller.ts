@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 
-import { Message } from '@spark-fountain/api-interfaces';
+import { Message } from '@blitz-basic-script/api-interfaces';
 
 import { AppService } from './app.service';
 

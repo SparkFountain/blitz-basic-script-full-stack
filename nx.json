@@ -1,5 +1,5 @@
 {
-  "npmScope": "spark-fountain",
+  "npmScope": "blitz-basic-script",
   "affected": {
     "defaultBase": "master"
   },
@@ -22,14 +22,14 @@
     }
   },
   "projects": {
-    "blitz-basic-script": {
+    "frontend": {
       "tags": []
     },
-    "blitz-basic-script-e2e": {
+    "frontend-e2e": {
       "tags": [],
-      "implicitDependencies": ["blitz-basic-script"]
+      "implicitDependencies": ["frontend"]
     },
-    "blitz-basic-script-api": {
+    "api": {
       "tags": []
     },
     "api-interfaces": {

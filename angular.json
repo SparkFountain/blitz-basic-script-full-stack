@@ -1,39 +1,39 @@
 {
   "version": 1,
   "projects": {
-    "blitz-basic-script": {
+    "frontend": {
       "projectType": "application",
       "schematics": {
         "@nrwl/angular:component": {
           "style": "scss"
         }
       },
-      "root": "apps/blitz-basic-script",
-      "sourceRoot": "apps/blitz-basic-script/src",
-      "prefix": "spark-fountain",
+      "root": "apps/frontend",
+      "sourceRoot": "apps/frontend/src",
+      "prefix": "frontend",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/blitz-basic-script",
-            "index": "apps/blitz-basic-script/src/index.html",
-            "main": "apps/blitz-basic-script/src/main.ts",
-            "polyfills": "apps/blitz-basic-script/src/polyfills.ts",
-            "tsConfig": "apps/blitz-basic-script/tsconfig.app.json",
+            "outputPath": "dist/apps/frontend",
+            "index": "apps/frontend/src/index.html",
+            "main": "apps/frontend/src/main.ts",
+            "polyfills": "apps/frontend/src/polyfills.ts",
+            "tsConfig": "apps/frontend/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "apps/blitz-basic-script/src/favicon.ico",
-              "apps/blitz-basic-script/src/assets"
+              "apps/frontend/src/favicon.ico",
+              "apps/frontend/src/assets"
             ],
-            "styles": ["apps/blitz-basic-script/src/styles.scss"],
+            "styles": ["apps/frontend/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/blitz-basic-script/src/environments/environment.ts",
-                  "with": "apps/blitz-basic-script/src/environments/environment.prod.ts"
+                  "replace": "apps/frontend/src/environments/environment.ts",
+                  "with": "apps/frontend/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -62,86 +62,86 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "blitz-basic-script:build",
-            "proxyConfig": "apps/blitz-basic-script/proxy.conf.json"
+            "browserTarget": "frontend:build",
+            "proxyConfig": "apps/frontend/proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "blitz-basic-script:build:production"
+              "browserTarget": "frontend:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "blitz-basic-script:build"
+            "browserTarget": "frontend:build"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/blitz-basic-script/tsconfig.app.json",
-              "apps/blitz-basic-script/tsconfig.spec.json"
+              "apps/frontend/tsconfig.app.json",
+              "apps/frontend/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/blitz-basic-script/**/*"]
+            "exclude": ["**/node_modules/**", "!apps/frontend/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/blitz-basic-script/jest.config.js",
-            "tsConfig": "apps/blitz-basic-script/tsconfig.spec.json",
+            "jestConfig": "apps/frontend/jest.config.js",
+            "tsConfig": "apps/frontend/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "apps/blitz-basic-script/src/test-setup.ts"
+            "setupFile": "apps/frontend/src/test-setup.ts"
           }
         }
       }
     },
-    "blitz-basic-script-e2e": {
-      "root": "apps/blitz-basic-script-e2e",
-      "sourceRoot": "apps/blitz-basic-script-e2e/src",
+    "frontend-e2e": {
+      "root": "apps/frontend-e2e",
+      "sourceRoot": "apps/frontend-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/blitz-basic-script-e2e/cypress.json",
-            "tsConfig": "apps/blitz-basic-script-e2e/tsconfig.e2e.json",
-            "devServerTarget": "blitz-basic-script:serve"
+            "cypressConfig": "apps/frontend-e2e/cypress.json",
+            "tsConfig": "apps/frontend-e2e/tsconfig.e2e.json",
+            "devServerTarget": "frontend:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "blitz-basic-script:serve:production"
+              "devServerTarget": "frontend:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/blitz-basic-script-e2e/tsconfig.e2e.json"],
+            "tsConfig": ["apps/frontend-e2e/tsconfig.e2e.json"],
             "exclude": [
               "**/node_modules/**",
-              "!apps/blitz-basic-script-e2e/**/*"
+              "!apps/frontend-e2e/**/*"
             ]
           }
         }
       }
     },
-    "blitz-basic-script-api": {
-      "root": "apps/blitz-basic-script-api",
-      "sourceRoot": "apps/blitz-basic-script-api/src",
+    "api": {
+      "root": "apps/api",
+      "sourceRoot": "apps/api/src",
       "projectType": "application",
-      "prefix": "blitz-basic-script-api",
+      "prefix": "api",
       "schematics": {},
       "architect": {
         "build": {
           "builder": "@nrwl/node:build",
           "options": {
-            "outputPath": "dist/apps/blitz-basic-script-api",
-            "main": "apps/blitz-basic-script-api/src/main.ts",
-            "tsConfig": "apps/blitz-basic-script-api/tsconfig.app.json",
-            "assets": ["apps/blitz-basic-script-api/src/assets"]
+            "outputPath": "dist/apps/api",
+            "main": "apps/api/src/main.ts",
+            "tsConfig": "apps/api/tsconfig.app.json",
+            "assets": ["apps/api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -150,8 +150,8 @@
               "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "apps/blitz-basic-script-api/src/environments/environment.ts",
-                  "with": "apps/blitz-basic-script-api/src/environments/environment.prod.ts"
+                  "replace": "apps/api/src/environments/environment.ts",
+                  "with": "apps/api/src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -160,24 +160,24 @@
         "serve": {
           "builder": "@nrwl/node:execute",
           "options": {
-            "buildTarget": "blitz-basic-script-api:build"
+            "buildTarget": "api:build"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/blitz-basic-script-api/tsconfig.app.json",
-              "apps/blitz-basic-script-api/tsconfig.spec.json"
+              "apps/api/tsconfig.app.json",
+              "apps/api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/blitz-basic-script-api/**/*"]
+            "exclude": ["**/node_modules/**", "!apps/api/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/blitz-basic-script-api/jest.config.js",
-            "tsConfig": "apps/blitz-basic-script-api/tsconfig.spec.json",
+            "jestConfig": "apps/api/jest.config.js",
+            "tsConfig": "apps/api/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -257,5 +257,5 @@
       "unitTestRunner": "jest"
     }
   },
-  "defaultProject": "blitz-basic-script"
+  "defaultProject": "frontend"
 }
