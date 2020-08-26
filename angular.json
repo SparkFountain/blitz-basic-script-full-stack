@@ -120,10 +120,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["apps/frontend-e2e/tsconfig.e2e.json"],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/frontend-e2e/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/frontend-e2e/**/*"]
           }
         }
       }
@@ -206,6 +203,38 @@
             "tsConfig": "libs/api-interfaces/tsconfig.spec.json",
             "passWithNoTests": true
           }
+        }
+      }
+    },
+    "ide": {
+      "projectType": "library",
+      "root": "libs/ide",
+      "sourceRoot": "libs/ide/src",
+      "prefix": "blitz-basic-script",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ide/tsconfig.lib.json",
+              "libs/ide/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ide/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ide/jest.config.js",
+            "tsConfig": "libs/ide/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/ide/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
         }
       }
     }

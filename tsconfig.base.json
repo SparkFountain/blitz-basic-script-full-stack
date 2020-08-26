@@ -16,7 +16,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@blitz-basic-script/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@blitz-basic-script/api-interfaces": [
+        "libs/api-interfaces/src/index.ts"
+      ],
+      "@blitz-basic-script/ide": ["libs/ide/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
