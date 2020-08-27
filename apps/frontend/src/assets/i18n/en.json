@@ -1,0 +1,664 @@
+{
+  "LOGIN": "Log In",
+  "LOGOUT": "Log Out",
+  "REGISTER": {
+    "LABEL": "Register",
+    "INFO": {
+      "TITLE": "Create an account for BlitzBasicScript to achieve premium features:",
+      "FEATURE_1": "Save your projects online in the BBScript Cloud",
+      "FEATURE_2": "Get 100 MB webspace to upload resources",
+      "FEATURE_3": "Access more than 100 additional assets (graphics, models, sounds)"
+    },
+    "USERNAME": {
+      "LABEL": "User Name (alphanumeric; consisting of 2 - 32 characters)",
+      "PLACEHOLDER": "Choose a user name"
+    },
+    "EMAIL": {
+      "LABEL": "Email Address",
+      "PLACEHOLDER": "user@provider.com"
+    },
+    "PASSWORD": {
+      "LABEL": "Password",
+      "PLACEHOLDER": "Choose a strong password",
+      "CONFIRMATION": {
+        "LABEL": "Password Confirmation",
+        "PLACEHOLDER": "Confirm your strong password",
+        "EMPTY": "Please type your password one more time into this field",
+        "PASSWORDS_DO_NOT_MATCH": "The password inputs do not match"
+      }
+    },
+    "TERMS": {
+      "I_READ": "I have read the <b>terms and conditions</b> and accept them entirely.",
+      "TITLE": "Terms of Use",
+      "ACCEPT": "Accept",
+      "DENY": "Deny",
+      "MUST_BE_ACCEPTED": "You must accept the terms for registration to continue."
+    },
+    "SENDING_REQUEST": "Request is being sent...",
+    "SUCCESSFUL": {
+      "TITLE": "Your registration was successful",
+      "MESSAGE": "You are now registered at BlitzBasicScript. We sent you an email with a confirmation link, which you have to click before logging in the first time."
+    },
+    "ERROR": {
+      "TITLE": "An error occurred",
+      "MESSAGE": "Unfortunately your registration could not be completed. Please try again later."
+    }
+  },
+  "USER_NAME_OR_EMAIL": {
+    "LABEL": "Username or Email",
+    "PLACEHOLDER": "John Doe"
+  },
+  "PASSWORD": {
+    "LABEL": "Password",
+    "PLACEHOLDER": "12345678"
+  },
+  "FORGOT_PASSWORD": {
+    "TITLE": "Forgot Password",
+    "MESSAGE": "Please type your username or email address in the field below and click <b>Reset Password</b>. We will immediately send you an email with a password reset link.",
+    "LABEL": "Forgot Password?",
+    "PATH": "forgot-password",
+    "RESET_PASSWORD": "Reset Password"
+  },
+  "USERNAME_EXISTS": "This username already exists",
+  "USERNAME_EMPTY": "The user name must not be empty",
+  "USERNAME_TOO_SHORT": "The username is too short, please type at least two characters",
+  "NAME_TOO_SHORT": "The name is too short, please type at least two characters",
+  "USERNAME_TOO_LONG": "The username is too long, please use at most 32 characters",
+  "NAME_TOO_LONG": "The name is too long, please use at most 32 characters",
+  "USERNAME_MUST_BE_ALPHANUMERIC": "The username must be alphanumeric (allowed characters are numbers, letters and space characters)",
+  "NAME_MUST_BE_ALPHANUMERIC": "The name must be alphanumeric (allowed characters are numbers, letters and space characters)",
+  "MESSAGE_EMPTY": "Please type a message",
+  "USER_NOT_ACTIVE": "Your user account is not active yet. Did you open your confirmation mail after registrating already?",
+  "EMAIL_EXISTS": "This email address has already been used for a registration",
+  "EMAIL_EMPTY": "The email address must not be empty",
+  "EMAIL_INVALID": "Please enter a valid email address",
+  "PASSWORD_TOO_SHORT": "The password must consist of at least 8 characters",
+  "AGB_MUST_BE_ACCEPTED": "You must accept the terms for registration to continue.",
+  "USERNAME_PASSWORD_COMBINATION_INVALID": "The combination of username and password is invalid.",
+  "INPUT_INVALID": "Invalid input",
+  "REGISTRATION_SUCCESSFUL": "Your registration was successful",
+  "WAIT_FOR_EMAIL_TOKEN": "A confirmation email has been sent to your email address. There your will find a token link which you have to click to complete your registration.",
+  "GO_TO_HOME_PAGE": "Go to Home Page",
+  "GERMANY": "Germany",
+  "PAGE_NOT_FOUND": {
+    "TITLE": "This page does not exist",
+    "CONTENT": "<p>The page you requested does not exist. Did you make a typing mistake?</p>",
+    "HOME_PATH": "Click here to get to the Home Page."
+  },
+  "HOME": {
+    "TITLE": "BlitzBasicScript",
+    "SUBTITLE": "Easy Game Programming",
+    "INFO_1": {
+      "HEADER": "Do you want to learn how to program games?",
+      "BODY": "<p class=\"line-height-150\">Then you are right here.</p><p class=\"line-height-150\">Perhaps you read somewhere that it would be very exhausting and time-consuming to write your own computer games. You would have to learn a complicated programming language first, deal with a lot of math and take months to produce small graphic demos. But that's not true.</p>"
+    },
+    "INFO_2": "Game Programming is easy!",
+    "INFO_3": "<p class=\"line-height-150\">At least if you do it right.</p><p class=\"line-height-150\">With BlitzBasicScript you will discover the fascination of game development in a playful way from the very first minute. Are you curious and want to explore all the cool ways you can create living virtual worlds? Twelve tutorials are waiting for you, in which you will learn in no time how to conjure up graphics on the screen, play sound effects and move 3D objects.</p><p class=\"line-height-150\">Or do you want to get started right away without getting bored with any theory? Then just open a demo project of your choice and try it out! Use the integrated development environment to examine the code line by line and change things as you like. In this way, you can quickly and intuitively see how a computer game works under the hood - learning by doing.</p><p class=\"line-height-150\">And if you do reach your limits and don't know what to do next, no problem: Simply mark a code area and activate the coding guide. It will help you better understand commands and keywords and comprehend the underlying mechanisms.</p>",
+    "SIX_REASONS": "Six reasons for BlitzBasicScript",
+    "REASON_1": {
+      "HEADER": "Simple Programming Language",
+      "BODY": "BlitzBasicScript is a further development of the legendary game programming language BlitzBasic, which was invented by the New Zealand computer scientist Mark Sibly. The syntax - the way commands and code structures look - is very easy to read and understand. You don't have to learn abstract concepts, just write line by line in your program what exactly should happen. Draw a picture on the monitor, play background music, make the figure jump up when you click the space bar!"
+    },
+    "REASON_2": {
+      "HEADER": "Integrated Development Environment",
+      "BODY": "You don't have to install programs or buy licenses to create your games. All you need is a browser and an internet connection. Use the integrated development environment (Online IDE) to write and manage your source code. If you have a free account at blitzbasicscript.com, you can access your projects from any device and share them with the community."
+    },
+    "REASON_3": {
+      "HEADER": "Lots of Examples, Tutorials and Documentation",
+      "BODY": "Why start from scratch instead of having fun? Forget about colorless text or maths treatises - start trying small pre-built games and researching their code right away. In no time at all, you'll learn what to do to bring your creative ideas to life without reinventing the wheel. A small collection of clear tutorials will help you to understand the basic principles of game programming and to apply them directly. And if you want to know exactly, take a look at the extensive documentation of the commands and keywords!"
+    },
+    "REASON_4": {
+      "HEADER": "Long-Term Success of BlitzBasic",
+      "BODY": "At the beginning of the new millennium, three programming languages ​​appeared with BlitzBasic, Blitz3D and BlitzPlus, which essentially have a lot in common. Creative 2D and 3D games can be developed with just a few commands. The so-called Blitz languages ​​were very successful internationally and hundreds of games were created, whose source code often still exists today. All the advantages of these languages ​​have been bundled in BlitzBasicScript and enhanced with the help of the latest graphics technology. You can also simply import the old classics on blitzbasicscript.com and play them directly in your browser!"
+    },
+    "REASON_5": {
+      "HEADER": "Open Source",
+      "BODY": "BlitzBasicScript is completely open source and the source code of this project can be viewed or used on GitHub. All you have to do is register for free and accept the terms of use to be able to save your projects in the cloud. Our philosophy is maximum freedom for all game developers: Benefit from the knowledge of others and in return make your projects available to the community. So everyone can learn and discover new things again and again. By the way, you always own the copyright to your games!"
+    },
+    "REASON_6": {
+      "HEADER": "Collect trophies and win contests",
+      "BODY": "Make programming your own game: Register for free with BlitzBasicScript and become part of a lively community! Learn about new commands & data structures and incorporate them into your code to receive valuable trophies and medals. You can also take part in cool competitions and compete with others. In this way you improve your skills continuously and easily."
+    }
+  },
+  "NEWS_BLOG": {
+    "TITLE": "News Blog",
+    "PAGE": "Page"
+  },
+  "FOOTER": {
+    "CONTACT": {
+      "LABEL": "Contact",
+      "PATH": "/contact",
+      "SUBTITLE": "<p>Do you want to get rid of praise or criticism for BlitzBasicScript? Did you find a <abbr title=\"software error\">bug</abbr> on this website or while running your programs? Or do you just want to tell us something?</p><br /><p>Then write us a message using the contact form. All personal information is voluntary and is subject to the <abbr title=\"General Data Protection Regulation\">GDPR</abbr>. We only need your email address to answer you.</p>",
+      "NAME": {
+        "LABEL": "Name",
+        "PLACEHOLDER": "Your Name (optional)"
+      },
+      "EMAIL": {
+        "LABEL": "Email address",
+        "PLACEHOLDER": "Your email address"
+      },
+      "SUBJECT": {
+        "LABEL": "Subject",
+        "BBSCRIPT": "BlitzBasicScript",
+        "WEBSITE": "Website",
+        "BUG_REPORT": "Report a bug",
+        "FEATURE_REQUEST": "Suggest feature",
+        "CRITICISM": "Criticism",
+        "INDIVIDUAL": "Individual"
+      },
+      "MESSAGE": {
+        "LABEL": "Message",
+        "PLACEHOLDER": "Please write a few sentences about your request."
+      },
+      "DATA_AGREEMENT": "I consent to my personal details being transmitted to BlitzBasicScript in accordance with the <abbr title=\"General Data Protection Regulation\">GDPR</abbr>.",
+      "DATA_AGREEMENT_MUST_BE_ACCEPTED": "You have to confirm the data protection declaration before sending your message.",
+      "SEND": "Send",
+      "SUCCESSFUL": {
+        "TITLE": "Your message has been sent",
+        "MESSAGE": "Thank you for your message. You will shortly receive an answer by email."
+      },
+      "ERROR": {
+        "TITLE": "An error has occurred",
+        "MESSAGE": "Unfortunately your message could not be sent. Please try again later."
+      }
+    },
+    "TERMS": {
+      "LABEL": "Terms of Use",
+      "PATH": "/terms-of-use"
+    },
+    "IMPRINT": {
+      "LABEL": "Imprint",
+      "PATH": "/imprint"
+    },
+    "DISCLAIMER": {
+      "LABEL": "Disclaimer",
+      "PATH": "/disclaimer"
+    }
+  },
+  "SEARCH": {
+    "PLACEHOLDER": "Enter a search term...",
+    "BUTTON": "Search",
+    "RESULTS": "Search results"
+  },
+  "CATEGORY": "Category",
+  "OVERVIEW": "Home",
+  "TUTORIALS": {
+    "TITLE": "Tutorials",
+    "BASICS": {
+      "TITLE": "Basics",
+      "CONTENT": {
+        "BASICS": "The Basics"
+      }
+    },
+    "GRAPHICS": {
+      "TITLE": "Graphics",
+      "CONTENT": {
+        "DRAW_AND_MOVE_IMAGES": "Draw and Move Pictures"
+      }
+    },
+    "IO": {
+      "TITLE": "Input & Output",
+      "CONTENT": {
+        "USE_MOUSE_KEYBOARD_AND_TOUCH": "Use Mouse, Keyboard and Touch"
+      }
+    },
+    "SOUND": {
+      "TITLE": "Sound & Music",
+      "CONTENT": {
+        "PLAY_SOUNDS_AND_MUSIC": "Play Sounds and Musik"
+      }
+    },
+    "GUI": {
+      "TITLE": "User Interface",
+      "CONTENT": {
+        "WINDOWS_BUTTONS_AND_GADGETS": "Windows, Buttons and Gadgets"
+      }
+    },
+    "FILES": {
+      "TITLE": "File Access",
+      "CONTENT": {
+        "READ_AND_WRITE_FILES": "Read and Write Files"
+      }
+    },
+    "PARTICLES": {
+      "TITLE": "Particles",
+      "CONTENT": {
+        "CREATE_PARTICLES": "Create particles"
+      }
+    },
+    "3D": {
+      "TITLE": "3D Objects",
+      "CONTENT": {
+        "CREATE_VIRTUAL_3D_WORLD": "Create a 3D Virtual World",
+        "ANIMATE_3D_OBJECTS": "Animate 3D Objects",
+        "COLLISIONS_ON_3D_OBJECTS": "3D Object Collisions",
+        "ACTIVATE_SHADOW_RENDERING": "Activate Shadow Rendering",
+        "USE_PHYSICS_ENGINE": "Use Physics Engine"
+      }
+    }
+  },
+  "DOC": {
+    "TITLE": "Documentation",
+    "LANDING": {
+      "TEXT_01": "BlitzBasicScript is a simple yet powerful programming language with which you can program your own games."
+    },
+    "NO_CATEGORY_SELECTED": "No category selected",
+    "KEYWORDS": {
+      "TITLE": "Keywords",
+      "HEADLINE": "Keywords are used to control the program flow and to declare variables, arrays, functions and types.",
+      "VARIABLES": {
+        "TITLE": "Variables",
+        "HEADLINE": "Learn about the different types of variables in BBScript and how they work.",
+        "GLOBAL": "Global Variables",
+        "LOCAL": "Local Variables",
+        "DATA_TYPES": "Data Types"
+      },
+      "CONDITIONS": {
+        "TITLE": "Conditions",
+        "SELECTIONS": {
+          "TITLE": "Conditions and Selection",
+          "HEADLINE": "With the help of conditions and selection blocks, you control the program flow depending on the current status."
+        }
+      },
+      "ARRAYS": {
+        "TITLE": "Arrays (Data Fields)",
+        "DATA_BLOCKS": {
+          "TITLE": "Arrays and Data Blocks",
+          "HEADLINE": "Arrays are storage fields in which a large amount of data can be easily managed. Data blocks can be used to make complex information such as level content quickly available."
+        },
+        "FIXED_LENGTH": {
+          "TITLE": "Fixed Length Arrays",
+          "HEADLINE": "Fixed Length"
+        },
+        "DYNAMIC_LENGTH": {
+          "TITLE": "Dynamic Length Arrays",
+          "HEADLINE": "Dynamic Length"
+        }
+      },
+      "LOOPS": {
+        "TITLE": "Loops",
+        "HEADLINE": "Loops are intended to execute certain sections of code several times.",
+        "SUBTITLE": "To execute commands multiple times in a row, you can choose between three different types of loops in BBScript.",
+        "FOR_TO_NEXT": {
+          "TITLE": "For To Next Loop",
+          "HEADLINE": "For To Next"
+        },
+        "FOR_EACH": {
+          "TITLE": "For Each Loop",
+          "HEADLINE": "For Each"
+        },
+        "WHILE": {
+          "TITLE": "While Loop",
+          "HEADLINE": "While"
+        },
+        "REPEAT": {
+          "TITLE": "Repeat Loop",
+          "HEADLINE": "Repeat"
+        }
+      },
+      "FUNCTIONS": {
+        "TITLE": "Functions",
+        "HEADLINE": "Functions help you break your code down into logical sections.",
+        "DECLARATION": {
+          "TITLE": "Function Declaration",
+          "HEADLINE": "Declaration"
+        },
+        "NESTED_CALLS": "Nested Function Calls"
+      },
+      "TYPES": {
+        "TITLE": "Types",
+        "HEADLINE": "Use types to create any number of game objects at runtime.",
+        "DECLARATION": "Declaration of Types",
+        "BJECT_ACCESS": "Object Access"
+      },
+      "LOGIC": {
+        "TITLE": "Logic and Math",
+        "MATHS": {
+          "TITLE": "Logic and Math",
+          "HEADLINE": "Logical operators are used to link several conditions with one another."
+        }
+      },
+      "DIVERSE": {
+        "TITLE": "Diverse",
+        "HEADLINE": "Here you will find special keywords that do not fit into any other category."
+      }
+    },
+    "DEPRECATED_KEYWORDS": {
+      "TITLE": "Deprecated Keywords",
+      "HEADLINE": "Some deprecated keywords from <i>BlitzBasic</i> are not supported in BBScript."
+    },
+    "COMMANDS": {
+      "TITLE": "Commands",
+      "CATEGORIES": "Categories",
+      "HEADLINE": "Commands are predefined procedures that bring your games to life.",
+      "SUBTITLE": "<p>BlitzBasicScript has over 700 commands for game control. They are all sorted by categories, which in turn consist of different application areas.</p><p>Select a category from the left navigation bar to open the associated application areas, or use the search function to find a specific term.</p>",
+      "DESCRIPTION": "Description",
+      "INFOS": "Infos",
+      "CODE_EXAMPLE": "Code Example",
+      "PLAY": "Play",
+      "STOP": "Stop",
+      "BASICS": {
+        "TITLE": "Basics",
+        "MATHS": "Math",
+        "DIVERSE": "Diverse",
+        "STRINGS": "Strings",
+        "TIME_RANDOM": "Time & Random"
+      },
+      "DATA": {
+        "TITLE": "Data Management",
+        "BANK": "Memory Banks",
+        "FILE_SYSTEM": "File System"
+      },
+      "GRAPHICS_2D": {
+        "TITLE": "2D Graphics",
+        "DISPLAY": "Display",
+        "IMAGES": "Images",
+        "GRAPHICS": "Graphics",
+        "PIXEL": "Pixel",
+        "TEXT": "Text",
+        "MOVIES": "Movies"
+      },
+      "GRAPHICS_3D": {
+        "TITLE": "3D Graphics",
+        "ANIMATIONS": "Animations",
+        "MOTIONS": "Motions",
+        "BRUSHES": "Brushes",
+        "DIVERSE": "Diverse",
+        "SCENERY": "Scenery",
+        "SCREEN": "Screen Settings",
+        "CAMERA": "Camera",
+        "COLLISIONS": "Collisions",
+        "CONTROLS": "Controls",
+        "LIGHT_SHADOW": "Light and Shadow",
+        "PHYSICS": "Physics",
+        "MESHES": "Meshes",
+        "PICKING": "Picking (Finding Objects)",
+        "SPRITES": "Sprites",
+        "STATUS": "Status",
+        "SURFACES": "Surfaces",
+        "TERRAIN": "Terrain",
+        "TEXTURES": "Textures",
+        "COORDINATES": "Coordinates"
+      },
+      "NETWORK": {
+        "TITLE": "Network"
+      },
+      "IO": {
+        "TITLE": "IO (Input / Output)",
+        "MOUSE": "Mouse",
+        "KEYBOARD": "Keyboard",
+        "GAMEPAD": "Gamepad"
+      },
+      "SOUND": {
+        "TITLE": "Sound",
+        "3D": "3D Sound",
+        "CHANNELS": "Channels",
+        "MUSIC_SAMPLES": "Music & Sounds"
+      },
+      "GUI": {
+        "TITLE": "GUI (Graphical User Interface)",
+        "BUTTON": "Buttons",
+        "CANVAS": "Canvas",
+        "DESKTOP": "Desktop",
+        "DIVERSE": "Diverse",
+        "EVENT": "Events",
+        "GADGET": "Gadgets (UI Elements)",
+        "HTML": "HTML",
+        "ICON_STRIP": "Icon Strips",
+        "LIST_TABBER": "Lists & Tabbers",
+        "MENU": "Menus",
+        "PANEL": "Panels (Windows Groups)",
+        "PROGRESS_BAR": "Progress Bars",
+        "REQUEST": "Requests",
+        "USER_INTERACTION_WINDOW": "User Interaction Windows",
+        "SLIDER": "Sliders",
+        "TEXT_AREA": "Text Areas",
+        "TEXT_FIELD": "Text Fields",
+        "TOOLBAR": "Toolbar",
+        "TREE_VIEW": "Tree View",
+        "WINDOW": "Windows"
+      }
+    },
+    "DEPRECATED_COMMANDS": {
+      "TITLE": "Deprecated Commands",
+      "HEADLINE": "Here you will find all commands that exist in <i>BlitzBasic</i>, but not in BBScript."
+    },
+    "CONSTANTS_AND_SCANCODES": {
+      "TITLE": "Constants and Scancodes",
+      "HEADLINE": "Use the special codes for key inputs, camera settings, GUI events and much more."
+    },
+    "DIFFERENCES_TO_BLITZBASIC": {
+      "TITLE": "Differences to BlitzBasic",
+      "HEADLINE": "If you already have experience with BlitzBasic, here you will learn the small but fine differences of BlitzBasicScript."
+    }
+  },
+  "COMMAND_NAME": "Command Name",
+  "KEY_WORD": "Keyword",
+  "KEY_WORDS": "Keywords",
+  "COMMUNITY_FUNCTIONS": "Community Functions",
+  "DESCRIPTION": "Description",
+  "EXAMPLE": "Example",
+  "INFORMATION": "Information",
+  "NAV": {
+    "HOME": {
+      "TITLE": "Home",
+      "PATH": "/home",
+      "SUBMENU": {
+        "OVERVIEW": {
+          "TITLE": "Overview",
+          "PATH": "overview"
+        },
+        "NEWS_BLOG": {
+          "TITLE": "News Blog",
+          "PATH": "news-blog"
+        },
+        "FEATURES": {
+          "TITLE": "Features",
+          "PATH": "features"
+        }
+      }
+    },
+    "LETS_CODE": {
+      "TITLE": "Let's Code",
+      "PATH": "/lets-code",
+      "SUBMENU": {
+        "EMPTY_PROJECT": {
+          "TITLE": "Empty Project",
+          "PATH": "/lets-code/empty-project"
+        },
+        "TEMPLATES": {
+          "TITLE": "Templates",
+          "PATH": "/lets-code/templates"
+        }
+      }
+    },
+    "PROJECTS": {
+      "TITLE": "Projects",
+      "PATH": "/projects",
+      "SUBMENU": {
+        "MY_PROJECTS": {
+          "TITLE": "My Projects",
+          "PATH": "/projects/my-projects"
+        },
+        "COMMUNITY": {
+          "TITLE": "Community",
+          "PATH": "/projects/community"
+        },
+        "DEMOS": {
+          "TITLE": "Demos",
+          "PATH": "/projects/demos"
+        }
+      }
+    },
+    "TUTORIALS": {
+      "TITLE": "Tutorials",
+      "PATH": "/tutorials",
+      "SUBMENU": {
+        "BASICS": {
+          "TITLE": "Basics",
+          "PATH": "/tutorials/basics"
+        },
+        "GRAPHICS": {
+          "TITLE": "Graphics",
+          "PATH": "/tutorials/graphics"
+        },
+        "IO": {
+          "TITLE": "Input & Output",
+          "PATH": "/tutorials/input-and-output"
+        },
+        "SOUND": {
+          "TITLE": "Sound & Music",
+          "PATH": "/tutorials/sound-and-music"
+        },
+        "GUI": {
+          "TITLE": "Graphical User Interface",
+          "PATH": "/tutorials/graphical-user-interface"
+        },
+        "FILES": {
+          "TITLE": "File Access",
+          "PATH": "/tutorials/file-access"
+        },
+        "PARTICLES": {
+          "TITLE": "Particles",
+          "PATH": "/tutorials/particles"
+        },
+        "3D": {
+          "TITLE": "3D Objects",
+          "PATH": "/tutorials/3d-objects"
+        }
+      }
+    },
+    "DOCUMENTATION": {
+      "TITLE": "Documentation",
+      "PATH": "/documentation",
+      "SUBMENU": {
+        "KEYWORDS": {
+          "TITLE": "Keywords",
+          "PATH": "/documentation/keywords"
+        },
+        "COMMANDS": {
+          "TITLE": "Commands",
+          "PATH": "/documentation/commands"
+        },
+        "CONSTANTS_AND_SCANCODES": {
+          "TITLE": "Constants and Scancodes",
+          "PATH": "/documentation/constants-and-scancodes"
+        },
+        "DIFFERENCES_TO_BLITZ_BASIC": {
+          "TITLE": "Differences to BlitzBasic",
+          "PATH": "/documentation/differences-to-blitz-basic"
+        },
+        "MIGRATION_GUIDE": {
+          "TITLE": "Migration Guide",
+          "PATH": "/documentation/migration-guide"
+        }
+      }
+    },
+    "LANGUAGE": {
+      "TITLE": "Language",
+      "EN": "English",
+      "DE": "German"
+    },
+    "LOGIN": {
+      "TITLE": "Log In",
+      "PATH": "/login"
+    },
+    "REGISTER": {
+      "TITLE": "Register",
+      "PATH": "/register"
+    },
+    "ACCOUNT": {
+      "PROFILE": "Profile",
+      "AWARDS": "Medals",
+      "TROPHYS": "Trophies",
+      "PATH": "/account"
+    },
+    "ABOUT": "Infos",
+    "GAMING": "Gaming",
+    "CONTACT": "Contact",
+    "IMPRINT": "Imprint"
+  },
+  "NAV_TERMS": "Terms Of Use",
+  "CANCEL": "Cancel",
+  "2D_GRAPHICS": "2D Graphics",
+  "3D_GRAPHICS": "3D-Graphics",
+  "GUI_ABBR": "Graphical User Interface",
+  "GRAPHICS_ENGINE": "Graphics Engine",
+  "PHYSICS_ENGINE": "Physics Engine",
+  "SHADOW_ENGINE": "Shadow Engine",
+  "PARTICLE_ENGINE": "Particle Engine",
+  "PLATFORM_INDEPENDENCE": "Platform Independence",
+  "FILE_SYSTEM_ACCESS": "File System Access",
+  "NETWORK_GAMING": "Network Gaming",
+  "COMPILED_TO_CPP": "C++",
+  "TRANSLATED_TO_JS": "JavaScript",
+  "JETZT_LERNE_ICH": "Jetzt lerne ich Spiele programmieren mit BlitzBasic",
+  "MISSION_SUBTITLE": "<b>BlitzBasicScript</b> is a simple yet powerful scripting language based on the <b><a class=\"is-link\" href=\"https://en.wikipedia.org/wiki/Blitz_BASIC\" target=\"_ blank\">BlitzBasic</a> syntax</b>. Thanks to BlitzBasicScript you can <b>develop games with minimal effort</b>, which can be easily played on any device in the web browser. From simple puzzle games to complex 3D shooters, everything is possible!",
+  "WORK_IN_PROGRESS": {
+    "TITLE": "Work in Progress: Alpha 0.0.2",
+    "TEXT": "BlitzBasicScript is currently still in the alpha phase. This means there are only a few features on this website available and numerous commands are still being implemented under the hood."
+  },
+  "FEATURES": {
+    "TITLE": "Features",
+    "1": {
+      "TITLE": "More Than 700 Powerful Commands",
+      "MESSAGE": "Create living 3D worlds, give your virtual environment the right sound and build an intuitive <abbr title=\"Graphical user interface\">GUI</abbr> with just a few commands. A total of more than 700 commands - from 2D and 3D to data processing and game control - offer you a comfortable programming experience."
+    },
+    "2": {
+      "TITLE": "Modern Graphics Engine",
+      "MESSAGE": "Thanks to the latest version of <a class=\"dark\" href=\"https://www.babylonjs.com\" target=\"_blank\">BabylonJS</a> you will experience unprecedented graphic power in your browser, even on mobile devices."
+    },
+    "3": {
+      "TITLE": "Platform Independence",
+      "MESSAGE": "Einmal coden, überall zocken: Deine Spiele lassen sich in jedem modernen Webbrowser ausführen. Es gibt keinerlei altmodische <abbr title=\"Betriebssystem\">OS</abbr>-Beschränkungen und du musst nichts weiter tun, als auf deinem Endgerät einen Web-Browser zu starten und auf <i>blitzbasicscript.com</i> zu gehen."
+    },
+    "4": {
+      "TITLE": "Online <abbr title=\"Integrated development environment\">IDE</abbr>",
+      "MESSAGE": "Develop your games quickly and easily, wherever you are. All you need is an account at <i>blitzbasicscript.com</i> and an internet connection and you're ready to go!"
+    },
+    "5": {
+      "TITLE": "Numerous Assets Completely Free",
+      "MESSAGE": "Vorbei die Zeit, als du jedes Bild selbst malen und Geräusche aufnehmen musstest: In der BlitzBasicScript-Cloud findest du hunderte Tilesets, 3D-Modelle, Sounds und Hintergrundmusiken sowie Schriftarten und vieles mehr. Natürlich kannst du trotzdem beliebig viele eigene Assets in deinen Projekten verwenden."
+    },
+    "6": {
+      "TITLE": "New Edition Of The Legendary BlitzBasic",
+      "MESSAGE": "A few years ago <b><a class=\"dark\" href=\"https://de.wikipedia.org/wiki/Blitz_Basic\" target=\"_blank\">BlitzBasic</a></b> was an insider tip among hobby game developers. With <b>BlitzBasicScript</b> you can now breathe new life into the countless earlier BB games in the browser: The syntax is almost identical, so you only have to copy the code of a BlitzBasic program into the online IDE and press play!"
+    },
+    "7": {
+      "TITLE": "Realistic Shadow Display And Physics Effects",
+      "MESSAGE": "Some brand new commands extend classic BlitzBasic games with the possibility of physically correct lighting of 3D objects and of casting shadows on each other and on the floor. In addition, physics can be assigned to each 3D object in order to make the gaming experience as realistic as possible."
+    },
+    "8": {
+      "TITLE": "Open Source Project",
+      "MESSAGE": "The entire BlitzBasicScript project including lexer, parser, renderer and all game services is published as an Angular library under the MIT license and <a class=\"dark\" href=\"https://github.com/SparkFountain/BlitzBasicScript\" target=\"_ blank\">can be downloaded from GitHub</a>."
+    },
+    "9": {
+      "TITLE": "Long-Term Support",
+      "MESSAGE": "2020 is just the beginning: never before has it been possible to smoothly display games of the highest quality in a web browser. BlitzBasicScript offers modern, future-oriented hobby game developers an ideal alternative to Unity or C++. This project will be continuously developed in the next few years and thanks to advancing standards and hardware developments, game development in the browser will become the new standard."
+    }
+  },
+  "LETS_CODE": {
+    "TITLE": "",
+    "EMPTY_PROJECT": {
+      "TITLE": "Empty Project",
+      "PROJECT": {
+        "TITLE": "Project Title",
+        "TITLE_PLACEHOLDER": "My cool game",
+        "TITLE_TOO_SHORT": "The project title is too short, please enter at least two characters",
+        "TITLE_TOO_LONG": "The project title is too long, please limit yourself to max. 32 characters",
+        "TITLE_MUST_BE_ALPHANUMERIC": "The project title must be alphanumeric (allowed characters are letters, numbers and spaces)",
+        "DESCRIPTION": "Description",
+        "DESCRIPTION_PLACEHOLDER": "What is your project about? Do some promotion and write a few sentences here about the goal of the game, the features and more.",
+        "LICENSE": "License",
+        "IMAGE": "Image",
+        "CREATE": "Create Project"
+      }
+    }
+  },
+  "UPLOAD_IMAGE": "Upload Image",
+  "IDE": {
+    "SETTINGS": {
+      "TITLE": "Editor Settings"
+    }
+  }
+}
