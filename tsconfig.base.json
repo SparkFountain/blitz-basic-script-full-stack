@@ -19,7 +19,8 @@
       "@blitz-basic-script/api-interfaces": [
         "libs/api-interfaces/src/index.ts"
       ],
-      "@blitz-basic-script/ide": ["libs/ide/src/index.ts"]
+      "@blitz-basic-script/ide": ["libs/ide/src/index.ts"],
+      "@blitz-basic-script/authentication": ["libs/authentication/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

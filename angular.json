@@ -237,6 +237,38 @@
           "style": "scss"
         }
       }
+    },
+    "authentication": {
+      "projectType": "library",
+      "root": "libs/authentication",
+      "sourceRoot": "libs/authentication/src",
+      "prefix": "blitz-basic-script",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/authentication/tsconfig.lib.json",
+              "libs/authentication/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/authentication/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/authentication/jest.config.js",
+            "tsConfig": "libs/authentication/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/authentication/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

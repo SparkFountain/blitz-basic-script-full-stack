@@ -1,0 +1,11 @@
+.card-header {
+  display: flex;
+  justify-content: center;
+
+  .fa {
+    font-size: 72px;
+    padding: 20px 0;
+    color: #df691a;
+    text-shadow: 0 0 4px #3298dc;
+  }
+}

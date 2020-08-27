@@ -1,1 +1,40 @@
-<p>home works!</p>
+<h1 class="title is-1">{{ 'HOME.TITLE' | translate }}</h1>
+<h2 class="title is-2">{{ 'HOME.SUBTITLE' | translate }}</h2>
+
+<article class="message is-info">
+  <div class="message-header">
+    <span><i class="fa fa-fw fa-gamepad" aria-hidden="true"></i> {{ 'HOME.INFO_1.HEADER' | translate }}</span>
+  </div>
+  <div class="message-body">
+    <span [innerHTML]="'HOME.INFO_1.BODY' | translate"></span>
+    <br />
+    <p>
+      <b>{{ 'HOME.INFO_2' | translate }}</b>
+    </p>
+    <br />
+    <span [innerHTML]="'HOME.INFO_3' | translate"></span>
+  </div>
+</article>
+<br />
+<br />
+
+<h2 class="title is-2">{{ 'HOME.SIX_REASONS' | translate }}</h2>
+
+<div class="columns" *ngFor="let i of [0, 1]">
+  <div class="column is-flex" *ngFor="let j of [0, 1, 2]">
+    <div class="card">
+      <div class="card-header">
+        <i class="fa fa-{{ reasonIcons[i * 3 + j] }}" aria-hidden="true"></i>
+      </div>
+      <div class="card-content">
+        <div class="content">
+          <h3 class="title is-3">
+            {{ 'HOME.REASON_' + (i * 3 + j + 1) + '.HEADER' | translate }}
+          </h3>
+          <br />
+          <p [innerHTML]="'HOME.REASON_' + (i * 3 + j + 1) + '.BODY' | translate"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

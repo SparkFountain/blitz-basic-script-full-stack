@@ -37,6 +37,9 @@
     },
     "ide": {
       "tags": []
+    },
+    "authentication": {
+      "tags": []
     }
   }
 }
