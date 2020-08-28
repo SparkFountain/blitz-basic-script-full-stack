@@ -1,0 +1,22 @@
+.nav-avatar {
+  width: 32px;
+  height: 32px;
+
+  img {
+    max-height: none !important;
+  }
+}
+
+.nav-avatar-dropdown {
+  left: -110px;
+}
+
+// TODO: this solution does not work, for links are not clickable anymore
+
+// .navbar-item.has-dropdown.is-hoverable:active > .navbar-dropdown {
+//   visibility: hidden !important;
+// }
+
+// .navbar-dropdown:active {
+//   visibility: hidden !important;
+// }

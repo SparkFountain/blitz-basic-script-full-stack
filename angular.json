@@ -22,10 +22,14 @@
             "tsConfig": "apps/frontend/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "apps/frontend/src/favicon.ico",
+              "apps/frontend/src/favicon.png",
               "apps/frontend/src/assets"
             ],
-            "styles": ["apps/frontend/src/styles.scss"],
+            "styles": [
+              "apps/frontend/src/styles.scss",
+              "apps/frontend/src/assets/style/bulmaswatch.min.css",
+              "node_modules/font-awesome/css/font-awesome.css"
+            ],
             "scripts": []
           },
           "configurations": {

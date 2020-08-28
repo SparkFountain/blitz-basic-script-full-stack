@@ -43,6 +43,7 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "@nrwl/angular": "10.1.0",
+    "font-awesome": "^4.7.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.5",
     "zone.js": "^0.10.2"

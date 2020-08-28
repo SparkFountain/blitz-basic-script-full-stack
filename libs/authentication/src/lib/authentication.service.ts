@@ -1,10 +1,11 @@
+import { ApiServer } from './server';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { ApiResponse } from '../interfaces/api-response';
 import { BehaviorSubject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { User } from '../interfaces/user';
+import { User } from './user';
+
+import { ApiResponse } from '@blitz-basic-script/api-interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -31,7 +32,7 @@ export class AuthenticationService {
       .set('language', this.translate.currentLang);
 
     return this.http
-      .post<ApiResponse<any>>(`${environment.apiServer}/auth/register`, body)
+      .post<ApiResponse<any>>(`${ApiServer.url}/auth/register`, body)
       .toPromise();
   }
 
@@ -60,7 +61,7 @@ export class AuthenticationService {
       .set('password', password);
 
     const response = await this.http
-      .post<ApiResponse<User>>(`${environment.apiServer}/auth/login`, body)
+      .post<ApiResponse<User>>(`${ApiServer.url}/auth/login`, body)
       .toPromise();
     localStorage.setItem('username', response.data.name);
     localStorage.setItem('email', response.data.email);
@@ -69,7 +70,7 @@ export class AuthenticationService {
 
   logout(): Promise<ApiResponse<any>> {
     return this.http
-      .post<ApiResponse<any>>(`${environment.apiServer}/auth/logout`, {
+      .post<ApiResponse<any>>(`${ApiServer.url}/auth/logout`, {
         userOrEmail: this.user.email,
         token: this.token.value,
       })
@@ -78,7 +79,7 @@ export class AuthenticationService {
 
   usernameExists(username: string): Promise<ApiResponse<any>> {
     return this.http
-      .get<ApiResponse<any>>(`${environment.apiServer}/auth/username-exists`, {
+      .get<ApiResponse<any>>(`${ApiServer.url}/auth/username-exists`, {
         params: {
           username,
         },
@@ -88,7 +89,7 @@ export class AuthenticationService {
 
   emailExists(email: string) {
     return this.http
-      .get<ApiResponse<any>>(`${environment.apiServer}/auth/email-exists`, {
+      .get<ApiResponse<any>>(`${ApiServer.url}/auth/email-exists`, {
         params: {
           email,
         },
@@ -100,7 +101,7 @@ export class AuthenticationService {
     // TODO: something is horribly wrong here (infinite loop call)
     return null;
     // const response = await this.http
-    //   .post<ApiResponse<boolean>>(`${environment.apiServer}/auth/validate-credentials`, {
+    //   .post<ApiResponse<boolean>>(`${ApiServer.url}/auth/validate-credentials`, {
     //     username: user.name,
     //     email: user.email,
     //     token: user.token
