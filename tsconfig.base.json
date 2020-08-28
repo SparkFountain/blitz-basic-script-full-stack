@@ -20,7 +20,13 @@
         "libs/api-interfaces/src/index.ts"
       ],
       "@blitz-basic-script/ide": ["libs/ide/src/index.ts"],
-      "@blitz-basic-script/authentication": ["libs/authentication/src/index.ts"]
+      "@blitz-basic-script/authentication": [
+        "libs/authentication/src/index.ts"
+      ],
+      "@blitz-basic-script/blog": ["libs/blog/src/index.ts"],
+      "@blitz-basic-script/coding": ["libs/coding/src/index.ts"],
+      "@blitz-basic-script/documentation": ["libs/documentation/src/index.ts"],
+      "@blitz-basic-script/project": ["libs/project/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

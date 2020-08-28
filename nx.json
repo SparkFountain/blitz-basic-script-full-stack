@@ -40,6 +40,18 @@
     },
     "authentication": {
       "tags": []
+    },
+    "blog": {
+      "tags": []
+    },
+    "coding": {
+      "tags": []
+    },
+    "documentation": {
+      "tags": []
+    },
+    "project": {
+      "tags": []
     }
   }
 }
