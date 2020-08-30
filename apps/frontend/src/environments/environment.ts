@@ -4,6 +4,13 @@
 
 export const environment = {
   production: false,
+
+  apiServer: 'http://localhost:3333/api',
+  // apiServer: 'https://api.blitzbasicscript.com',
+
+  emailRegex: new RegExp(/^[^@\s]+@[^@\s]+\.[^@\s]+$/),
+  usernameRegex: new RegExp(/^[a-zA-Z0-9 ]*$/),
+  generalNameRegex: new RegExp(/^[a-zA-ZäöüÄÖÜß0-9 ]*$/),
 };
 
 /*

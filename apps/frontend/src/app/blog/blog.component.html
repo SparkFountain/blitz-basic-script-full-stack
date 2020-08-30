@@ -1,0 +1,59 @@
+<div class="columns">
+  <div class="column is-4">
+    <section class="section" id="menu">
+      <h1 class="title">{{ 'BLOG.TITLE' | translate }}</h1>
+      <hr />
+
+      <nav class="pagination">
+        {{ 'BLOG.PAGE' | translate }}
+        <ul class="pagination-list">
+          <li *ngFor="let page of pages">
+            <a
+              class="pagination-link"
+              [ngClass]="{ 'is-current': currentPage === page }"
+              >{{ page }}</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <div class="column">
+        <aside class="menu">
+          <ng-container *ngFor="let entry of news">
+            <p class="menu-label">
+              {{ entry.createdAt | date }}
+            </p>
+            <ul class="menu-list">
+              <li>
+                <a>{{ entry.title }}</a>
+              </li>
+            </ul>
+          </ng-container>
+        </aside>
+      </div>
+    </section>
+  </div>
+  <div class="column is-8">
+    <div class="card" *ngFor="let entry of news">
+      <div class="card-image">
+        <figure class="image is-3by1">
+          <img [src]="entry.imageUrl" alt="Image" />
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image" style="height: 40px; width: 40px;">
+              <img src="https://source.unsplash.com/random/96x96" alt="Image" />
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4">{{ entry.author }}</p>
+            <p class="subtitle is-6">{{ entry.createdAt | date }}</p>
+          </div>
+        </div>
+        <div class="content" [innerHTML]="entry.message"></div>
+      </div>
+    </div>
+  </div>
+</div>

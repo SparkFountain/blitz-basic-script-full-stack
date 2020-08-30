@@ -7,10 +7,11 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'ueberblick', redirectTo: '/home', pathMatch: 'full' },
-  // {
-  //   path: 'news-blog',
-  //   loadChildren: () => import('./news-blog/news-blog.module').then(m => m.NewsBlogModule)
-  // },
+  {
+    path: 'blog',
+    loadChildren: () =>
+      import('../../blog/blog.module').then((m) => m.BlogModule),
+  },
   // {
   //   path: 'features',
   //   loadChildren: () => import('./features/features.module').then(m => m.FeaturesModule)

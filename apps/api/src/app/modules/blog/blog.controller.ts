@@ -8,13 +8,16 @@ import { ApiResponse } from '@blitz-basic-script/api-interfaces';
 export class BlogController {
   constructor(private readonly blogService: BlogService) {}
 
-  @Get('news')
+  @Get('blog')
   getNews(): ApiResponse<News> {
     return null;
   }
 
-  @Get('news/total-pages')
+  @Get('blog/total-pages')
   getTotalPages(): ApiResponse<number> {
-    return null;
+    return {
+      status: 'success',
+      data: 5,
+    };
   }
 }

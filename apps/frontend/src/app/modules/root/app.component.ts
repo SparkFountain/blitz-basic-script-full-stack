@@ -7,7 +7,9 @@ import { Router, NavigationEnd } from '@angular/router';
 import { of, Subscription } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
-import { AuthenticationService } from '@blitz-basic-script/authentication';
+import { AuthenticationService } from '../../services/authentication.service';
+
+import {User} from '@blitz-basic-script/authentication';
 
 @Component({
   selector: 'blitz-basic-script-root',
@@ -47,7 +49,7 @@ export class AppComponent implements OnInit, OnDestroy {
       left: [
         new NavigationMenu('fa-home', 'HOME', [
           'OVERVIEW',
-          'NEWS_BLOG',
+          'BLOG',
           'FEATURES',
         ]),
         new NavigationMenu('fa-dashboard', 'LETS_CODE', [

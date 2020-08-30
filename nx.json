@@ -38,9 +38,6 @@
     "ide": {
       "tags": []
     },
-    "authentication": {
-      "tags": []
-    },
     "blog": {
       "tags": []
     },
@@ -51,6 +48,9 @@
       "tags": []
     },
     "project": {
+      "tags": []
+    },
+    "authentication": {
       "tags": []
     }
   }

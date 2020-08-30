@@ -1,10 +1,5 @@
 {
   "extends": "../../tslint.json",
-  "rules": {
-    "directive-selector": [true, "attribute", "blitzBasicScript", "camelCase"],
-    "component-selector": [true, "element", "blitz-basic-script", "kebab-case"]
-  },
-  "linterOptions": {
-    "exclude": ["!**/*"]
-  }
+  "linterOptions": { "exclude": ["!**/*"] },
+  "rules": {}
 }

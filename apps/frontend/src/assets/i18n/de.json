@@ -120,8 +120,8 @@
       "BODY": "Mach das Programmieren selbst zu deinem Spiel: Registriere dich kostenlos bei BlitzBasicScript und werde Teil einer lebendigen Community! Lerne neue Befehle & Datenstrukturen kennen und baue sie in deinen Code ein, um wertvolle Trophäen und Medaillen zu erhalten. Du kannst außerdem an coolen Wettbewerben teilnehmen und dich mit anderen messen. So verbesserst du spielend und kontinuierlich deine Fähigkeiten."
     }
   },
-  "NEWS_BLOG": {
-    "TITLE": "News-Blog",
+  "BLOG": {
+    "TITLE": "Blog",
     "PAGE": "Seite"
   },
   "FOOTER": {
@@ -448,9 +448,9 @@
           "TITLE": "Überblick",
           "PATH": "ueberblick"
         },
-        "NEWS_BLOG": {
-          "TITLE": "News-Blog",
-          "PATH": "news-blog"
+        "BLOG": {
+          "TITLE": "Blog",
+          "PATH": "blog"
         },
         "FEATURES": {
           "TITLE": "Features",

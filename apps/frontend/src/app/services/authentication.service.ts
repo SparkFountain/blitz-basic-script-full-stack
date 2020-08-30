@@ -1,11 +1,15 @@
-import { ApiServer } from './server';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { User } from './user';
 
+import { User } from '@blitz-basic-script/authentication';
 import { ApiResponse } from '@blitz-basic-script/api-interfaces';
+
+// TODO: refactor -> move somewhere else
+const ApiServer = {
+  url: 'https://api.blitzbasicscript.com',
+};
 
 @Injectable({
   providedIn: 'root',
