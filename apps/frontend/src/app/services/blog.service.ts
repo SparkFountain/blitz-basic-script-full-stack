@@ -16,14 +16,14 @@ export class BlogService {
 
   public getTotalPages(): Promise<number> {
     return this.http
-      .get(`${environment.apiServer}/news/total-pages`)
+      .get(`${environment.apiServer}/blog/total-pages`)
       .toPromise()
       .then((response: ApiResponse<number>) => response.data);
   }
 
   public get(page: number): Promise<News[]> {
     return this.http
-      .get(`${environment.apiServer}/news`, {
+      .get(`${environment.apiServer}/blog`, {
         params: {
           page: page.toString(),
           language: this.translateService.currentLang,
