@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { News } from '@blitz-basic-script/blog';
-import { BlogService } from '../services/blog.service';
+import { BlogService } from '../../../services/blog.service';
 
 @Component({
   selector: 'blitz-basic-script-blog',

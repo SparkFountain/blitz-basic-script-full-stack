@@ -371,6 +371,38 @@
           }
         }
       }
+    },
+    "script-language": {
+      "projectType": "library",
+      "root": "libs/script-language",
+      "sourceRoot": "libs/script-language/src",
+      "prefix": "blitz-basic-script",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/script-language/tsconfig.lib.json",
+              "libs/script-language/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/script-language/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/script-language/jest.config.js",
+            "tsConfig": "libs/script-language/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/script-language/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

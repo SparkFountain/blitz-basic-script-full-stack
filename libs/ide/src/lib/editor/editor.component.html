@@ -1,0 +1,31 @@
+<!-- CODE -->
+<div
+  #codingArea
+  class="box coding-area"
+  [ngClass]="colorScheme"
+  *ngIf="!playing"
+>
+  <!-- CARET -->
+  <div
+    class="caret"
+    [ngStyle]="{ top: caret.top + 'px', left: caret.left + 'px' }"
+  >
+    |
+  </div>
+
+  <div class="code-line" *ngFor="let tokens of code.formatted; let i = index">
+    <div class="line-meta">
+      <div class="line-number">{{ i + 1 }}</div>
+      <div class="line-highlight">
+        <i class="fa fa-video-camera" aria-hidden="true" *ngIf="false"></i>
+      </div>
+      <div class="line-toggle pointer">
+        <span *ngIf="false">⏵</span>
+        <span *ngIf="false">⏷</span>
+      </div>
+    </div>
+    <div class="line-content">
+      <div class="token" *ngFor="let token of tokens" [innerHTML]="token"></div>
+    </div>
+  </div>
+</div>

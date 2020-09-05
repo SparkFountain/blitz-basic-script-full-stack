@@ -1,29 +1,32 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from '../home/home.component';
 // import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  {
+    path: 'home',
+    loadChildren: () => import('../home/home.module').then((m) => m.HomeModule),
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'ueberblick', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'blog',
-    loadChildren: () =>
-      import('../../blog/blog.module').then((m) => m.BlogModule),
+    loadChildren: () => import('../home/home.module').then((m) => m.HomeModule),
   },
   // {
   //   path: 'features',
   //   loadChildren: () => import('./features/features.module').then(m => m.FeaturesModule)
   // },
-  // {
-  //   path: 'lets-code',
-  //   loadChildren: () => import('./lets-code/lets-code.module').then(m => m.LetsCodeModule)
-  // },
-  // {
-  //   path: 'coden',
-  //   loadChildren: () => import('./lets-code/lets-code.module').then(m => m.LetsCodeModule)
-  // },
+  {
+    path: 'lets-code',
+    loadChildren: () =>
+      import('../lets-code/lets-code.module').then((m) => m.LetsCodeModule),
+  },
+  {
+    path: 'coden',
+    loadChildren: () =>
+      import('../lets-code/lets-code.module').then((m) => m.LetsCodeModule),
+  },
   // {
   //   path: 'projects',
   //   loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule)

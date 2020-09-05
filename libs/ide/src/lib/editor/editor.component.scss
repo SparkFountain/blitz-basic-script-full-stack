@@ -1,0 +1,46 @@
+// TODO: check which properties are really used in HTML template; remove all other style definitions
+
+.ide-buttons {
+  margin: 0 4px;
+}
+
+.coding-area {
+  font-size: 14px;
+
+  .caret {
+    position: absolute;
+    font-size: 18px;
+    user-select: none;
+  }
+
+  .token {
+    display: inline;
+  }
+}
+
+.code-line {
+  display: flex;
+}
+
+.line-meta {
+  display: flex;
+  user-select: none;
+  // width: 75px;
+
+  .line-number {
+    width: auto;
+    padding: 0 10px;
+  }
+
+  .line-highlight {
+    padding: 0 10px;
+  }
+
+  .line-toggle {
+    padding: 0 10px;
+  }
+}
+
+.line-content {
+  font-family: 'Cousine', 'Courier New', Courier, monospace;
+}

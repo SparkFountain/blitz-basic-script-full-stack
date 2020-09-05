@@ -52,6 +52,9 @@
     },
     "authentication": {
       "tags": []
+    },
+    "script-language": {
+      "tags": []
     }
   }
 }

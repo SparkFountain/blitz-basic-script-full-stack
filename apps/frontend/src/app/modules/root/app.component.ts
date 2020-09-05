@@ -9,8 +9,6 @@ import { delay } from 'rxjs/operators';
 
 import { AuthenticationService } from '../../services/authentication.service';
 
-import {User} from '@blitz-basic-script/authentication';
-
 @Component({
   selector: 'blitz-basic-script-root',
   templateUrl: './app.component.html',
@@ -47,11 +45,7 @@ export class AppComponent implements OnInit, OnDestroy {
     // initialize navigation
     this.navigationElements = {
       left: [
-        new NavigationMenu('fa-home', 'HOME', [
-          'OVERVIEW',
-          'BLOG',
-          'FEATURES',
-        ]),
+        new NavigationMenu('fa-home', 'HOME', ['OVERVIEW', 'BLOG', 'FEATURES']),
         new NavigationMenu('fa-dashboard', 'LETS_CODE', [
           'EMPTY_PROJECT',
           'TEMPLATES',
