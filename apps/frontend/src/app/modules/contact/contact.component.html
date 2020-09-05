@@ -1,0 +1,223 @@
+<h1 class="title is-1">{{ 'FOOTER.CONTACT.LABEL' | translate }}</h1>
+
+<div class="message is-info" *ngIf="section === 'form'">
+  <div
+    class="message-body"
+    [innerHTML]="'FOOTER.CONTACT.SUBTITLE' | translate"
+  ></div>
+</div>
+
+<!-- CONTACT FORM -->
+<div class="card register-card" *ngIf="section === 'form'">
+  <div class="card-content">
+    <!-- EMAIL -->
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">{{
+          'FOOTER.CONTACT.EMAIL.LABEL' | translate
+        }}</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control is-expanded has-icons-left">
+            <input
+              [(ngModel)]="email"
+              class="input"
+              type="text"
+              [placeholder]="'FOOTER.CONTACT.EMAIL.PLACEHOLDER' | translate"
+              maxlength="32"
+            />
+            <span class="icon is-small is-left">
+              <i class="fa fa-fw fa-at"></i>
+            </span>
+          </div>
+          <p class="help is-danger">
+            <span *ngIf="this.notices['email-empty']">{{
+              'EMAIL_EMPTY' | translate
+            }}</span>
+            <span *ngIf="this.notices['email-invalid']">{{
+              'EMAIL_INVALID' | translate
+            }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAME -->
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">{{
+          'FOOTER.CONTACT.NAME.LABEL' | translate
+        }}</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control is-expanded has-icons-left">
+            <input
+              [(ngModel)]="name"
+              class="input"
+              type="text"
+              [placeholder]="'FOOTER.CONTACT.NAME.PLACEHOLDER' | translate"
+              maxlength="32"
+            />
+            <span class="icon is-small is-left">
+              <i class="fa fa-fw fa-user"></i>
+            </span>
+          </div>
+          <p class="help is-danger">
+            <span *ngIf="this.notices['name-too-short']">{{
+              'NAME_TOO_SHORT' | translate
+            }}</span>
+            <span *ngIf="this.notices['name-too-long']">{{
+              'NAME_TOO_LONG' | translate
+            }}</span>
+            <span *ngIf="this.notices['name-must-be-alphanumeric']">{{
+              'NAME_MUST_BE_ALPHANUMERIC' | translate
+            }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBJECT -->
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">{{
+          'FOOTER.CONTACT.SUBJECT.LABEL' | translate
+        }}</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <span class="select">
+              <select [(ngModel)]="subject">
+                <option value="bbscript">
+                  {{ 'FOOTER.CONTACT.SUBJECT.BBSCRIPT' | translate }}
+                </option>
+                <option value="website">
+                  {{ 'FOOTER.CONTACT.SUBJECT.WEBSITE' | translate }}
+                </option>
+                <option value="bug-report">
+                  {{ 'FOOTER.CONTACT.SUBJECT.BUG_REPORT' | translate }}
+                </option>
+                <option value="feature-request">
+                  {{ 'FOOTER.CONTACT.SUBJECT.FEATURE_REQUEST' | translate }}
+                </option>
+                <option value="criticism">
+                  {{ 'FOOTER.CONTACT.SUBJECT.CRITICISM' | translate }}
+                </option>
+                <option value="individual">
+                  {{ 'FOOTER.CONTACT.SUBJECT.INDIVIDUAL' | translate }}
+                </option>
+              </select>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MESSAGE -->
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">{{
+          'FOOTER.CONTACT.MESSAGE.LABEL' | translate
+        }}</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <textarea
+              [(ngModel)]="message"
+              class="textarea"
+              placeholder="{{
+                'FOOTER.CONTACT.MESSAGE.PLACEHOLDER' | translate
+              }}"
+            ></textarea>
+          </p>
+          <p class="help is-danger">
+            <span *ngIf="this.notices['message-empty']">{{
+              'MESSAGE_EMPTY' | translate
+            }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DATA AGREEMENT -->
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <span
+          class="icon is-small is-left pointer"
+          (click)="dataAgreementAccepted = !dataAgreementAccepted"
+        >
+          <i *ngIf="!dataAgreementAccepted" class="fa fa-fw fa-square-o"></i>
+          <i
+            *ngIf="dataAgreementAccepted"
+            class="fa fa-fw fa-check-square-o"
+          ></i>
+        </span>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control is-expanded has-icons-left">
+            <p [innerHTML]="'FOOTER.CONTACT.DATA_AGREEMENT' | translate"></p>
+          </div>
+          <p class="help is-danger">
+            <span *ngIf="this.notices['data-agreement-must-be-accepted']">{{
+              'FOOTER.CONTACT.DATA_AGREEMENT_MUST_BE_ACCEPTED' | translate
+            }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEND BUTTON -->
+    <div class="field is-horizontal">
+      <div class="field-label is-normal"></div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <button
+              class="button is-primary"
+              (click)="send()"
+              *ngIf="!sendingRequest"
+            >
+              {{ 'FOOTER.CONTACT.SEND' | translate }}
+            </button>
+            <button class="button is-primary" disabled *ngIf="sendingRequest">
+              <i class="fa fa-spinner fa-spin" aria-hidden="true"></i
+              >&nbsp;&nbsp;
+              {{ 'REGISTER.SENDING_REQUEST' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="message is-success" *ngIf="section === 'success'">
+  <div class="message-header">
+    {{ 'FOOTER.CONTACT.SUCCESSFUL.TITLE' | translate }}
+  </div>
+  <div class="message-body">
+    <p>{{ 'FOOTER.CONTACT.SUCCESSFUL.MESSAGE' | translate }}</p>
+    <p>
+      <a routerLink="/home">{{ 'PAGE_NOT_FOUND.HOME_PATH' | translate }}</a>
+    </p>
+  </div>
+</div>
+
+<!-- ERROR -->
+<div class="message is-danger" *ngIf="section === 'error'">
+  <div class="message-header">
+    {{ 'FOOTER.CONTACT.ERROR.TITLE' | translate }}
+  </div>
+  <div class="message-body">
+    <p>{{ 'FOOTER.CONTACT.ERROR.MESSAGE' | translate }}</p>
+    <p>
+      <a routerLink="/home">{{ 'PAGE_NOT_FOUND.HOME_PATH' | translate }}</a>
+    </p>
+  </div>
+</div>

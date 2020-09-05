@@ -8,6 +8,7 @@ export const environment = {
   apiServer: 'http://localhost:3333/api',
   // apiServer: 'https://api.blitzbasicscript.com',
 
+  // TODO: this should not be part of the environment file!
   emailRegex: new RegExp(/^[^@\s]+@[^@\s]+\.[^@\s]+$/),
   usernameRegex: new RegExp(/^[a-zA-Z0-9 ]*$/),
   generalNameRegex: new RegExp(/^[a-zA-ZäöüÄÖÜß0-9 ]*$/),

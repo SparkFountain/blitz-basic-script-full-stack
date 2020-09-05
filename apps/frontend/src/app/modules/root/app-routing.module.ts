@@ -64,40 +64,50 @@ const routes: Routes = [
   //   path: 'account',
   //   loadChildren: () => import('./account/account.module').then(m => m.AccountModule)
   // },
-  // {
-  //   path: 'contact',
-  //   loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
-  // },
-  // {
-  //   path: 'kontakt',
-  //   loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
-  // },
+  {
+    path: 'contact',
+    loadChildren: () =>
+      import('../contact/contact.module').then((m) => m.ContactModule),
+  },
+  {
+    path: 'kontakt',
+    loadChildren: () =>
+      import('../contact/contact.module').then((m) => m.ContactModule),
+  },
   {
     path: 'imprint',
     loadChildren: () =>
-      import('../footer/footer.module').then((m) => m.FooterModule),
+      import('../imprint/imprint.module').then((m) => m.ImprintModule),
   },
   {
     path: 'impressum',
     loadChildren: () =>
-      import('../footer/footer.module').then((m) => m.FooterModule),
+      import('../imprint/imprint.module').then((m) => m.ImprintModule),
   },
-  // {
-  //   path: 'terms-of-use',
-  //   loadChildren: () => import('./terms-of-use/terms-of-use.module').then(m => m.TermsOfUseModule)
-  // },
-  // {
-  //   path: 'nutzungsbedingungen',
-  //   loadChildren: () => import('./terms-of-use/terms-of-use.module').then(m => m.TermsOfUseModule)
-  // },
-  // {
-  //   path: 'disclaimer',
-  //   loadChildren: () => import('./disclaimer/disclaimer.module').then(m => m.DisclaimerModule)
-  // },
-  // {
-  //   path: 'haftungsausschluss',
-  //   loadChildren: () => import('./disclaimer/disclaimer.module').then(m => m.DisclaimerModule)
-  // },
+  {
+    path: 'terms-of-use',
+    loadChildren: () =>
+      import('../terms-of-use/terms-of-use.module').then(
+        (m) => m.TermsOfUseModule
+      ),
+  },
+  {
+    path: 'nutzungsbedingungen',
+    loadChildren: () =>
+      import('../terms-of-use/terms-of-use.module').then(
+        (m) => m.TermsOfUseModule
+      ),
+  },
+  {
+    path: 'disclaimer',
+    loadChildren: () =>
+      import('../disclaimer/disclaimer.module').then((m) => m.DisclaimerModule),
+  },
+  {
+    path: 'haftungsausschluss',
+    loadChildren: () =>
+      import('../disclaimer/disclaimer.module').then((m) => m.DisclaimerModule),
+  },
   // { path: '404', component: NotFoundComponent },
   // { path: '**', redirectTo: '/404', pathMatch: 'full' }
 ];
