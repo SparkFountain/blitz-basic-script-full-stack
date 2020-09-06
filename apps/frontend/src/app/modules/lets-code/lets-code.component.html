@@ -136,7 +136,7 @@
       </p>
     </div>
 
-    <blitz-basic-script-editor *ngIf="!playing"></blitz-basic-script-editor>
+    <blitz-basic-script-editor [hidden]="playing"></blitz-basic-script-editor>
 
     <blitz-basic-script-game *ngIf="playing"></blitz-basic-script-game>
   </div>

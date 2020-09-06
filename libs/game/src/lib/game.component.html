@@ -1,1 +1,16 @@
-<p>game works!</p>
+<div
+  id="bbscript-root-container"
+  [ngStyle]="{ width: screen.width + 'px', height: screen.height + 'px' }"
+>
+  <div id="bbscript-canvas-container">
+    <canvas
+      #canvas3d
+      (focus)="canvasFocused = true"
+      (blur)="canvasFocused = false"
+    ></canvas>
+
+    <canvas #canvas2d></canvas>
+
+    <div id="bbscript-gui-container"></div>
+  </div>
+</div>
