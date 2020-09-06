@@ -13,6 +13,8 @@ import {
   LanguageService,
 } from '@blitz-basic-script/script-language';
 
+import { GameModule } from '@blitz-basic-script/game';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -20,6 +22,7 @@ import {
     FormsModule,
     LetsCodeRoutingModule,
     IdeModule,
+    GameModule,
   ],
   declarations: [LetsCodeComponent, EmptyProjectComponent, TemplatesComponent],
   providers: [LexerService, LanguageService],

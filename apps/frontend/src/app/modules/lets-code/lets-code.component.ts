@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
 import { FileOrFolder, FileType } from '@blitz-basic-script/ide';
 import { LetsCodeService } from '../../services/lets-code.service';
@@ -26,12 +26,31 @@ export class LetsCodeComponent implements OnInit {
   };
 
   public filesAndFolders: FileOrFolder[];
-
   public showFiles: boolean;
 
-  constructor(private letsCodeService: LetsCodeService) {}
+  public playing: boolean;
+  public action: 'idle' | 'play' | 'debug' | 'stop';
+
+  public buttons: string[];
+
+  public settingsOpen: boolean;
+
+  constructor(
+    private letsCodeService: LetsCodeService,
+    private changeDetection: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
+    this.buttons = [
+      'play',
+      'debug',
+      'undo',
+      'redo',
+      'guide',
+      'codeCleanup',
+      'toggleSettings',
+    ];
+
     this.project = {
       title: 'Snake',
       author: 'Spark Fountain',
@@ -117,5 +136,59 @@ export class LetsCodeComponent implements OnInit {
 
   handleContextMenu($event: MouseEvent): void {
     $event.preventDefault();
+  }
+
+  play(): void {
+    this.playing = true;
+    this.action = 'play';
+  }
+
+  debug(): void {
+    this.playing = true;
+    setTimeout(() => {
+      this.action = 'debug';
+      this.changeDetection.markForCheck();
+    }, 0);
+  }
+
+  stop(): void {
+    this.playing = false;
+  }
+
+  undo(): void {
+    console.warn('[UNDO] Unfinished implementation');
+
+    // if (this.undoRedoStack.length > 0) {
+    //   const lastAction: UndoRedoAction = this.undoRedoStack.pop();
+    //   // this.code.plain[lastAction.caret.begin.y] = '';
+    // }
+  }
+
+  redo(): void {
+    console.warn('[UNDO] Unfinished implementation');
+
+    // if (this.undoRedoStack.length > 0) {
+    //   const lastAction: UndoRedoAction = this.undoRedoStack.pop();
+    //   // this.code.plain[lastAction.caret.begin.y] = '';
+    // }
+  }
+
+  guide(): void {
+    console.warn('[CODING GUIDE] Not implemented yet');
+  }
+
+  /**
+   * Cleanup Rules:
+   * - correct indentation
+   * - no unnecessary spaces
+   * - no unnecessary new lines
+   * - surround all commands with brackets (later and only optional)
+   */
+  codeCleanUp(): void {
+    // correct indentation
+  }
+
+  toggleSettings(): void {
+    this.settingsOpen = !this.settingsOpen;
   }
 }

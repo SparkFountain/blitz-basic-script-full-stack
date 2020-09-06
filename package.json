@@ -46,6 +46,7 @@
     "font-awesome": "4.7.0",
     "reflect-metadata": "0.1.13",
     "rxjs": "6.6.2",
+    "tspeg": "^1.3.2",
     "zone.js": "0.11.1"
   },
   "devDependencies": {

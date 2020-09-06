@@ -29,7 +29,8 @@
       ],
       "@blitz-basic-script/script-language": [
         "libs/script-language/src/index.ts"
-      ]
+      ],
+      "@blitz-basic-script/game": ["libs/game/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

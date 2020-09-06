@@ -11,12 +11,14 @@ const routes: Routes = [
   { path: 'ueberblick', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'blog',
-    loadChildren: () => import('../home/home.module').then((m) => m.HomeModule),
+    loadChildren: () =>
+      import('../home/blog/blog.module').then((m) => m.BlogModule),
   },
-  // {
-  //   path: 'features',
-  //   loadChildren: () => import('./features/features.module').then(m => m.FeaturesModule)
-  // },
+  {
+    path: 'features',
+    loadChildren: () =>
+      import('../home/features/features.module').then((m) => m.FeaturesModule),
+  },
   {
     path: 'lets-code',
     loadChildren: () =>

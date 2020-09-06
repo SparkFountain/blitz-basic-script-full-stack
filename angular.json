@@ -403,6 +403,38 @@
           "style": "scss"
         }
       }
+    },
+    "game": {
+      "projectType": "library",
+      "root": "libs/game",
+      "sourceRoot": "libs/game/src",
+      "prefix": "blitz-basic-script",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/game/tsconfig.lib.json",
+              "libs/game/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/game/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/game/jest.config.js",
+            "tsConfig": "libs/game/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/game/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
