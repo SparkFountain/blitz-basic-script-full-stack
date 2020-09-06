@@ -27,14 +27,16 @@ const routes: Routes = [
     loadChildren: () =>
       import('../lets-code/lets-code.module').then((m) => m.LetsCodeModule),
   },
-  // {
-  //   path: 'projects',
-  //   loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule)
-  // },
-  // {
-  //   path: 'projekte',
-  //   loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule)
-  // },
+  {
+    path: 'projects',
+    loadChildren: () =>
+      import('../projects/projects.module').then((m) => m.ProjectsModule),
+  },
+  {
+    path: 'projekte',
+    loadChildren: () =>
+      import('../projects/projects.module').then((m) => m.ProjectsModule),
+  },
   // {
   //   path: 'commands',
   //   loadChildren: () => import('./commands/commands.module').then(m => m.CommandsModule)
@@ -43,18 +45,25 @@ const routes: Routes = [
   //   path: 'gaming',
   //   loadChildren: () => import('./gaming/gaming.module').then(m => m.GamingModule)
   // },
-  // {
-  //   path: 'tutorials',
-  //   loadChildren: () => import('./tutorials/tutorials.module').then(m => m.TutorialsModule)
-  // },
-  // {
-  //   path: 'documentation',
-  //   loadChildren: () => import('./documentation/documentation.module').then(m => m.DocumentationModule)
-  // },
-  // {
-  //   path: 'dokumentation',
-  //   loadChildren: () => import('./documentation/documentation.module').then(m => m.DocumentationModule)
-  // },
+  {
+    path: 'tutorials',
+    loadChildren: () =>
+      import('../tutorials/tutorials.module').then((m) => m.TutorialsModule),
+  },
+  {
+    path: 'documentation',
+    loadChildren: () =>
+      import('../documentation/documentation.module').then(
+        (m) => m.DocumentationModule
+      ),
+  },
+  {
+    path: 'dokumentation',
+    loadChildren: () =>
+      import('../documentation/documentation.module').then(
+        (m) => m.DocumentationModule
+      ),
+  },
   // {
   //   path: 'anmelden',
   //   loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
@@ -111,8 +120,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('../disclaimer/disclaimer.module').then((m) => m.DisclaimerModule),
   },
-  // { path: '404', component: NotFoundComponent },
-  // { path: '**', redirectTo: '/404', pathMatch: 'full' }
+  {
+    path: '404',
+    loadChildren: () =>
+      import('../not-found/not-found.module').then((m) => m.NotFoundModule),
+  },
+  { path: '**', redirectTo: '/404', pathMatch: 'full' },
 ];
 
 @NgModule({

@@ -1,0 +1,89 @@
+<h1 class="title is-1">{{ 'DOC.TITLE' | translate }}</h1>
+
+<nav class="breadcrumb">
+  <ul>
+    <li *ngFor="let breadcrumb of breadcrumbs">
+      <a [routerLink]="breadcrumb.path">{{ breadcrumb.title }}</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="field has-addons">
+  <p class="control">
+    <input
+      class="input is-small"
+      type="text"
+      placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
+      [(ngModel)]="searchTerm"
+    />
+  </p>
+  <p class="control">
+    <button
+      class="button is-info is-small"
+      (click)="search()"
+      [disabled]="searchTerm.length < 1"
+    >
+      {{ 'SEARCH.BUTTON' | translate }}
+    </button>
+  </p>
+</div>
+
+<div class="columns">
+  <div class="column is-3">
+    <aside class="menu">
+      <ng-container *ngFor="let e of navElements">
+        <p
+          class="menu-label pointer"
+          [ngClass]="{ active: false }"
+          [routerLink]="e.path"
+        >
+          {{ e.title }}
+        </p>
+      </ng-container>
+    </aside>
+  </div>
+
+  <div class="column is-9">
+    <ng-container *ngIf="isSection('')">
+      <p>{{ 'DOC.LANDING.TEXT_01' | translate }}</p>
+
+      <div class="columns is-multiline">
+        <div class="column is-half" *ngFor="let item of []">
+          <div class="message pointer" (click)="navigateTo(item.path)">
+            <div class="message-header">
+              <span
+                ><i [class]="'fa fa-fw fa-' + item.icon"></i>
+                {{ 'DOC.' + item.title + '.TITLE' | translate }}</span
+              >
+            </div>
+            <div class="message-body">
+              {{ 'DOC.' + item.title + '.HEADLINE' | translate }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <app-keywords
+      *ngIf="isSection('keywords') || isSection('schluesselwoerter')"
+    ></app-keywords>
+    <app-commands
+      *ngIf="isSection('commands') || isSection('befehle')"
+      [category]="level2"
+      [subCategory]="level3"
+      [command]="level4"
+    ></app-commands>
+    <app-constants-and-scancodes
+      *ngIf="
+        isSection('constants-and-scancodes') ||
+        isSection('konstanten-und-scancodes')
+      "
+    ></app-constants-and-scancodes>
+    <app-differences-to-blitz-basic
+      *ngIf="
+        isSection('differences-to-blitz-basic') ||
+        isSection('unterschiede-zu-blitz-basic')
+      "
+    ></app-differences-to-blitz-basic>
+  </div>
+</div>
