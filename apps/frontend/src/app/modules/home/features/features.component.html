@@ -1,0 +1,23 @@
+<h1 class="title is-1">{{ 'FEATURES.TITLE' | translate }}</h1>
+
+<div class="columns" *ngFor="let row of features">
+  <div class="column is-4 is-flex" *ngFor="let feature of row">
+    <div class="box">
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-64x64">
+            <i class="fa fa-fw fa-{{ feature.icon }}" aria-hidden="true"></i>
+          </figure>
+        </div>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong [innerHTML]="feature.title"></strong><br />
+              <span [innerHTML]="feature.message"></span>
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>

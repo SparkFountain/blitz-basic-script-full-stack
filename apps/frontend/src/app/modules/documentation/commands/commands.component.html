@@ -1,0 +1,60 @@
+<div class="message is-info" *ngIf="!command">
+  <div class="message-header">
+    {{ headline }}
+  </div>
+  <div class="message-body" [innerHTML]="description"></div>
+</div>
+
+<div class="message is-info" *ngIf="command">
+  <div class="message-header code-font" [innerHTML]="headline"></div>
+  <div class="message-body">
+    <div class="tabs">
+      <ul>
+        <li
+          [ngClass]="{ 'is-active': activeTab === 'description' }"
+          (click)="select('description')"
+        >
+          <a class="doc-tab">
+            <span class="icon is-small"><i class="fa fa-file-text-o"></i></span>
+            <span>{{ 'DOC.COMMANDS.DESCRIPTION' | translate }}</span>
+          </a>
+        </li>
+        <li
+          [ngClass]="{ 'is-active': activeTab === 'infos' }"
+          (click)="select('infos')"
+        >
+          <a class="doc-tab">
+            <span class="icon is-small"><i class="fa fa-info-circle"></i></span>
+            <span>{{ 'DOC.COMMANDS.INFOS' | translate }}</span>
+          </a>
+        </li>
+        <li
+          [ngClass]="{ 'is-active': activeTab === 'codeExample' }"
+          (click)="select('codeExample')"
+        >
+          <a class="doc-tab">
+            <span class="icon is-small"><i class="fa fa-flash"></i></span>
+            <span>{{ 'DOC.COMMANDS.CODE_EXAMPLE' | translate }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div
+      class="command-description"
+      [innerHTML]="description"
+      *ngIf="activeTab === 'description'"
+    ></div>
+
+    <div
+      class="command-infos"
+      [innerHTML]="infos"
+      *ngIf="activeTab === 'infos'"
+    ></div>
+
+    <blitz-basic-script-editor
+      [buttons]="['play']"
+      *ngIf="activeTab === 'codeExample'"
+    ></blitz-basic-script-editor>
+  </div>
+</div>

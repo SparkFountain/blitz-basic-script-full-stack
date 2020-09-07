@@ -9,8 +9,11 @@ export class BlogController {
   constructor(private readonly blogService: BlogService) {}
 
   @Get('blog')
-  getNews(): ApiResponse<News> {
-    return null;
+  getNews(): ApiResponse<News[]> {
+    return {
+      status: 'success',
+      data: [],
+    };
   }
 
   @Get('blog/total-pages')

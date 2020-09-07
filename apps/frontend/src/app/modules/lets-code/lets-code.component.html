@@ -1,0 +1,165 @@
+<h1 class="title is-1">{{ project.title }}</h1>
+
+<div class="columns">
+  <div class="column is-1" *ngIf="!showFiles">TODO:</div>
+
+  <div class="column is-3" *ngIf="showFiles">
+    <nav class="panel">
+      <div class="panel-heading">
+        <!-- FILE BUTTONS -->
+        <!-- <p class="field">
+          <a class="button">
+            <span class="icon is-small">
+              <i class="fa fa-plus-square-o"></i>
+            </span>
+          </a>
+          <a class="button">
+            <span class="icon is-small">
+              <i class="fa fa-folder-open-o"></i>
+            </span>
+          </a>
+          <a class="button">
+            <span class="icon is-small">
+              <i class="fa fa-save"></i>
+            </span>
+          </a>
+          <a class="button" (click)="toggleFiles()">
+            <span class="icon is-small">
+              <i class="fa fa-caret-square-o-left"></i>
+            </span>
+          </a>
+        </p> -->
+
+        <!-- FILE BREADCRUMBS -->
+        <nav class="breadcrumb">
+          <ul>
+            <li
+              *ngFor="let b of breadcrumbs; let i = index"
+              [ngClass]="{ 'is-active': i === breadcrumbs.length - 1 }"
+            >
+              <a (click)="openFolder(i)">{{ b }}</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <a
+        class="panel-block"
+        *ngFor="let f of filesAndFolders; let i = index"
+        (click)="f.type === 'folder' ? openFolder(i) : openFile(i)"
+        (contextmenu)="handleContextMenu($event)"
+      >
+        <span class="panel-icon">
+          <i [class]="'fa fa-' + icons[f.type]"></i>
+        </span>
+        {{ f.name }}
+      </a>
+    </nav>
+  </div>
+
+  <div class="column" [ngClass]="{ 'is-9': showFiles, 'is-11': !showFiles }">
+    <div class="ide-buttons is-primary">
+      <!-- IDE BUTTONS -->
+      <p class="field">
+        <a
+          class="button"
+          (click)="play()"
+          *ngIf="buttons.indexOf('play') > -1 && !playing"
+        >
+          <span class="icon is-small">
+            <i class="fa fa-play-circle"></i>
+          </span>
+        </a>
+        <a
+          class="button"
+          (click)="debug()"
+          *ngIf="buttons.indexOf('debug') > -1 && !playing"
+        >
+          <span class="icon is-small">
+            <i class="fa fa-bug"></i>
+          </span>
+        </a>
+        <a
+          class="button"
+          (click)="stop()"
+          *ngIf="buttons.indexOf('play') > -1 && playing"
+        >
+          <span class="icon is-small">
+            <i class="fa fa-stop-circle-o"></i>
+          </span>
+        </a>
+        <a
+          class="button"
+          (click)="debug()"
+          *ngIf="buttons.indexOf('debug') > 1"
+        >
+          <span class="icon is-small">
+            <i class="fa fa-bug"></i>
+          </span>
+        </a>
+        <a class="button" (click)="undo()" *ngIf="buttons.indexOf('undo') > 1">
+          <span class="icon is-small">
+            <i class="fa fa-undo"></i>
+          </span>
+        </a>
+        <a class="button" (click)="redo()" *ngIf="buttons.indexOf('redo') > 1">
+          <span class="icon is-small">
+            <i class="fa fa-repeat"></i>
+          </span>
+        </a>
+        <a
+          class="button"
+          (click)="guide()"
+          *ngIf="buttons.indexOf('guide') > 1"
+        >
+          <span class="icon is-small">
+            <i class="fa fa-medkit"></i>
+          </span>
+        </a>
+        <a
+          class="button"
+          (click)="codeCleanUp()"
+          *ngIf="buttons.indexOf('codeCleanUp') > 1"
+        >
+          <span class="icon is-small">
+            <i class="fa fa-magic"></i>
+          </span>
+        </a>
+        <a
+          class="button"
+          (click)="toggleSettings()"
+          *ngIf="buttons.indexOf('toggleSettings') > 1"
+        >
+          <span class="icon is-small">
+            <i class="fa fa-cog"></i>
+          </span>
+        </a>
+      </p>
+    </div>
+
+    <blitz-basic-script-editor [hidden]="playing"></blitz-basic-script-editor>
+
+    <blitz-basic-script-game *ngIf="playing"></blitz-basic-script-game>
+  </div>
+</div>
+
+<div class="modal" [ngClass]="{ 'is-active': settingsOpen }">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">{{ 'IDE.SETTINGS.TITLE' | translate }}</p>
+      <button
+        class="delete"
+        aria-label="close"
+        (click)="toggleSettings()"
+      ></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+      Here comes the content
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success">Save changes</button>
+      <button class="button" (click)="toggleSettings()">Cancel</button>
+    </footer>
+  </div>
+</div>

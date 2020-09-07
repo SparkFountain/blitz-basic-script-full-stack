@@ -52,6 +52,12 @@
     },
     "authentication": {
       "tags": []
+    },
+    "script-language": {
+      "tags": []
+    },
+    "game": {
+      "tags": []
     }
   }
 }
