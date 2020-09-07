@@ -22,7 +22,7 @@ import { ButtonComponent } from '../components/button/button.component';
 import { ButtonStyle } from '../enums/gui/buttons/button-style';
 import { CanvasComponent } from '../components/canvas/canvas.component';
 import { HtmlView } from '../classes/gui/html-view';
-import { HtmlViewLoadingState } from '../enums/gui/html-view/loading-state';
+import { LoadingState } from '../enums/gui/html-view/loading-state';
 import { Desktop } from '../interfaces/gui/desktop';
 
 @Injectable({
@@ -272,7 +272,7 @@ export class GuiService {
     return this.htmlService.htmlViewRun(htmlView, code);
   }
 
-  async htmlViewStatus(htmlView: HtmlView): Promise<HtmlViewLoadingState> {
+  async htmlViewStatus(htmlView: HtmlView): Promise<LoadingState> {
     return this.htmlService.htmlViewStatus(htmlView);
   }
 

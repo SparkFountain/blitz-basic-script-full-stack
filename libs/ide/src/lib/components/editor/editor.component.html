@@ -15,12 +15,16 @@
 
   <div class="code-line" *ngFor="let tokens of code.formatted; let i = index">
     <div class="line-meta">
-      <div class="line-number">{{ i + 1 }}</div>
+      <div
+        class="line-number"
+        [ngStyle]="{ width: getLineNumberWidth() }"
+        [innerHTML]="formatLine(i + 1)"
+      ></div>
       <div class="line-highlight">
-        <i class="fa fa-video-camera" aria-hidden="true" *ngIf="false"></i>
+        <i class="fa fa-video-camera" aria-hidden="true" *ngIf="true"></i>
       </div>
       <div class="line-toggle pointer">
-        <span *ngIf="false">⏵</span>
+        <span *ngIf="true">⏵</span>
         <span *ngIf="false">⏷</span>
       </div>
     </div>

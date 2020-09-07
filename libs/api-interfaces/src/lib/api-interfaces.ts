@@ -1,7 +1,3 @@
-export interface Message {
-  message: string;
-}
-
 export interface ApiResponse<T> {
   status: string;
   data?: T;

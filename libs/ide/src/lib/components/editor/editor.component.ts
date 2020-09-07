@@ -7,12 +7,12 @@ import {
   HostListener,
   ChangeDetectorRef,
 } from '@angular/core';
-import { Code } from '../interfaces/code';
-import { UndoRedoAction } from '../classes/undo-redo-action';
 
 import { CaretPosition, ColorScheme } from '@blitz-basic-script/ide';
 
 import { LexerService } from '@blitz-basic-script/script-language';
+import { Code } from '../../interfaces/code';
+import { UndoRedoAction } from '../../classes/undo-redo-action';
 import { LexerToken } from 'libs/script-language/src/lib/lexer/interfaces/lexer-token';
 
 @Component({
@@ -162,6 +162,22 @@ export class EditorComponent implements OnInit {
   ngAfterViewChecked(): void {
     // this.updateCaretPosition();
     // this.changeDetection.markForCheck();
+  }
+
+  getLineNumberWidth(): string {
+    return `${25 + Math.floor(Math.log10(this.code.plain.length)) * 10}px`;
+  }
+
+  formatLine(row: number): string {
+    const leadingSpacesAmount =
+      this.code.plain.length.toString().length - row.toString().length;
+
+    let leadingSpaces = '';
+    for (let i = 0; i < leadingSpacesAmount; i++) {
+      leadingSpaces += '&nbsp;&nbsp;&nbsp;';
+    }
+
+    return `${leadingSpaces}${row}`;
   }
 
   play(): void {

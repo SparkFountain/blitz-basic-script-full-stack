@@ -28,12 +28,15 @@
   // width: 75px;
 
   .line-number {
-    width: auto;
+    display: flex;
     padding: 0 10px;
+    background: yellowgreen;
   }
 
   .line-highlight {
-    padding: 0 10px;
+    display: flex;
+    padding: 4px 10px;
+    background: purple;
   }
 
   .line-toggle {
