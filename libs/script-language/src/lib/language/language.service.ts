@@ -20,32 +20,35 @@ export class LanguageService {
     this.commands = {};
     this.deprecatedCommands = {};
 
-    return this.http
-      .get('/assets/keywords.json')
-      .toPromise()
-      .then((keywords: object) => {
-        this.keywords = keywords;
+    // TODO: implement
+    return Promise.resolve();
 
-        this.http
-          .get('/assets/commands.json')
-          .toPromise()
-          .then((commands: object) => {
-            this.commands = commands;
+    // return this.http
+    //   .get('/assets/keywords.json')
+    //   .toPromise()
+    //   .then((keywords: object) => {
+    //     this.keywords = keywords;
 
-            // if (responses[1].status === 'success') {
-            //     responses[1].data.forEach((apiKeyword: ApiKeyword) => {
-            //         this.deprecatedKeywords[apiKeyword.name.toLowerCase()] = true;
-            //     });
-            // }
+    //     this.http
+    //       .get('/assets/commands.json')
+    //       .toPromise()
+    //       .then((commands: object) => {
+    //         this.commands = commands;
 
-            // if (responses[3].status === 'success') {
-            //     responses[3].data.forEach((apiCommand: ApiCommand) => {
-            //         this.deprecatedCommands[apiCommand.name.toLowerCase()] = apiCommand;
-            //     });
-            // }
+    //         // if (responses[1].status === 'success') {
+    //         //     responses[1].data.forEach((apiKeyword: ApiKeyword) => {
+    //         //         this.deprecatedKeywords[apiKeyword.name.toLowerCase()] = true;
+    //         //     });
+    //         // }
 
-            console.info('Done');
-          });
-      });
+    //         // if (responses[3].status === 'success') {
+    //         //     responses[3].data.forEach((apiCommand: ApiCommand) => {
+    //         //         this.deprecatedCommands[apiCommand.name.toLowerCase()] = apiCommand;
+    //         //     });
+    //         // }
+
+    //         console.info('Done');
+    //       });
+    //   });
   }
 }
