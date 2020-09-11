@@ -1,0 +1,3 @@
+Choice := Word | Int
+Word   := word='[a-z]+'
+Int    := val='[0-9]+'

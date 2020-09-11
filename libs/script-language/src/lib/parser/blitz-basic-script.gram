@@ -1,0 +1,95 @@
+GLOBAL              := 'Global' VARIABLE+
+LOCAL               := 'Local' VARIABLE+
+CONST               := 'Const' VARIABLE+
+
+
+SELECT              := 'Select' VARIABLE
+CASE                := 'Case' VARIABLE+ | 'Case' EXPRESSION+
+DEFAULT             := 'Default'
+
+
+ELSE                := 'Else' | 'Else If' CONDITION | 'Else If' CONDITION 'Then'
+ELSE_TWO            := 'ElseIf' CONDITION | 'ElseIf' CONDITION 'Then'
+ENDIF               := 'EndIf'
+IF                  := 'If' CONDITION | 'If' CONDITION 'Then'
+
+
+AFTER               := 'After' OBJECT_INDEX? VARIABLE
+BEFORE              := 'Before' OBJECT_INDEX? VARIABLE
+DELETE              := 'Delete' VARIABLE
+FIRST               := 'First' VARIABLE
+LAST                := 'Last' VARIABLE
+INSERT              := 'Insert' VARIABLE ['Before' | 'After']? VARIABLE
+NEW                 := 'New' VARIABLE
+NULL                := 'Null'
+OBJECT              := 'Object'.TYPE
+TYPE                := 'Type' VARIABLE
+FIELD               := 'Field' VARIABLE
+
+
+END                 := 'End' | 'End Type' | 'End Function' | 'End If' | 'End Select'
+
+
+INCLUDE             := 'Include' STRING_EXPRESSION
+STOP                := 'Stop'
+
+
+DATA                := 'Data' EXPRESSION+
+
+
+DIM                 := 'Dim' VARIABLE+
+
+
+FOR                 := 'For' ASSIGNMENT 'To' NUMERIC_EXPRESSION ['Step' NUMERIC_EXPRESSION]? | 'For' VARIABLE '= Each' VARIABLE
+NEXT                := 'Next'
+
+
+WEND                := 'Wend'
+WHILE               := 'While' CONDITION
+
+
+REPEAT              := 'Repeat'
+UNTIL               := 'Until' CONDITION
+FOREVER             := 'Forever'
+
+
+MAINLOOP            := 'MainLoop'
+
+
+FUNCTION            := 'Function' VARIABLE (PARAMETER*)
+RETURN              := 'Return' EXPRESSION?
+
+
+EXIT                := 'Exit'
+
+
+MOD                 := NUMERIC_EXPRESSION 'Mod' NUMERIC_EXPRESSION
+NOT                 := 'Not' BOOLEAN_EXPRESSION
+AND                 := BOOLEAN_EXPRESSION 'And' BOOLEAN_EXPRESSION
+OR                  := BOOLEAN_EXPRESSION 'Or' BOOLEAN_EXPRESSION
+XOR                 := BOOLEAN_EXPRESSION 'Xor' BOOLEAN_EXPRESSION
+
+
+LABEL               := '.'VARIABLE
+RESTORE             := 'Restore' LABEL
+READ                := 'Read' VARIABLE+
+IND                 := 'Handle' VARIABLE
+
+
+SAR                 := NUMERIC_EXPRESSION 'Sar' NUMERIC_EXPRESSION
+SHL                 := NUMERIC_EXPRESSION 'Shl' NUMERIC_EXPRESSION
+SHR                 := NUMERIC_EXPRESSION 'Shr' NUMERIC_EXPRESSION
+
+
+NUM                 := val='[0-9]+' | 'float' | 'Pi'
+STR                 := '[a-z]+';
+BOOLEAN             := True | False
+EXPRESSION          := NUMERIC_EXPRESSION | STRING_EXPRESSION | BOOLEAN_EXPRESSION | BOOLEAN | NUMBER | STRING
+NUMERIC_EXPRESSION  := NUMBER + NUMBER | NUMBER - NUMBER | NUMBER * NUMBER | NUMBER / NUMBER | NUMBER ^ NUMBER
+STRING_EXPRESSION   := STRING | STRING + STRING | STRING + NUMBER | STRING + BOOLEAN
+BOOLEAN_EXPRESSION  := BOOLEAN | AND | OR | XOR | NOT
+VARIABLE            := '$individual'
+VARIABLE_PLUS       := VARIABLE | VARIABLE, VARIABLE_PLUS
+ASSIGNMENT          := VARIABLE = EXPRESSION
+PARAMETER           := VARIABLE | ASSIGNMENT
+CONDITION           := BOOLEAN_EXPRESSION | EXPRESSION = EXPRESSION | EXPRESSION < EXPRESSION | EXPRESSION > EXPRESSION | EXPRESSION <= EXPRESSION | EXPRESSION >= EXPRESSION | EXPRESSION <> EXPRESSION

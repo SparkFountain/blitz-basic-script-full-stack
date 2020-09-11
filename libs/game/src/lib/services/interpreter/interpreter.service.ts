@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { GameService } from '../game.service';
 
-import { GameService } from '@blitz-basic-script/game';
 
 // TODO: replace / remove / do whatever with these classes / interfaces / whatever :)
 export type Assignment = any;

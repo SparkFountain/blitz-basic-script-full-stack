@@ -17,10 +17,10 @@ import { BabylonJSService } from './services/babylonjs.service';
 import { Render2dService } from './services/render2d.service';
 import { GuiService } from './services/gui.service';
 import {
-  InterpreterService,
   ParserService,
   ParseResult,
 } from '@blitz-basic-script/script-language';
+import { InterpreterService } from './services/interpreter/interpreter.service';
 
 @Component({
   selector: 'blitz-basic-script-game',
@@ -129,7 +129,7 @@ export class GameComponent implements OnInit, AfterViewInit {
     console.info('initCanvas executed');
 
     // parse code
-    const parseResult: ParseResult = this.parserService.parse(['4 * 8']);
+    const parseResult: ParseResult = this.parserService.parse(['a   ###']);
     console.info('[PARSE RESULT]', parseResult);
 
     // const ast = this.interpreterService.initializeAbstractSyntax(
