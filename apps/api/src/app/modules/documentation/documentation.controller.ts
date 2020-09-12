@@ -17,10 +17,8 @@ export class DocumentationController {
   constructor(private readonly documentationService: DocumentationService) {}
 
   @Get('docs/categories')
-  getCategories(): ApiResponse<GeneralCategory[]> {
-    return {
-      status: STATUS_FAIL
-    };
+  getCategories(): Promise<ApiResponse<GeneralCategory[]>> {
+    return this.documentationService.getCategories();
   }
 
   @Get('docs/categories/keywords')

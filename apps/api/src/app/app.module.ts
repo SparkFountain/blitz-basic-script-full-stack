@@ -8,10 +8,12 @@ import { BlogModule } from './modules/blog/blog.module';
 import { CodingModule } from './modules/coding/coding.module';
 import { DocumentationModule } from './modules/documentation/documentation.module';
 import { ProjectModule } from './modules/project/project.module';
+import { DocumentationService } from './modules/documentation/documentation.service';
+import { DatabaseService } from './modules/database/database.service';
 
 @Module({
   imports: [AuthenticationModule, BlogModule, CodingModule, DocumentationModule, FileModule, ProjectModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, DatabaseService, DocumentationService],
 })
 export class AppModule {}
