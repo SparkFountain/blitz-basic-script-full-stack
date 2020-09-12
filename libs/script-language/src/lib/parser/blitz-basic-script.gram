@@ -1,17 +1,21 @@
-GLOBAL              := 'Global' VARIABLE+
-LOCAL               := 'Local' VARIABLE+
-CONST               := 'Const' VARIABLE+
+ROOT                := DEFINITION | IF | SELECT | LOOP | INCLUDE | STOP | END
+
+DEFINITION          := GLOBAL | LOCAL | CONST | DIM
+GLOBAL              := '[ ]*[gG][lL][oO][bB][aA][lL][ ]+' variable=VARIABLE '[ ]'? next=ROOT?
+LOCAL               := '[ ]*[lL][oO][cC][aA][lL][ ]+' variable=VARIABLE '[ ]'? next=ROOT?
+CONST               := '[ ]*[cC][oO][nN][sS][tT][ ]+' constant=VARIABLE '[ ]'? next=ROOT?
+DIM                 := '[dD][iI][mM]' VARIABLE
 
 
-SELECT              := 'Select' VARIABLE
-CASE                := 'Case' VARIABLE+ | 'Case' EXPRESSION+
-DEFAULT             := 'Default'
-
-
-ELSE                := 'Else' | 'Else If' CONDITION | 'Else If' CONDITION 'Then'
+IF                  := '[ ]*[iI][fF][ ]+' condition=CONDITION '[ ]+' '[tT][hH][eE][nN][ ]+'? VARIABLE '[ ]+[eE][nN][dD][ ]*[iI][fF]'?
+ELSE                := '[eE][lL][sS][eE]' | 'Else If' CONDITION | 'Else If' CONDITION 'Then'
 ELSE_TWO            := 'ElseIf' CONDITION | 'ElseIf' CONDITION 'Then'
 ENDIF               := 'EndIf'
-IF                  := 'If' CONDITION | 'If' CONDITION 'Then'
+
+
+SELECT              := '[ ]*[sS][eE][lL][eE][cC][tT][ ]+' expression=EXPRESSION
+CASE                := '[ ]*[cC][aA][sS][eE][ ]+' VARIABLE+ | 'Case' EXPRESSION+
+DEFAULT             := '[ ]*[dD][eE][fF][aA][uU][lL][tT][ ]+'
 
 
 AFTER               := 'After' OBJECT_INDEX? VARIABLE
@@ -19,77 +23,74 @@ BEFORE              := 'Before' OBJECT_INDEX? VARIABLE
 DELETE              := 'Delete' VARIABLE
 FIRST               := 'First' VARIABLE
 LAST                := 'Last' VARIABLE
-INSERT              := 'Insert' VARIABLE ['Before' | 'After']? VARIABLE
+INSERT              := 'Insert' VARIABLE 'Before' VARIABLE | 'Insert' VARIABLE 'After' VARIABLE
 NEW                 := 'New' VARIABLE
 NULL                := 'Null'
-OBJECT              := 'Object'.TYPE
+OBJECT              := 'Object.'TYPE
 TYPE                := 'Type' VARIABLE
 FIELD               := 'Field' VARIABLE
 
-
-END                 := 'End' | 'End Type' | 'End Function' | 'End If' | 'End Select'
-
-
-INCLUDE             := 'Include' STRING_EXPRESSION
-STOP                := 'Stop'
+OBJECT_INDEX        := ''
 
 
-DATA                := 'Data' EXPRESSION+
+END                 := '[eE][nN][dD]' | 'End Type' | 'End Function' | 'End If' | 'End Select'
 
 
-DIM                 := 'Dim' VARIABLE+
+INCLUDE             := '[iI][nN][cC][lL][uU][dD][eE]' STRING_EXPRESSION
+STOP                := '[sS][tT][oO][pP]'
 
 
-FOR                 := 'For' ASSIGNMENT 'To' NUMERIC_EXPRESSION ['Step' NUMERIC_EXPRESSION]? | 'For' VARIABLE '= Each' VARIABLE
-NEXT                := 'Next'
+DATA                := '[dD][aA][tT][aA]' EXPRESSION+
+
+LOOP                := FOR | WHILE | REPEAT
+FOR                 := '[ ]*[fF][oO][rR]' ASSIGNMENT 'To' NUMERIC_EXPRESSION | 'For' ASSIGNMENT 'To' NUMERIC_EXPRESSION 'Step' NUMERIC_EXPRESSION | 'For' VARIABLE '= Each' VARIABLE
+NEXT                := '[nN][eE][xX][tT]'
+
+WHILE               := '[ ]*[wW][hH][iI][lL][eE]' CONDITION '[ ]*[wW][eE][nN][dD]'
+
+REPEAT              := '[ ]*[rR][eE][pP][eE][aA][tT][ ]+' '[uU][nN][tT][iI][lL]' CONDITION | '[ ]*[rR][eE][pP][eE][aA][tT][ ]+' '[fF][oO][rR][eE][vV][eE][rR][ ]*'
 
 
-WEND                := 'Wend'
-WHILE               := 'While' CONDITION
+MAINLOOP            := '[ ]*[mM][aA][iI][nN][lL][oO][oO][pP][ ]*'
 
 
-REPEAT              := 'Repeat'
-UNTIL               := 'Until' CONDITION
-FOREVER             := 'Forever'
+FUNCTION            := '[ ]*[fF][uU][nN][cC][tT][iI][oO][nN]' VARIABLE '\(' PARAMETER* '\)'
+RETURN              := '[ ]*[rR][eE][tT][uU][rR][nN]' EXPRESSION?
 
 
-MAINLOOP            := 'MainLoop'
+EXIT                := '[ ]*[eE][xX][iI][tT]'
 
 
-FUNCTION            := 'Function' VARIABLE (PARAMETER*)
-RETURN              := 'Return' EXPRESSION?
-
-
-EXIT                := 'Exit'
-
-
-MOD                 := NUMERIC_EXPRESSION 'Mod' NUMERIC_EXPRESSION
-NOT                 := 'Not' BOOLEAN_EXPRESSION
-AND                 := BOOLEAN_EXPRESSION 'And' BOOLEAN_EXPRESSION
-OR                  := BOOLEAN_EXPRESSION 'Or' BOOLEAN_EXPRESSION
-XOR                 := BOOLEAN_EXPRESSION 'Xor' BOOLEAN_EXPRESSION
+MOD                 := NUMERIC_EXPRESSION '[mM][oO][dD]' NUMERIC_EXPRESSION
+NOT                 := '[nN][oO][tT]' BOOLEAN_EXPRESSION
+AND                 := BOOLEAN_EXPRESSION '[aA][nN][dD]' BOOLEAN_EXPRESSION
+OR                  := BOOLEAN_EXPRESSION '[oO][rR]' BOOLEAN_EXPRESSION
+XOR                 := BOOLEAN_EXPRESSION '[xX][oO][rR]' BOOLEAN_EXPRESSION
 
 
 LABEL               := '.'VARIABLE
-RESTORE             := 'Restore' LABEL
-READ                := 'Read' VARIABLE+
-IND                 := 'Handle' VARIABLE
+RESTORE             := '[ ]*[rR][eE][sS][tT][oO][rR][eE]' LABEL
+READ                := '[ ]*[rR][eE][aA][dD]' VARIABLE+
+HANDLE              := '[ ]*[hH][aA][nN][dD][lL][eE]' VARIABLE
 
 
-SAR                 := NUMERIC_EXPRESSION 'Sar' NUMERIC_EXPRESSION
-SHL                 := NUMERIC_EXPRESSION 'Shl' NUMERIC_EXPRESSION
-SHR                 := NUMERIC_EXPRESSION 'Shr' NUMERIC_EXPRESSION
+SAR                 := NUMERIC_EXPRESSION '[sS][aA][rR]' NUMERIC_EXPRESSION
+SHL                 := NUMERIC_EXPRESSION '[sS][hH][lL]' NUMERIC_EXPRESSION
+SHR                 := NUMERIC_EXPRESSION '[sS][hH][rR]' NUMERIC_EXPRESSION
+
+DATA_TYPE           := NUMBER | STRING | BOOLEAN
+NUMBER              := '[+-]?[0-9]+' | '[pP][iI]'
+STRING              := '[a-z]+'
+BOOLEAN             := '[tT][rR][uU][eE]' | '[fF][aA][lL][sS][eE]'
 
 
-NUM                 := val='[0-9]+' | 'float' | 'Pi'
-STR                 := '[a-z]+';
-BOOLEAN             := True | False
 EXPRESSION          := NUMERIC_EXPRESSION | STRING_EXPRESSION | BOOLEAN_EXPRESSION | BOOLEAN | NUMBER | STRING
-NUMERIC_EXPRESSION  := NUMBER + NUMBER | NUMBER - NUMBER | NUMBER * NUMBER | NUMBER / NUMBER | NUMBER ^ NUMBER
-STRING_EXPRESSION   := STRING | STRING + STRING | STRING + NUMBER | STRING + BOOLEAN
-BOOLEAN_EXPRESSION  := BOOLEAN | AND | OR | XOR | NOT
-VARIABLE            := '$individual'
-VARIABLE_PLUS       := VARIABLE | VARIABLE, VARIABLE_PLUS
+NUMERIC_EXPRESSION  := NUMBER '\+' NUMBER | NUMBER '\-' NUMBER | NUMBER '\*' NUMBER | NUMBER '\/' NUMBER | NUMBER '\^' NUMBER
+STRING_EXPRESSION   := STRING | STRING '\+' STRING | STRING '\+' NUMBER | STRING '\+' BOOLEAN
+BOOLEAN_EXPRESSION  := BOOLEAN
+VARIABLE            := '[_a-zA-Z]+'
+VARIABLE_PLUS       := VARIABLE | VARIABLE',' VARIABLE_PLUS
 ASSIGNMENT          := VARIABLE = EXPRESSION
 PARAMETER           := VARIABLE | ASSIGNMENT
-CONDITION           := BOOLEAN_EXPRESSION | EXPRESSION = EXPRESSION | EXPRESSION < EXPRESSION | EXPRESSION > EXPRESSION | EXPRESSION <= EXPRESSION | EXPRESSION >= EXPRESSION | EXPRESSION <> EXPRESSION
+
+CONDITION           := BOOLEAN_EXPRESSION | EXPRESSION '==' EXPRESSION | EXPRESSION '<' EXPRESSION | EXPRESSION '>' EXPRESSION | EXPRESSION '<=' EXPRESSION | EXPRESSION '>=' EXPRESSION | EXPRESSION '<>' EXPRESSION

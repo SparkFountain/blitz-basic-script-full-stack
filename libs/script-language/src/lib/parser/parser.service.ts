@@ -8,6 +8,8 @@ export class ParserService {
   constructor() {}
 
   parse(code: string[]): ParseResult {
-    return new Parser(code.join()).parse();
+    const codeOneLine = code.join(' ');
+    console.info('[CODE ONE LINE]', JSON.stringify(codeOneLine));
+    return new Parser(codeOneLine).parse();
   }
 }

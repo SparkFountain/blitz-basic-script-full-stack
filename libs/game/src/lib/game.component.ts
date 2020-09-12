@@ -129,7 +129,7 @@ export class GameComponent implements OnInit, AfterViewInit {
     console.info('initCanvas executed');
 
     // parse code
-    const parseResult: ParseResult = this.parserService.parse(['a   ###']);
+    const parseResult: ParseResult = this.parserService.parse(['If True Then xyz EndIf']);
     console.info('[PARSE RESULT]', parseResult);
 
     // const ast = this.interpreterService.initializeAbstractSyntax(
