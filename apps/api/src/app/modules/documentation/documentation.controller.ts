@@ -1,6 +1,6 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 
-import { ApiResponse } from '@blitz-basic-script/api-interfaces';
+import { ApiResponse, STATUS_FAIL, STATUS_SUCCESS } from '@blitz-basic-script/api-interfaces';
 import { DocumentationService } from './documentation.service';
 
 import {
@@ -18,7 +18,9 @@ export class DocumentationController {
 
   @Get('docs/categories')
   getCategories(): ApiResponse<GeneralCategory[]> {
-    return null;
+    return {
+      status: STATUS_FAIL
+    };
   }
 
   @Get('docs/categories/keywords')
@@ -48,12 +50,17 @@ export class DocumentationController {
 
   @Get('docs/breadcrumbs')
   getBreadcrumbs(): ApiResponse<Breadcrumb[]> {
-    return null;
+    return {
+      status: STATUS_SUCCESS,
+      data: []
+    };
   }
 
   @Get('docs/navigation')
   getNavigation(): ApiResponse<Navigation[]> {
-    return null;
+    return {
+      status: STATUS_FAIL
+    };
   }
 
   @Get('docs/commands')
