@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { ApiResponse } from '@blitz-basic-script/api-interfaces';
 import { environment } from '../../../environments/environment';
+import { DocumentationService } from '../../services/documentation.service';
+import { NavigationElement } from '@blitz-basic-script/documentation';
 
 export interface DocCategory {
   title: string;
@@ -25,9 +27,12 @@ export interface Breadcrumb {
   path: string;
 }
 
-export interface NavElement {
-  title: string;
-  path: string;
+export interface NavParams {
+  language: string;
+  level1?: string;
+  level2?: string;
+  level3?: string;
+  level4?: string;
 }
 
 @Component({
@@ -37,7 +42,7 @@ export interface NavElement {
 })
 export class DocumentationComponent implements OnInit {
   public breadcrumbs: Breadcrumb[];
-  public navElements: NavElement[];
+  public navElements: NavigationElement[];
   public searchTerm: string;
   public level1: string;
   public level2: string;
@@ -48,7 +53,8 @@ export class DocumentationComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private documentationService: DocumentationService
   ) {
     this.breadcrumbs = [];
     this.navElements = [];
@@ -57,13 +63,8 @@ export class DocumentationComponent implements OnInit {
     const snapshot: ActivatedRouteSnapshot = this.route.snapshot;
     // console.info('[SNAPSHOT ROUTE]', snapshot);
 
-    const navParams: {
-      language: string;
-      level1?: string;
-      level2?: string;
-      level3?: string;
-      level4?: string;
-    } = {
+
+    const navParams: NavParams = {
       language: this.translate.currentLang,
     };
     for (let i = 0; i <= 3; i++) {
@@ -89,30 +90,17 @@ export class DocumentationComponent implements OnInit {
 
     // console.info('[NAV PARAMS]', navParams);
 
-    // TODO: move to documentation service
-    this.http
-      .get(`${environment.apiServer}/docs/breadcrumbs`, { params: navParams })
-      .toPromise()
-      .then((response: ApiResponse<Breadcrumb[]>) => {
-        this.breadcrumbs = response.data;
-        // console.info('[BREADCRUMBS]', this.breadcrumbs);
-      })
-      .then(() =>
-        this.http
-          .get(`${environment.apiServer}/docs/navigation`, {
-            params: navParams,
-          })
-          .toPromise()
-      )
-      .then((response: ApiResponse<NavElement[]>) => {
-        this.navElements = response.data;
-        // console.info('[NAVIGATION ELEMENTS]', this.navElements);
-      });
+    this.documentationService.getBreadcrumbs(navParams).then((breadcrumbs: Breadcrumb[]) => this.breadcrumbs = breadcrumbs);
+    this.documentationService.getNavigation(navParams).then((navElements: NavigationElement[]) => {
+      console.info('[NAV ELEMENTS]', navElements);
+      this.navElements = navElements;
+    });
   }
 
   ngOnInit(): void {}
 
   navigateTo(path: string): void {
+    // TODO: i18n url path
     this.router.navigateByUrl(`/dokumentation/${path}`);
   }
 
@@ -124,7 +112,7 @@ export class DocumentationComponent implements OnInit {
       })
       .toPromise()
       .then((response: ApiResponse<any[]>) => {
-        console.info('[SEARCH RESPONSE]', response);
+        // console.info('[SEARCH RESPONSE]', response);
       });
   }
 

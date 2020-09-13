@@ -2,8 +2,20 @@ export const environment = {
   production: false,
 
   database: {
-    url: 'http://localhost:5984/blitz-basic-script-documentation',
     username: 'admin',
-    password: 'anHEfN3ipFl6YiH7j01u'
+    password: 'anHEfN3ipFl6YiH7j01u',
+
+    commands: {
+      url: 'http://localhost:5984/blitz-basic-script-commands',
+    },
+    keywords: {
+      url: 'http://localhost:5984/blitz-basic-script-keywords',
+    },
+    documentation: {
+      url: 'http://localhost:5984/blitz-basic-script-documentation',
+    },
+    user: {
+      url: 'http://localhost:5984/blitz-basic-script-user',
+    }
   }
 };

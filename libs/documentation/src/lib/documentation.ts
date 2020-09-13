@@ -26,7 +26,7 @@ export interface Breadcrumb {
   path: string;
 }
 
-export interface Navigation {
+export interface NavigationElement {
   title: string;
   path: string;
 }

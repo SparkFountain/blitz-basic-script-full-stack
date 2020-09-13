@@ -9,7 +9,7 @@ export class DocumentationService {
   }
 
   getCategories(): Promise<ApiResponse<any>> {
-    return this.databaseService.get('basics').then((doc: any) => {
+    return this.databaseService.get('documentation', 'basics').then((doc: any) => {
       return {
         status: STATUS_SUCCESS,
         data: doc
