@@ -16,6 +16,9 @@ export const environment = {
     },
     user: {
       url: 'http://localhost:5984/blitz-basic-script-user',
+    },
+    blog: {
+      url: 'http://localhost:5984/blitz-basic-script-blog',
     }
   }
 };

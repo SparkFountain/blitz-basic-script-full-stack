@@ -26,6 +26,10 @@ export class DatabaseService {
       user: new PouchDB(environment.database.user.url, {auth: {
         username: environment.database.username,
         password: environment.database.password
+      }}),
+      blog: new PouchDB(environment.database.blog.url, {auth: {
+        username: environment.database.username,
+        password: environment.database.password
       }})
     }
   }
@@ -40,6 +44,26 @@ export class DatabaseService {
       console.error(err);
       return null;
     });
+  }
+
+  async getAll(dbName: string): Promise<any> {
+    if(!this.db.hasOwnProperty(dbName)) {
+      console.error(`[DATABASE SERVICE] Database '${dbName}' does not exist`);
+      return Promise.resolve(null);
+    }
+
+    return this.db[dbName].allDocs({include_docs: true}).then((docs: any) => {
+      console.info('[ALL DOCS]', docs);
+      // TODO: remove _id and _rev
+      return docs.rows.map((doc: any) => doc.doc);
+    }).catch((err: Error) => {
+      console.error(err);
+      return null;
+    });
+  }
+
+  async countAll(dbName: string): Promise<number> {
+    return this.db[dbName].allDocs().then((docs: any) => docs.total_rows);
   }
 
   async put(dbName: string, doc: any): Promise<any> {

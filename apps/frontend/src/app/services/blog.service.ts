@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { ApiResponse } from '@blitz-basic-script/api-interfaces';
-import { News } from '@blitz-basic-script/blog';
+import { BlogEntry } from '@blitz-basic-script/blog';
 
 @Injectable({
   providedIn: 'root',
@@ -14,14 +14,14 @@ export class BlogService {
     private http: HttpClient
   ) {}
 
-  public getTotalPages(): Promise<number> {
+  getTotalPages(): Promise<number> {
     return this.http
       .get(`${environment.apiServer}/blog/total-pages`)
       .toPromise()
       .then((response: ApiResponse<number>) => response.data);
   }
 
-  public get(page: number): Promise<News[]> {
+  get(page: number): Promise<BlogEntry[]> {
     return this.http
       .get(`${environment.apiServer}/blog`, {
         params: {
@@ -30,6 +30,6 @@ export class BlogService {
         },
       })
       .toPromise()
-      .then((response: ApiResponse<News[]>) => response.data);
+      .then((response: ApiResponse<BlogEntry[]>) => response.data);
   }
 }

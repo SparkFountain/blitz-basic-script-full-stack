@@ -19,13 +19,13 @@
 
       <div class="column">
         <aside class="menu">
-          <ng-container *ngFor="let entry of news">
+          <ng-container *ngFor="let entry of blogEntries">
             <p class="menu-label">
               {{ entry.createdAt | date }}
             </p>
             <ul class="menu-list">
               <li>
-                <a>{{ entry.title }}</a>
+                <a>{{ entry.title[language] }}</a>
               </li>
             </ul>
           </ng-container>
@@ -34,7 +34,7 @@
     </section>
   </div>
   <div class="column is-8">
-    <div class="card" *ngFor="let entry of news">
+    <div class="card" *ngFor="let entry of blogEntries">
       <div class="card-image">
         <figure class="image is-3by1">
           <img [src]="entry.imageUrl" alt="Image" />
@@ -52,7 +52,7 @@
             <p class="subtitle is-6">{{ entry.createdAt | date }}</p>
           </div>
         </div>
-        <div class="content" [innerHTML]="entry.message"></div>
+        <div class="content" [innerHTML]="entry.message[language]"></div>
       </div>
     </div>
   </div>

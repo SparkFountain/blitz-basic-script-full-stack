@@ -1,26 +1,32 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 
 import { BlogService } from './blog.service';
-import { News } from '@blitz-basic-script/blog';
-import { ApiResponse } from '@blitz-basic-script/api-interfaces';
+import { BlogEntry } from '@blitz-basic-script/blog';
+import { ApiResponse, STATUS_SUCCESS } from '@blitz-basic-script/api-interfaces';
 
 @Controller()
 export class BlogController {
   constructor(private readonly blogService: BlogService) {}
 
   @Get('blog')
-  getNews(): ApiResponse<News[]> {
-    return {
-      status: 'success',
-      data: [],
-    };
+  getBlogEntries(
+    @Query('page') page: number
+  ): any {
+    return this.blogService.getBlogEntries(page).then((blogEntries: BlogEntry[]) => {
+      return {
+        status: STATUS_SUCCESS,
+        data: blogEntries
+      }
+    });
   }
 
   @Get('blog/total-pages')
-  getTotalPages(): ApiResponse<number> {
-    return {
-      status: 'success',
-      data: 5,
-    };
+  getTotalPages(): any {
+    return this.blogService.getTotalPages().then((pages: number) => {
+      return {
+        status: STATUS_SUCCESS,
+        data: pages
+      }
+    });
   }
 }
