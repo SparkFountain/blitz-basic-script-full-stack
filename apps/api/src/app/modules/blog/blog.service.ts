@@ -70,7 +70,6 @@ export class BlogService {
   getBlogEntries(page: number): Promise<BlogEntry[]> {
     return this.getSortedByDate().then((response: any[]) => {
       const entries: BlogEntry[] = response.map(({ _id, _rev, ...doc }) => doc);
-      console.info((page - 1) * 10, page * 10);
       return entries.slice((page - 1) * 10, page * 10);
     });
   }

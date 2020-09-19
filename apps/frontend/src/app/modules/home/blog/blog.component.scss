@@ -1,3 +1,24 @@
 .blog-image {
   object-fit: cover;
 }
+
+.card {
+  margin-bottom: 40px;
+}
+
+.columns {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.blog-navigation {
+  float: left;
+  height: 100%;
+  overflow: auto;
+}
+
+.blog-contents {
+  float: left;
+  height: 100%;
+  overflow: auto;
+}
