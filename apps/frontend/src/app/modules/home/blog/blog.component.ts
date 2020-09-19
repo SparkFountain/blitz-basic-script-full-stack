@@ -1,4 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 
 import { BlogEntry } from '@blitz-basic-script/blog';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
@@ -18,6 +25,10 @@ export class BlogComponent implements OnInit, OnDestroy {
   blogEntries: BlogEntry[];
   pages: number[];
   currentPage: number;
+
+  @ViewChildren('blogEntriesRendered') blogEntriesRendered: QueryList<
+    ElementRef
+  >;
 
   constructor(
     private readonly blogService: BlogService,
@@ -77,5 +88,13 @@ export class BlogComponent implements OnInit, OnDestroy {
     return this.language === 'de'
       ? `${day}.${month}.${year}`
       : `${year}/${month}/${day}`;
+  }
+
+  scrollToOffset(index: number): void {
+    const renderedContainer: ElementRef<any> = this.blogEntriesRendered.toArray()[
+      index
+    ].nativeElement;
+
+    (renderedContainer as any).scrollIntoView({ behavior: 'smooth' });
   }
 }

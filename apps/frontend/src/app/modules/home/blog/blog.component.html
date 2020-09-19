@@ -20,13 +20,13 @@
 
       <div class="column">
         <aside class="menu">
-          <ng-container *ngFor="let entry of blogEntries">
+          <ng-container *ngFor="let entry of blogEntries; let i = index">
             <p class="menu-label">
               {{ formatDate(entry.createdAt) }}
             </p>
             <ul class="menu-list">
               <li>
-                <a>{{ entry.title[language] }}</a>
+                <a (click)="scrollToOffset(i)">{{ entry.title[language] }}</a>
               </li>
             </ul>
           </ng-container>
@@ -36,7 +36,7 @@
   </div>
 
   <div class="column is-8 blog-contents">
-    <div class="card" *ngFor="let entry of blogEntries">
+    <div class="card" *ngFor="let entry of blogEntries" #blogEntriesRendered>
       <div class="card-image">
         <figure class="image is-3by1">
           <img class="blog-image" [src]="entry.imageUrl" alt="Image" />
