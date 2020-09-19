@@ -1,0 +1,58 @@
+<h1 class="title is-1">{{ 'ACCOUNT.MEDALS.TITLE' | translate }}</h1>
+
+<div class="tabs is-boxed">
+  <ul>
+    <li [ngClass]="{ 'is-active': section === 'community' }">
+      <a (click)="section = 'community'">
+        <span class="icon is-small"><i class="fa fa-users"></i></span>
+        <span>{{ 'ACCOUNT.MEDALS.COMMUNITY.TITLE' | translate }}</span>
+      </a>
+    </li>
+    <li [ngClass]="{ 'is-active': section === 'learning' }">
+      <a (click)="section = 'learning'">
+        <span class="icon is-small"><i class="fa fa-graduation-cap"></i></span>
+        <span>{{ 'ACCOUNT.MEDALS.LEARNING.TITLE' | translate }}</span>
+      </a>
+    </li>
+    <li [ngClass]="{ 'is-active': section === 'coding' }">
+      <a (click)="section = 'coding'">
+        <span class="icon is-small"><i class="fa fa-dashboard"></i></span>
+        <span>{{ 'ACCOUNT.MEDALS.CODING.TITLE' | translate }}</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="card">
+  <div class="card-content">
+    <table class="table is-striped">
+      <thead>
+        <tr>
+          <th>{{ 'ACCOUNT.MEDALS.TABLE.NAME' | translate }}</th>
+          <th>{{ 'ACCOUNT.MEDALS.TABLE.DESCRIPTION' | translate }}</th>
+          <th>{{ 'ACCOUNT.MEDALS.TABLE.WON' | translate }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>User</td>
+          <td>Anmeldung bei BlitzBasicScript</td>
+          <td class="has-text-centered medal">
+            <i class="fa fa-bolt gold" aria-hidden="true"></i>
+            <i class="fa fa-bolt silver" aria-hidden="true"></i>
+            <i class="fa fa-bolt bronze" aria-hidden="true"></i>
+          </td>
+        </tr>
+        <tr>
+          <td>User</td>
+          <td>Anmeldung bei BlitzBasicScript</td>
+          <td class="has-text-centered medal">
+            <i class="fa fa-bolt gold" aria-hidden="true"></i>
+            <i class="fa fa-bolt silver" aria-hidden="true"></i>
+            <i class="fa fa-bolt bronze" aria-hidden="true"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

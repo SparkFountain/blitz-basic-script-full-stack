@@ -569,9 +569,12 @@
     },
     "ACCOUNT": {
       "PROFILE": "Profil",
-      "AWARDS": "Medaillen",
+      "MEDALS": "Medaillen",
       "TROPHYS": "Trophäen",
-      "PATH": "/account"
+      "PATH": "/nutzerkonto"
+    },
+    "MEDALS": {
+      "PATH": "/nutzerkonto/medaillen"
     },
     "ABOUT": "Infos",
     "GAMING": "Spielen",
@@ -638,7 +641,8 @@
     }
   },
   "LETS_CODE": {
-    "TITLE": "",
+    "TITLE": "Coden",
+    "FILES": "Dateien",
     "EMPTY_PROJECT": {
       "TITLE": "Leeres Projekt",
       "PROJECT": {
@@ -658,7 +662,40 @@
   "UPLOAD_IMAGE": "Bild hochladen",
   "IDE": {
     "SETTINGS": {
-      "TITLE": "Editor-Einstellungen"
+      "TITLE": "Editor-Einstellungen",
+      "THEME": "Theme",
+      "AUTOSAVE": "Automatisch speichern",
+      "SAVE": "Speichern",
+      "CANCEL": "Abbrechen"
+    }
+  },
+  "ACCOUNT": {
+    "PROFILE": {
+      "TITLE": "Profil",
+      "USERNAME": "Benutzername",
+      "EMAIL": "Email-Adresse",
+      "PASSWORD": "Passwort",
+      "AVATAR": "Avatar",
+      "CHANGE_SETTINGS": "Angaben ändern",
+      "SAVE": "Speichern",
+      "CANCEL": "Abbrechen"
+    },
+    "MEDALS": {
+      "TITLE": "Medaillen",
+      "COMMUNITY": {
+        "TITLE": "Gemeinschaft"
+      },
+      "LEARNING": {
+        "TITLE": "Lernen"
+      },
+      "CODING": {
+        "TITLE": "Coden"
+      },
+      "TABLE": {
+        "NAME": "Name",
+        "DESCRIPTION": "Beschreibung",
+        "WON": "Gewonnen"
+      }
     }
   }
 }

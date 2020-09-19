@@ -1,4 +1,4 @@
-<h1 class="title is-1">{{ project.title }}</h1>
+<h1 class="title is-1">{{ 'NAV.LETS_CODE.TITLE' | translate }}</h1>
 
 <div class="columns">
   <div class="column is-1" *ngIf="!showFiles">TODO:</div>
@@ -33,15 +33,17 @@
         <!-- FILE BREADCRUMBS -->
         <nav class="breadcrumb">
           <ul>
-            <li
+            <li>{{ 'LETS_CODE.FILES' | translate }}</li>
+            <!-- <li
               *ngFor="let b of breadcrumbs; let i = index"
               [ngClass]="{ 'is-active': i === breadcrumbs.length - 1 }"
             >
               <a (click)="openFolder(i)">{{ b }}</a>
-            </li>
+            </li> -->
           </ul>
         </nav>
       </div>
+      <a class="panel-block"> .. </a>
       <a
         class="panel-block"
         *ngFor="let f of filesAndFolders; let i = index"
@@ -154,12 +156,47 @@
       ></button>
     </header>
     <section class="modal-card-body">
-      <!-- Content ... -->
-      Here comes the content
+      <!-- THEME -->
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">{{ 'IDE.SETTINGS.THEME' | translate }}</label>
+        </div>
+        <div class="field-body">
+          <div class="field is-narrow">
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select>
+                  <option>Business development</option>
+                  <option>Marketing</option>
+                  <option>Sales</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AUTO SAVE -->
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <label class="label">{{ 'IDE.SETTINGS.AUTOSAVE' | translate }}</label>
+        </div>
+        <div class="field-body">
+          <div class="field is-narrow">
+            <div class="control">
+              <input type="checkbox" />
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
     <footer class="modal-card-foot">
-      <button class="button is-success">Save changes</button>
-      <button class="button" (click)="toggleSettings()">Cancel</button>
+      <button class="button is-success">
+        {{ 'IDE.SETTINGS.SAVE' | translate }}
+      </button>
+      <button class="button" (click)="toggleSettings()">
+        {{ 'IDE.SETTINGS.CANCEL' | translate }}
+      </button>
     </footer>
   </div>
 </div>

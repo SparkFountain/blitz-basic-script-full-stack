@@ -46,4 +46,12 @@
 
 .line-content {
   font-family: 'Cousine', 'Courier New', Courier, monospace;
+  width: 100%;
+}
+
+.line-status {
+  display: flex;
+  cursor: pointer;
+  width: 16px;
+  padding-top: 5px;
 }

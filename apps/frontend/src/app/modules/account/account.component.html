@@ -1,0 +1,117 @@
+<h1 class="title is-1">{{ 'ACCOUNT.PROFILE.TITLE' | translate }}</h1>
+
+<!-- CONTACT FORM -->
+<div class="card register-card">
+  <div class="card-content">
+    <!-- USERNAME -->
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">{{
+          'ACCOUNT.PROFILE.USERNAME' | translate
+        }}</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control is-expanded has-icons-left">
+            <input
+              [(ngModel)]="name"
+              class="input"
+              type="text"
+              [placeholder]="'FOOTER.CONTACT.NAME.PLACEHOLDER' | translate"
+              maxlength="32"
+            />
+            <span class="icon is-small is-left">
+              <i class="fa fa-fw fa-user"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">{{ 'ACCOUNT.PROFILE.EMAIL' | translate }}</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control is-expanded has-icons-left">
+            <input
+              [(ngModel)]="email"
+              class="input"
+              type="text"
+              [placeholder]="'FOOTER.CONTACT.EMAIL.PLACEHOLDER' | translate"
+              maxlength="32"
+            />
+            <span class="icon is-small is-left">
+              <i class="fa fa-fw fa-at"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">{{
+          'ACCOUNT.PROFILE.PASSWORD' | translate
+        }}</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control is-expanded has-icons-left">
+            <input
+              [(ngModel)]="password"
+              class="input"
+              type="text"
+              [placeholder]="'FOOTER.CONTACT.NAME.PLACEHOLDER' | translate"
+              maxlength="32"
+            />
+            <span class="icon is-small is-left">
+              <i class="fa fa-fw fa-key"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AVATAR -->
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">{{ 'ACCOUNT.PROFILE.AVATAR' | translate }}</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control is-expanded has-icons-left">
+            <figure class="image is-128x128">
+              <img src="https://bulma.io/images/placeholders/32x32.png" />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHANGE SETTINGS -->
+    <div class="field is-horizontal">
+      <div class="field-label">
+        <!-- Left empty for spacing -->
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <button class="button is-primary">
+              {{ 'ACCOUNT.PROFILE.CHANGE_SETTINGS' | translate }}
+            </button>
+            <button class="button is-success">
+              {{ 'ACCOUNT.PROFILE.SAVE' | translate }}
+            </button>
+            <button class="button">
+              {{ 'ACCOUNT.PROFILE.CANCEL' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

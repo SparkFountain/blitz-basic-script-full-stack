@@ -39,14 +39,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('../projects/projects.module').then((m) => m.ProjectsModule),
   },
-  // {
-  //   path: 'commands',
-  //   loadChildren: () => import('./commands/commands.module').then(m => m.CommandsModule)
-  // },
-  // {
-  //   path: 'gaming',
-  //   loadChildren: () => import('./gaming/gaming.module').then(m => m.GamingModule)
-  // },
   {
     path: 'tutorials',
     loadChildren: () =>
@@ -65,6 +57,16 @@ const routes: Routes = [
       import('../documentation/documentation.module').then(
         (m) => m.DocumentationModule
       ),
+  },
+  {
+    path: 'account',
+    loadChildren: () =>
+      import('../account/account.module').then((m) => m.AccountModule),
+  },
+  {
+    path: 'nutzerkonto',
+    loadChildren: () =>
+      import('../account/account.module').then((m) => m.AccountModule),
   },
   // {
   //   path: 'anmelden',
