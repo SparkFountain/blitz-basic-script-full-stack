@@ -165,12 +165,87 @@
           <div class="field is-narrow">
             <div class="control">
               <div class="select is-fullwidth">
-                <select>
+                <select [(ngModel)]="settings.theme">
+                  <option value=""></option>
                   <option>Business development</option>
                   <option>Marketing</option>
                   <option>Sales</option>
                 </select>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INDENTATION -->
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">{{
+            'IDE.SETTINGS.INDENTATION' | translate
+          }}</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+              <input
+                [(ngModel)]="settings.indentationSpaces"
+                class="input"
+                type="number"
+                min="1"
+                max="8"
+                placeholder="4"
+              />
+              <span class="icon is-small is-left">
+                <i class="fa fa-indent"></i>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SYNTAX HIGHLIGHTING -->
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <label class="label">{{
+            'IDE.SETTINGS.SYNTAX_HIGHLIGHTING' | translate
+          }}</label>
+        </div>
+        <div class="field-body">
+          <div class="field is-narrow">
+            <div
+              class="control pointer"
+              (click)="
+                settings.syntaxHighlighting = !settings.syntaxHighlighting
+              "
+            >
+              <i
+                *ngIf="settings.syntaxHighlighting"
+                class="fa fa-toggle-on"
+              ></i>
+              <i
+                *ngIf="!settings.syntaxHighlighting"
+                class="fa fa-toggle-off"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AUTO COMPLETE -->
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <label class="label">{{
+            'IDE.SETTINGS.AUTO_COMPLETE' | translate
+          }}</label>
+        </div>
+        <div class="field-body">
+          <div class="field is-narrow">
+            <div
+              class="control pointer"
+              (click)="settings.autoComplete = !settings.autoComplete"
+            >
+              <i *ngIf="settings.autoComplete" class="fa fa-toggle-on"></i>
+              <i *ngIf="!settings.autoComplete" class="fa fa-toggle-off"></i>
             </div>
           </div>
         </div>
@@ -183,8 +258,12 @@
         </div>
         <div class="field-body">
           <div class="field is-narrow">
-            <div class="control">
-              <input type="checkbox" />
+            <div
+              class="control pointer"
+              (click)="settings.autoSave = !settings.autoSave"
+            >
+              <i *ngIf="settings.autoSave" class="fa fa-toggle-on"></i>
+              <i *ngIf="!settings.autoSave" class="fa fa-toggle-off"></i>
             </div>
           </div>
         </div>

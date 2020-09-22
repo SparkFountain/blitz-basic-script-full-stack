@@ -5,6 +5,14 @@ import { LetsCodeService } from '../../services/lets-code.service';
 
 import { Project } from '@blitz-basic-script/project';
 
+export interface IdeSettings {
+  theme: string;
+  indentationSpaces: number;
+  autoSave: boolean;
+  syntaxHighlighting: boolean;
+  autoComplete: boolean;
+}
+
 @Component({
   selector: 'blitz-basic-script-lets-code',
   templateUrl: './lets-code.component.html',
@@ -34,6 +42,7 @@ export class LetsCodeComponent implements OnInit {
   public buttons: string[];
 
   public settingsOpen: boolean;
+  public settings: IdeSettings;
 
   constructor(
     private letsCodeService: LetsCodeService,
@@ -60,6 +69,15 @@ export class LetsCodeComponent implements OnInit {
     };
 
     this.path = '';
+
+    this.settingsOpen = false;
+    this.settings = {
+      theme: '',
+      indentationSpaces: 4,
+      autoSave: true,
+      syntaxHighlighting: true,
+      autoComplete: true,
+    };
 
     this.breadcrumbs = [this.project.title];
     this.filesAndFolders = [];

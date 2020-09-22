@@ -664,6 +664,9 @@
     "SETTINGS": {
       "TITLE": "Editor-Einstellungen",
       "THEME": "Theme",
+      "INDENTATION": "Einrückung (Leerzeichen)",
+      "SYNTAX_HIGHLIGHTING": "Syntax Highlighting",
+      "AUTO_COMPLETE": "Auto-Vervollständigung",
       "AUTOSAVE": "Automatisch speichern",
       "SAVE": "Speichern",
       "CANCEL": "Abbrechen"
