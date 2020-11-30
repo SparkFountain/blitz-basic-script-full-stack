@@ -1,7 +1,16 @@
 // TODO: check which properties are really used in HTML template; remove all other style definitions
 
+.box {
+  border-radius: 0 !important;
+}
+
 .ide-buttons {
   margin: 0 4px;
+}
+
+// TODO: remove textarea later again
+textarea {
+  padding: 10px;
 }
 
 .coding-area {
@@ -11,6 +20,7 @@
     position: absolute;
     font-size: 18px;
     user-select: none;
+    background: khaki;
   }
 
   .token {

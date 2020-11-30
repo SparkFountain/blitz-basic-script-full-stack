@@ -8,32 +8,46 @@
   <!-- CARET -->
   <div
     class="caret"
+    *ngIf="false"
     [ngStyle]="{ top: caret.top + 'px', left: caret.left + 'px' }"
   >
     |
   </div>
 
-  <div class="code-line" *ngFor="let tokens of code.formatted; let i = index">
-    <div class="line-meta">
-      <div
-        class="line-number"
-        [ngStyle]="{ width: getLineNumberWidth() }"
-        [innerHTML]="formatLine(i + 1)"
-      ></div>
-      <div class="line-highlight">
-        <i class="fa fa-video-camera" aria-hidden="true" *ngIf="true"></i>
+  <ng-container *ngIf="true">
+    <textarea style="width: 100%; min-height: 250px;"></textarea>
+  </ng-container>
+
+  <ng-container *ngIf="false">
+    <div class="code-line" *ngFor="let tokens of code.formatted; let i = index">
+      <div class="line-meta">
+        <div
+          class="line-number"
+          [ngStyle]="{ width: getLineNumberWidth() }"
+          [innerHTML]="formatLine(i + 1)"
+        ></div>
+        <div class="line-highlight">
+          <i class="fa fa-video-camera" aria-hidden="true" *ngIf="true"></i>
+        </div>
+        <div class="line-toggle pointer">
+          <span *ngIf="true">⏵</span>
+          <span *ngIf="false">⏷</span>
+        </div>
       </div>
-      <div class="line-toggle pointer">
-        <span *ngIf="true">⏵</span>
-        <span *ngIf="false">⏷</span>
+      <div class="line-content">
+        <div
+          class="token"
+          *ngFor="let token of tokens"
+          [innerHTML]="token"
+        ></div>
+      </div>
+      <div class="line-status">
+        <!-- <i class="fa fa-exclamation-triangle has-text-warning" aria-hidden="true"></i> -->
+        <i
+          class="fa fa-exclamation-circle has-text-danger"
+          aria-hidden="true"
+        ></i>
       </div>
     </div>
-    <div class="line-content">
-      <div class="token" *ngFor="let token of tokens" [innerHTML]="token"></div>
-    </div>
-    <div class="line-status">
-      <!-- <i class="fa fa-exclamation-triangle has-text-warning" aria-hidden="true"></i> -->
-      <i class="fa fa-exclamation-circle has-text-danger" aria-hidden="true"></i>
-    </div>
-  </div>
+  </ng-container>
 </div>
