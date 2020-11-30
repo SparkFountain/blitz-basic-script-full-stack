@@ -138,12 +138,17 @@
       </p>
     </div>
 
+    <ng-container *ngIf="true">
+      <textarea #codeTemporary style="width: 100%; min-height: 250px"></textarea>
+    </ng-container>
+
     <blitz-basic-script-editor [hidden]="playing"></blitz-basic-script-editor>
 
     <blitz-basic-script-game *ngIf="playing"></blitz-basic-script-game>
   </div>
 </div>
 
+<!-- SETTINGS MODAL -->
 <div class="modal" [ngClass]="{ 'is-active': settingsOpen }">
   <div class="modal-background"></div>
   <div class="modal-card">

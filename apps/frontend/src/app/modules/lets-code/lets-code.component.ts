@@ -1,9 +1,16 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 
 import { FileOrFolder, FileType } from '@blitz-basic-script/ide';
 import { LetsCodeService } from '../../services/lets-code.service';
 
 import { Project } from '@blitz-basic-script/project';
+import { ParserService } from '@blitz-basic-script/script-language';
 
 export interface IdeSettings {
   theme: string;
@@ -19,6 +26,9 @@ export interface IdeSettings {
   styleUrls: ['./lets-code.component.scss'],
 })
 export class LetsCodeComponent implements OnInit {
+  // TODO: this is only a reference to a temporary textarea; remove it later
+  @ViewChild('codeTemporary') codeTemporary: ElementRef;
+
   public project: Project;
   public searchTerm: string;
 
@@ -46,6 +56,7 @@ export class LetsCodeComponent implements OnInit {
 
   constructor(
     private letsCodeService: LetsCodeService,
+    private parserService: ParserService,
     private changeDetection: ChangeDetectorRef
   ) {}
 
@@ -157,8 +168,14 @@ export class LetsCodeComponent implements OnInit {
   }
 
   play(): void {
-    this.playing = true;
-    this.action = 'play';
+    // this.playing = true;
+    // this.action = 'play';
+
+    const tempCode = this.codeTemporary.nativeElement.value
+      .replace(/\r\n/g, '\n')
+      .split('\n');
+
+    this.parserService.parse(tempCode);
   }
 
   debug(): void {
