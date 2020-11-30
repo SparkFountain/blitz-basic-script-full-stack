@@ -8,7 +8,7 @@ export class ParserService {
   constructor() {}
 
   parse(code: string[]): ParseResult {
-    const codeOneLine = code.join(' '); // TODO: what is the sense of that??!
+    const codeOneLine = code.join(' '); // TODO: think about an alternative line delimiter
     console.info('[CODE ONE LINE]', JSON.stringify(codeOneLine));
     return new Parser(codeOneLine).parse();
   }
