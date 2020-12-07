@@ -28,6 +28,7 @@ export interface IdeSettings {
 export class LetsCodeComponent implements OnInit {
   // TODO: this is only a reference to a temporary textarea; remove it later
   @ViewChild('codeTemporary') codeTemporary: ElementRef;
+  @ViewChild('commandFormatter') commandFormatter: ElementRef;
 
   public project: Project;
   public searchTerm: string;
@@ -96,6 +97,16 @@ export class LetsCodeComponent implements OnInit {
     this.showFiles = true;
 
     this.getFiles();
+  }
+
+  // TODO: remove later
+  formatCommand(): void {
+    const command = this.commandFormatter.nativeElement.value.toLowerCase();
+    let result = '';
+    for (let i = 0; i < command.length; i++) {
+      result += `[${command[i]}${command[i].toUpperCase()}]`;
+    }
+    this.commandFormatter.nativeElement.value = result;
   }
 
   createFile(): void {
@@ -175,7 +186,9 @@ export class LetsCodeComponent implements OnInit {
       .replace(/\r\n/g, '\n')
       .split('\n');
 
-    this.parserService.parse(tempCode);
+    const ast = this.parserService.parse(tempCode);
+
+    console.info('[AST]', ast);
   }
 
   debug(): void {

@@ -1,3 +1,4 @@
+// this is a test comment
 SUM  := head=FAC tail={ op='\+|-' sm=FAC }*
 FAC  := head=ATOM tail={ op='\*|/' sm=ATOM }*
 ATOM := _ val=INT _ | _ '\(' val=SUM '\)' _

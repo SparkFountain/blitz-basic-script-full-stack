@@ -139,7 +139,14 @@
     </div>
 
     <ng-container *ngIf="true">
-      <textarea #codeTemporary style="width: 100%; min-height: 250px"></textarea>
+      <textarea
+        #codeTemporary
+        style="width: 100%; min-height: 250px"
+      ></textarea>
+
+      Command Formatter:
+      <input #commandFormatter />
+      <button (click)="formatCommand()">Format</button>
     </ng-container>
 
     <blitz-basic-script-editor [hidden]="playing"></blitz-basic-script-editor>

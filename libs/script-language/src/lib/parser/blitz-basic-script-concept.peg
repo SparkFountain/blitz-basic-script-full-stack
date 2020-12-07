@@ -1,5 +1,5 @@
-# ENTRY POINT FOR PARSING
-ROOT                := DEFINITION | IF | SELECT | LOOP | INCLUDE | STOP | END
+// entry point for parsing
+ROOT                := DEFINITION | COMMAND | IF | SELECT | LOOP | INCLUDE | STOP | END
 
 DEFINITION          := GLOBAL | LOCAL | CONST | DIM
 GLOBAL              := '[ ]*[gG][lL][oO][bB][aA][lL][ ]+' variable=VARIABLE '[ ]'? next=ROOT?
