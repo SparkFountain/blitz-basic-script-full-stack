@@ -5,143 +5,370 @@
 * // Data Types
 * NUMBER              := '[0-9]+'
 * // Command
-* COMMAND             := BASIC_COMMAND
-*                      | DATA_COMMAND
-*                      | GRAPHICS_2D_COMMAND
-*                      | GRAPHICS_3D_COMMAND
-*                      | GUI_COMMAND
-*                      | IO_COMMAND
-*                      | SOUND_COMMAND
-* // Basic Commands
-* BASIC_COMMAND       := BASIC_DIVERSE_COMMAND
-*                      | BASIC_MATHS_COMMAND
-*                      | BASIC_STRINGS_COMMAND
-*                      | BASIC_TIME_RANDOM_COMMAND
-* BASIC_DIVERSE_COMMAND := ''
-* BASIC_MATHS_COMMAND   := ''
-* BASIC_STRINGS_COMMAND := ''
-* BASIC_TIME_RANDOM_COMMAND := ''
-* // Data Command
-* DATA_COMMAND        := DATA_BANK_COMMAND
-*                      | DATA_FILE_SYSTEM_COMMAND
-* DATA_BANK_COMMAND     := ''
-* DATA_FILE_SYSTEM_COMMAND := ''
-* // Graphics 2D Command
-* GRAPHICS_2D_COMMAND := GRAPHICS_2D_DISPLAY_COMMAND
-*                      | GRAPHICS_2D_GAMMA_COMMAND
-*                      | GRAPHICS_2D_GRAPHICS_COMMAND
-*                      | GRAPHICS_2D_IMAGES_COMMAND
-*                      | GRAPHICS_2D_MOVIES_COMMAND
-*                      | GRAPHICS_2D_PIXEL_COMMAND
-*                      | GRAPHICS_2D_TEXT_COMMAND
-* GRAPHICS_2D_DISPLAY_COMMAND := ''
-* GRAPHICS_2D_GAMMA_COMMAND := ''
-* GRAPHICS_2D_GRAPHICS_COMMAND := Cls
-*                               | ClsColor
-*                               | Color
-*                               | Line
-*                               | Oval
-*                               | Rect
-* Cls                 := '[cC][lL][sS]\s*' ROOT?
-* ClsColor            := '[cC][lL][sS][cC][oO][lL][oO][rR]\s+' red=NUMBER ',\s*' green=NUMBER ',\s*' blue=NUMBER ',\s*' ROOT?
-* Color               := '[cC][oO][lL][oO][rR]\s+' red=NUMBER ',\s*' green=NUMBER ',\s*' blue=NUMBER ',\s*' ROOT?
-* Line                := '[lL][iI][nN][eE]\s+' beginX=NUMBER ',\s*' beginY=NUMBER ',\s*' endX=NUMBER ',\s*' endY=NUMBER ',\s*' ROOT?
-* Oval                := '[oO][vV][aA][lL]\s+' x=NUMBER ',\s*' y=NUMBER ',\s?' width=NUMBER ',\s*' height=NUMBER ',\s*' ROOT?  // TODO: optional 5th parameter
-* Rect                := '[rR][eE][cC][tT]\s+' x=NUMBER ',\s*' y=NUMBER ',\s*' width=NUMBER ',\s*' height=NUMBER ',\s*' ROOT?  // TODO: optional 5th parameter
-* GRAPHICS_2D_IMAGES_COMMAND := ''
-* GRAPHICS_2D_MOVIES_COMMAND := ''
-* GRAPHICS_2D_PIXEL_COMMAND := ''
-* GRAPHICS_2D_TEXT_COMMAND := ''
-* // Graphics 3D Command
-* GRAPHICS_3D_COMMAND := GRAPHICS_3D_ANIMATIONS_COMMAND
-*                      | GRAPHICS_3D_BRUSHES_COMMAND
-*                      | GRAPHICS_3D_CAMERA_COMMAND
-*                      | GRAPHICS_3D_COLLISIONS_COMMAND
-*                      | GRAPHICS_3D_CONTROLS_COMMAND
-*                      | GRAPHICS_3D_COORDINATES_COMMAND
-*                      | GRAPHICS_3D_DIVERSE_COMMAND
-*                      | GRAPHICS_3D_LIGHT_SHADOW_COMMAND
-*                      | GRAPHICS_3D_MESHES_COMMAND
-*                      | GRAPHICS_3D_PICKING_COMMAND
-*                      | GRAPHICS_3D_SCENE_COMMAND
-*                      | GRAPHICS_3D_SCENERY_COMMAND
-*                      | GRAPHICS_3D_SCREEN_COMMAND
-*                      | GRAPHICS_3D_SPRITES_COMMAND
-*                      | GRAPHICS_3D_STATUS_COMMAND
-*                      | GRAPHICS_3D_SURFACES_COMMAND
-*                      | GRAPHICS_3D_TERRAIN_COMMAND
-*                      | GRAPHICS_3D_TEXTURES_COMMAND
-* GRAPHICS_3D_ANIMATIONS_COMMAND := ''
-* GRAPHICS_3D_BRUSHES_COMMAND := ''
-* GRAPHICS_3D_CAMERA_COMMAND := ''
-* GRAPHICS_3D_COLLISIONS_COMMAND := ''
-* GRAPHICS_3D_CONTROLS_COMMAND := ''
-* GRAPHICS_3D_COORDINATES_COMMAND := ''
-* GRAPHICS_3D_DIVERSE_COMMAND := ''
-* GRAPHICS_3D_LIGHT_SHADOW_COMMAND := ''
-* GRAPHICS_3D_MESHES_COMMAND := ''
-* GRAPHICS_3D_PICKING_COMMAND := ''
-* GRAPHICS_3D_SCENE_COMMAND := ''
-* GRAPHICS_3D_SCENERY_COMMAND := ''
-* GRAPHICS_3D_SCREEN_COMMAND := ''
-* GRAPHICS_3D_SPRITES_COMMAND := ''
-* GRAPHICS_3D_STATUS_COMMAND := ''
-* GRAPHICS_3D_SURFACES_COMMAND := ''
-* GRAPHICS_3D_TERRAIN_COMMAND := ''
-* GRAPHICS_3D_TEXTURES_COMMAND := ''
-* // GUI Command
-* GUI_COMMAND         := GUI_BUTTON_COMMAND
-*                      | GUI_CANVAS_COMMAND
-*                      | GUI_DESKTOP_COMMAND
-*                      | GUI_DIVERSE_COMMAND
-*                      | GUI_EVENT_COMMAND
-*                      | GUI_GADGET_COMMAND
-*                      | GUI_HTML_COMMAND
-*                      | GUI_ICON_STRIP_COMMAND
-*                      | GUI_LIST_TABBER_COMMAND
-*                      | GUI_MENU_COMMAND
-*                      | GUI_PANEL_COMMAND
-*                      | GUI_PROGRESS_BAR_COMMAND
-*                      | GUI_REQUEST_COMMAND
-*                      | GUI_SLIDER_COMMAND
-*                      | GUI_TEXT_AREA_COMMAND
-*                      | GUI_TEXT_FIELD_COMMAND
-*                      | GUI_TOOLBAR_COMMAND
-*                      | GUI_TREE_VIEW_COMMAND
-*                      | GUI_WINDOW_COMMAND
-* GUI_BUTTON_COMMAND := ''
-* GUI_CANVAS_COMMAND := ''
-* GUI_DESKTOP_COMMAND := ''
-* GUI_DIVERSE_COMMAND := ''
-* GUI_EVENT_COMMAND := ''
-* GUI_GADGET_COMMAND := ''
-* GUI_HTML_COMMAND := ''
-* GUI_ICON_STRIP_COMMAND := ''
-* GUI_LIST_TABBER_COMMAND := ''
-* GUI_MENU_COMMAND := ''
-* GUI_PANEL_COMMAND := ''
-* GUI_PROGRESS_BAR_COMMAND := ''
-* GUI_REQUEST_COMMAND := ''
-* GUI_SLIDER_COMMAND := ''
-* GUI_TEXT_AREA_COMMAND := ''
-* GUI_TEXT_FIELD_COMMAND := ''
-* GUI_TOOLBAR_COMMAND := ''
-* GUI_TREE_VIEW_COMMAND := ''
-* GUI_WINDOW_COMMAND := ''
-* // IO Command
-* IO_COMMAND          := IO_GAMEPAD_COMMAND
-*                      | IO_KEYBOARD_COMMAND
-*                      | IO_MOUSE_COMMAND
-* IO_GAMEPAD_COMMAND := ''
-* IO_KEYBOARD_COMMAND := ''
-* IO_MOUSE_COMMAND := ''
-* // Sound Command
-* SOUND_COMMAND       := SOUND_3D_COMMAND
-*                      | SOUND_CHANNELS_COMMAND
-*                      | SOUND_MUSIC_SAMPLES_COMMAND
-* SOUND_3D_COMMAND := ''
-* SOUND_CHANNELS_COMMAND := ''
-* SOUND_MUSIC_SAMPLES_COMMAND := ''
+* COMMAND             := Abs
+*                      | AcceptTCPStream
+*                      | ACos
+*                      | ActivateGadget
+*                      | ActivateWindow
+*                      | ActiveObjects
+*                      | ActiveTextures
+*                      | ActiveWindow
+*                      | AddAnimSeq
+*                      | AddGadgetItem
+*                      | AddMesh
+*                      | AddTextAreaText
+*                      | AddTreeViewNode
+*                      | AddTriangle
+*                      | AddVertex
+*                      | AddVKLen
+*                      | After
+*                      | AlignToVector
+*                      | AmbientLight
+*                      | Animate
+*                      | Animating
+*                      | AnimLength
+*                      | AnimSeq
+*                      | AnimTime
+*                      | AntiAlias
+*                      | AppTitle
+*                      | Asc
+*                      | ASin
+*                      | ATan
+*                      | ATan2
+*                      | AutoMidHandle
+*                      | AutoSuspend
+*                      | AvailVidMem
+*                      | BackBuffer
+*                      | BankSize
+*                      | Before
+*                      | Bin
+*                      | BreakKP
+*                      | BrushAlpha
+*                      | BrushBlend
+*                      | BrushColor
+*                      | BrushFX
+*                      | BrushShininess
+*                      | BrushTexture
+*                      | BSPAmbientLight
+*                      | BufferDirty
+*                      | ButtonState
+*                      | CameraClsColor
+*                      | CameraClsMode
+*                      | CameraFogColor
+*                      | CameraFogMode
+*                      | CameraFogRange
+*                      | CameraPick
+*                      | CameraProject
+*                      | CameraProjMode
+*                      | CameraRange
+*                      | CameraViewport
+*                      | CameraZoom
+*                      | CanvasBuffer
+*                      | CaptureWorld
+*                      | Ceil
+*                      | ChangeDir
+*                      | ChannelPan
+*                      | ChannelPitch
+*                      | ChannelPlaying
+*                      | ChannelVolume
+*                      | CheckMenu
+*                      | Chr
+*                      | ClearCollisions
+*                      | ClearGadgetItems
+*                      | ClearSurface
+*                      | ClearTextureFilters
+*                      | ClearWorld
+*                      | ClientHeight
+*                      | ClientWidth
+*                      | CloseDir
+*                      | CloseFile
+*                      | CloseMovie
+*                      | CloseTCPServer
+*                      | CloseTCPStream
+*                      | CloseUDPStream
+*                      | CloseUDPStream
+*                      | Cls
+*                      | ClsColor
+*                      | CollapseTreeViewNode
+*                      | CollisionEntity
+*                      | CollisionNX
+*                      | CollisionNY
+*                      | CollisionNZ
+*                      | Collisions
+*                      | CollisionSurface
+*                      | CollisionTime
+*                      | CollisionTriangle
+*                      | CollisionX
+*                      | CollisionY
+*                      | CollisionZ
+*                      | Color
+*                      | ColorBlue
+*                      | ColorGreen
+*                      | ColorRed
+*                      | ColorRed
+*                      | CommandLine
+*                      | Confirm
+*                      | CopyBank
+*                      | CopyEntity
+*                      | CopyFile
+*                      | CopyImage
+*                      | CopyMesh
+*                      | CopyPixel
+*                      | CopyPixelFast
+*                      | CopyRect
+*                      | CopyStream
+*                      | Cos
+*                      | CountChildren
+*                      | CountCollisions
+*                      | CountGadgetItems
+*                      | CountGfxDrivers
+*                      | CountGfxModes
+*                      | CountGfxModes3D
+*                      | CountHostIPs
+*                      | CountSurfaces
+*                      | CountTreeViewNodes
+*                      | CountTriangles
+*                      | CountVertices
+*                      | CreateBank
+*                      | CreateButton
+*                      | CreateCamera
+*                      | CreateCanvas
+*                      | CreateComboBox
+*                      | CreateCone
+*                      | CreateCube
+*                      | CreateCylinder
+*                      | CreateDir
+*                      | CreateHtmlView
+*                      | CreateImage
+*                      | CreateLabel
+*                      | CreateLight
+*                      | CreateListBox
+*                      | CreateListener
+*                      | CreateMenu
+*                      | CreateMesh
+*                      | CreateMirror
+*                      | CreateNetPlayer
+*                      | CreatePanel
+*                      | CreatePivot
+*                      | CreatePlane
+*                      | CreateProcess
+*                      | CreateProgBar
+*                      | CreateSlider
+*                      | CreateSphere
+*                      | CreateSprite
+*                      | CreateSurface
+*                      | CreateTabber
+*                      | CreateTCPServer
+*                      | CreateTerrain
+*                      | CreateTextArea
+*                      | CreateTextField
+*                      | CreateTexture
+*                      | CreateTimer
+*                      | CreateToolBar
+*                      | CreateTreeView
+*                      | CreateUDPStream
+*                      | CreateWindow
+*                      | CurrentDate
+*                      | CurrentDir
+*                      | CurrentTime
+*                      | Line
+*                      | Oval
+*                      | Rect
+* // Commands - A
+* Abs                 := ''
+* AcceptTCPStream := ''
+* ACos := ''
+* ActivateGadget := ''
+* ActivateWindow := ''
+* ActiveObjects := ''
+* ActiveTextures := ''
+* ActiveWindow := ''
+* AddAnimSeq := ''
+* AddGadgetItem := ''
+* AddMesh := ''
+* AddTextAreaText := ''
+* AddTreeViewNode := ''
+* AddTriangle := ''
+* AddVertex := ''
+* AddVKLen := ''
+* After := ''
+* AlignToVector := ''
+* AmbientLight := ''
+* Animate := ''
+* Animating := ''
+* AnimLength := ''
+* AnimSeq := ''
+* AnimTime := ''
+* AntiAlias := ''
+* AppTitle := ''
+* Asc := ''
+* ASin := ''
+* ATan := ''
+* ATan2 := ''
+* AutoMidHandle := ''
+* AutoSuspend := ''
+* AvailVidMem := ''
+* // Commands - B
+* BackBuffer := ''
+* BankSize := ''
+* Before := ''
+* Bin := ''
+* BreakKP := ''
+* BrushAlpha := ''
+* BrushBlend := ''
+* BrushColor := ''
+* BrushFX := ''
+* BrushShininess := ''
+* BrushTexture := ''
+* BSPAmbientLight := ''
+* BufferDirty := ''
+* ButtonState := ''
+* // Commands - C
+* CameraClsColor := ''
+* CameraClsMode := ''
+* CameraFogColor := ''
+* CameraFogMode := ''
+* CameraFogRange := ''
+* CameraPick := ''
+* CameraProject := ''
+* CameraProjMode := ''
+* CameraRange := ''
+* CameraViewport := ''
+* CameraZoom := ''
+* CanvasBuffer := ''
+* CaptureWorld := ''
+* Ceil := ''
+* ChangeDir := ''
+* ChannelPan := ''
+* ChannelPitch := ''
+* ChannelPlaying := ''
+* ChannelVolume := ''
+* CheckMenu := ''
+* Chr := ''
+* ClearCollisions := ''
+* ClearGadgetItems := ''
+* ClearSurface := ''
+* ClearTextureFilters := ''
+* ClearWorld := ''
+* ClientHeight := ''
+* ClientWidth := ''
+* CloseDir := ''
+* CloseFile := ''
+* CloseMovie := ''
+* CloseTCPServer := ''
+* CloseTCPStream := ''
+* CloseUDPStream := ''
+* CloseUDPStream := ''
+* Cls                 := '[cC][lL][sS]\s*' next=ROOT?
+* ClsColor            := '[cC][lL][sS][cC][oO][lL][oO][rR]\s+' red=NUMBER ',\s*' green=NUMBER ',\s*' blue=NUMBER '\s*' next=ROOT?
+* CollapseTreeViewNode := ''
+* CollisionEntity := ''
+* CollisionNX := ''
+* CollisionNY := ''
+* CollisionNZ := ''
+* Collisions := ''
+* CollisionSurface := ''
+* CollisionTime := ''
+* CollisionTriangle := ''
+* CollisionX := ''
+* CollisionY := ''
+* CollisionZ := ''
+* Color               := '[cC][oO][lL][oO][rR]\s+' red=NUMBER ',\s*' green=NUMBER ',\s*' blue=NUMBER '\s*' next=ROOT?
+* ColorBlue := ''
+* ColorGreen := ''
+* ColorRed := ''
+* ColorRed := ''
+* CommandLine := ''
+* Confirm := ''
+* CopyBank := ''
+* CopyEntity := ''
+* CopyFile := ''
+* CopyImage := ''
+* CopyMesh := ''
+* CopyPixel := ''
+* CopyPixelFast := ''
+* CopyRect := ''
+* CopyStream := ''
+* Cos := ''
+* CountChildren := ''
+* CountCollisions := ''
+* CountGadgetItems := ''
+* CountGfxDrivers := ''
+* CountGfxModes := ''
+* CountGfxModes3D := ''
+* CountHostIPs := ''
+* CountSurfaces := ''
+* CountTreeViewNodes := ''
+* CountTriangles := ''
+* CountVertices := ''
+* CreateBank := ''
+* CreateButton := ''
+* CreateCamera := ''
+* CreateCanvas := ''
+* CreateComboBox := ''
+* CreateCone := ''
+* CreateCube := ''
+* CreateCylinder := ''
+* CreateDir := ''
+* CreateHtmlView := ''
+* CreateImage := ''
+* CreateLabel := ''
+* CreateLight := ''
+* CreateListBox := ''
+* CreateListener := ''
+* CreateMenu := ''
+* CreateMesh := ''
+* CreateMirror := ''
+* CreateNetPlayer := ''
+* CreatePanel := ''
+* CreatePivot := ''
+* CreatePlane := ''
+* CreateProcess := ''
+* CreateProgBar := ''
+* CreateSlider := ''
+* CreateSphere := ''
+* CreateSprite := ''
+* CreateSurface := ''
+* CreateTabber := ''
+* CreateTCPServer := ''
+* CreateTerrain := ''
+* CreateTextArea := ''
+* CreateTextField := ''
+* CreateTexture := ''
+* CreateTimer := ''
+* CreateToolBar := ''
+* CreateTreeView := ''
+* CreateUDPStream := ''
+* CreateWindow := ''
+* CurrentDate := ''
+* CurrentDir := ''
+* CurrentTime := ''
+* // Commands - D
+* // Commands - E
+* // Commands - F
+* // Commands - G
+* // Commands - H
+* // Commands - I
+* // Commands - J
+* // Commands - K
+* // Commands - L
+* Line                := '[lL][iI][nN][eE]\s+' beginX=NUMBER ',\s*' beginY=NUMBER ',\s*' endX=NUMBER ',\s*' endY=NUMBER '\s*' next=ROOT?
+* // Commands - M
+* // Commands - N
+* // Commands - O
+* Oval                := '[oO][vV][aA][lL]\s+' x=NUMBER ',\s*' y=NUMBER ',\s?' width=NUMBER ',\s*' height=NUMBER '\s*' next=ROOT?  // TODO: optional 5th parameter
+* // Commands - P
+* // Commands - Q
+* // Commands - R
+* Rect                := '[rR][eE][cC][tT]\s+' x=NUMBER ',\s*' y=NUMBER ',\s*' width=NUMBER ',\s*' height=NUMBER '\s*' next=ROOT?  // TODO: optional 5th parameter
+* // Commands - S
+* // Commands - T
+* // Commands - U
+* // Commands - V
+* // Commands - W
+* // Commands - X
+* // Commands - Y
+* // Commands - Z
 */
 type Nullable<T> = T | null;
 type $$RuleType<T> = (log?: (msg: string) => void) => Nullable<T>;
@@ -161,192 +388,698 @@ export enum ASTKinds {
     COMMAND_5 = "COMMAND_5",
     COMMAND_6 = "COMMAND_6",
     COMMAND_7 = "COMMAND_7",
-    BASIC_COMMAND_1 = "BASIC_COMMAND_1",
-    BASIC_COMMAND_2 = "BASIC_COMMAND_2",
-    BASIC_COMMAND_3 = "BASIC_COMMAND_3",
-    BASIC_COMMAND_4 = "BASIC_COMMAND_4",
-    BASIC_DIVERSE_COMMAND = "BASIC_DIVERSE_COMMAND",
-    BASIC_MATHS_COMMAND = "BASIC_MATHS_COMMAND",
-    BASIC_STRINGS_COMMAND = "BASIC_STRINGS_COMMAND",
-    BASIC_TIME_RANDOM_COMMAND = "BASIC_TIME_RANDOM_COMMAND",
-    DATA_COMMAND_1 = "DATA_COMMAND_1",
-    DATA_COMMAND_2 = "DATA_COMMAND_2",
-    DATA_BANK_COMMAND = "DATA_BANK_COMMAND",
-    DATA_FILE_SYSTEM_COMMAND = "DATA_FILE_SYSTEM_COMMAND",
-    GRAPHICS_2D_COMMAND_1 = "GRAPHICS_2D_COMMAND_1",
-    GRAPHICS_2D_COMMAND_2 = "GRAPHICS_2D_COMMAND_2",
-    GRAPHICS_2D_COMMAND_3 = "GRAPHICS_2D_COMMAND_3",
-    GRAPHICS_2D_COMMAND_4 = "GRAPHICS_2D_COMMAND_4",
-    GRAPHICS_2D_COMMAND_5 = "GRAPHICS_2D_COMMAND_5",
-    GRAPHICS_2D_COMMAND_6 = "GRAPHICS_2D_COMMAND_6",
-    GRAPHICS_2D_COMMAND_7 = "GRAPHICS_2D_COMMAND_7",
-    GRAPHICS_2D_DISPLAY_COMMAND = "GRAPHICS_2D_DISPLAY_COMMAND",
-    GRAPHICS_2D_GAMMA_COMMAND = "GRAPHICS_2D_GAMMA_COMMAND",
-    GRAPHICS_2D_GRAPHICS_COMMAND_1 = "GRAPHICS_2D_GRAPHICS_COMMAND_1",
-    GRAPHICS_2D_GRAPHICS_COMMAND_2 = "GRAPHICS_2D_GRAPHICS_COMMAND_2",
-    GRAPHICS_2D_GRAPHICS_COMMAND_3 = "GRAPHICS_2D_GRAPHICS_COMMAND_3",
-    GRAPHICS_2D_GRAPHICS_COMMAND_4 = "GRAPHICS_2D_GRAPHICS_COMMAND_4",
-    GRAPHICS_2D_GRAPHICS_COMMAND_5 = "GRAPHICS_2D_GRAPHICS_COMMAND_5",
-    GRAPHICS_2D_GRAPHICS_COMMAND_6 = "GRAPHICS_2D_GRAPHICS_COMMAND_6",
+    COMMAND_8 = "COMMAND_8",
+    COMMAND_9 = "COMMAND_9",
+    COMMAND_10 = "COMMAND_10",
+    COMMAND_11 = "COMMAND_11",
+    COMMAND_12 = "COMMAND_12",
+    COMMAND_13 = "COMMAND_13",
+    COMMAND_14 = "COMMAND_14",
+    COMMAND_15 = "COMMAND_15",
+    COMMAND_16 = "COMMAND_16",
+    COMMAND_17 = "COMMAND_17",
+    COMMAND_18 = "COMMAND_18",
+    COMMAND_19 = "COMMAND_19",
+    COMMAND_20 = "COMMAND_20",
+    COMMAND_21 = "COMMAND_21",
+    COMMAND_22 = "COMMAND_22",
+    COMMAND_23 = "COMMAND_23",
+    COMMAND_24 = "COMMAND_24",
+    COMMAND_25 = "COMMAND_25",
+    COMMAND_26 = "COMMAND_26",
+    COMMAND_27 = "COMMAND_27",
+    COMMAND_28 = "COMMAND_28",
+    COMMAND_29 = "COMMAND_29",
+    COMMAND_30 = "COMMAND_30",
+    COMMAND_31 = "COMMAND_31",
+    COMMAND_32 = "COMMAND_32",
+    COMMAND_33 = "COMMAND_33",
+    COMMAND_34 = "COMMAND_34",
+    COMMAND_35 = "COMMAND_35",
+    COMMAND_36 = "COMMAND_36",
+    COMMAND_37 = "COMMAND_37",
+    COMMAND_38 = "COMMAND_38",
+    COMMAND_39 = "COMMAND_39",
+    COMMAND_40 = "COMMAND_40",
+    COMMAND_41 = "COMMAND_41",
+    COMMAND_42 = "COMMAND_42",
+    COMMAND_43 = "COMMAND_43",
+    COMMAND_44 = "COMMAND_44",
+    COMMAND_45 = "COMMAND_45",
+    COMMAND_46 = "COMMAND_46",
+    COMMAND_47 = "COMMAND_47",
+    COMMAND_48 = "COMMAND_48",
+    COMMAND_49 = "COMMAND_49",
+    COMMAND_50 = "COMMAND_50",
+    COMMAND_51 = "COMMAND_51",
+    COMMAND_52 = "COMMAND_52",
+    COMMAND_53 = "COMMAND_53",
+    COMMAND_54 = "COMMAND_54",
+    COMMAND_55 = "COMMAND_55",
+    COMMAND_56 = "COMMAND_56",
+    COMMAND_57 = "COMMAND_57",
+    COMMAND_58 = "COMMAND_58",
+    COMMAND_59 = "COMMAND_59",
+    COMMAND_60 = "COMMAND_60",
+    COMMAND_61 = "COMMAND_61",
+    COMMAND_62 = "COMMAND_62",
+    COMMAND_63 = "COMMAND_63",
+    COMMAND_64 = "COMMAND_64",
+    COMMAND_65 = "COMMAND_65",
+    COMMAND_66 = "COMMAND_66",
+    COMMAND_67 = "COMMAND_67",
+    COMMAND_68 = "COMMAND_68",
+    COMMAND_69 = "COMMAND_69",
+    COMMAND_70 = "COMMAND_70",
+    COMMAND_71 = "COMMAND_71",
+    COMMAND_72 = "COMMAND_72",
+    COMMAND_73 = "COMMAND_73",
+    COMMAND_74 = "COMMAND_74",
+    COMMAND_75 = "COMMAND_75",
+    COMMAND_76 = "COMMAND_76",
+    COMMAND_77 = "COMMAND_77",
+    COMMAND_78 = "COMMAND_78",
+    COMMAND_79 = "COMMAND_79",
+    COMMAND_80 = "COMMAND_80",
+    COMMAND_81 = "COMMAND_81",
+    COMMAND_82 = "COMMAND_82",
+    COMMAND_83 = "COMMAND_83",
+    COMMAND_84 = "COMMAND_84",
+    COMMAND_85 = "COMMAND_85",
+    COMMAND_86 = "COMMAND_86",
+    COMMAND_87 = "COMMAND_87",
+    COMMAND_88 = "COMMAND_88",
+    COMMAND_89 = "COMMAND_89",
+    COMMAND_90 = "COMMAND_90",
+    COMMAND_91 = "COMMAND_91",
+    COMMAND_92 = "COMMAND_92",
+    COMMAND_93 = "COMMAND_93",
+    COMMAND_94 = "COMMAND_94",
+    COMMAND_95 = "COMMAND_95",
+    COMMAND_96 = "COMMAND_96",
+    COMMAND_97 = "COMMAND_97",
+    COMMAND_98 = "COMMAND_98",
+    COMMAND_99 = "COMMAND_99",
+    COMMAND_100 = "COMMAND_100",
+    COMMAND_101 = "COMMAND_101",
+    COMMAND_102 = "COMMAND_102",
+    COMMAND_103 = "COMMAND_103",
+    COMMAND_104 = "COMMAND_104",
+    COMMAND_105 = "COMMAND_105",
+    COMMAND_106 = "COMMAND_106",
+    COMMAND_107 = "COMMAND_107",
+    COMMAND_108 = "COMMAND_108",
+    COMMAND_109 = "COMMAND_109",
+    COMMAND_110 = "COMMAND_110",
+    COMMAND_111 = "COMMAND_111",
+    COMMAND_112 = "COMMAND_112",
+    COMMAND_113 = "COMMAND_113",
+    COMMAND_114 = "COMMAND_114",
+    COMMAND_115 = "COMMAND_115",
+    COMMAND_116 = "COMMAND_116",
+    COMMAND_117 = "COMMAND_117",
+    COMMAND_118 = "COMMAND_118",
+    COMMAND_119 = "COMMAND_119",
+    COMMAND_120 = "COMMAND_120",
+    COMMAND_121 = "COMMAND_121",
+    COMMAND_122 = "COMMAND_122",
+    COMMAND_123 = "COMMAND_123",
+    COMMAND_124 = "COMMAND_124",
+    COMMAND_125 = "COMMAND_125",
+    COMMAND_126 = "COMMAND_126",
+    COMMAND_127 = "COMMAND_127",
+    COMMAND_128 = "COMMAND_128",
+    COMMAND_129 = "COMMAND_129",
+    COMMAND_130 = "COMMAND_130",
+    COMMAND_131 = "COMMAND_131",
+    COMMAND_132 = "COMMAND_132",
+    COMMAND_133 = "COMMAND_133",
+    COMMAND_134 = "COMMAND_134",
+    COMMAND_135 = "COMMAND_135",
+    COMMAND_136 = "COMMAND_136",
+    COMMAND_137 = "COMMAND_137",
+    COMMAND_138 = "COMMAND_138",
+    COMMAND_139 = "COMMAND_139",
+    COMMAND_140 = "COMMAND_140",
+    COMMAND_141 = "COMMAND_141",
+    COMMAND_142 = "COMMAND_142",
+    COMMAND_143 = "COMMAND_143",
+    COMMAND_144 = "COMMAND_144",
+    COMMAND_145 = "COMMAND_145",
+    COMMAND_146 = "COMMAND_146",
+    COMMAND_147 = "COMMAND_147",
+    COMMAND_148 = "COMMAND_148",
+    COMMAND_149 = "COMMAND_149",
+    COMMAND_150 = "COMMAND_150",
+    COMMAND_151 = "COMMAND_151",
+    COMMAND_152 = "COMMAND_152",
+    COMMAND_153 = "COMMAND_153",
+    COMMAND_154 = "COMMAND_154",
+    COMMAND_155 = "COMMAND_155",
+    COMMAND_156 = "COMMAND_156",
+    COMMAND_157 = "COMMAND_157",
+    COMMAND_158 = "COMMAND_158",
+    COMMAND_159 = "COMMAND_159",
+    COMMAND_160 = "COMMAND_160",
+    COMMAND_161 = "COMMAND_161",
+    COMMAND_162 = "COMMAND_162",
+    COMMAND_163 = "COMMAND_163",
+    COMMAND_164 = "COMMAND_164",
+    COMMAND_165 = "COMMAND_165",
+    COMMAND_166 = "COMMAND_166",
+    COMMAND_167 = "COMMAND_167",
+    COMMAND_168 = "COMMAND_168",
+    COMMAND_169 = "COMMAND_169",
+    Abs = "Abs",
+    AcceptTCPStream = "AcceptTCPStream",
+    ACos = "ACos",
+    ActivateGadget = "ActivateGadget",
+    ActivateWindow = "ActivateWindow",
+    ActiveObjects = "ActiveObjects",
+    ActiveTextures = "ActiveTextures",
+    ActiveWindow = "ActiveWindow",
+    AddAnimSeq = "AddAnimSeq",
+    AddGadgetItem = "AddGadgetItem",
+    AddMesh = "AddMesh",
+    AddTextAreaText = "AddTextAreaText",
+    AddTreeViewNode = "AddTreeViewNode",
+    AddTriangle = "AddTriangle",
+    AddVertex = "AddVertex",
+    AddVKLen = "AddVKLen",
+    After = "After",
+    AlignToVector = "AlignToVector",
+    AmbientLight = "AmbientLight",
+    Animate = "Animate",
+    Animating = "Animating",
+    AnimLength = "AnimLength",
+    AnimSeq = "AnimSeq",
+    AnimTime = "AnimTime",
+    AntiAlias = "AntiAlias",
+    AppTitle = "AppTitle",
+    Asc = "Asc",
+    ASin = "ASin",
+    ATan = "ATan",
+    ATan2 = "ATan2",
+    AutoMidHandle = "AutoMidHandle",
+    AutoSuspend = "AutoSuspend",
+    AvailVidMem = "AvailVidMem",
+    BackBuffer = "BackBuffer",
+    BankSize = "BankSize",
+    Before = "Before",
+    Bin = "Bin",
+    BreakKP = "BreakKP",
+    BrushAlpha = "BrushAlpha",
+    BrushBlend = "BrushBlend",
+    BrushColor = "BrushColor",
+    BrushFX = "BrushFX",
+    BrushShininess = "BrushShininess",
+    BrushTexture = "BrushTexture",
+    BSPAmbientLight = "BSPAmbientLight",
+    BufferDirty = "BufferDirty",
+    ButtonState = "ButtonState",
+    CameraClsColor = "CameraClsColor",
+    CameraClsMode = "CameraClsMode",
+    CameraFogColor = "CameraFogColor",
+    CameraFogMode = "CameraFogMode",
+    CameraFogRange = "CameraFogRange",
+    CameraPick = "CameraPick",
+    CameraProject = "CameraProject",
+    CameraProjMode = "CameraProjMode",
+    CameraRange = "CameraRange",
+    CameraViewport = "CameraViewport",
+    CameraZoom = "CameraZoom",
+    CanvasBuffer = "CanvasBuffer",
+    CaptureWorld = "CaptureWorld",
+    Ceil = "Ceil",
+    ChangeDir = "ChangeDir",
+    ChannelPan = "ChannelPan",
+    ChannelPitch = "ChannelPitch",
+    ChannelPlaying = "ChannelPlaying",
+    ChannelVolume = "ChannelVolume",
+    CheckMenu = "CheckMenu",
+    Chr = "Chr",
+    ClearCollisions = "ClearCollisions",
+    ClearGadgetItems = "ClearGadgetItems",
+    ClearSurface = "ClearSurface",
+    ClearTextureFilters = "ClearTextureFilters",
+    ClearWorld = "ClearWorld",
+    ClientHeight = "ClientHeight",
+    ClientWidth = "ClientWidth",
+    CloseDir = "CloseDir",
+    CloseFile = "CloseFile",
+    CloseMovie = "CloseMovie",
+    CloseTCPServer = "CloseTCPServer",
+    CloseTCPStream = "CloseTCPStream",
+    CloseUDPStream = "CloseUDPStream",
+    CloseUDPStream = "CloseUDPStream",
     Cls = "Cls",
     ClsColor = "ClsColor",
+    CollapseTreeViewNode = "CollapseTreeViewNode",
+    CollisionEntity = "CollisionEntity",
+    CollisionNX = "CollisionNX",
+    CollisionNY = "CollisionNY",
+    CollisionNZ = "CollisionNZ",
+    Collisions = "Collisions",
+    CollisionSurface = "CollisionSurface",
+    CollisionTime = "CollisionTime",
+    CollisionTriangle = "CollisionTriangle",
+    CollisionX = "CollisionX",
+    CollisionY = "CollisionY",
+    CollisionZ = "CollisionZ",
     Color = "Color",
+    ColorBlue = "ColorBlue",
+    ColorGreen = "ColorGreen",
+    ColorRed = "ColorRed",
+    ColorRed = "ColorRed",
+    CommandLine = "CommandLine",
+    Confirm = "Confirm",
+    CopyBank = "CopyBank",
+    CopyEntity = "CopyEntity",
+    CopyFile = "CopyFile",
+    CopyImage = "CopyImage",
+    CopyMesh = "CopyMesh",
+    CopyPixel = "CopyPixel",
+    CopyPixelFast = "CopyPixelFast",
+    CopyRect = "CopyRect",
+    CopyStream = "CopyStream",
+    Cos = "Cos",
+    CountChildren = "CountChildren",
+    CountCollisions = "CountCollisions",
+    CountGadgetItems = "CountGadgetItems",
+    CountGfxDrivers = "CountGfxDrivers",
+    CountGfxModes = "CountGfxModes",
+    CountGfxModes3D = "CountGfxModes3D",
+    CountHostIPs = "CountHostIPs",
+    CountSurfaces = "CountSurfaces",
+    CountTreeViewNodes = "CountTreeViewNodes",
+    CountTriangles = "CountTriangles",
+    CountVertices = "CountVertices",
+    CreateBank = "CreateBank",
+    CreateButton = "CreateButton",
+    CreateCamera = "CreateCamera",
+    CreateCanvas = "CreateCanvas",
+    CreateComboBox = "CreateComboBox",
+    CreateCone = "CreateCone",
+    CreateCube = "CreateCube",
+    CreateCylinder = "CreateCylinder",
+    CreateDir = "CreateDir",
+    CreateHtmlView = "CreateHtmlView",
+    CreateImage = "CreateImage",
+    CreateLabel = "CreateLabel",
+    CreateLight = "CreateLight",
+    CreateListBox = "CreateListBox",
+    CreateListener = "CreateListener",
+    CreateMenu = "CreateMenu",
+    CreateMesh = "CreateMesh",
+    CreateMirror = "CreateMirror",
+    CreateNetPlayer = "CreateNetPlayer",
+    CreatePanel = "CreatePanel",
+    CreatePivot = "CreatePivot",
+    CreatePlane = "CreatePlane",
+    CreateProcess = "CreateProcess",
+    CreateProgBar = "CreateProgBar",
+    CreateSlider = "CreateSlider",
+    CreateSphere = "CreateSphere",
+    CreateSprite = "CreateSprite",
+    CreateSurface = "CreateSurface",
+    CreateTabber = "CreateTabber",
+    CreateTCPServer = "CreateTCPServer",
+    CreateTerrain = "CreateTerrain",
+    CreateTextArea = "CreateTextArea",
+    CreateTextField = "CreateTextField",
+    CreateTexture = "CreateTexture",
+    CreateTimer = "CreateTimer",
+    CreateToolBar = "CreateToolBar",
+    CreateTreeView = "CreateTreeView",
+    CreateUDPStream = "CreateUDPStream",
+    CreateWindow = "CreateWindow",
+    CurrentDate = "CurrentDate",
+    CurrentDir = "CurrentDir",
+    CurrentTime = "CurrentTime",
     Line = "Line",
     Oval = "Oval",
     Rect = "Rect",
-    GRAPHICS_2D_IMAGES_COMMAND = "GRAPHICS_2D_IMAGES_COMMAND",
-    GRAPHICS_2D_MOVIES_COMMAND = "GRAPHICS_2D_MOVIES_COMMAND",
-    GRAPHICS_2D_PIXEL_COMMAND = "GRAPHICS_2D_PIXEL_COMMAND",
-    GRAPHICS_2D_TEXT_COMMAND = "GRAPHICS_2D_TEXT_COMMAND",
-    GRAPHICS_3D_COMMAND_1 = "GRAPHICS_3D_COMMAND_1",
-    GRAPHICS_3D_COMMAND_2 = "GRAPHICS_3D_COMMAND_2",
-    GRAPHICS_3D_COMMAND_3 = "GRAPHICS_3D_COMMAND_3",
-    GRAPHICS_3D_COMMAND_4 = "GRAPHICS_3D_COMMAND_4",
-    GRAPHICS_3D_COMMAND_5 = "GRAPHICS_3D_COMMAND_5",
-    GRAPHICS_3D_COMMAND_6 = "GRAPHICS_3D_COMMAND_6",
-    GRAPHICS_3D_COMMAND_7 = "GRAPHICS_3D_COMMAND_7",
-    GRAPHICS_3D_COMMAND_8 = "GRAPHICS_3D_COMMAND_8",
-    GRAPHICS_3D_COMMAND_9 = "GRAPHICS_3D_COMMAND_9",
-    GRAPHICS_3D_COMMAND_10 = "GRAPHICS_3D_COMMAND_10",
-    GRAPHICS_3D_COMMAND_11 = "GRAPHICS_3D_COMMAND_11",
-    GRAPHICS_3D_COMMAND_12 = "GRAPHICS_3D_COMMAND_12",
-    GRAPHICS_3D_COMMAND_13 = "GRAPHICS_3D_COMMAND_13",
-    GRAPHICS_3D_COMMAND_14 = "GRAPHICS_3D_COMMAND_14",
-    GRAPHICS_3D_COMMAND_15 = "GRAPHICS_3D_COMMAND_15",
-    GRAPHICS_3D_COMMAND_16 = "GRAPHICS_3D_COMMAND_16",
-    GRAPHICS_3D_COMMAND_17 = "GRAPHICS_3D_COMMAND_17",
-    GRAPHICS_3D_COMMAND_18 = "GRAPHICS_3D_COMMAND_18",
-    GRAPHICS_3D_ANIMATIONS_COMMAND = "GRAPHICS_3D_ANIMATIONS_COMMAND",
-    GRAPHICS_3D_BRUSHES_COMMAND = "GRAPHICS_3D_BRUSHES_COMMAND",
-    GRAPHICS_3D_CAMERA_COMMAND = "GRAPHICS_3D_CAMERA_COMMAND",
-    GRAPHICS_3D_COLLISIONS_COMMAND = "GRAPHICS_3D_COLLISIONS_COMMAND",
-    GRAPHICS_3D_CONTROLS_COMMAND = "GRAPHICS_3D_CONTROLS_COMMAND",
-    GRAPHICS_3D_COORDINATES_COMMAND = "GRAPHICS_3D_COORDINATES_COMMAND",
-    GRAPHICS_3D_DIVERSE_COMMAND = "GRAPHICS_3D_DIVERSE_COMMAND",
-    GRAPHICS_3D_LIGHT_SHADOW_COMMAND = "GRAPHICS_3D_LIGHT_SHADOW_COMMAND",
-    GRAPHICS_3D_MESHES_COMMAND = "GRAPHICS_3D_MESHES_COMMAND",
-    GRAPHICS_3D_PICKING_COMMAND = "GRAPHICS_3D_PICKING_COMMAND",
-    GRAPHICS_3D_SCENE_COMMAND = "GRAPHICS_3D_SCENE_COMMAND",
-    GRAPHICS_3D_SCENERY_COMMAND = "GRAPHICS_3D_SCENERY_COMMAND",
-    GRAPHICS_3D_SCREEN_COMMAND = "GRAPHICS_3D_SCREEN_COMMAND",
-    GRAPHICS_3D_SPRITES_COMMAND = "GRAPHICS_3D_SPRITES_COMMAND",
-    GRAPHICS_3D_STATUS_COMMAND = "GRAPHICS_3D_STATUS_COMMAND",
-    GRAPHICS_3D_SURFACES_COMMAND = "GRAPHICS_3D_SURFACES_COMMAND",
-    GRAPHICS_3D_TERRAIN_COMMAND = "GRAPHICS_3D_TERRAIN_COMMAND",
-    GRAPHICS_3D_TEXTURES_COMMAND = "GRAPHICS_3D_TEXTURES_COMMAND",
-    GUI_COMMAND_1 = "GUI_COMMAND_1",
-    GUI_COMMAND_2 = "GUI_COMMAND_2",
-    GUI_COMMAND_3 = "GUI_COMMAND_3",
-    GUI_COMMAND_4 = "GUI_COMMAND_4",
-    GUI_COMMAND_5 = "GUI_COMMAND_5",
-    GUI_COMMAND_6 = "GUI_COMMAND_6",
-    GUI_COMMAND_7 = "GUI_COMMAND_7",
-    GUI_COMMAND_8 = "GUI_COMMAND_8",
-    GUI_COMMAND_9 = "GUI_COMMAND_9",
-    GUI_COMMAND_10 = "GUI_COMMAND_10",
-    GUI_COMMAND_11 = "GUI_COMMAND_11",
-    GUI_COMMAND_12 = "GUI_COMMAND_12",
-    GUI_COMMAND_13 = "GUI_COMMAND_13",
-    GUI_COMMAND_14 = "GUI_COMMAND_14",
-    GUI_COMMAND_15 = "GUI_COMMAND_15",
-    GUI_COMMAND_16 = "GUI_COMMAND_16",
-    GUI_COMMAND_17 = "GUI_COMMAND_17",
-    GUI_COMMAND_18 = "GUI_COMMAND_18",
-    GUI_COMMAND_19 = "GUI_COMMAND_19",
-    GUI_BUTTON_COMMAND = "GUI_BUTTON_COMMAND",
-    GUI_CANVAS_COMMAND = "GUI_CANVAS_COMMAND",
-    GUI_DESKTOP_COMMAND = "GUI_DESKTOP_COMMAND",
-    GUI_DIVERSE_COMMAND = "GUI_DIVERSE_COMMAND",
-    GUI_EVENT_COMMAND = "GUI_EVENT_COMMAND",
-    GUI_GADGET_COMMAND = "GUI_GADGET_COMMAND",
-    GUI_HTML_COMMAND = "GUI_HTML_COMMAND",
-    GUI_ICON_STRIP_COMMAND = "GUI_ICON_STRIP_COMMAND",
-    GUI_LIST_TABBER_COMMAND = "GUI_LIST_TABBER_COMMAND",
-    GUI_MENU_COMMAND = "GUI_MENU_COMMAND",
-    GUI_PANEL_COMMAND = "GUI_PANEL_COMMAND",
-    GUI_PROGRESS_BAR_COMMAND = "GUI_PROGRESS_BAR_COMMAND",
-    GUI_REQUEST_COMMAND = "GUI_REQUEST_COMMAND",
-    GUI_SLIDER_COMMAND = "GUI_SLIDER_COMMAND",
-    GUI_TEXT_AREA_COMMAND = "GUI_TEXT_AREA_COMMAND",
-    GUI_TEXT_FIELD_COMMAND = "GUI_TEXT_FIELD_COMMAND",
-    GUI_TOOLBAR_COMMAND = "GUI_TOOLBAR_COMMAND",
-    GUI_TREE_VIEW_COMMAND = "GUI_TREE_VIEW_COMMAND",
-    GUI_WINDOW_COMMAND = "GUI_WINDOW_COMMAND",
-    IO_COMMAND_1 = "IO_COMMAND_1",
-    IO_COMMAND_2 = "IO_COMMAND_2",
-    IO_COMMAND_3 = "IO_COMMAND_3",
-    IO_GAMEPAD_COMMAND = "IO_GAMEPAD_COMMAND",
-    IO_KEYBOARD_COMMAND = "IO_KEYBOARD_COMMAND",
-    IO_MOUSE_COMMAND = "IO_MOUSE_COMMAND",
-    SOUND_COMMAND_1 = "SOUND_COMMAND_1",
-    SOUND_COMMAND_2 = "SOUND_COMMAND_2",
-    SOUND_COMMAND_3 = "SOUND_COMMAND_3",
-    SOUND_3D_COMMAND = "SOUND_3D_COMMAND",
-    SOUND_CHANNELS_COMMAND = "SOUND_CHANNELS_COMMAND",
-    SOUND_MUSIC_SAMPLES_COMMAND = "SOUND_MUSIC_SAMPLES_COMMAND",
 }
 export type ROOT = COMMAND;
 export type NUMBER = string;
-export type COMMAND = COMMAND_1 | COMMAND_2 | COMMAND_3 | COMMAND_4 | COMMAND_5 | COMMAND_6 | COMMAND_7;
-export type COMMAND_1 = BASIC_COMMAND;
-export type COMMAND_2 = DATA_COMMAND;
-export type COMMAND_3 = GRAPHICS_2D_COMMAND;
-export type COMMAND_4 = GRAPHICS_3D_COMMAND;
-export type COMMAND_5 = GUI_COMMAND;
-export type COMMAND_6 = IO_COMMAND;
-export type COMMAND_7 = SOUND_COMMAND;
-export type BASIC_COMMAND = BASIC_COMMAND_1 | BASIC_COMMAND_2 | BASIC_COMMAND_3 | BASIC_COMMAND_4;
-export type BASIC_COMMAND_1 = BASIC_DIVERSE_COMMAND;
-export type BASIC_COMMAND_2 = BASIC_MATHS_COMMAND;
-export type BASIC_COMMAND_3 = BASIC_STRINGS_COMMAND;
-export type BASIC_COMMAND_4 = BASIC_TIME_RANDOM_COMMAND;
-export type BASIC_DIVERSE_COMMAND = string;
-export type BASIC_MATHS_COMMAND = string;
-export type BASIC_STRINGS_COMMAND = string;
-export type BASIC_TIME_RANDOM_COMMAND = string;
-export type DATA_COMMAND = DATA_COMMAND_1 | DATA_COMMAND_2;
-export type DATA_COMMAND_1 = DATA_BANK_COMMAND;
-export type DATA_COMMAND_2 = DATA_FILE_SYSTEM_COMMAND;
-export type DATA_BANK_COMMAND = string;
-export type DATA_FILE_SYSTEM_COMMAND = string;
-export type GRAPHICS_2D_COMMAND = GRAPHICS_2D_COMMAND_1 | GRAPHICS_2D_COMMAND_2 | GRAPHICS_2D_COMMAND_3 | GRAPHICS_2D_COMMAND_4 | GRAPHICS_2D_COMMAND_5 | GRAPHICS_2D_COMMAND_6 | GRAPHICS_2D_COMMAND_7;
-export type GRAPHICS_2D_COMMAND_1 = GRAPHICS_2D_DISPLAY_COMMAND;
-export type GRAPHICS_2D_COMMAND_2 = GRAPHICS_2D_GAMMA_COMMAND;
-export type GRAPHICS_2D_COMMAND_3 = GRAPHICS_2D_GRAPHICS_COMMAND;
-export type GRAPHICS_2D_COMMAND_4 = GRAPHICS_2D_IMAGES_COMMAND;
-export type GRAPHICS_2D_COMMAND_5 = GRAPHICS_2D_MOVIES_COMMAND;
-export type GRAPHICS_2D_COMMAND_6 = GRAPHICS_2D_PIXEL_COMMAND;
-export type GRAPHICS_2D_COMMAND_7 = GRAPHICS_2D_TEXT_COMMAND;
-export type GRAPHICS_2D_DISPLAY_COMMAND = string;
-export type GRAPHICS_2D_GAMMA_COMMAND = string;
-export type GRAPHICS_2D_GRAPHICS_COMMAND = GRAPHICS_2D_GRAPHICS_COMMAND_1 | GRAPHICS_2D_GRAPHICS_COMMAND_2 | GRAPHICS_2D_GRAPHICS_COMMAND_3 | GRAPHICS_2D_GRAPHICS_COMMAND_4 | GRAPHICS_2D_GRAPHICS_COMMAND_5 | GRAPHICS_2D_GRAPHICS_COMMAND_6;
-export type GRAPHICS_2D_GRAPHICS_COMMAND_1 = Cls;
-export type GRAPHICS_2D_GRAPHICS_COMMAND_2 = ClsColor;
-export type GRAPHICS_2D_GRAPHICS_COMMAND_3 = Color;
-export type GRAPHICS_2D_GRAPHICS_COMMAND_4 = Line;
-export type GRAPHICS_2D_GRAPHICS_COMMAND_5 = Oval;
-export type GRAPHICS_2D_GRAPHICS_COMMAND_6 = Rect;
+export type COMMAND = COMMAND_1 | COMMAND_2 | COMMAND_3 | COMMAND_4 | COMMAND_5 | COMMAND_6 | COMMAND_7 | COMMAND_8 | COMMAND_9 | COMMAND_10 | COMMAND_11 | COMMAND_12 | COMMAND_13 | COMMAND_14 | COMMAND_15 | COMMAND_16 | COMMAND_17 | COMMAND_18 | COMMAND_19 | COMMAND_20 | COMMAND_21 | COMMAND_22 | COMMAND_23 | COMMAND_24 | COMMAND_25 | COMMAND_26 | COMMAND_27 | COMMAND_28 | COMMAND_29 | COMMAND_30 | COMMAND_31 | COMMAND_32 | COMMAND_33 | COMMAND_34 | COMMAND_35 | COMMAND_36 | COMMAND_37 | COMMAND_38 | COMMAND_39 | COMMAND_40 | COMMAND_41 | COMMAND_42 | COMMAND_43 | COMMAND_44 | COMMAND_45 | COMMAND_46 | COMMAND_47 | COMMAND_48 | COMMAND_49 | COMMAND_50 | COMMAND_51 | COMMAND_52 | COMMAND_53 | COMMAND_54 | COMMAND_55 | COMMAND_56 | COMMAND_57 | COMMAND_58 | COMMAND_59 | COMMAND_60 | COMMAND_61 | COMMAND_62 | COMMAND_63 | COMMAND_64 | COMMAND_65 | COMMAND_66 | COMMAND_67 | COMMAND_68 | COMMAND_69 | COMMAND_70 | COMMAND_71 | COMMAND_72 | COMMAND_73 | COMMAND_74 | COMMAND_75 | COMMAND_76 | COMMAND_77 | COMMAND_78 | COMMAND_79 | COMMAND_80 | COMMAND_81 | COMMAND_82 | COMMAND_83 | COMMAND_84 | COMMAND_85 | COMMAND_86 | COMMAND_87 | COMMAND_88 | COMMAND_89 | COMMAND_90 | COMMAND_91 | COMMAND_92 | COMMAND_93 | COMMAND_94 | COMMAND_95 | COMMAND_96 | COMMAND_97 | COMMAND_98 | COMMAND_99 | COMMAND_100 | COMMAND_101 | COMMAND_102 | COMMAND_103 | COMMAND_104 | COMMAND_105 | COMMAND_106 | COMMAND_107 | COMMAND_108 | COMMAND_109 | COMMAND_110 | COMMAND_111 | COMMAND_112 | COMMAND_113 | COMMAND_114 | COMMAND_115 | COMMAND_116 | COMMAND_117 | COMMAND_118 | COMMAND_119 | COMMAND_120 | COMMAND_121 | COMMAND_122 | COMMAND_123 | COMMAND_124 | COMMAND_125 | COMMAND_126 | COMMAND_127 | COMMAND_128 | COMMAND_129 | COMMAND_130 | COMMAND_131 | COMMAND_132 | COMMAND_133 | COMMAND_134 | COMMAND_135 | COMMAND_136 | COMMAND_137 | COMMAND_138 | COMMAND_139 | COMMAND_140 | COMMAND_141 | COMMAND_142 | COMMAND_143 | COMMAND_144 | COMMAND_145 | COMMAND_146 | COMMAND_147 | COMMAND_148 | COMMAND_149 | COMMAND_150 | COMMAND_151 | COMMAND_152 | COMMAND_153 | COMMAND_154 | COMMAND_155 | COMMAND_156 | COMMAND_157 | COMMAND_158 | COMMAND_159 | COMMAND_160 | COMMAND_161 | COMMAND_162 | COMMAND_163 | COMMAND_164 | COMMAND_165 | COMMAND_166 | COMMAND_167 | COMMAND_168 | COMMAND_169;
+export type COMMAND_1 = Abs;
+export type COMMAND_2 = AcceptTCPStream;
+export type COMMAND_3 = ACos;
+export type COMMAND_4 = ActivateGadget;
+export type COMMAND_5 = ActivateWindow;
+export type COMMAND_6 = ActiveObjects;
+export type COMMAND_7 = ActiveTextures;
+export type COMMAND_8 = ActiveWindow;
+export type COMMAND_9 = AddAnimSeq;
+export type COMMAND_10 = AddGadgetItem;
+export type COMMAND_11 = AddMesh;
+export type COMMAND_12 = AddTextAreaText;
+export type COMMAND_13 = AddTreeViewNode;
+export type COMMAND_14 = AddTriangle;
+export type COMMAND_15 = AddVertex;
+export type COMMAND_16 = AddVKLen;
+export type COMMAND_17 = After;
+export type COMMAND_18 = AlignToVector;
+export type COMMAND_19 = AmbientLight;
+export type COMMAND_20 = Animate;
+export type COMMAND_21 = Animating;
+export type COMMAND_22 = AnimLength;
+export type COMMAND_23 = AnimSeq;
+export type COMMAND_24 = AnimTime;
+export type COMMAND_25 = AntiAlias;
+export type COMMAND_26 = AppTitle;
+export type COMMAND_27 = Asc;
+export type COMMAND_28 = ASin;
+export type COMMAND_29 = ATan;
+export type COMMAND_30 = ATan2;
+export type COMMAND_31 = AutoMidHandle;
+export type COMMAND_32 = AutoSuspend;
+export type COMMAND_33 = AvailVidMem;
+export type COMMAND_34 = BackBuffer;
+export type COMMAND_35 = BankSize;
+export type COMMAND_36 = Before;
+export type COMMAND_37 = Bin;
+export type COMMAND_38 = BreakKP;
+export type COMMAND_39 = BrushAlpha;
+export type COMMAND_40 = BrushBlend;
+export type COMMAND_41 = BrushColor;
+export type COMMAND_42 = BrushFX;
+export type COMMAND_43 = BrushShininess;
+export type COMMAND_44 = BrushTexture;
+export type COMMAND_45 = BSPAmbientLight;
+export type COMMAND_46 = BufferDirty;
+export type COMMAND_47 = ButtonState;
+export type COMMAND_48 = CameraClsColor;
+export type COMMAND_49 = CameraClsMode;
+export type COMMAND_50 = CameraFogColor;
+export type COMMAND_51 = CameraFogMode;
+export type COMMAND_52 = CameraFogRange;
+export type COMMAND_53 = CameraPick;
+export type COMMAND_54 = CameraProject;
+export type COMMAND_55 = CameraProjMode;
+export type COMMAND_56 = CameraRange;
+export type COMMAND_57 = CameraViewport;
+export type COMMAND_58 = CameraZoom;
+export type COMMAND_59 = CanvasBuffer;
+export type COMMAND_60 = CaptureWorld;
+export type COMMAND_61 = Ceil;
+export type COMMAND_62 = ChangeDir;
+export type COMMAND_63 = ChannelPan;
+export type COMMAND_64 = ChannelPitch;
+export type COMMAND_65 = ChannelPlaying;
+export type COMMAND_66 = ChannelVolume;
+export type COMMAND_67 = CheckMenu;
+export type COMMAND_68 = Chr;
+export type COMMAND_69 = ClearCollisions;
+export type COMMAND_70 = ClearGadgetItems;
+export type COMMAND_71 = ClearSurface;
+export type COMMAND_72 = ClearTextureFilters;
+export type COMMAND_73 = ClearWorld;
+export type COMMAND_74 = ClientHeight;
+export type COMMAND_75 = ClientWidth;
+export type COMMAND_76 = CloseDir;
+export type COMMAND_77 = CloseFile;
+export type COMMAND_78 = CloseMovie;
+export type COMMAND_79 = CloseTCPServer;
+export type COMMAND_80 = CloseTCPStream;
+export type COMMAND_81 = CloseUDPStream;
+export type COMMAND_82 = CloseUDPStream;
+export type COMMAND_83 = Cls;
+export type COMMAND_84 = ClsColor;
+export type COMMAND_85 = CollapseTreeViewNode;
+export type COMMAND_86 = CollisionEntity;
+export type COMMAND_87 = CollisionNX;
+export type COMMAND_88 = CollisionNY;
+export type COMMAND_89 = CollisionNZ;
+export type COMMAND_90 = Collisions;
+export type COMMAND_91 = CollisionSurface;
+export type COMMAND_92 = CollisionTime;
+export type COMMAND_93 = CollisionTriangle;
+export type COMMAND_94 = CollisionX;
+export type COMMAND_95 = CollisionY;
+export type COMMAND_96 = CollisionZ;
+export type COMMAND_97 = Color;
+export type COMMAND_98 = ColorBlue;
+export type COMMAND_99 = ColorGreen;
+export type COMMAND_100 = ColorRed;
+export type COMMAND_101 = ColorRed;
+export type COMMAND_102 = CommandLine;
+export type COMMAND_103 = Confirm;
+export type COMMAND_104 = CopyBank;
+export type COMMAND_105 = CopyEntity;
+export type COMMAND_106 = CopyFile;
+export type COMMAND_107 = CopyImage;
+export type COMMAND_108 = CopyMesh;
+export type COMMAND_109 = CopyPixel;
+export type COMMAND_110 = CopyPixelFast;
+export type COMMAND_111 = CopyRect;
+export type COMMAND_112 = CopyStream;
+export type COMMAND_113 = Cos;
+export type COMMAND_114 = CountChildren;
+export type COMMAND_115 = CountCollisions;
+export type COMMAND_116 = CountGadgetItems;
+export type COMMAND_117 = CountGfxDrivers;
+export type COMMAND_118 = CountGfxModes;
+export type COMMAND_119 = CountGfxModes3D;
+export type COMMAND_120 = CountHostIPs;
+export type COMMAND_121 = CountSurfaces;
+export type COMMAND_122 = CountTreeViewNodes;
+export type COMMAND_123 = CountTriangles;
+export type COMMAND_124 = CountVertices;
+export type COMMAND_125 = CreateBank;
+export type COMMAND_126 = CreateButton;
+export type COMMAND_127 = CreateCamera;
+export type COMMAND_128 = CreateCanvas;
+export type COMMAND_129 = CreateComboBox;
+export type COMMAND_130 = CreateCone;
+export type COMMAND_131 = CreateCube;
+export type COMMAND_132 = CreateCylinder;
+export type COMMAND_133 = CreateDir;
+export type COMMAND_134 = CreateHtmlView;
+export type COMMAND_135 = CreateImage;
+export type COMMAND_136 = CreateLabel;
+export type COMMAND_137 = CreateLight;
+export type COMMAND_138 = CreateListBox;
+export type COMMAND_139 = CreateListener;
+export type COMMAND_140 = CreateMenu;
+export type COMMAND_141 = CreateMesh;
+export type COMMAND_142 = CreateMirror;
+export type COMMAND_143 = CreateNetPlayer;
+export type COMMAND_144 = CreatePanel;
+export type COMMAND_145 = CreatePivot;
+export type COMMAND_146 = CreatePlane;
+export type COMMAND_147 = CreateProcess;
+export type COMMAND_148 = CreateProgBar;
+export type COMMAND_149 = CreateSlider;
+export type COMMAND_150 = CreateSphere;
+export type COMMAND_151 = CreateSprite;
+export type COMMAND_152 = CreateSurface;
+export type COMMAND_153 = CreateTabber;
+export type COMMAND_154 = CreateTCPServer;
+export type COMMAND_155 = CreateTerrain;
+export type COMMAND_156 = CreateTextArea;
+export type COMMAND_157 = CreateTextField;
+export type COMMAND_158 = CreateTexture;
+export type COMMAND_159 = CreateTimer;
+export type COMMAND_160 = CreateToolBar;
+export type COMMAND_161 = CreateTreeView;
+export type COMMAND_162 = CreateUDPStream;
+export type COMMAND_163 = CreateWindow;
+export type COMMAND_164 = CurrentDate;
+export type COMMAND_165 = CurrentDir;
+export type COMMAND_166 = CurrentTime;
+export type COMMAND_167 = Line;
+export type COMMAND_168 = Oval;
+export type COMMAND_169 = Rect;
+export type Abs = string;
+export type AcceptTCPStream = string;
+export type ACos = string;
+export type ActivateGadget = string;
+export type ActivateWindow = string;
+export type ActiveObjects = string;
+export type ActiveTextures = string;
+export type ActiveWindow = string;
+export type AddAnimSeq = string;
+export type AddGadgetItem = string;
+export type AddMesh = string;
+export type AddTextAreaText = string;
+export type AddTreeViewNode = string;
+export type AddTriangle = string;
+export type AddVertex = string;
+export type AddVKLen = string;
+export type After = string;
+export type AlignToVector = string;
+export type AmbientLight = string;
+export type Animate = string;
+export type Animating = string;
+export type AnimLength = string;
+export type AnimSeq = string;
+export type AnimTime = string;
+export type AntiAlias = string;
+export type AppTitle = string;
+export type Asc = string;
+export type ASin = string;
+export type ATan = string;
+export type ATan2 = string;
+export type AutoMidHandle = string;
+export type AutoSuspend = string;
+export type AvailVidMem = string;
+export type BackBuffer = string;
+export type BankSize = string;
+export type Before = string;
+export type Bin = string;
+export type BreakKP = string;
+export type BrushAlpha = string;
+export type BrushBlend = string;
+export type BrushColor = string;
+export type BrushFX = string;
+export type BrushShininess = string;
+export type BrushTexture = string;
+export type BSPAmbientLight = string;
+export type BufferDirty = string;
+export type ButtonState = string;
+export type CameraClsColor = string;
+export type CameraClsMode = string;
+export type CameraFogColor = string;
+export type CameraFogMode = string;
+export type CameraFogRange = string;
+export type CameraPick = string;
+export type CameraProject = string;
+export type CameraProjMode = string;
+export type CameraRange = string;
+export type CameraViewport = string;
+export type CameraZoom = string;
+export type CanvasBuffer = string;
+export type CaptureWorld = string;
+export type Ceil = string;
+export type ChangeDir = string;
+export type ChannelPan = string;
+export type ChannelPitch = string;
+export type ChannelPlaying = string;
+export type ChannelVolume = string;
+export type CheckMenu = string;
+export type Chr = string;
+export type ClearCollisions = string;
+export type ClearGadgetItems = string;
+export type ClearSurface = string;
+export type ClearTextureFilters = string;
+export type ClearWorld = string;
+export type ClientHeight = string;
+export type ClientWidth = string;
+export type CloseDir = string;
+export type CloseFile = string;
+export type CloseMovie = string;
+export type CloseTCPServer = string;
+export type CloseTCPStream = string;
+export type CloseUDPStream = string;
+export type CloseUDPStream = string;
 export interface Cls {
     kind: ASTKinds.Cls;
+    next: Nullable<ROOT>;
 }
 export interface ClsColor {
     kind: ASTKinds.ClsColor;
     red: NUMBER;
     green: NUMBER;
     blue: NUMBER;
+    next: Nullable<ROOT>;
 }
+export type CollapseTreeViewNode = string;
+export type CollisionEntity = string;
+export type CollisionNX = string;
+export type CollisionNY = string;
+export type CollisionNZ = string;
+export type Collisions = string;
+export type CollisionSurface = string;
+export type CollisionTime = string;
+export type CollisionTriangle = string;
+export type CollisionX = string;
+export type CollisionY = string;
+export type CollisionZ = string;
 export interface Color {
     kind: ASTKinds.Color;
     red: NUMBER;
     green: NUMBER;
     blue: NUMBER;
+    next: Nullable<ROOT>;
 }
+export type ColorBlue = string;
+export type ColorGreen = string;
+export type ColorRed = string;
+export type ColorRed = string;
+export type CommandLine = string;
+export type Confirm = string;
+export type CopyBank = string;
+export type CopyEntity = string;
+export type CopyFile = string;
+export type CopyImage = string;
+export type CopyMesh = string;
+export type CopyPixel = string;
+export type CopyPixelFast = string;
+export type CopyRect = string;
+export type CopyStream = string;
+export type Cos = string;
+export type CountChildren = string;
+export type CountCollisions = string;
+export type CountGadgetItems = string;
+export type CountGfxDrivers = string;
+export type CountGfxModes = string;
+export type CountGfxModes3D = string;
+export type CountHostIPs = string;
+export type CountSurfaces = string;
+export type CountTreeViewNodes = string;
+export type CountTriangles = string;
+export type CountVertices = string;
+export type CreateBank = string;
+export type CreateButton = string;
+export type CreateCamera = string;
+export type CreateCanvas = string;
+export type CreateComboBox = string;
+export type CreateCone = string;
+export type CreateCube = string;
+export type CreateCylinder = string;
+export type CreateDir = string;
+export type CreateHtmlView = string;
+export type CreateImage = string;
+export type CreateLabel = string;
+export type CreateLight = string;
+export type CreateListBox = string;
+export type CreateListener = string;
+export type CreateMenu = string;
+export type CreateMesh = string;
+export type CreateMirror = string;
+export type CreateNetPlayer = string;
+export type CreatePanel = string;
+export type CreatePivot = string;
+export type CreatePlane = string;
+export type CreateProcess = string;
+export type CreateProgBar = string;
+export type CreateSlider = string;
+export type CreateSphere = string;
+export type CreateSprite = string;
+export type CreateSurface = string;
+export type CreateTabber = string;
+export type CreateTCPServer = string;
+export type CreateTerrain = string;
+export type CreateTextArea = string;
+export type CreateTextField = string;
+export type CreateTexture = string;
+export type CreateTimer = string;
+export type CreateToolBar = string;
+export type CreateTreeView = string;
+export type CreateUDPStream = string;
+export type CreateWindow = string;
+export type CurrentDate = string;
+export type CurrentDir = string;
+export type CurrentTime = string;
 export interface Line {
     kind: ASTKinds.Line;
     beginX: NUMBER;
     beginY: NUMBER;
     endX: NUMBER;
     endY: NUMBER;
+    next: Nullable<ROOT>;
 }
 export interface Oval {
     kind: ASTKinds.Oval;
@@ -354,6 +1087,7 @@ export interface Oval {
     y: NUMBER;
     width: NUMBER;
     height: NUMBER;
+    next: Nullable<ROOT>;
 }
 export interface Rect {
     kind: ASTKinds.Rect;
@@ -361,101 +1095,8 @@ export interface Rect {
     y: NUMBER;
     width: NUMBER;
     height: NUMBER;
+    next: Nullable<ROOT>;
 }
-export type GRAPHICS_2D_IMAGES_COMMAND = string;
-export type GRAPHICS_2D_MOVIES_COMMAND = string;
-export type GRAPHICS_2D_PIXEL_COMMAND = string;
-export type GRAPHICS_2D_TEXT_COMMAND = string;
-export type GRAPHICS_3D_COMMAND = GRAPHICS_3D_COMMAND_1 | GRAPHICS_3D_COMMAND_2 | GRAPHICS_3D_COMMAND_3 | GRAPHICS_3D_COMMAND_4 | GRAPHICS_3D_COMMAND_5 | GRAPHICS_3D_COMMAND_6 | GRAPHICS_3D_COMMAND_7 | GRAPHICS_3D_COMMAND_8 | GRAPHICS_3D_COMMAND_9 | GRAPHICS_3D_COMMAND_10 | GRAPHICS_3D_COMMAND_11 | GRAPHICS_3D_COMMAND_12 | GRAPHICS_3D_COMMAND_13 | GRAPHICS_3D_COMMAND_14 | GRAPHICS_3D_COMMAND_15 | GRAPHICS_3D_COMMAND_16 | GRAPHICS_3D_COMMAND_17 | GRAPHICS_3D_COMMAND_18;
-export type GRAPHICS_3D_COMMAND_1 = GRAPHICS_3D_ANIMATIONS_COMMAND;
-export type GRAPHICS_3D_COMMAND_2 = GRAPHICS_3D_BRUSHES_COMMAND;
-export type GRAPHICS_3D_COMMAND_3 = GRAPHICS_3D_CAMERA_COMMAND;
-export type GRAPHICS_3D_COMMAND_4 = GRAPHICS_3D_COLLISIONS_COMMAND;
-export type GRAPHICS_3D_COMMAND_5 = GRAPHICS_3D_CONTROLS_COMMAND;
-export type GRAPHICS_3D_COMMAND_6 = GRAPHICS_3D_COORDINATES_COMMAND;
-export type GRAPHICS_3D_COMMAND_7 = GRAPHICS_3D_DIVERSE_COMMAND;
-export type GRAPHICS_3D_COMMAND_8 = GRAPHICS_3D_LIGHT_SHADOW_COMMAND;
-export type GRAPHICS_3D_COMMAND_9 = GRAPHICS_3D_MESHES_COMMAND;
-export type GRAPHICS_3D_COMMAND_10 = GRAPHICS_3D_PICKING_COMMAND;
-export type GRAPHICS_3D_COMMAND_11 = GRAPHICS_3D_SCENE_COMMAND;
-export type GRAPHICS_3D_COMMAND_12 = GRAPHICS_3D_SCENERY_COMMAND;
-export type GRAPHICS_3D_COMMAND_13 = GRAPHICS_3D_SCREEN_COMMAND;
-export type GRAPHICS_3D_COMMAND_14 = GRAPHICS_3D_SPRITES_COMMAND;
-export type GRAPHICS_3D_COMMAND_15 = GRAPHICS_3D_STATUS_COMMAND;
-export type GRAPHICS_3D_COMMAND_16 = GRAPHICS_3D_SURFACES_COMMAND;
-export type GRAPHICS_3D_COMMAND_17 = GRAPHICS_3D_TERRAIN_COMMAND;
-export type GRAPHICS_3D_COMMAND_18 = GRAPHICS_3D_TEXTURES_COMMAND;
-export type GRAPHICS_3D_ANIMATIONS_COMMAND = string;
-export type GRAPHICS_3D_BRUSHES_COMMAND = string;
-export type GRAPHICS_3D_CAMERA_COMMAND = string;
-export type GRAPHICS_3D_COLLISIONS_COMMAND = string;
-export type GRAPHICS_3D_CONTROLS_COMMAND = string;
-export type GRAPHICS_3D_COORDINATES_COMMAND = string;
-export type GRAPHICS_3D_DIVERSE_COMMAND = string;
-export type GRAPHICS_3D_LIGHT_SHADOW_COMMAND = string;
-export type GRAPHICS_3D_MESHES_COMMAND = string;
-export type GRAPHICS_3D_PICKING_COMMAND = string;
-export type GRAPHICS_3D_SCENE_COMMAND = string;
-export type GRAPHICS_3D_SCENERY_COMMAND = string;
-export type GRAPHICS_3D_SCREEN_COMMAND = string;
-export type GRAPHICS_3D_SPRITES_COMMAND = string;
-export type GRAPHICS_3D_STATUS_COMMAND = string;
-export type GRAPHICS_3D_SURFACES_COMMAND = string;
-export type GRAPHICS_3D_TERRAIN_COMMAND = string;
-export type GRAPHICS_3D_TEXTURES_COMMAND = string;
-export type GUI_COMMAND = GUI_COMMAND_1 | GUI_COMMAND_2 | GUI_COMMAND_3 | GUI_COMMAND_4 | GUI_COMMAND_5 | GUI_COMMAND_6 | GUI_COMMAND_7 | GUI_COMMAND_8 | GUI_COMMAND_9 | GUI_COMMAND_10 | GUI_COMMAND_11 | GUI_COMMAND_12 | GUI_COMMAND_13 | GUI_COMMAND_14 | GUI_COMMAND_15 | GUI_COMMAND_16 | GUI_COMMAND_17 | GUI_COMMAND_18 | GUI_COMMAND_19;
-export type GUI_COMMAND_1 = GUI_BUTTON_COMMAND;
-export type GUI_COMMAND_2 = GUI_CANVAS_COMMAND;
-export type GUI_COMMAND_3 = GUI_DESKTOP_COMMAND;
-export type GUI_COMMAND_4 = GUI_DIVERSE_COMMAND;
-export type GUI_COMMAND_5 = GUI_EVENT_COMMAND;
-export type GUI_COMMAND_6 = GUI_GADGET_COMMAND;
-export type GUI_COMMAND_7 = GUI_HTML_COMMAND;
-export type GUI_COMMAND_8 = GUI_ICON_STRIP_COMMAND;
-export type GUI_COMMAND_9 = GUI_LIST_TABBER_COMMAND;
-export type GUI_COMMAND_10 = GUI_MENU_COMMAND;
-export type GUI_COMMAND_11 = GUI_PANEL_COMMAND;
-export type GUI_COMMAND_12 = GUI_PROGRESS_BAR_COMMAND;
-export type GUI_COMMAND_13 = GUI_REQUEST_COMMAND;
-export type GUI_COMMAND_14 = GUI_SLIDER_COMMAND;
-export type GUI_COMMAND_15 = GUI_TEXT_AREA_COMMAND;
-export type GUI_COMMAND_16 = GUI_TEXT_FIELD_COMMAND;
-export type GUI_COMMAND_17 = GUI_TOOLBAR_COMMAND;
-export type GUI_COMMAND_18 = GUI_TREE_VIEW_COMMAND;
-export type GUI_COMMAND_19 = GUI_WINDOW_COMMAND;
-export type GUI_BUTTON_COMMAND = string;
-export type GUI_CANVAS_COMMAND = string;
-export type GUI_DESKTOP_COMMAND = string;
-export type GUI_DIVERSE_COMMAND = string;
-export type GUI_EVENT_COMMAND = string;
-export type GUI_GADGET_COMMAND = string;
-export type GUI_HTML_COMMAND = string;
-export type GUI_ICON_STRIP_COMMAND = string;
-export type GUI_LIST_TABBER_COMMAND = string;
-export type GUI_MENU_COMMAND = string;
-export type GUI_PANEL_COMMAND = string;
-export type GUI_PROGRESS_BAR_COMMAND = string;
-export type GUI_REQUEST_COMMAND = string;
-export type GUI_SLIDER_COMMAND = string;
-export type GUI_TEXT_AREA_COMMAND = string;
-export type GUI_TEXT_FIELD_COMMAND = string;
-export type GUI_TOOLBAR_COMMAND = string;
-export type GUI_TREE_VIEW_COMMAND = string;
-export type GUI_WINDOW_COMMAND = string;
-export type IO_COMMAND = IO_COMMAND_1 | IO_COMMAND_2 | IO_COMMAND_3;
-export type IO_COMMAND_1 = IO_GAMEPAD_COMMAND;
-export type IO_COMMAND_2 = IO_KEYBOARD_COMMAND;
-export type IO_COMMAND_3 = IO_MOUSE_COMMAND;
-export type IO_GAMEPAD_COMMAND = string;
-export type IO_KEYBOARD_COMMAND = string;
-export type IO_MOUSE_COMMAND = string;
-export type SOUND_COMMAND = SOUND_COMMAND_1 | SOUND_COMMAND_2 | SOUND_COMMAND_3;
-export type SOUND_COMMAND_1 = SOUND_3D_COMMAND;
-export type SOUND_COMMAND_2 = SOUND_CHANNELS_COMMAND;
-export type SOUND_COMMAND_3 = SOUND_MUSIC_SAMPLES_COMMAND;
-export type SOUND_3D_COMMAND = string;
-export type SOUND_CHANNELS_COMMAND = string;
-export type SOUND_MUSIC_SAMPLES_COMMAND = string;
 export class Parser {
     private readonly input: string;
     private pos: PosInfo;
@@ -485,144 +1126,922 @@ export class Parser {
             () => this.matchCOMMAND_5($$dpth + 1, $$cr),
             () => this.matchCOMMAND_6($$dpth + 1, $$cr),
             () => this.matchCOMMAND_7($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_8($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_9($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_10($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_11($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_12($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_13($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_14($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_15($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_16($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_17($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_18($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_19($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_20($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_21($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_22($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_23($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_24($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_25($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_26($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_27($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_28($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_29($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_30($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_31($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_32($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_33($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_34($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_35($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_36($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_37($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_38($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_39($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_40($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_41($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_42($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_43($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_44($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_45($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_46($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_47($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_48($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_49($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_50($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_51($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_52($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_53($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_54($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_55($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_56($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_57($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_58($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_59($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_60($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_61($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_62($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_63($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_64($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_65($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_66($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_67($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_68($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_69($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_70($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_71($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_72($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_73($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_74($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_75($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_76($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_77($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_78($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_79($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_80($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_81($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_82($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_83($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_84($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_85($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_86($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_87($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_88($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_89($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_90($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_91($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_92($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_93($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_94($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_95($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_96($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_97($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_98($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_99($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_100($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_101($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_102($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_103($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_104($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_105($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_106($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_107($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_108($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_109($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_110($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_111($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_112($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_113($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_114($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_115($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_116($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_117($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_118($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_119($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_120($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_121($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_122($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_123($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_124($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_125($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_126($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_127($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_128($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_129($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_130($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_131($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_132($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_133($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_134($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_135($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_136($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_137($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_138($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_139($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_140($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_141($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_142($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_143($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_144($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_145($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_146($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_147($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_148($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_149($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_150($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_151($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_152($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_153($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_154($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_155($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_156($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_157($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_158($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_159($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_160($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_161($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_162($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_163($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_164($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_165($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_166($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_167($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_168($$dpth + 1, $$cr),
+            () => this.matchCOMMAND_169($$dpth + 1, $$cr),
         ]);
     }
     public matchCOMMAND_1($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_1> {
-        return this.matchBASIC_COMMAND($$dpth + 1, $$cr);
+        return this.matchAbs($$dpth + 1, $$cr);
     }
     public matchCOMMAND_2($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_2> {
-        return this.matchDATA_COMMAND($$dpth + 1, $$cr);
+        return this.matchAcceptTCPStream($$dpth + 1, $$cr);
     }
     public matchCOMMAND_3($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_3> {
-        return this.matchGRAPHICS_2D_COMMAND($$dpth + 1, $$cr);
+        return this.matchACos($$dpth + 1, $$cr);
     }
     public matchCOMMAND_4($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_4> {
-        return this.matchGRAPHICS_3D_COMMAND($$dpth + 1, $$cr);
+        return this.matchActivateGadget($$dpth + 1, $$cr);
     }
     public matchCOMMAND_5($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_5> {
-        return this.matchGUI_COMMAND($$dpth + 1, $$cr);
+        return this.matchActivateWindow($$dpth + 1, $$cr);
     }
     public matchCOMMAND_6($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_6> {
-        return this.matchIO_COMMAND($$dpth + 1, $$cr);
+        return this.matchActiveObjects($$dpth + 1, $$cr);
     }
     public matchCOMMAND_7($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_7> {
-        return this.matchSOUND_COMMAND($$dpth + 1, $$cr);
+        return this.matchActiveTextures($$dpth + 1, $$cr);
     }
-    public matchBASIC_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<BASIC_COMMAND> {
-        return this.choice<BASIC_COMMAND>([
-            () => this.matchBASIC_COMMAND_1($$dpth + 1, $$cr),
-            () => this.matchBASIC_COMMAND_2($$dpth + 1, $$cr),
-            () => this.matchBASIC_COMMAND_3($$dpth + 1, $$cr),
-            () => this.matchBASIC_COMMAND_4($$dpth + 1, $$cr),
-        ]);
+    public matchCOMMAND_8($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_8> {
+        return this.matchActiveWindow($$dpth + 1, $$cr);
     }
-    public matchBASIC_COMMAND_1($$dpth: number, $$cr?: ContextRecorder): Nullable<BASIC_COMMAND_1> {
-        return this.matchBASIC_DIVERSE_COMMAND($$dpth + 1, $$cr);
+    public matchCOMMAND_9($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_9> {
+        return this.matchAddAnimSeq($$dpth + 1, $$cr);
     }
-    public matchBASIC_COMMAND_2($$dpth: number, $$cr?: ContextRecorder): Nullable<BASIC_COMMAND_2> {
-        return this.matchBASIC_MATHS_COMMAND($$dpth + 1, $$cr);
+    public matchCOMMAND_10($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_10> {
+        return this.matchAddGadgetItem($$dpth + 1, $$cr);
     }
-    public matchBASIC_COMMAND_3($$dpth: number, $$cr?: ContextRecorder): Nullable<BASIC_COMMAND_3> {
-        return this.matchBASIC_STRINGS_COMMAND($$dpth + 1, $$cr);
+    public matchCOMMAND_11($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_11> {
+        return this.matchAddMesh($$dpth + 1, $$cr);
     }
-    public matchBASIC_COMMAND_4($$dpth: number, $$cr?: ContextRecorder): Nullable<BASIC_COMMAND_4> {
-        return this.matchBASIC_TIME_RANDOM_COMMAND($$dpth + 1, $$cr);
+    public matchCOMMAND_12($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_12> {
+        return this.matchAddTextAreaText($$dpth + 1, $$cr);
     }
-    public matchBASIC_DIVERSE_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<BASIC_DIVERSE_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    public matchCOMMAND_13($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_13> {
+        return this.matchAddTreeViewNode($$dpth + 1, $$cr);
     }
-    public matchBASIC_MATHS_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<BASIC_MATHS_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    public matchCOMMAND_14($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_14> {
+        return this.matchAddTriangle($$dpth + 1, $$cr);
     }
-    public matchBASIC_STRINGS_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<BASIC_STRINGS_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    public matchCOMMAND_15($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_15> {
+        return this.matchAddVertex($$dpth + 1, $$cr);
     }
-    public matchBASIC_TIME_RANDOM_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<BASIC_TIME_RANDOM_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    public matchCOMMAND_16($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_16> {
+        return this.matchAddVKLen($$dpth + 1, $$cr);
     }
-    public matchDATA_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<DATA_COMMAND> {
-        return this.choice<DATA_COMMAND>([
-            () => this.matchDATA_COMMAND_1($$dpth + 1, $$cr),
-            () => this.matchDATA_COMMAND_2($$dpth + 1, $$cr),
-        ]);
+    public matchCOMMAND_17($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_17> {
+        return this.matchAfter($$dpth + 1, $$cr);
     }
-    public matchDATA_COMMAND_1($$dpth: number, $$cr?: ContextRecorder): Nullable<DATA_COMMAND_1> {
-        return this.matchDATA_BANK_COMMAND($$dpth + 1, $$cr);
+    public matchCOMMAND_18($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_18> {
+        return this.matchAlignToVector($$dpth + 1, $$cr);
     }
-    public matchDATA_COMMAND_2($$dpth: number, $$cr?: ContextRecorder): Nullable<DATA_COMMAND_2> {
-        return this.matchDATA_FILE_SYSTEM_COMMAND($$dpth + 1, $$cr);
+    public matchCOMMAND_19($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_19> {
+        return this.matchAmbientLight($$dpth + 1, $$cr);
     }
-    public matchDATA_BANK_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<DATA_BANK_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    public matchCOMMAND_20($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_20> {
+        return this.matchAnimate($$dpth + 1, $$cr);
     }
-    public matchDATA_FILE_SYSTEM_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<DATA_FILE_SYSTEM_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    public matchCOMMAND_21($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_21> {
+        return this.matchAnimating($$dpth + 1, $$cr);
     }
-    public matchGRAPHICS_2D_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_COMMAND> {
-        return this.choice<GRAPHICS_2D_COMMAND>([
-            () => this.matchGRAPHICS_2D_COMMAND_1($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_2D_COMMAND_2($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_2D_COMMAND_3($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_2D_COMMAND_4($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_2D_COMMAND_5($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_2D_COMMAND_6($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_2D_COMMAND_7($$dpth + 1, $$cr),
-        ]);
+    public matchCOMMAND_22($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_22> {
+        return this.matchAnimLength($$dpth + 1, $$cr);
     }
-    public matchGRAPHICS_2D_COMMAND_1($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_COMMAND_1> {
-        return this.matchGRAPHICS_2D_DISPLAY_COMMAND($$dpth + 1, $$cr);
+    public matchCOMMAND_23($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_23> {
+        return this.matchAnimSeq($$dpth + 1, $$cr);
     }
-    public matchGRAPHICS_2D_COMMAND_2($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_COMMAND_2> {
-        return this.matchGRAPHICS_2D_GAMMA_COMMAND($$dpth + 1, $$cr);
+    public matchCOMMAND_24($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_24> {
+        return this.matchAnimTime($$dpth + 1, $$cr);
     }
-    public matchGRAPHICS_2D_COMMAND_3($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_COMMAND_3> {
-        return this.matchGRAPHICS_2D_GRAPHICS_COMMAND($$dpth + 1, $$cr);
+    public matchCOMMAND_25($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_25> {
+        return this.matchAntiAlias($$dpth + 1, $$cr);
     }
-    public matchGRAPHICS_2D_COMMAND_4($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_COMMAND_4> {
-        return this.matchGRAPHICS_2D_IMAGES_COMMAND($$dpth + 1, $$cr);
+    public matchCOMMAND_26($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_26> {
+        return this.matchAppTitle($$dpth + 1, $$cr);
     }
-    public matchGRAPHICS_2D_COMMAND_5($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_COMMAND_5> {
-        return this.matchGRAPHICS_2D_MOVIES_COMMAND($$dpth + 1, $$cr);
+    public matchCOMMAND_27($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_27> {
+        return this.matchAsc($$dpth + 1, $$cr);
     }
-    public matchGRAPHICS_2D_COMMAND_6($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_COMMAND_6> {
-        return this.matchGRAPHICS_2D_PIXEL_COMMAND($$dpth + 1, $$cr);
+    public matchCOMMAND_28($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_28> {
+        return this.matchASin($$dpth + 1, $$cr);
     }
-    public matchGRAPHICS_2D_COMMAND_7($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_COMMAND_7> {
-        return this.matchGRAPHICS_2D_TEXT_COMMAND($$dpth + 1, $$cr);
+    public matchCOMMAND_29($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_29> {
+        return this.matchATan($$dpth + 1, $$cr);
     }
-    public matchGRAPHICS_2D_DISPLAY_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_DISPLAY_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    public matchCOMMAND_30($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_30> {
+        return this.matchATan2($$dpth + 1, $$cr);
     }
-    public matchGRAPHICS_2D_GAMMA_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_GAMMA_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    public matchCOMMAND_31($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_31> {
+        return this.matchAutoMidHandle($$dpth + 1, $$cr);
     }
-    public matchGRAPHICS_2D_GRAPHICS_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_GRAPHICS_COMMAND> {
-        return this.choice<GRAPHICS_2D_GRAPHICS_COMMAND>([
-            () => this.matchGRAPHICS_2D_GRAPHICS_COMMAND_1($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_2D_GRAPHICS_COMMAND_2($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_2D_GRAPHICS_COMMAND_3($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_2D_GRAPHICS_COMMAND_4($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_2D_GRAPHICS_COMMAND_5($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_2D_GRAPHICS_COMMAND_6($$dpth + 1, $$cr),
-        ]);
+    public matchCOMMAND_32($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_32> {
+        return this.matchAutoSuspend($$dpth + 1, $$cr);
     }
-    public matchGRAPHICS_2D_GRAPHICS_COMMAND_1($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_GRAPHICS_COMMAND_1> {
+    public matchCOMMAND_33($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_33> {
+        return this.matchAvailVidMem($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_34($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_34> {
+        return this.matchBackBuffer($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_35($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_35> {
+        return this.matchBankSize($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_36($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_36> {
+        return this.matchBefore($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_37($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_37> {
+        return this.matchBin($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_38($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_38> {
+        return this.matchBreakKP($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_39($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_39> {
+        return this.matchBrushAlpha($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_40($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_40> {
+        return this.matchBrushBlend($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_41($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_41> {
+        return this.matchBrushColor($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_42($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_42> {
+        return this.matchBrushFX($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_43($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_43> {
+        return this.matchBrushShininess($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_44($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_44> {
+        return this.matchBrushTexture($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_45($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_45> {
+        return this.matchBSPAmbientLight($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_46($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_46> {
+        return this.matchBufferDirty($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_47($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_47> {
+        return this.matchButtonState($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_48($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_48> {
+        return this.matchCameraClsColor($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_49($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_49> {
+        return this.matchCameraClsMode($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_50($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_50> {
+        return this.matchCameraFogColor($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_51($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_51> {
+        return this.matchCameraFogMode($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_52($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_52> {
+        return this.matchCameraFogRange($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_53($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_53> {
+        return this.matchCameraPick($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_54($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_54> {
+        return this.matchCameraProject($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_55($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_55> {
+        return this.matchCameraProjMode($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_56($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_56> {
+        return this.matchCameraRange($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_57($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_57> {
+        return this.matchCameraViewport($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_58($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_58> {
+        return this.matchCameraZoom($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_59($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_59> {
+        return this.matchCanvasBuffer($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_60($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_60> {
+        return this.matchCaptureWorld($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_61($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_61> {
+        return this.matchCeil($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_62($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_62> {
+        return this.matchChangeDir($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_63($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_63> {
+        return this.matchChannelPan($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_64($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_64> {
+        return this.matchChannelPitch($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_65($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_65> {
+        return this.matchChannelPlaying($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_66($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_66> {
+        return this.matchChannelVolume($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_67($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_67> {
+        return this.matchCheckMenu($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_68($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_68> {
+        return this.matchChr($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_69($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_69> {
+        return this.matchClearCollisions($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_70($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_70> {
+        return this.matchClearGadgetItems($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_71($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_71> {
+        return this.matchClearSurface($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_72($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_72> {
+        return this.matchClearTextureFilters($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_73($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_73> {
+        return this.matchClearWorld($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_74($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_74> {
+        return this.matchClientHeight($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_75($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_75> {
+        return this.matchClientWidth($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_76($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_76> {
+        return this.matchCloseDir($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_77($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_77> {
+        return this.matchCloseFile($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_78($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_78> {
+        return this.matchCloseMovie($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_79($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_79> {
+        return this.matchCloseTCPServer($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_80($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_80> {
+        return this.matchCloseTCPStream($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_81($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_81> {
+        return this.matchCloseUDPStream($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_82($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_82> {
+        return this.matchCloseUDPStream($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_83($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_83> {
         return this.matchCls($$dpth + 1, $$cr);
     }
-    public matchGRAPHICS_2D_GRAPHICS_COMMAND_2($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_GRAPHICS_COMMAND_2> {
+    public matchCOMMAND_84($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_84> {
         return this.matchClsColor($$dpth + 1, $$cr);
     }
-    public matchGRAPHICS_2D_GRAPHICS_COMMAND_3($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_GRAPHICS_COMMAND_3> {
+    public matchCOMMAND_85($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_85> {
+        return this.matchCollapseTreeViewNode($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_86($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_86> {
+        return this.matchCollisionEntity($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_87($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_87> {
+        return this.matchCollisionNX($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_88($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_88> {
+        return this.matchCollisionNY($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_89($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_89> {
+        return this.matchCollisionNZ($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_90($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_90> {
+        return this.matchCollisions($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_91($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_91> {
+        return this.matchCollisionSurface($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_92($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_92> {
+        return this.matchCollisionTime($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_93($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_93> {
+        return this.matchCollisionTriangle($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_94($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_94> {
+        return this.matchCollisionX($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_95($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_95> {
+        return this.matchCollisionY($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_96($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_96> {
+        return this.matchCollisionZ($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_97($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_97> {
         return this.matchColor($$dpth + 1, $$cr);
     }
-    public matchGRAPHICS_2D_GRAPHICS_COMMAND_4($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_GRAPHICS_COMMAND_4> {
+    public matchCOMMAND_98($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_98> {
+        return this.matchColorBlue($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_99($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_99> {
+        return this.matchColorGreen($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_100($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_100> {
+        return this.matchColorRed($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_101($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_101> {
+        return this.matchColorRed($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_102($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_102> {
+        return this.matchCommandLine($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_103($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_103> {
+        return this.matchConfirm($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_104($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_104> {
+        return this.matchCopyBank($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_105($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_105> {
+        return this.matchCopyEntity($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_106($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_106> {
+        return this.matchCopyFile($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_107($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_107> {
+        return this.matchCopyImage($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_108($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_108> {
+        return this.matchCopyMesh($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_109($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_109> {
+        return this.matchCopyPixel($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_110($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_110> {
+        return this.matchCopyPixelFast($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_111($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_111> {
+        return this.matchCopyRect($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_112($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_112> {
+        return this.matchCopyStream($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_113($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_113> {
+        return this.matchCos($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_114($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_114> {
+        return this.matchCountChildren($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_115($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_115> {
+        return this.matchCountCollisions($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_116($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_116> {
+        return this.matchCountGadgetItems($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_117($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_117> {
+        return this.matchCountGfxDrivers($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_118($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_118> {
+        return this.matchCountGfxModes($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_119($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_119> {
+        return this.matchCountGfxModes3D($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_120($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_120> {
+        return this.matchCountHostIPs($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_121($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_121> {
+        return this.matchCountSurfaces($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_122($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_122> {
+        return this.matchCountTreeViewNodes($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_123($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_123> {
+        return this.matchCountTriangles($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_124($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_124> {
+        return this.matchCountVertices($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_125($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_125> {
+        return this.matchCreateBank($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_126($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_126> {
+        return this.matchCreateButton($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_127($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_127> {
+        return this.matchCreateCamera($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_128($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_128> {
+        return this.matchCreateCanvas($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_129($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_129> {
+        return this.matchCreateComboBox($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_130($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_130> {
+        return this.matchCreateCone($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_131($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_131> {
+        return this.matchCreateCube($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_132($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_132> {
+        return this.matchCreateCylinder($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_133($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_133> {
+        return this.matchCreateDir($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_134($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_134> {
+        return this.matchCreateHtmlView($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_135($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_135> {
+        return this.matchCreateImage($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_136($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_136> {
+        return this.matchCreateLabel($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_137($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_137> {
+        return this.matchCreateLight($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_138($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_138> {
+        return this.matchCreateListBox($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_139($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_139> {
+        return this.matchCreateListener($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_140($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_140> {
+        return this.matchCreateMenu($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_141($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_141> {
+        return this.matchCreateMesh($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_142($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_142> {
+        return this.matchCreateMirror($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_143($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_143> {
+        return this.matchCreateNetPlayer($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_144($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_144> {
+        return this.matchCreatePanel($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_145($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_145> {
+        return this.matchCreatePivot($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_146($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_146> {
+        return this.matchCreatePlane($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_147($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_147> {
+        return this.matchCreateProcess($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_148($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_148> {
+        return this.matchCreateProgBar($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_149($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_149> {
+        return this.matchCreateSlider($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_150($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_150> {
+        return this.matchCreateSphere($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_151($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_151> {
+        return this.matchCreateSprite($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_152($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_152> {
+        return this.matchCreateSurface($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_153($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_153> {
+        return this.matchCreateTabber($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_154($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_154> {
+        return this.matchCreateTCPServer($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_155($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_155> {
+        return this.matchCreateTerrain($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_156($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_156> {
+        return this.matchCreateTextArea($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_157($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_157> {
+        return this.matchCreateTextField($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_158($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_158> {
+        return this.matchCreateTexture($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_159($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_159> {
+        return this.matchCreateTimer($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_160($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_160> {
+        return this.matchCreateToolBar($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_161($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_161> {
+        return this.matchCreateTreeView($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_162($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_162> {
+        return this.matchCreateUDPStream($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_163($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_163> {
+        return this.matchCreateWindow($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_164($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_164> {
+        return this.matchCurrentDate($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_165($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_165> {
+        return this.matchCurrentDir($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_166($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_166> {
+        return this.matchCurrentTime($$dpth + 1, $$cr);
+    }
+    public matchCOMMAND_167($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_167> {
         return this.matchLine($$dpth + 1, $$cr);
     }
-    public matchGRAPHICS_2D_GRAPHICS_COMMAND_5($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_GRAPHICS_COMMAND_5> {
+    public matchCOMMAND_168($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_168> {
         return this.matchOval($$dpth + 1, $$cr);
     }
-    public matchGRAPHICS_2D_GRAPHICS_COMMAND_6($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_GRAPHICS_COMMAND_6> {
+    public matchCOMMAND_169($$dpth: number, $$cr?: ContextRecorder): Nullable<COMMAND_169> {
         return this.matchRect($$dpth + 1, $$cr);
+    }
+    public matchAbs($$dpth: number, $$cr?: ContextRecorder): Nullable<Abs> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAcceptTCPStream($$dpth: number, $$cr?: ContextRecorder): Nullable<AcceptTCPStream> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchACos($$dpth: number, $$cr?: ContextRecorder): Nullable<ACos> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchActivateGadget($$dpth: number, $$cr?: ContextRecorder): Nullable<ActivateGadget> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchActivateWindow($$dpth: number, $$cr?: ContextRecorder): Nullable<ActivateWindow> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchActiveObjects($$dpth: number, $$cr?: ContextRecorder): Nullable<ActiveObjects> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchActiveTextures($$dpth: number, $$cr?: ContextRecorder): Nullable<ActiveTextures> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchActiveWindow($$dpth: number, $$cr?: ContextRecorder): Nullable<ActiveWindow> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAddAnimSeq($$dpth: number, $$cr?: ContextRecorder): Nullable<AddAnimSeq> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAddGadgetItem($$dpth: number, $$cr?: ContextRecorder): Nullable<AddGadgetItem> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAddMesh($$dpth: number, $$cr?: ContextRecorder): Nullable<AddMesh> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAddTextAreaText($$dpth: number, $$cr?: ContextRecorder): Nullable<AddTextAreaText> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAddTreeViewNode($$dpth: number, $$cr?: ContextRecorder): Nullable<AddTreeViewNode> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAddTriangle($$dpth: number, $$cr?: ContextRecorder): Nullable<AddTriangle> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAddVertex($$dpth: number, $$cr?: ContextRecorder): Nullable<AddVertex> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAddVKLen($$dpth: number, $$cr?: ContextRecorder): Nullable<AddVKLen> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAfter($$dpth: number, $$cr?: ContextRecorder): Nullable<After> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAlignToVector($$dpth: number, $$cr?: ContextRecorder): Nullable<AlignToVector> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAmbientLight($$dpth: number, $$cr?: ContextRecorder): Nullable<AmbientLight> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAnimate($$dpth: number, $$cr?: ContextRecorder): Nullable<Animate> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAnimating($$dpth: number, $$cr?: ContextRecorder): Nullable<Animating> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAnimLength($$dpth: number, $$cr?: ContextRecorder): Nullable<AnimLength> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAnimSeq($$dpth: number, $$cr?: ContextRecorder): Nullable<AnimSeq> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAnimTime($$dpth: number, $$cr?: ContextRecorder): Nullable<AnimTime> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAntiAlias($$dpth: number, $$cr?: ContextRecorder): Nullable<AntiAlias> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAppTitle($$dpth: number, $$cr?: ContextRecorder): Nullable<AppTitle> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAsc($$dpth: number, $$cr?: ContextRecorder): Nullable<Asc> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchASin($$dpth: number, $$cr?: ContextRecorder): Nullable<ASin> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchATan($$dpth: number, $$cr?: ContextRecorder): Nullable<ATan> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchATan2($$dpth: number, $$cr?: ContextRecorder): Nullable<ATan2> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAutoMidHandle($$dpth: number, $$cr?: ContextRecorder): Nullable<AutoMidHandle> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAutoSuspend($$dpth: number, $$cr?: ContextRecorder): Nullable<AutoSuspend> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchAvailVidMem($$dpth: number, $$cr?: ContextRecorder): Nullable<AvailVidMem> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchBackBuffer($$dpth: number, $$cr?: ContextRecorder): Nullable<BackBuffer> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchBankSize($$dpth: number, $$cr?: ContextRecorder): Nullable<BankSize> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchBefore($$dpth: number, $$cr?: ContextRecorder): Nullable<Before> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchBin($$dpth: number, $$cr?: ContextRecorder): Nullable<Bin> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchBreakKP($$dpth: number, $$cr?: ContextRecorder): Nullable<BreakKP> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchBrushAlpha($$dpth: number, $$cr?: ContextRecorder): Nullable<BrushAlpha> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchBrushBlend($$dpth: number, $$cr?: ContextRecorder): Nullable<BrushBlend> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchBrushColor($$dpth: number, $$cr?: ContextRecorder): Nullable<BrushColor> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchBrushFX($$dpth: number, $$cr?: ContextRecorder): Nullable<BrushFX> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchBrushShininess($$dpth: number, $$cr?: ContextRecorder): Nullable<BrushShininess> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchBrushTexture($$dpth: number, $$cr?: ContextRecorder): Nullable<BrushTexture> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchBSPAmbientLight($$dpth: number, $$cr?: ContextRecorder): Nullable<BSPAmbientLight> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchBufferDirty($$dpth: number, $$cr?: ContextRecorder): Nullable<BufferDirty> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchButtonState($$dpth: number, $$cr?: ContextRecorder): Nullable<ButtonState> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCameraClsColor($$dpth: number, $$cr?: ContextRecorder): Nullable<CameraClsColor> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCameraClsMode($$dpth: number, $$cr?: ContextRecorder): Nullable<CameraClsMode> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCameraFogColor($$dpth: number, $$cr?: ContextRecorder): Nullable<CameraFogColor> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCameraFogMode($$dpth: number, $$cr?: ContextRecorder): Nullable<CameraFogMode> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCameraFogRange($$dpth: number, $$cr?: ContextRecorder): Nullable<CameraFogRange> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCameraPick($$dpth: number, $$cr?: ContextRecorder): Nullable<CameraPick> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCameraProject($$dpth: number, $$cr?: ContextRecorder): Nullable<CameraProject> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCameraProjMode($$dpth: number, $$cr?: ContextRecorder): Nullable<CameraProjMode> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCameraRange($$dpth: number, $$cr?: ContextRecorder): Nullable<CameraRange> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCameraViewport($$dpth: number, $$cr?: ContextRecorder): Nullable<CameraViewport> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCameraZoom($$dpth: number, $$cr?: ContextRecorder): Nullable<CameraZoom> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCanvasBuffer($$dpth: number, $$cr?: ContextRecorder): Nullable<CanvasBuffer> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCaptureWorld($$dpth: number, $$cr?: ContextRecorder): Nullable<CaptureWorld> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCeil($$dpth: number, $$cr?: ContextRecorder): Nullable<Ceil> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchChangeDir($$dpth: number, $$cr?: ContextRecorder): Nullable<ChangeDir> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchChannelPan($$dpth: number, $$cr?: ContextRecorder): Nullable<ChannelPan> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchChannelPitch($$dpth: number, $$cr?: ContextRecorder): Nullable<ChannelPitch> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchChannelPlaying($$dpth: number, $$cr?: ContextRecorder): Nullable<ChannelPlaying> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchChannelVolume($$dpth: number, $$cr?: ContextRecorder): Nullable<ChannelVolume> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCheckMenu($$dpth: number, $$cr?: ContextRecorder): Nullable<CheckMenu> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchChr($$dpth: number, $$cr?: ContextRecorder): Nullable<Chr> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchClearCollisions($$dpth: number, $$cr?: ContextRecorder): Nullable<ClearCollisions> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchClearGadgetItems($$dpth: number, $$cr?: ContextRecorder): Nullable<ClearGadgetItems> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchClearSurface($$dpth: number, $$cr?: ContextRecorder): Nullable<ClearSurface> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchClearTextureFilters($$dpth: number, $$cr?: ContextRecorder): Nullable<ClearTextureFilters> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchClearWorld($$dpth: number, $$cr?: ContextRecorder): Nullable<ClearWorld> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchClientHeight($$dpth: number, $$cr?: ContextRecorder): Nullable<ClientHeight> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchClientWidth($$dpth: number, $$cr?: ContextRecorder): Nullable<ClientWidth> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCloseDir($$dpth: number, $$cr?: ContextRecorder): Nullable<CloseDir> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCloseFile($$dpth: number, $$cr?: ContextRecorder): Nullable<CloseFile> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCloseMovie($$dpth: number, $$cr?: ContextRecorder): Nullable<CloseMovie> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCloseTCPServer($$dpth: number, $$cr?: ContextRecorder): Nullable<CloseTCPServer> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCloseTCPStream($$dpth: number, $$cr?: ContextRecorder): Nullable<CloseTCPStream> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCloseUDPStream($$dpth: number, $$cr?: ContextRecorder): Nullable<CloseUDPStream> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCloseUDPStream($$dpth: number, $$cr?: ContextRecorder): Nullable<CloseUDPStream> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
     }
     public matchCls($$dpth: number, $$cr?: ContextRecorder): Nullable<Cls> {
         return this.runner<Cls>($$dpth,
@@ -630,12 +2049,13 @@ export class Parser {
                 if (log) {
                     log("Cls");
                 }
+                let $scope$next: Nullable<Nullable<ROOT>>;
                 let $$res: Nullable<Cls> = null;
                 if (true
                     && this.regexAccept(String.raw`(?:[cC][lL][sS]\s*)`, $$dpth + 1, $$cr) !== null
-                    && ((this.matchROOT($$dpth + 1, $$cr)) || true)
+                    && (($scope$next = this.matchROOT($$dpth + 1, $$cr)) || true)
                 ) {
-                    $$res = {kind: ASTKinds.Cls, };
+                    $$res = {kind: ASTKinds.Cls, next: $scope$next};
                 }
                 return $$res;
             }, $$cr)();
@@ -649,6 +2069,7 @@ export class Parser {
                 let $scope$red: Nullable<NUMBER>;
                 let $scope$green: Nullable<NUMBER>;
                 let $scope$blue: Nullable<NUMBER>;
+                let $scope$next: Nullable<Nullable<ROOT>>;
                 let $$res: Nullable<ClsColor> = null;
                 if (true
                     && this.regexAccept(String.raw`(?:[cC][lL][sS][cC][oO][lL][oO][rR]\s+)`, $$dpth + 1, $$cr) !== null
@@ -657,13 +2078,49 @@ export class Parser {
                     && ($scope$green = this.matchNUMBER($$dpth + 1, $$cr)) !== null
                     && this.regexAccept(String.raw`(?:,\s*)`, $$dpth + 1, $$cr) !== null
                     && ($scope$blue = this.matchNUMBER($$dpth + 1, $$cr)) !== null
-                    && this.regexAccept(String.raw`(?:,\s*)`, $$dpth + 1, $$cr) !== null
-                    && ((this.matchROOT($$dpth + 1, $$cr)) || true)
+                    && this.regexAccept(String.raw`(?:\s*)`, $$dpth + 1, $$cr) !== null
+                    && (($scope$next = this.matchROOT($$dpth + 1, $$cr)) || true)
                 ) {
-                    $$res = {kind: ASTKinds.ClsColor, red: $scope$red, green: $scope$green, blue: $scope$blue};
+                    $$res = {kind: ASTKinds.ClsColor, red: $scope$red, green: $scope$green, blue: $scope$blue, next: $scope$next};
                 }
                 return $$res;
             }, $$cr)();
+    }
+    public matchCollapseTreeViewNode($$dpth: number, $$cr?: ContextRecorder): Nullable<CollapseTreeViewNode> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCollisionEntity($$dpth: number, $$cr?: ContextRecorder): Nullable<CollisionEntity> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCollisionNX($$dpth: number, $$cr?: ContextRecorder): Nullable<CollisionNX> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCollisionNY($$dpth: number, $$cr?: ContextRecorder): Nullable<CollisionNY> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCollisionNZ($$dpth: number, $$cr?: ContextRecorder): Nullable<CollisionNZ> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCollisions($$dpth: number, $$cr?: ContextRecorder): Nullable<Collisions> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCollisionSurface($$dpth: number, $$cr?: ContextRecorder): Nullable<CollisionSurface> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCollisionTime($$dpth: number, $$cr?: ContextRecorder): Nullable<CollisionTime> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCollisionTriangle($$dpth: number, $$cr?: ContextRecorder): Nullable<CollisionTriangle> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCollisionX($$dpth: number, $$cr?: ContextRecorder): Nullable<CollisionX> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCollisionY($$dpth: number, $$cr?: ContextRecorder): Nullable<CollisionY> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCollisionZ($$dpth: number, $$cr?: ContextRecorder): Nullable<CollisionZ> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
     }
     public matchColor($$dpth: number, $$cr?: ContextRecorder): Nullable<Color> {
         return this.runner<Color>($$dpth,
@@ -674,6 +2131,7 @@ export class Parser {
                 let $scope$red: Nullable<NUMBER>;
                 let $scope$green: Nullable<NUMBER>;
                 let $scope$blue: Nullable<NUMBER>;
+                let $scope$next: Nullable<Nullable<ROOT>>;
                 let $$res: Nullable<Color> = null;
                 if (true
                     && this.regexAccept(String.raw`(?:[cC][oO][lL][oO][rR]\s+)`, $$dpth + 1, $$cr) !== null
@@ -682,13 +2140,220 @@ export class Parser {
                     && ($scope$green = this.matchNUMBER($$dpth + 1, $$cr)) !== null
                     && this.regexAccept(String.raw`(?:,\s*)`, $$dpth + 1, $$cr) !== null
                     && ($scope$blue = this.matchNUMBER($$dpth + 1, $$cr)) !== null
-                    && this.regexAccept(String.raw`(?:,\s*)`, $$dpth + 1, $$cr) !== null
-                    && ((this.matchROOT($$dpth + 1, $$cr)) || true)
+                    && this.regexAccept(String.raw`(?:\s*)`, $$dpth + 1, $$cr) !== null
+                    && (($scope$next = this.matchROOT($$dpth + 1, $$cr)) || true)
                 ) {
-                    $$res = {kind: ASTKinds.Color, red: $scope$red, green: $scope$green, blue: $scope$blue};
+                    $$res = {kind: ASTKinds.Color, red: $scope$red, green: $scope$green, blue: $scope$blue, next: $scope$next};
                 }
                 return $$res;
             }, $$cr)();
+    }
+    public matchColorBlue($$dpth: number, $$cr?: ContextRecorder): Nullable<ColorBlue> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchColorGreen($$dpth: number, $$cr?: ContextRecorder): Nullable<ColorGreen> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchColorRed($$dpth: number, $$cr?: ContextRecorder): Nullable<ColorRed> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchColorRed($$dpth: number, $$cr?: ContextRecorder): Nullable<ColorRed> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCommandLine($$dpth: number, $$cr?: ContextRecorder): Nullable<CommandLine> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchConfirm($$dpth: number, $$cr?: ContextRecorder): Nullable<Confirm> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCopyBank($$dpth: number, $$cr?: ContextRecorder): Nullable<CopyBank> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCopyEntity($$dpth: number, $$cr?: ContextRecorder): Nullable<CopyEntity> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCopyFile($$dpth: number, $$cr?: ContextRecorder): Nullable<CopyFile> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCopyImage($$dpth: number, $$cr?: ContextRecorder): Nullable<CopyImage> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCopyMesh($$dpth: number, $$cr?: ContextRecorder): Nullable<CopyMesh> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCopyPixel($$dpth: number, $$cr?: ContextRecorder): Nullable<CopyPixel> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCopyPixelFast($$dpth: number, $$cr?: ContextRecorder): Nullable<CopyPixelFast> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCopyRect($$dpth: number, $$cr?: ContextRecorder): Nullable<CopyRect> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCopyStream($$dpth: number, $$cr?: ContextRecorder): Nullable<CopyStream> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCos($$dpth: number, $$cr?: ContextRecorder): Nullable<Cos> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCountChildren($$dpth: number, $$cr?: ContextRecorder): Nullable<CountChildren> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCountCollisions($$dpth: number, $$cr?: ContextRecorder): Nullable<CountCollisions> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCountGadgetItems($$dpth: number, $$cr?: ContextRecorder): Nullable<CountGadgetItems> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCountGfxDrivers($$dpth: number, $$cr?: ContextRecorder): Nullable<CountGfxDrivers> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCountGfxModes($$dpth: number, $$cr?: ContextRecorder): Nullable<CountGfxModes> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCountGfxModes3D($$dpth: number, $$cr?: ContextRecorder): Nullable<CountGfxModes3D> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCountHostIPs($$dpth: number, $$cr?: ContextRecorder): Nullable<CountHostIPs> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCountSurfaces($$dpth: number, $$cr?: ContextRecorder): Nullable<CountSurfaces> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCountTreeViewNodes($$dpth: number, $$cr?: ContextRecorder): Nullable<CountTreeViewNodes> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCountTriangles($$dpth: number, $$cr?: ContextRecorder): Nullable<CountTriangles> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCountVertices($$dpth: number, $$cr?: ContextRecorder): Nullable<CountVertices> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateBank($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateBank> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateButton($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateButton> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateCamera($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateCamera> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateCanvas($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateCanvas> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateComboBox($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateComboBox> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateCone($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateCone> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateCube($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateCube> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateCylinder($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateCylinder> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateDir($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateDir> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateHtmlView($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateHtmlView> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateImage($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateImage> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateLabel($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateLabel> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateLight($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateLight> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateListBox($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateListBox> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateListener($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateListener> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateMenu($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateMenu> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateMesh($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateMesh> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateMirror($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateMirror> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateNetPlayer($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateNetPlayer> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreatePanel($$dpth: number, $$cr?: ContextRecorder): Nullable<CreatePanel> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreatePivot($$dpth: number, $$cr?: ContextRecorder): Nullable<CreatePivot> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreatePlane($$dpth: number, $$cr?: ContextRecorder): Nullable<CreatePlane> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateProcess($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateProcess> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateProgBar($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateProgBar> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateSlider($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateSlider> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateSphere($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateSphere> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateSprite($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateSprite> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateSurface($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateSurface> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateTabber($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateTabber> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateTCPServer($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateTCPServer> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateTerrain($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateTerrain> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateTextArea($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateTextArea> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateTextField($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateTextField> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateTexture($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateTexture> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateTimer($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateTimer> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateToolBar($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateToolBar> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateTreeView($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateTreeView> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateUDPStream($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateUDPStream> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCreateWindow($$dpth: number, $$cr?: ContextRecorder): Nullable<CreateWindow> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCurrentDate($$dpth: number, $$cr?: ContextRecorder): Nullable<CurrentDate> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCurrentDir($$dpth: number, $$cr?: ContextRecorder): Nullable<CurrentDir> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
+    }
+    public matchCurrentTime($$dpth: number, $$cr?: ContextRecorder): Nullable<CurrentTime> {
+        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
     }
     public matchLine($$dpth: number, $$cr?: ContextRecorder): Nullable<Line> {
         return this.runner<Line>($$dpth,
@@ -700,6 +2365,7 @@ export class Parser {
                 let $scope$beginY: Nullable<NUMBER>;
                 let $scope$endX: Nullable<NUMBER>;
                 let $scope$endY: Nullable<NUMBER>;
+                let $scope$next: Nullable<Nullable<ROOT>>;
                 let $$res: Nullable<Line> = null;
                 if (true
                     && this.regexAccept(String.raw`(?:[lL][iI][nN][eE]\s+)`, $$dpth + 1, $$cr) !== null
@@ -710,10 +2376,10 @@ export class Parser {
                     && ($scope$endX = this.matchNUMBER($$dpth + 1, $$cr)) !== null
                     && this.regexAccept(String.raw`(?:,\s*)`, $$dpth + 1, $$cr) !== null
                     && ($scope$endY = this.matchNUMBER($$dpth + 1, $$cr)) !== null
-                    && this.regexAccept(String.raw`(?:,\s*)`, $$dpth + 1, $$cr) !== null
-                    && ((this.matchROOT($$dpth + 1, $$cr)) || true)
+                    && this.regexAccept(String.raw`(?:\s*)`, $$dpth + 1, $$cr) !== null
+                    && (($scope$next = this.matchROOT($$dpth + 1, $$cr)) || true)
                 ) {
-                    $$res = {kind: ASTKinds.Line, beginX: $scope$beginX, beginY: $scope$beginY, endX: $scope$endX, endY: $scope$endY};
+                    $$res = {kind: ASTKinds.Line, beginX: $scope$beginX, beginY: $scope$beginY, endX: $scope$endX, endY: $scope$endY, next: $scope$next};
                 }
                 return $$res;
             }, $$cr)();
@@ -728,6 +2394,7 @@ export class Parser {
                 let $scope$y: Nullable<NUMBER>;
                 let $scope$width: Nullable<NUMBER>;
                 let $scope$height: Nullable<NUMBER>;
+                let $scope$next: Nullable<Nullable<ROOT>>;
                 let $$res: Nullable<Oval> = null;
                 if (true
                     && this.regexAccept(String.raw`(?:[oO][vV][aA][lL]\s+)`, $$dpth + 1, $$cr) !== null
@@ -738,10 +2405,10 @@ export class Parser {
                     && ($scope$width = this.matchNUMBER($$dpth + 1, $$cr)) !== null
                     && this.regexAccept(String.raw`(?:,\s*)`, $$dpth + 1, $$cr) !== null
                     && ($scope$height = this.matchNUMBER($$dpth + 1, $$cr)) !== null
-                    && this.regexAccept(String.raw`(?:,\s*)`, $$dpth + 1, $$cr) !== null
-                    && ((this.matchROOT($$dpth + 1, $$cr)) || true)
+                    && this.regexAccept(String.raw`(?:\s*)`, $$dpth + 1, $$cr) !== null
+                    && (($scope$next = this.matchROOT($$dpth + 1, $$cr)) || true)
                 ) {
-                    $$res = {kind: ASTKinds.Oval, x: $scope$x, y: $scope$y, width: $scope$width, height: $scope$height};
+                    $$res = {kind: ASTKinds.Oval, x: $scope$x, y: $scope$y, width: $scope$width, height: $scope$height, next: $scope$next};
                 }
                 return $$res;
             }, $$cr)();
@@ -756,6 +2423,7 @@ export class Parser {
                 let $scope$y: Nullable<NUMBER>;
                 let $scope$width: Nullable<NUMBER>;
                 let $scope$height: Nullable<NUMBER>;
+                let $scope$next: Nullable<Nullable<ROOT>>;
                 let $$res: Nullable<Rect> = null;
                 if (true
                     && this.regexAccept(String.raw`(?:[rR][eE][cC][tT]\s+)`, $$dpth + 1, $$cr) !== null
@@ -766,342 +2434,13 @@ export class Parser {
                     && ($scope$width = this.matchNUMBER($$dpth + 1, $$cr)) !== null
                     && this.regexAccept(String.raw`(?:,\s*)`, $$dpth + 1, $$cr) !== null
                     && ($scope$height = this.matchNUMBER($$dpth + 1, $$cr)) !== null
-                    && this.regexAccept(String.raw`(?:,\s*)`, $$dpth + 1, $$cr) !== null
-                    && ((this.matchROOT($$dpth + 1, $$cr)) || true)
+                    && this.regexAccept(String.raw`(?:\s*)`, $$dpth + 1, $$cr) !== null
+                    && (($scope$next = this.matchROOT($$dpth + 1, $$cr)) || true)
                 ) {
-                    $$res = {kind: ASTKinds.Rect, x: $scope$x, y: $scope$y, width: $scope$width, height: $scope$height};
+                    $$res = {kind: ASTKinds.Rect, x: $scope$x, y: $scope$y, width: $scope$width, height: $scope$height, next: $scope$next};
                 }
                 return $$res;
             }, $$cr)();
-    }
-    public matchGRAPHICS_2D_IMAGES_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_IMAGES_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_2D_MOVIES_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_MOVIES_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_2D_PIXEL_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_PIXEL_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_2D_TEXT_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_2D_TEXT_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND> {
-        return this.choice<GRAPHICS_3D_COMMAND>([
-            () => this.matchGRAPHICS_3D_COMMAND_1($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_3D_COMMAND_2($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_3D_COMMAND_3($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_3D_COMMAND_4($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_3D_COMMAND_5($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_3D_COMMAND_6($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_3D_COMMAND_7($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_3D_COMMAND_8($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_3D_COMMAND_9($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_3D_COMMAND_10($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_3D_COMMAND_11($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_3D_COMMAND_12($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_3D_COMMAND_13($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_3D_COMMAND_14($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_3D_COMMAND_15($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_3D_COMMAND_16($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_3D_COMMAND_17($$dpth + 1, $$cr),
-            () => this.matchGRAPHICS_3D_COMMAND_18($$dpth + 1, $$cr),
-        ]);
-    }
-    public matchGRAPHICS_3D_COMMAND_1($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND_1> {
-        return this.matchGRAPHICS_3D_ANIMATIONS_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COMMAND_2($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND_2> {
-        return this.matchGRAPHICS_3D_BRUSHES_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COMMAND_3($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND_3> {
-        return this.matchGRAPHICS_3D_CAMERA_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COMMAND_4($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND_4> {
-        return this.matchGRAPHICS_3D_COLLISIONS_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COMMAND_5($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND_5> {
-        return this.matchGRAPHICS_3D_CONTROLS_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COMMAND_6($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND_6> {
-        return this.matchGRAPHICS_3D_COORDINATES_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COMMAND_7($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND_7> {
-        return this.matchGRAPHICS_3D_DIVERSE_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COMMAND_8($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND_8> {
-        return this.matchGRAPHICS_3D_LIGHT_SHADOW_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COMMAND_9($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND_9> {
-        return this.matchGRAPHICS_3D_MESHES_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COMMAND_10($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND_10> {
-        return this.matchGRAPHICS_3D_PICKING_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COMMAND_11($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND_11> {
-        return this.matchGRAPHICS_3D_SCENE_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COMMAND_12($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND_12> {
-        return this.matchGRAPHICS_3D_SCENERY_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COMMAND_13($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND_13> {
-        return this.matchGRAPHICS_3D_SCREEN_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COMMAND_14($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND_14> {
-        return this.matchGRAPHICS_3D_SPRITES_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COMMAND_15($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND_15> {
-        return this.matchGRAPHICS_3D_STATUS_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COMMAND_16($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND_16> {
-        return this.matchGRAPHICS_3D_SURFACES_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COMMAND_17($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND_17> {
-        return this.matchGRAPHICS_3D_TERRAIN_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COMMAND_18($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COMMAND_18> {
-        return this.matchGRAPHICS_3D_TEXTURES_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_ANIMATIONS_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_ANIMATIONS_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_BRUSHES_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_BRUSHES_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_CAMERA_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_CAMERA_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COLLISIONS_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COLLISIONS_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_CONTROLS_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_CONTROLS_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_COORDINATES_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_COORDINATES_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_DIVERSE_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_DIVERSE_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_LIGHT_SHADOW_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_LIGHT_SHADOW_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_MESHES_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_MESHES_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_PICKING_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_PICKING_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_SCENE_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_SCENE_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_SCENERY_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_SCENERY_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_SCREEN_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_SCREEN_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_SPRITES_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_SPRITES_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_STATUS_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_STATUS_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_SURFACES_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_SURFACES_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_TERRAIN_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_TERRAIN_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGRAPHICS_3D_TEXTURES_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GRAPHICS_3D_TEXTURES_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND> {
-        return this.choice<GUI_COMMAND>([
-            () => this.matchGUI_COMMAND_1($$dpth + 1, $$cr),
-            () => this.matchGUI_COMMAND_2($$dpth + 1, $$cr),
-            () => this.matchGUI_COMMAND_3($$dpth + 1, $$cr),
-            () => this.matchGUI_COMMAND_4($$dpth + 1, $$cr),
-            () => this.matchGUI_COMMAND_5($$dpth + 1, $$cr),
-            () => this.matchGUI_COMMAND_6($$dpth + 1, $$cr),
-            () => this.matchGUI_COMMAND_7($$dpth + 1, $$cr),
-            () => this.matchGUI_COMMAND_8($$dpth + 1, $$cr),
-            () => this.matchGUI_COMMAND_9($$dpth + 1, $$cr),
-            () => this.matchGUI_COMMAND_10($$dpth + 1, $$cr),
-            () => this.matchGUI_COMMAND_11($$dpth + 1, $$cr),
-            () => this.matchGUI_COMMAND_12($$dpth + 1, $$cr),
-            () => this.matchGUI_COMMAND_13($$dpth + 1, $$cr),
-            () => this.matchGUI_COMMAND_14($$dpth + 1, $$cr),
-            () => this.matchGUI_COMMAND_15($$dpth + 1, $$cr),
-            () => this.matchGUI_COMMAND_16($$dpth + 1, $$cr),
-            () => this.matchGUI_COMMAND_17($$dpth + 1, $$cr),
-            () => this.matchGUI_COMMAND_18($$dpth + 1, $$cr),
-            () => this.matchGUI_COMMAND_19($$dpth + 1, $$cr),
-        ]);
-    }
-    public matchGUI_COMMAND_1($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_1> {
-        return this.matchGUI_BUTTON_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND_2($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_2> {
-        return this.matchGUI_CANVAS_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND_3($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_3> {
-        return this.matchGUI_DESKTOP_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND_4($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_4> {
-        return this.matchGUI_DIVERSE_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND_5($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_5> {
-        return this.matchGUI_EVENT_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND_6($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_6> {
-        return this.matchGUI_GADGET_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND_7($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_7> {
-        return this.matchGUI_HTML_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND_8($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_8> {
-        return this.matchGUI_ICON_STRIP_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND_9($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_9> {
-        return this.matchGUI_LIST_TABBER_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND_10($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_10> {
-        return this.matchGUI_MENU_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND_11($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_11> {
-        return this.matchGUI_PANEL_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND_12($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_12> {
-        return this.matchGUI_PROGRESS_BAR_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND_13($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_13> {
-        return this.matchGUI_REQUEST_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND_14($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_14> {
-        return this.matchGUI_SLIDER_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND_15($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_15> {
-        return this.matchGUI_TEXT_AREA_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND_16($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_16> {
-        return this.matchGUI_TEXT_FIELD_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND_17($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_17> {
-        return this.matchGUI_TOOLBAR_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND_18($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_18> {
-        return this.matchGUI_TREE_VIEW_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_COMMAND_19($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_COMMAND_19> {
-        return this.matchGUI_WINDOW_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchGUI_BUTTON_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_BUTTON_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_CANVAS_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_CANVAS_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_DESKTOP_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_DESKTOP_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_DIVERSE_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_DIVERSE_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_EVENT_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_EVENT_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_GADGET_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_GADGET_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_HTML_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_HTML_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_ICON_STRIP_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_ICON_STRIP_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_LIST_TABBER_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_LIST_TABBER_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_MENU_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_MENU_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_PANEL_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_PANEL_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_PROGRESS_BAR_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_PROGRESS_BAR_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_REQUEST_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_REQUEST_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_SLIDER_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_SLIDER_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_TEXT_AREA_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_TEXT_AREA_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_TEXT_FIELD_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_TEXT_FIELD_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_TOOLBAR_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_TOOLBAR_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_TREE_VIEW_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_TREE_VIEW_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchGUI_WINDOW_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<GUI_WINDOW_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchIO_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<IO_COMMAND> {
-        return this.choice<IO_COMMAND>([
-            () => this.matchIO_COMMAND_1($$dpth + 1, $$cr),
-            () => this.matchIO_COMMAND_2($$dpth + 1, $$cr),
-            () => this.matchIO_COMMAND_3($$dpth + 1, $$cr),
-        ]);
-    }
-    public matchIO_COMMAND_1($$dpth: number, $$cr?: ContextRecorder): Nullable<IO_COMMAND_1> {
-        return this.matchIO_GAMEPAD_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchIO_COMMAND_2($$dpth: number, $$cr?: ContextRecorder): Nullable<IO_COMMAND_2> {
-        return this.matchIO_KEYBOARD_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchIO_COMMAND_3($$dpth: number, $$cr?: ContextRecorder): Nullable<IO_COMMAND_3> {
-        return this.matchIO_MOUSE_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchIO_GAMEPAD_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<IO_GAMEPAD_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchIO_KEYBOARD_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<IO_KEYBOARD_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchIO_MOUSE_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<IO_MOUSE_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchSOUND_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<SOUND_COMMAND> {
-        return this.choice<SOUND_COMMAND>([
-            () => this.matchSOUND_COMMAND_1($$dpth + 1, $$cr),
-            () => this.matchSOUND_COMMAND_2($$dpth + 1, $$cr),
-            () => this.matchSOUND_COMMAND_3($$dpth + 1, $$cr),
-        ]);
-    }
-    public matchSOUND_COMMAND_1($$dpth: number, $$cr?: ContextRecorder): Nullable<SOUND_COMMAND_1> {
-        return this.matchSOUND_3D_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchSOUND_COMMAND_2($$dpth: number, $$cr?: ContextRecorder): Nullable<SOUND_COMMAND_2> {
-        return this.matchSOUND_CHANNELS_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchSOUND_COMMAND_3($$dpth: number, $$cr?: ContextRecorder): Nullable<SOUND_COMMAND_3> {
-        return this.matchSOUND_MUSIC_SAMPLES_COMMAND($$dpth + 1, $$cr);
-    }
-    public matchSOUND_3D_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<SOUND_3D_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchSOUND_CHANNELS_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<SOUND_CHANNELS_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchSOUND_MUSIC_SAMPLES_COMMAND($$dpth: number, $$cr?: ContextRecorder): Nullable<SOUND_MUSIC_SAMPLES_COMMAND> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
     }
     public test(): boolean {
         const mrk = this.mark();

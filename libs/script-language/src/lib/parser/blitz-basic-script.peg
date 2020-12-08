@@ -5,209 +5,398 @@ ROOT                := COMMAND
 NUMBER              := '[0-9]+'
 
 // Command
-COMMAND             := BASIC_COMMAND
-                     | DATA_COMMAND
-                     | GRAPHICS_2D_COMMAND
-                     | GRAPHICS_3D_COMMAND
-                     | GUI_COMMAND
-                     | IO_COMMAND
-                     | SOUND_COMMAND
-
-// Basic Commands
-BASIC_COMMAND       := BASIC_DIVERSE_COMMAND
-                     | BASIC_MATHS_COMMAND
-                     | BASIC_STRINGS_COMMAND
-                     | BASIC_TIME_RANDOM_COMMAND
-
-BASIC_DIVERSE_COMMAND := ''
-
-BASIC_MATHS_COMMAND   := ''
-
-BASIC_STRINGS_COMMAND := ''
-
-BASIC_TIME_RANDOM_COMMAND := ''
-
-// Data Command
-DATA_COMMAND        := DATA_BANK_COMMAND
-                     | DATA_FILE_SYSTEM_COMMAND
-
-DATA_BANK_COMMAND     := ''
-
-DATA_FILE_SYSTEM_COMMAND := ''
-
-
-// Graphics 2D Command
-GRAPHICS_2D_COMMAND := GRAPHICS_2D_DISPLAY_COMMAND
-                     | GRAPHICS_2D_GAMMA_COMMAND
-                     | GRAPHICS_2D_GRAPHICS_COMMAND
-                     | GRAPHICS_2D_IMAGES_COMMAND
-                     | GRAPHICS_2D_MOVIES_COMMAND
-                     | GRAPHICS_2D_PIXEL_COMMAND
-                     | GRAPHICS_2D_TEXT_COMMAND
-
-GRAPHICS_2D_DISPLAY_COMMAND := ''
-
-GRAPHICS_2D_GAMMA_COMMAND := ''
-
-GRAPHICS_2D_GRAPHICS_COMMAND := Cls
-                              | ClsColor
-                              | Color
-                              | Line
-                              | Oval
-                              | Rect
-
-Cls                 := '[cC][lL][sS]\s*' ROOT?
-ClsColor            := '[cC][lL][sS][cC][oO][lL][oO][rR]\s+' red=NUMBER ',\s*' green=NUMBER ',\s*' blue=NUMBER ',\s*' ROOT?
-Color               := '[cC][oO][lL][oO][rR]\s+' red=NUMBER ',\s*' green=NUMBER ',\s*' blue=NUMBER ',\s*' ROOT?
-Line                := '[lL][iI][nN][eE]\s+' beginX=NUMBER ',\s*' beginY=NUMBER ',\s*' endX=NUMBER ',\s*' endY=NUMBER ',\s*' ROOT?
-Oval                := '[oO][vV][aA][lL]\s+' x=NUMBER ',\s*' y=NUMBER ',\s?' width=NUMBER ',\s*' height=NUMBER ',\s*' ROOT?  // TODO: optional 5th parameter
-Rect                := '[rR][eE][cC][tT]\s+' x=NUMBER ',\s*' y=NUMBER ',\s*' width=NUMBER ',\s*' height=NUMBER ',\s*' ROOT?  // TODO: optional 5th parameter
-
-GRAPHICS_2D_IMAGES_COMMAND := ''
-
-GRAPHICS_2D_MOVIES_COMMAND := ''
-
-GRAPHICS_2D_PIXEL_COMMAND := ''
-
-GRAPHICS_2D_TEXT_COMMAND := ''
-
-
-// Graphics 3D Command
-GRAPHICS_3D_COMMAND := GRAPHICS_3D_ANIMATIONS_COMMAND
-                     | GRAPHICS_3D_BRUSHES_COMMAND
-                     | GRAPHICS_3D_CAMERA_COMMAND
-                     | GRAPHICS_3D_COLLISIONS_COMMAND
-                     | GRAPHICS_3D_CONTROLS_COMMAND
-                     | GRAPHICS_3D_COORDINATES_COMMAND
-                     | GRAPHICS_3D_DIVERSE_COMMAND
-                     | GRAPHICS_3D_LIGHT_SHADOW_COMMAND
-                     | GRAPHICS_3D_MESHES_COMMAND
-                     | GRAPHICS_3D_PICKING_COMMAND
-                     | GRAPHICS_3D_SCENE_COMMAND
-                     | GRAPHICS_3D_SCENERY_COMMAND
-                     | GRAPHICS_3D_SCREEN_COMMAND
-                     | GRAPHICS_3D_SPRITES_COMMAND
-                     | GRAPHICS_3D_STATUS_COMMAND
-                     | GRAPHICS_3D_SURFACES_COMMAND
-                     | GRAPHICS_3D_TERRAIN_COMMAND
-                     | GRAPHICS_3D_TEXTURES_COMMAND
-
-GRAPHICS_3D_ANIMATIONS_COMMAND := ''
-
-GRAPHICS_3D_BRUSHES_COMMAND := ''
-
-GRAPHICS_3D_CAMERA_COMMAND := ''
-
-GRAPHICS_3D_COLLISIONS_COMMAND := ''
-
-GRAPHICS_3D_CONTROLS_COMMAND := ''
-
-GRAPHICS_3D_COORDINATES_COMMAND := ''
-
-GRAPHICS_3D_DIVERSE_COMMAND := ''
-
-GRAPHICS_3D_LIGHT_SHADOW_COMMAND := ''
-
-GRAPHICS_3D_MESHES_COMMAND := ''
-
-GRAPHICS_3D_PICKING_COMMAND := ''
-
-GRAPHICS_3D_SCENE_COMMAND := ''
-
-GRAPHICS_3D_SCENERY_COMMAND := ''
-
-GRAPHICS_3D_SCREEN_COMMAND := ''
-
-GRAPHICS_3D_SPRITES_COMMAND := ''
-
-GRAPHICS_3D_STATUS_COMMAND := ''
-
-GRAPHICS_3D_SURFACES_COMMAND := ''
-
-GRAPHICS_3D_TERRAIN_COMMAND := ''
-
-GRAPHICS_3D_TEXTURES_COMMAND := ''
-
-
-// GUI Command
-GUI_COMMAND         := GUI_BUTTON_COMMAND
-                     | GUI_CANVAS_COMMAND
-                     | GUI_DESKTOP_COMMAND
-                     | GUI_DIVERSE_COMMAND
-                     | GUI_EVENT_COMMAND
-                     | GUI_GADGET_COMMAND
-                     | GUI_HTML_COMMAND
-                     | GUI_ICON_STRIP_COMMAND
-                     | GUI_LIST_TABBER_COMMAND
-                     | GUI_MENU_COMMAND
-                     | GUI_PANEL_COMMAND
-                     | GUI_PROGRESS_BAR_COMMAND
-                     | GUI_REQUEST_COMMAND
-                     | GUI_SLIDER_COMMAND
-                     | GUI_TEXT_AREA_COMMAND
-                     | GUI_TEXT_FIELD_COMMAND
-                     | GUI_TOOLBAR_COMMAND
-                     | GUI_TREE_VIEW_COMMAND
-                     | GUI_WINDOW_COMMAND
-
-GUI_BUTTON_COMMAND := ''
-
-GUI_CANVAS_COMMAND := ''
-
-GUI_DESKTOP_COMMAND := ''
-
-GUI_DIVERSE_COMMAND := ''
-
-GUI_EVENT_COMMAND := ''
-
-GUI_GADGET_COMMAND := ''
-
-GUI_HTML_COMMAND := ''
-
-GUI_ICON_STRIP_COMMAND := ''
-
-GUI_LIST_TABBER_COMMAND := ''
-
-GUI_MENU_COMMAND := ''
-
-GUI_PANEL_COMMAND := ''
-
-GUI_PROGRESS_BAR_COMMAND := ''
-
-GUI_REQUEST_COMMAND := ''
-
-GUI_SLIDER_COMMAND := ''
-
-GUI_TEXT_AREA_COMMAND := ''
-
-GUI_TEXT_FIELD_COMMAND := ''
-
-GUI_TOOLBAR_COMMAND := ''
-
-GUI_TREE_VIEW_COMMAND := ''
-
-GUI_WINDOW_COMMAND := ''
-
-
-// IO Command
-IO_COMMAND          := IO_GAMEPAD_COMMAND
-                     | IO_KEYBOARD_COMMAND
-                     | IO_MOUSE_COMMAND
-
-IO_GAMEPAD_COMMAND := ''
-
-IO_KEYBOARD_COMMAND := ''
-
-IO_MOUSE_COMMAND := ''
-
-
-// Sound Command
-SOUND_COMMAND       := SOUND_3D_COMMAND
-                     | SOUND_CHANNELS_COMMAND
-                     | SOUND_MUSIC_SAMPLES_COMMAND
-
-SOUND_3D_COMMAND := ''
-
-SOUND_CHANNELS_COMMAND := ''
-
-SOUND_MUSIC_SAMPLES_COMMAND := ''
+COMMAND             := Abs
+                     | AcceptTCPStream
+                     | ACos
+                     | ActivateGadget
+                     | ActivateWindow
+                     | ActiveObjects
+                     | ActiveTextures
+                     | ActiveWindow
+                     | AddAnimSeq
+                     | AddGadgetItem
+                     | AddMesh
+                     | AddTextAreaText
+                     | AddTreeViewNode
+                     | AddTriangle
+                     | AddVertex
+                     | AddVKLen
+                     | After
+                     | AlignToVector
+                     | AmbientLight
+                     | Animate
+                     | Animating
+                     | AnimLength
+                     | AnimSeq
+                     | AnimTime
+                     | AntiAlias
+                     | AppTitle
+                     | Asc
+                     | ASin
+                     | ATan
+                     | ATan2
+                     | AutoMidHandle
+                     | AutoSuspend
+                     | AvailVidMem
+
+                     | BackBuffer
+                     | BankSize
+                     | Before
+                     | Bin
+                     | BreakKP
+                     | BrushAlpha
+                     | BrushBlend
+                     | BrushColor
+                     | BrushFX
+                     | BrushShininess
+                     | BrushTexture
+                     | BSPAmbientLight
+                     | BufferDirty
+                     | ButtonState
+
+                     | CameraClsColor
+                     | CameraClsMode
+                     | CameraFogColor
+                     | CameraFogMode
+                     | CameraFogRange
+                     | CameraPick
+                     | CameraProject
+                     | CameraProjMode
+                     | CameraRange
+                     | CameraViewport
+                     | CameraZoom
+                     | CanvasBuffer
+                     | CaptureWorld
+                     | Ceil
+                     | ChangeDir
+                     | ChannelPan
+                     | ChannelPitch
+                     | ChannelPlaying
+                     | ChannelVolume
+                     | CheckMenu
+                     | Chr
+                     | ClearCollisions
+                     | ClearGadgetItems
+                     | ClearSurface
+                     | ClearTextureFilters
+                     | ClearWorld
+                     | ClientHeight
+                     | ClientWidth
+                     | CloseDir
+                     | CloseFile
+                     | CloseMovie
+                     | CloseTCPServer
+                     | CloseTCPStream
+                     | CloseUDPStream
+                     | CloseUDPStream
+                     | Cls
+                     | ClsColor
+                     | CollapseTreeViewNode
+                     | CollisionEntity
+                     | CollisionNX
+                     | CollisionNY
+                     | CollisionNZ
+                     | Collisions
+                     | CollisionSurface
+                     | CollisionTime
+                     | CollisionTriangle
+                     | CollisionX
+                     | CollisionY
+                     | CollisionZ
+                     | Color
+                     | ColorBlue
+                     | ColorGreen
+                     | ColorRed
+                     | ColorRed
+                     | CommandLine
+                     | Confirm
+                     | CopyBank
+                     | CopyEntity
+                     | CopyFile
+                     | CopyImage
+                     | CopyMesh
+                     | CopyPixel
+                     | CopyPixelFast
+                     | CopyRect
+                     | CopyStream
+                     | Cos
+                     | CountChildren
+                     | CountCollisions
+                     | CountGadgetItems
+                     | CountGfxDrivers
+                     | CountGfxModes
+                     | CountGfxModes3D
+                     | CountHostIPs
+                     | CountSurfaces
+                     | CountTreeViewNodes
+                     | CountTriangles
+                     | CountVertices
+                     | CreateBank
+                     | CreateButton
+                     | CreateCamera
+                     | CreateCanvas
+                     | CreateComboBox
+                     | CreateCone
+                     | CreateCube
+                     | CreateCylinder
+                     | CreateDir
+                     | CreateHtmlView
+                     | CreateImage
+                     | CreateLabel
+                     | CreateLight
+                     | CreateListBox
+                     | CreateListener
+                     | CreateMenu
+                     | CreateMesh
+                     | CreateMirror
+                     | CreateNetPlayer
+                     | CreatePanel
+                     | CreatePivot
+                     | CreatePlane
+                     | CreateProcess
+                     | CreateProgBar
+                     | CreateSlider
+                     | CreateSphere
+                     | CreateSprite
+                     | CreateSurface
+                     | CreateTabber
+                     | CreateTCPServer
+                     | CreateTerrain
+                     | CreateTextArea
+                     | CreateTextField
+                     | CreateTexture
+                     | CreateTimer
+                     | CreateToolBar
+                     | CreateTreeView
+                     | CreateUDPStream
+                     | CreateWindow
+                     | CurrentDate
+                     | CurrentDir
+                     | CurrentTime
+
+                     | Line
+
+                     | Oval
+
+                     | Rect
+
+// Commands - A
+Abs                 := ''
+AcceptTCPStream := ''
+ACos := ''
+ActivateGadget := ''
+ActivateWindow := ''
+ActiveObjects := ''
+ActiveTextures := ''
+ActiveWindow := ''
+AddAnimSeq := ''
+AddGadgetItem := ''
+AddMesh := ''
+AddTextAreaText := ''
+AddTreeViewNode := ''
+AddTriangle := ''
+AddVertex := ''
+AddVKLen := ''
+After := ''
+AlignToVector := ''
+AmbientLight := ''
+Animate := ''
+Animating := ''
+AnimLength := ''
+AnimSeq := ''
+AnimTime := ''
+AntiAlias := ''
+AppTitle := ''
+Asc := ''
+ASin := ''
+ATan := ''
+ATan2 := ''
+AutoMidHandle := ''
+AutoSuspend := ''
+AvailVidMem := ''
+
+// Commands - B
+BackBuffer := ''
+BankSize := ''
+Before := ''
+Bin := ''
+BreakKP := ''
+BrushAlpha := ''
+BrushBlend := ''
+BrushColor := ''
+BrushFX := ''
+BrushShininess := ''
+BrushTexture := ''
+BSPAmbientLight := ''
+BufferDirty := ''
+ButtonState := ''
+
+// Commands - C
+CameraClsColor := ''
+CameraClsMode := ''
+CameraFogColor := ''
+CameraFogMode := ''
+CameraFogRange := ''
+CameraPick := ''
+CameraProject := ''
+CameraProjMode := ''
+CameraRange := ''
+CameraViewport := ''
+CameraZoom := ''
+CanvasBuffer := ''
+CaptureWorld := ''
+Ceil := ''
+ChangeDir := ''
+ChannelPan := ''
+ChannelPitch := ''
+ChannelPlaying := ''
+ChannelVolume := ''
+CheckMenu := ''
+Chr := ''
+ClearCollisions := ''
+ClearGadgetItems := ''
+ClearSurface := ''
+ClearTextureFilters := ''
+ClearWorld := ''
+ClientHeight := ''
+ClientWidth := ''
+CloseDir := ''
+CloseFile := ''
+CloseMovie := ''
+CloseTCPServer := ''
+CloseTCPStream := ''
+CloseUDPStream := ''
+CloseUDPStream := ''
+Cls                 := '[cC][lL][sS]\s*' next=ROOT?
+ClsColor            := '[cC][lL][sS][cC][oO][lL][oO][rR]\s+' red=NUMBER ',\s*' green=NUMBER ',\s*' blue=NUMBER '\s*' next=ROOT?
+CollapseTreeViewNode := ''
+CollisionEntity := ''
+CollisionNX := ''
+CollisionNY := ''
+CollisionNZ := ''
+Collisions := ''
+CollisionSurface := ''
+CollisionTime := ''
+CollisionTriangle := ''
+CollisionX := ''
+CollisionY := ''
+CollisionZ := ''
+Color               := '[cC][oO][lL][oO][rR]\s+' red=NUMBER ',\s*' green=NUMBER ',\s*' blue=NUMBER '\s*' next=ROOT?
+ColorBlue := ''
+ColorGreen := ''
+ColorRed := ''
+ColorRed := ''
+CommandLine := ''
+Confirm := ''
+CopyBank := ''
+CopyEntity := ''
+CopyFile := ''
+CopyImage := ''
+CopyMesh := ''
+CopyPixel := ''
+CopyPixelFast := ''
+CopyRect := ''
+CopyStream := ''
+Cos := ''
+CountChildren := ''
+CountCollisions := ''
+CountGadgetItems := ''
+CountGfxDrivers := ''
+CountGfxModes := ''
+CountGfxModes3D := ''
+CountHostIPs := ''
+CountSurfaces := ''
+CountTreeViewNodes := ''
+CountTriangles := ''
+CountVertices := ''
+CreateBank := ''
+CreateButton := ''
+CreateCamera := ''
+CreateCanvas := ''
+CreateComboBox := ''
+CreateCone := ''
+CreateCube := ''
+CreateCylinder := ''
+CreateDir := ''
+CreateHtmlView := ''
+CreateImage := ''
+CreateLabel := ''
+CreateLight := ''
+CreateListBox := ''
+CreateListener := ''
+CreateMenu := ''
+CreateMesh := ''
+CreateMirror := ''
+CreateNetPlayer := ''
+CreatePanel := ''
+CreatePivot := ''
+CreatePlane := ''
+CreateProcess := ''
+CreateProgBar := ''
+CreateSlider := ''
+CreateSphere := ''
+CreateSprite := ''
+CreateSurface := ''
+CreateTabber := ''
+CreateTCPServer := ''
+CreateTerrain := ''
+CreateTextArea := ''
+CreateTextField := ''
+CreateTexture := ''
+CreateTimer := ''
+CreateToolBar := ''
+CreateTreeView := ''
+CreateUDPStream := ''
+CreateWindow := ''
+CurrentDate := ''
+CurrentDir := ''
+CurrentTime := ''
+
+// Commands - D
+
+// Commands - E
+
+// Commands - F
+
+// Commands - G
+
+// Commands - H
+
+// Commands - I
+
+// Commands - J
+
+// Commands - K
+
+// Commands - L
+Line                := '[lL][iI][nN][eE]\s+' beginX=NUMBER ',\s*' beginY=NUMBER ',\s*' endX=NUMBER ',\s*' endY=NUMBER '\s*' next=ROOT?
+
+// Commands - M
+
+// Commands - N
+
+// Commands - O
+Oval                := '[oO][vV][aA][lL]\s+' x=NUMBER ',\s*' y=NUMBER ',\s?' width=NUMBER ',\s*' height=NUMBER '\s*' next=ROOT?  // TODO: optional 5th parameter
+
+// Commands - P
+
+// Commands - Q
+
+// Commands - R
+Rect                := '[rR][eE][cC][tT]\s+' x=NUMBER ',\s*' y=NUMBER ',\s*' width=NUMBER ',\s*' height=NUMBER '\s*' next=ROOT?  // TODO: optional 5th parameter
+
+// Commands - S
+
+// Commands - T
+
+// Commands - U
+
+// Commands - V
+
+// Commands - W
+
+// Commands - X
+
+// Commands - Y
+
+// Commands - Z
