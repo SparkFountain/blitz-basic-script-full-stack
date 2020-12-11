@@ -1,0 +1,5 @@
+export enum BB_SCRIPT_CD_TRACK_MODE {
+    PLAY_TRACK_ONCE = 1,
+    PLAY_TRACK_LOOP = 2,
+    PLAY_ALL_TRACKS = 3
+}

@@ -107,7 +107,6 @@ COMMAND             := Abs
                      | ColorBlue
                      | ColorGreen
                      | ColorRed
-                     | ColorRed
                      | CommandLine
                      | Confirm
                      | CopyBank
@@ -284,7 +283,6 @@ CollisionZ := ''
 Color               := '[cC][oO][lL][oO][rR]\s+' red=NUMBER ',\s*' green=NUMBER ',\s*' blue=NUMBER '\s*' next=ROOT?
 ColorBlue := ''
 ColorGreen := ''
-ColorRed := ''
 ColorRed := ''
 CommandLine := ''
 Confirm := ''

@@ -68,14 +68,30 @@ const routes: Routes = [
     loadChildren: () =>
       import('../account/account.module').then((m) => m.AccountModule),
   },
-  // {
-  //   path: 'anmelden',
-  //   loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
-  // },
-  // {
-  //   path: 'registrieren',
-  //   loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
-  // },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('../account/login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'anmelden',
+    loadChildren: () =>
+      import('../account/login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'register',
+    loadChildren: () =>
+      import('../account/register/register.module').then(
+        (m) => m.RegisterModule
+      ),
+  },
+  {
+    path: 'registrieren',
+    loadChildren: () =>
+      import('../account/register/register.module').then(
+        (m) => m.RegisterModule
+      ),
+  },
   // {
   //   path: 'account',
   //   loadChildren: () => import('./account/account.module').then(m => m.AccountModule)

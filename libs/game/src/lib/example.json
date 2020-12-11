@@ -1,0 +1,85 @@
+{
+  "statements": [
+    {
+      "type": "const",
+      "name": "xr",
+      "value": 800
+    },
+    {
+      "type": "const",
+      "name": "yr",
+      "value": 500
+    },
+    {
+      "type": "const",
+      "name": "fps",
+      "value": 60
+    },
+    {
+      "type": "command",
+      "name": "seedRnd",
+      "params": [
+        {
+          "type": "command",
+          "name": "milliSecs",
+          "params": []
+        }
+      ]
+    },
+    {
+      "type": "command",
+      "name": "graphics",
+      "params": [
+        {
+          "type": "variable",
+          "name": "xr"
+        },
+        {
+          "type": "variable",
+          "name": "yr"
+        },
+        {
+          "type": "number",
+          "value": 0
+        },
+        {
+          "type": "number",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "type": "command",
+      "name": "appTitle",
+      "params": [
+        {
+          "type": "string",
+          "value": "Buchstabensalat"
+        }
+      ]
+    },
+    {
+      "type": "global",
+      "name": "fps_timer",
+      "value": [
+        {
+          "type": "command",
+          "name": "createTimer",
+          "params": [
+            {
+              "type": "variable",
+              "name": "fps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "global",
+      "name": "mapx",
+      "value": {
+
+      }
+    }
+  ]
+}

@@ -631,7 +631,6 @@ export enum ASTKinds {
     CloseTCPServer = "CloseTCPServer",
     CloseTCPStream = "CloseTCPStream",
     CloseUDPStream = "CloseUDPStream",
-    CloseUDPStream = "CloseUDPStream",
     Cls = "Cls",
     ClsColor = "ClsColor",
     CollapseTreeViewNode = "CollapseTreeViewNode",
@@ -649,7 +648,6 @@ export enum ASTKinds {
     Color = "Color",
     ColorBlue = "ColorBlue",
     ColorGreen = "ColorGreen",
-    ColorRed = "ColorRed",
     ColorRed = "ColorRed",
     CommandLine = "CommandLine",
     Confirm = "Confirm",
@@ -973,7 +971,6 @@ export type CloseMovie = string;
 export type CloseTCPServer = string;
 export type CloseTCPStream = string;
 export type CloseUDPStream = string;
-export type CloseUDPStream = string;
 export interface Cls {
     kind: ASTKinds.Cls;
     next: Nullable<ROOT>;
@@ -1006,7 +1003,6 @@ export interface Color {
 }
 export type ColorBlue = string;
 export type ColorGreen = string;
-export type ColorRed = string;
 export type ColorRed = string;
 export type CommandLine = string;
 export type Confirm = string;
@@ -2040,9 +2036,6 @@ export class Parser {
     public matchCloseUDPStream($$dpth: number, $$cr?: ContextRecorder): Nullable<CloseUDPStream> {
         return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
     }
-    public matchCloseUDPStream($$dpth: number, $$cr?: ContextRecorder): Nullable<CloseUDPStream> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
     public matchCls($$dpth: number, $$cr?: ContextRecorder): Nullable<Cls> {
         return this.runner<Cls>($$dpth,
             (log) => {
@@ -2152,9 +2145,6 @@ export class Parser {
         return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
     }
     public matchColorGreen($$dpth: number, $$cr?: ContextRecorder): Nullable<ColorGreen> {
-        return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
-    }
-    public matchColorRed($$dpth: number, $$cr?: ContextRecorder): Nullable<ColorRed> {
         return this.regexAccept(String.raw`(?:)`, $$dpth + 1, $$cr);
     }
     public matchColorRed($$dpth: number, $$cr?: ContextRecorder): Nullable<ColorRed> {

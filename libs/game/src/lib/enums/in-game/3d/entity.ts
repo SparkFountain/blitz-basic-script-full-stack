@@ -1,0 +1,8 @@
+export enum BbScriptEntityFx {
+  SHINY = 1,
+  USE_VERTEX_COLOR = 2,
+  FLAT_SHADING = 4,
+  FOG_DISABLED = 8,
+  BACKFACE_CULLING_DISABLED = 16,
+  VERTEX_ALPHA_ENABLED = 32,
+}

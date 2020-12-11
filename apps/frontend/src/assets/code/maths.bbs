@@ -1,0 +1,8 @@
+; Some math examples
+Global root = Sqr(25)
+Text 20, 20, root + " x " + root + " = 25"
+Global sinValue = Sin(45)
+Text 20, 40, "Sin(45) = " + sinValue
+Global logValue = Log(42)
+Text 20, 60, "Log(42) = " + logValue
+Text 20, 80, "Pi = " + 3.141592653589793

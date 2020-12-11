@@ -1,0 +1,222 @@
+<h1 class="title is-1">{{ 'REGISTER.LABEL' | translate }}</h1>
+
+<!-- REGISTER INFO -->
+<div class="message is-info" *ngIf="section === 'form'">
+  <div class="message-header">{{ 'REGISTER.INFO.TITLE' | translate }}</div>
+  <div class="message-body">
+    <p>
+      <span><i class="fa fa-fw fa-cloud" aria-hidden="true"></i></span>
+      {{ 'REGISTER.INFO.FEATURE_1' | translate }}
+    </p>
+    <p>
+      <span><i class="fa fa-fw fa-floppy-o" aria-hidden="true"></i></span>
+      {{ 'REGISTER.INFO.FEATURE_2' | translate }}
+    </p>
+    <p>
+      <span><i class="fa fa-fw fa-puzzle-piece" aria-hidden="true"></i></span>
+      {{ 'REGISTER.INFO.FEATURE_3' | translate }}
+    </p>
+  </div>
+</div>
+
+<!-- REGISTER FORM -->
+<div class="card register-card" *ngIf="section === 'form'">
+  <div class="card-content">
+    <!-- USERNAME -->
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">{{ 'REGISTER.USERNAME.LABEL' | translate }}</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control is-expanded has-icons-left">
+            <input
+              [(ngModel)]="username"
+              class="input"
+              type="text"
+              [placeholder]="'USER_NAME_OR_EMAIL.PLACEHOLDER' | translate"
+              maxlength="32"
+            />
+            <span class="icon is-small is-left">
+              <i class="fa fa-fw fa-user"></i>
+            </span>
+          </div>
+          <p class="help is-danger">
+            <span *ngIf="this.notices['username-too-short']">{{ 'USERNAME_TOO_SHORT' | translate }}</span>
+            <span *ngIf="this.notices['username-too-long']">{{ 'USERNAME_TOO_LONG' | translate }}</span>
+            <span *ngIf="this.notices['input-invalid']">{{ 'INVALID_INPUT' | translate }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">{{ 'REGISTER.EMAIL.LABEL' | translate }}</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control is-expanded has-icons-left">
+            <input
+              [(ngModel)]="email"
+              class="input"
+              type="text"
+              [placeholder]="'USER_NAME_OR_EMAIL.PLACEHOLDER' | translate"
+              maxlength="32"
+            />
+            <span class="icon is-small is-left">
+              <i class="fa fa-fw fa-at"></i>
+            </span>
+          </div>
+          <p class="help is-danger">
+            <span *ngIf="this.notices['username-too-short']">{{ 'USERNAME_TOO_SHORT' | translate }}</span>
+            <span *ngIf="this.notices['username-too-long']">{{ 'USERNAME_TOO_LONG' | translate }}</span>
+            <span *ngIf="this.notices['input-invalid']">{{ 'INVALID_INPUT' | translate }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">{{ 'REGISTER.PASSWORD.LABEL' | translate }}</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control is-expanded has-icons-left">
+            <input
+              [(ngModel)]="password"
+              class="input"
+              type="password"
+              [placeholder]="'REGISTER.PASSWORD.PLACEHOLDER' | translate"
+            />
+            <span class="icon is-small is-left">
+              <i class="fa fa-fw fa-key"></i>
+            </span>
+          </div>
+          <p class="help is-danger">
+            <span *ngIf="this.notices['password-too-short']">{{ 'PASSWORD_TOO_SHORT' | translate }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSWORD CONFIRMATION -->
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">{{ 'REGISTER.PASSWORD.CONFIRMATION.LABEL' | translate }}</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control is-expanded has-icons-left">
+            <input
+              [(ngModel)]="passwordConfirm"
+              class="input"
+              type="password"
+              [placeholder]="'REGISTER.PASSWORD.CONFIRMATION.PLACEHOLDER' | translate"
+            />
+            <span class="icon is-small is-left">
+              <i class="fa fa-fw fa-key"></i>
+            </span>
+          </div>
+          <p class="help is-danger">
+            <span *ngIf="this.notices['password-confirm-empty']">{{
+              'REGISTER.PASSWORD.CONFIRMATION.EMPTY' | translate
+            }}</span>
+            <span *ngIf="this.notices['passwords-do-not-match']">{{
+              'REGISTER.PASSWORD.CONFIRMATION.PASSWORDS_DO_NOT_MATCH' | translate
+            }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TERMS -->
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <span class="icon is-small is-left pointer" (click)="termsAccepted = !termsAccepted">
+          <i *ngIf="!termsAccepted" class="fa fa-fw fa-square-o"></i>
+          <i *ngIf="termsAccepted" class="fa fa-fw fa-check-square-o"></i>
+        </span>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control is-expanded has-icons-left">
+            <a [innerHTML]="'REGISTER.TERMS.I_READ' | translate" (click)="toggleTerms()"></a>
+          </div>
+          <p class="help is-danger">
+            <span *ngIf="this.notices['terms-must-be-accepted']">{{
+              'REGISTER.TERMS.MUST_BE_ACCEPTED' | translate
+            }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- REGISTER BUTTON -->
+    <div class="field is-horizontal">
+      <div class="field-label is-normal"></div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <button class="button is-primary" (click)="register()" *ngIf="!sendingRequest">
+              {{ 'REGISTER.LABEL' | translate }}
+            </button>
+            <button class="button is-primary" disabled *ngIf="sendingRequest">
+              <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>&nbsp;&nbsp;
+              {{ 'REGISTER.SENDING_REQUEST' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TERMS MODAL -->
+<div class="modal" [ngClass]="{ 'is-active': showTerms }">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">{{ 'REGISTER.TERMS.TITLE' | translate }}</p>
+      <button class="delete" aria-label="close" (click)="toggleTerms()"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="content">
+        <app-terms-of-use></app-terms-of-use>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" (click)="termsAccepted = true; toggleTerms()">
+        {{ 'REGISTER.TERMS.ACCEPT' | translate }}
+      </button>
+      <button class="button" (click)="termsAccepted = false; toggleTerms()">
+        {{ 'REGISTER.TERMS.DENY' | translate }}
+      </button>
+    </footer>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="message is-success" *ngIf="section === 'success'">
+  <div class="message-header">{{ 'REGISTER.SUCCESSFUL.TITLE' | translate }}</div>
+  <div class="message-body">
+    <p>{{ 'REGISTER.SUCCESSFUL.MESSAGE' | translate }}</p>
+    <p>
+      <a routerLink="/home">{{ 'PAGE_NOT_FOUND.HOME_PATH' | translate }}</a>
+    </p>
+  </div>
+</div>
+
+<!-- ERROR -->
+<div class="message is-danger" *ngIf="section === 'error'">
+  <div class="message-header">{{ 'REGISTER.ERROR.TITLE' | translate }}</div>
+  <div class="message-body">
+    <p>{{ 'REGISTER.ERROR.MESSAGE' | translate }}</p>
+    <p>
+      <a routerLink="/home">{{ 'PAGE_NOT_FOUND.HOME_PATH' | translate }}</a>
+    </p>
+  </div>
+</div>

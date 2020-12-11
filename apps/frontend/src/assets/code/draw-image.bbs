@@ -1,0 +1,3 @@
+; Draw a background image of a city
+Global image = LoadImage("assets/gfx/background/city-1.jpg")
+DrawImage image, 0, 0

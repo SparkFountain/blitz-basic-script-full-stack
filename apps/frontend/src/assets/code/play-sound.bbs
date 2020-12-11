@@ -1,0 +1,3 @@
+; Load and play a sound sample
+Global sound = LoadSound("assets/sfx/sounds/tada.mp3")
+PlaySound sound

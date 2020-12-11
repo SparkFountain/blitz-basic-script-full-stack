@@ -68,7 +68,7 @@ export class LetsCodeComponent implements OnInit {
       'undo',
       'redo',
       'guide',
-      'codeCleanup',
+      'codeCleanUp',
       'toggleSettings',
     ];
 

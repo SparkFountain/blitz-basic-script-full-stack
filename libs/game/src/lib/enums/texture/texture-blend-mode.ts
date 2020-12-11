@@ -1,0 +1,8 @@
+export enum TextureBlendMode {
+    NO_TEXTURE,
+    ONE_TEXTURE,
+    MULTI_TEXTURE,
+    ADDED_MULTITEXTURE,
+    DOT_3_MAPPING,
+    MULTIPLY_2_BLENDING
+}

@@ -673,6 +673,13 @@
     }
   },
   "ACCOUNT": {
+    "LOGIN": {
+      "TITLE": "Anmelden",
+      "REGISTER_FOR_FREE": "Falls du noch kein Konto besitzt, kannst du dich kostenlos registrieren.",
+      "USER_NAME_OR_EMAIL": "Benutzername oder Email",
+      "PASSWORD": "Passwort",
+      "FORGOT_PASSWORD": "Passwort vergessen?"
+    },
     "PROFILE": {
       "TITLE": "Profil",
       "USERNAME": "Benutzername",
