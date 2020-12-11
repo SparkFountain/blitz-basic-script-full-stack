@@ -1,6 +1,6 @@
 # Blitz Basic Script
 
-[logo]: https://blitzbasicscript.com/assets/gfx/bbscript-logo.png "Blitz Basic Script Logo"
+<img src="https://blitzbasicscript.com/assets/gfx/bbscript-logo.png" alt="Blitz Basic Script Logo" />
 
 Blitz Basic Script is a simple yet powerful scripting language based on the Blitz Basic syntax. The primary intention of Blitz Basic Script (short _BBScript_) is to create games which can be played in any modern web browser – from unspectacular skill games to advanced 3D shooters.
 
