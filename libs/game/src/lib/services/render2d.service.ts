@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
-import { GameService } from './game.service';
-import { Buffer } from '../classes/buffer';
-import { Image } from '../classes/image';
-import { Font } from '../interfaces/gui/font';
+import { GameStateService } from './game-state.service';
+import { GameFont } from '../interfaces/game/font';
+import { BbScriptImage } from '../classes/in-game/2d/image';
+import { BbScriptBuffer } from '../classes/in-game/2d/buffer';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class Render2dService {
   private _canvas: HTMLCanvasElement;
 
-  constructor(private gameService: GameService) {}
+  constructor(private gameState: GameStateService) {}
 
   initCanvas(canvas: HTMLCanvasElement) {
     this._canvas = canvas;
     this._canvas.width = 800;
     this._canvas.height = 600;
-    this.gameService.screen.buffer = new Buffer(this._canvas);
+    this.gameState.screen.buffer = new BbScriptBuffer(this._canvas);
   }
 
   initGraphics(width: number, height: number): Promise<void> {
@@ -35,24 +35,22 @@ export class Render2dService {
   }
 
   private loadActiveColor(): void {
-    const activeColor = this.gameService.screen.color;
-    const context: CanvasRenderingContext2D = this.gameService.screen.buffer
-      .context;
+    const activeColor = this.gameState.screen.color;
+    const context: CanvasRenderingContext2D = this.gameState.screen.buffer.context;
     context.strokeStyle = `rgba(${activeColor.red}, ${activeColor.green}, ${activeColor.blue}, 1)`;
     context.fillStyle = `rgba(${activeColor.red}, ${activeColor.green}, ${activeColor.blue}, 1)`;
   }
 
   private loadActiveClsColor(): void {
-    const activeClsColor = this.gameService.screen.clsColor;
-    const context: CanvasRenderingContext2D = this.gameService.screen.buffer
-      .context;
+    const activeClsColor = this.gameState.screen.clsColor;
+    const context: CanvasRenderingContext2D = this.gameState.screen.buffer.context;
     context.fillStyle = `rgba(${activeClsColor.red}, ${activeClsColor.green}, ${activeClsColor.blue}, 1)`;
   }
 
   private getOrigin(): { x: number; y: number } {
     return {
-      x: this.gameService.screen.origin.x,
-      y: this.gameService.screen.origin.y,
+      x: this.gameState.screen.origin.x,
+      y: this.gameState.screen.origin.y
     };
   }
 
@@ -62,14 +60,13 @@ export class Render2dService {
     width: number;
     height: number;
   } {
-    return this.gameService.screen.viewport;
+    return this.gameState.screen.viewport;
   }
 
   async setImageSmoothing(enabled: boolean): Promise<void> {
     // TODO: visually there seems to be no difference, has to be checked again
     return new Promise<void>((resolve: Function, reject: Function) => {
-      const context: CanvasRenderingContext2D = this.gameService.screen.buffer
-        .context;
+      const context: CanvasRenderingContext2D = this.gameState.screen.buffer.context;
 
       context.imageSmoothingEnabled = enabled;
       context['webkitImageSmoothingEnabled'] = enabled;
@@ -83,12 +80,11 @@ export class Render2dService {
   async cls(): Promise<void> {
     return new Promise<void>((resolve: Function, reject: Function) => {
       this.loadActiveClsColor();
-      const context: CanvasRenderingContext2D = this.gameService.screen.buffer
-        .context;
+      const context: CanvasRenderingContext2D = this.gameState.screen.buffer.context;
 
       const screen = {
-        width: this.gameService.screen.width,
-        height: this.gameService.screen.height,
+        width: this.gameState.screen.width,
+        height: this.gameState.screen.height
       };
       context.fillRect(0, 0, screen.width, screen.height);
 
@@ -96,17 +92,11 @@ export class Render2dService {
     });
   }
 
-  async line(
-    beginX: number,
-    beginY: number,
-    endX: number,
-    endY: number
-  ): Promise<void> {
+  async line(beginX: number, beginY: number, endX: number, endY: number): Promise<void> {
     return new Promise<void>((resolve: Function, reject: Function) => {
       this.loadActiveColor();
       const origin = this.getOrigin();
-      const context: CanvasRenderingContext2D = this.gameService.screen.buffer
-        .context;
+      const context: CanvasRenderingContext2D = this.gameState.screen.buffer.context;
 
       context.beginPath();
       context.moveTo(beginX + origin.x, beginY + origin.y);
@@ -117,13 +107,7 @@ export class Render2dService {
     });
   }
 
-  async rect(
-    x: number,
-    y: number,
-    width: number,
-    height: number,
-    filled: boolean
-  ): Promise<void> {
+  async rect(x: number, y: number, width: number, height: number, filled: boolean): Promise<void> {
     return new Promise<void>((resolve: Function, reject: Function) => {
       if (filled === undefined) {
         filled = true;
@@ -131,36 +115,19 @@ export class Render2dService {
 
       this.loadActiveColor();
       let origin = this.getOrigin();
-      const context: CanvasRenderingContext2D = this.gameService.screen.buffer
-        .context;
+      const context: CanvasRenderingContext2D = this.gameState.screen.buffer.context;
 
       if (filled) {
-        context.fillRect(
-          x + origin.x,
-          y + origin.y,
-          width + origin.x,
-          height + origin.y
-        );
+        context.fillRect(x + origin.x, y + origin.y, width + origin.x, height + origin.y);
       } else {
-        context.strokeRect(
-          x + origin.x,
-          y + origin.y,
-          width + origin.x,
-          height + origin.y
-        );
+        context.strokeRect(x + origin.x, y + origin.y, width + origin.x, height + origin.y);
       }
 
       resolve();
     });
   }
 
-  async oval(
-    x: number,
-    y: number,
-    width: number,
-    height: number,
-    filled?: boolean
-  ): Promise<void> {
+  async oval(x: number, y: number, width: number, height: number, filled?: boolean): Promise<void> {
     //TODO refactor with respect to origin
     return new Promise<void>((resolve: Function, reject: Function) => {
       if (filled === undefined) {
@@ -169,19 +136,10 @@ export class Render2dService {
 
       this.loadActiveColor();
       let origin = this.getOrigin();
-      const context: CanvasRenderingContext2D = this.gameService.screen.buffer
-        .context;
+      const context: CanvasRenderingContext2D = this.gameState.screen.buffer.context;
 
       context.beginPath();
-      context.ellipse(
-        x + width / 2,
-        y + height / 2,
-        width / 2,
-        height / 2,
-        0,
-        0,
-        2 * Math.PI
-      );
+      context.ellipse(x + width / 2, y + height / 2, width / 2, height / 2, 0, 0, 2 * Math.PI);
 
       if (filled) {
         context.fill();
@@ -197,8 +155,7 @@ export class Render2dService {
     return new Promise<void>((resolve: Function, reject: Function) => {
       this.loadActiveColor();
       let origin = this.getOrigin();
-      const context: CanvasRenderingContext2D = this.gameService.screen.buffer
-        .context;
+      const context: CanvasRenderingContext2D = this.gameState.screen.buffer.context;
 
       context.fillRect(x + origin.x, y + origin.y, 1, 1);
 
@@ -206,12 +163,7 @@ export class Render2dService {
     });
   }
 
-  async maskImage(
-    image: Image,
-    maskRed: number,
-    maskGreen: number,
-    maskBlue: number
-  ): Promise<void> {
+  async maskImage(image: BbScriptImage, maskRed: number, maskGreen: number, maskBlue: number): Promise<void> {
     return new Promise((resolve: Function, reject: Function) => {
       let processedImages = 0;
 
@@ -248,12 +200,7 @@ export class Render2dService {
     });
   }
 
-  async tileImage(
-    image: Image,
-    x: number,
-    y: number,
-    frame?: number
-  ): Promise<void> {
+  async tileImage(image: BbScriptImage, x: number, y: number, frame?: number): Promise<void> {
     return new Promise<void>((resolve: Function, reject: Function) => {
       if (!frame) {
         frame = 0;
@@ -261,19 +208,14 @@ export class Render2dService {
 
       const origin = this.getOrigin();
       const activeViewport = this.getActiveViewport();
-      const context: CanvasRenderingContext2D = this.gameService.screen.buffer
-        .context;
+      const context: CanvasRenderingContext2D = this.gameState.screen.buffer.context;
 
       for (
         let currentX: number = x, currentY: number = y;
         currentX < activeViewport.width && currentY < activeViewport.height;
 
       ) {
-        context.drawImage(
-          image.getElement(frame),
-          currentX + origin.x,
-          currentY + origin.y
-        );
+        context.drawImage(image.getElement(frame), currentX + origin.x, currentY + origin.y);
 
         currentX += image.width;
 
@@ -291,7 +233,7 @@ export class Render2dService {
   }
 
   async drawImage(
-    image: Image,
+    image: BbScriptImage,
     x: number,
     y: number,
     beginX: number,
@@ -307,7 +249,7 @@ export class Render2dService {
       }
 
       if (!context) {
-        context = this.gameService.screen.buffer.context;
+        context = this.gameState.screen.buffer.context;
       }
 
       const origin = this.getOrigin();
@@ -324,7 +266,7 @@ export class Render2dService {
       let handleVector = {
         length: Math.sqrt(Math.pow(handle.x, 2) + Math.pow(handle.y, 2)),
         dx: 0,
-        dy: 0,
+        dy: 0
       };
       handleVector.dx = -Math.sin(handleVector.length);
       handleVector.dy = Math.cos(handleVector.length);
@@ -337,15 +279,7 @@ export class Render2dService {
       let sin = Math.sin(rotationRadians);
       let cos = Math.cos(rotationRadians);
 
-      console.info(
-        '[IMAGE TRANSFORMATIONS]',
-        scaleX,
-        scaleY,
-        toX,
-        toY,
-        sin,
-        cos
-      );
+      console.info('[IMAGE TRANSFORMATIONS]', scaleX, scaleY, toX, toY, sin, cos);
 
       context.setTransform(
         cos * scaleX,
@@ -356,17 +290,7 @@ export class Render2dService {
         y + toY + origin.y
       );
 
-      context.drawImage(
-        element,
-        beginX,
-        beginY,
-        width,
-        height,
-        x,
-        y,
-        width,
-        height
-      );
+      context.drawImage(element, beginX, beginY, width, height, x, y, width, height);
 
       // reset horizontal and vertical scaling for future events
       context.setTransform(1, 0, 0, 1, 0, 0);
@@ -375,26 +299,18 @@ export class Render2dService {
     });
   }
 
-  text(
-    x: number,
-    y: number,
-    text: string,
-    centerX?: boolean,
-    centerY?: boolean
-  ): Promise<void> {
+  text(x: number, y: number, text: string, centerX?: boolean, centerY?: boolean): Promise<void> {
     return new Promise<void>((resolve: Function, reject: Function) => {
       this.loadActiveColor();
-      const context: CanvasRenderingContext2D = this.gameService.screen.buffer
-        .context;
+      const context: CanvasRenderingContext2D = this.gameState.screen.buffer.context;
       context.fillText(text, x, y);
       resolve();
     });
   }
 
-  setFont(font: Font): Promise<void> {
+  setFont(font: GameFont): Promise<void> {
     return new Promise<void>((resolve: Function, reject: Function) => {
-      const context: CanvasRenderingContext2D = this.gameService.screen.buffer
-        .context;
+      const context: CanvasRenderingContext2D = this.gameState.screen.buffer.context;
 
       let fontString: string = '';
       if (font.italic) {
@@ -412,30 +328,27 @@ export class Render2dService {
     });
   }
 
-  fontAscent(font: Font): Promise<number> {
+  fontAscent(font: GameFont): Promise<number> {
     return Promise.resolve(0);
   }
 
-  fontDescent(font: Font): Promise<number> {
+  fontDescent(font: GameFont): Promise<number> {
     return Promise.resolve(0);
   }
 
-  fontWidth(font: Font): Promise<number> {
-    const context: CanvasRenderingContext2D = this.gameService.screen.buffer
-      .context;
+  fontWidth(font: GameFont): Promise<number> {
+    const context: CanvasRenderingContext2D = this.gameState.screen.buffer.context;
     return Promise.resolve(context.measureText('M').width);
   }
 
   stringWidth(text: string): Promise<number> {
-    const context: CanvasRenderingContext2D = this.gameService.screen.buffer
-      .context;
+    const context: CanvasRenderingContext2D = this.gameState.screen.buffer.context;
     return Promise.resolve(context.measureText(text).width);
   }
 
   stringHeight(): Promise<number> {
     return new Promise<number>((resolve: Function, reject: Function) => {
-      const context: CanvasRenderingContext2D = this.gameService.screen.buffer
-        .context;
+      const context: CanvasRenderingContext2D = this.gameState.screen.buffer.context;
       resolve(Number(context.font.match(/([0-9]+)px/)[1]));
     });
   }

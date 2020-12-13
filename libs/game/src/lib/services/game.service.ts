@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-
-import { Screen } from '@blitz-basic-script/game';
-import { FileSystem } from '@blitz-basic-script/game';
-import { TextMode } from '../interfaces/text-mode';
-import { App } from '../interfaces/app';
-import { Image } from '../classes/image';
+import { BbScriptImage } from '../classes/in-game/2d/image';
+import { AppProperties } from '../interfaces/game/state/app';
+import { BbScriptFileSystem } from '../interfaces/game/state/file-system';
+import { BbScriptScreenProperties } from '../interfaces/game/state/screen';
+import { TextModeProperties } from '../interfaces/game/state/text-mode';
 
 @Injectable({
   providedIn: 'root',
@@ -21,12 +20,12 @@ export class GameService {
   private mouseDown: object;
   private mouseHit: object;
 
-  private _screen: Screen;
-  private _fileSystem: FileSystem;
+  private _screen: BbScriptScreenProperties;
+  private _fileSystem: BbScriptFileSystem;
   private images: any; // TODO: refactor (create useful interface or class with adequate naming)
-  private textMode: TextMode;
+  private textMode: TextModeProperties;
 
-  private app: App;
+  private app: AppProperties;
 
   private initialTimeStamp: Date;
 
@@ -79,10 +78,6 @@ export class GameService {
     this.images = {
       autoMidHandle: false,
     };
-
-    this.textMode = {
-      offset: { x: 0, y: 0 },
-    };
   }
 
   public get(property: string): any {
@@ -94,11 +89,11 @@ export class GameService {
     }
   }
 
-  public getAllImages(): Image[] {
-    let result: Image[] = [];
+  public getAllImages(): BbScriptImage[] {
+    let result: BbScriptImage[] = [];
 
     Object.values(this.global).forEach((e: any) => {
-      if (e instanceof Image) {
+      if (e instanceof BbScriptImage) {
         result.push(e);
       }
     });
@@ -110,7 +105,7 @@ export class GameService {
     return new Date().getTime() - this.initialTimeStamp.getMilliseconds();
   }
 
-  public get screen(): Screen {
+  public get screen(): BbScriptScreenProperties {
     return this._screen;
   }
 
@@ -151,7 +146,7 @@ export class GameService {
     this._screen.viewport = viewport;
   }
 
-  public getImage(): Image {
+  public getImage(): BbScriptImage {
     return this.images;
   }
 
@@ -159,7 +154,7 @@ export class GameService {
     this.images.autoMidHandle = active;
 
     // update all existing images
-    this.getAllImages().forEach((image: Image) => {
+    this.getAllImages().forEach((image: BbScriptImage) => {
       if (active) {
         image.handle = { x: image.width / 2, y: image.height / 2 };
       } else {
@@ -168,7 +163,7 @@ export class GameService {
     });
   }
 
-  public getTextMode(): TextMode {
+  public getTextMode(): TextModeProperties {
     return this.textMode;
   }
 
@@ -299,7 +294,7 @@ export class GameService {
   }
 
   // FILE SYSTEM
-  public get fileSystem(): FileSystem {
+  public get fileSystem(): BbScriptFileSystem {
     return this._fileSystem;
   }
 

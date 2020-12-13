@@ -1,7 +1,10 @@
+import { CodeBlock } from './code/block';
+
 export interface AbstractSyntax {
-  globals: object;
-  statements: any[];
-  mainLoop: any[];
+  globals: object; // TODO: remove?
+  codeBlocks: CodeBlock[];
+  mainLoop: CodeBlock[];
   functions: any[];
   types: object;
+  // TODO: data blocks
 }

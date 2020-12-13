@@ -8,14 +8,14 @@ import { ParserState } from '../enums/parser/parser-state';
 import { LanguageService } from './language.service';
 import { ConstStatement } from '../interfaces/statements/const';
 import { ParserStatementType } from '../enums/parser/parser-statement-type';
-import { CommandsBasicsService } from './basics.service';
-import { CommandsDataService } from './data.service';
-import { CommandsGraphics2DService } from './graphics2d.service';
-import { CommandsGraphics3DService } from './graphics3d.service';
-import { CommandsGUIService } from './gui.service copy';
-import { CommandsIOService } from './io.service';
-import { CommandsSoundService } from './sound.service';
-import { ApiCommand } from '../interfaces/api-command';
+import { CommandsBasicsService } from './commands/basics.service';
+import { CommandsDataService } from './commands/data.service';
+import { CommandsGraphics2DService } from './commands/graphics2d.service';
+import { CommandsGraphics3DService } from './commands/graphics3d.service';
+import { ApiCommand } from '../interfaces/api/api-command';
+import { CommandsIOService } from './commands/io.service';
+import { CommandsSoundService } from './commands/sound.service';
+import { CommandsGUIService } from './commands/gui.service';
 
 type CommandResponse = { category: string; command: string; params: any[] };
 
@@ -109,7 +109,7 @@ export class ParserService {
     this.resetParser();
     this.abstractSyntax = {
       globals: [],
-      statements: [],
+      codeBlocks: [],
       mainLoop: [],
       functions: [],
       types: [],
@@ -260,11 +260,11 @@ export class ParserService {
   // [Sar]: [NumExpr] Sar [NumExpr]
   // [Sar]: [NumExpr] Shl [NumExpr]
   // [Sar]: [NumExpr] Shr [NumExpr]
-  createAbstractSyntaxOld(lexerCode: Array<LexerToken[]>): AbstractSyntax {
+  createAbstractSyntax(lexerCode: Array<LexerToken[]>): AbstractSyntax {
     // reset game code
     this.abstractSyntax = {
       globals: [],
-      statements: [],
+      codeBlocks: [],
       mainLoop: [],
       functions: [],
       types: [],
@@ -389,7 +389,7 @@ export class ParserService {
           break;
         case 'commaOrAssignment':
           if (token.which === LexerTokenCategory.COMMA) {
-            this.abstractSyntax.statements.push({
+            this.abstractSyntax.codeBlocks.push({
               type: ParserStatementType.GLOBAL,
               name: variableName,
               value: null,
@@ -412,7 +412,7 @@ export class ParserService {
               global.slice(2),
               true
             ) as CommandResponse;
-            this.abstractSyntax.statements.push({
+            this.abstractSyntax.codeBlocks.push({
               global: variableName,
               category: cmdResponse.category,
               command: cmdResponse.command,
@@ -485,7 +485,7 @@ export class ParserService {
           params: finalParams,
         };
       } else {
-        this.abstractSyntax.statements.push({
+        this.abstractSyntax.codeBlocks.push({
           category: cmdFromJson.category,
           command: cmdCall,
           params: finalParams,
@@ -550,7 +550,7 @@ export class ParserService {
                     currentInnerToken.which === LexerTokenCategory.COMMA
                   ) {
                     // push newConst to abstract syntax and reset its values
-                    this.abstractSyntax.statements.push({ ...newConst });
+                    this.abstractSyntax.codeBlocks.push({ ...newConst });
                     newConst.name = '';
                     newConst.value = '';
                     context = 'name';
@@ -570,7 +570,7 @@ export class ParserService {
                   if (validCategories.includes(currentInnerToken.which)) {
                     newConst.value = currentInnerToken.value;
                     // push newConst to abstract syntax and reset its values
-                    this.abstractSyntax.statements.push({ ...newConst });
+                    this.abstractSyntax.codeBlocks.push({ ...newConst });
                     newConst.name = '';
                     newConst.value = '';
                     context = 'comma';
@@ -706,7 +706,7 @@ export class ParserService {
             break;
           case LexerTokenCategory.COMMAND:
             const params = this.parseState(ParserState.COMMAND_CALL, tokens);
-            this.abstractSyntax.statements.push({
+            this.abstractSyntax.codeBlocks.push({
               type: ParserStatementType.COMMAND,
               name: firstToken.value,
               params: params,

@@ -1,47 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-
-export interface ScreenProperties {
-  width: number;
-  height: number;
-  origin: {
-    x: number;
-    y: number;
-  };
-  color: {
-    red: number;
-    green: number;
-    blue: number;
-  };
-  clsColor: {
-    red: number;
-    green: number;
-    blue: number;
-  };
-  viewport: {
-    beginX: number;
-    beginY: number;
-    width: number;
-    height: number;
-  };
-}
-
-export interface ImagesProperties {
-  autoMidHandle: boolean;
-}
-
-export interface TextModeProperties {
-  offset: {
-    x: number;
-    y: number;
-  };
-}
-
-export interface AppProperties {
-  title: string;
-  antiAliasing: boolean;
-  wireFrame: boolean;
-}
+import { BbScriptImage } from '../classes/in-game/2d/image';
+import { BbScriptScreenProperties } from '../interfaces/game/state/screen';
+import { ImagesProperties } from '../interfaces/game/state/image';
+import { BbScriptFileSystem } from '../interfaces/game/state/file-system';
+import { TextModeProperties } from '../interfaces/game/state/text-mode';
+import { AppProperties } from '../interfaces/game/state/app';
 
 @Injectable()
 export class GameStateService {
@@ -56,11 +19,14 @@ export class GameStateService {
   private mouseDown: object;
   private mouseHit: object;
 
-  private screen: ScreenProperties;
+  private _screen: BbScriptScreenProperties;
+  private _fileSystem: BbScriptFileSystem;
   private images: ImagesProperties;
   private textMode: TextModeProperties;
 
   private app: AppProperties;
+
+  private initialTimeStamp: Date;
 
   constructor() {
     this.global = {};
@@ -74,43 +40,46 @@ export class GameStateService {
     this.mouseDown = {};
     this.mouseHit = {};
 
+    this.initialTimeStamp = new Date();
+
     this.app = {
       title: '',
       antiAliasing: true,
-      wireFrame: false,
+      wireFrame: false
     };
 
-    this.screen = {
-      width: 400,
-      height: 300,
+    this._screen = {
+      width: 1366,
+      height: 768,
       origin: {
         x: 0,
-        y: 0,
+        y: 0
       },
       color: {
-        red: 1,
-        green: 1,
-        blue: 1,
+        red: 255,
+        green: 255,
+        blue: 255
       },
       clsColor: {
         red: 0,
         green: 0,
-        blue: 0,
+        blue: 0
       },
       viewport: {
         beginX: 0,
         beginY: 0,
         width: 400,
-        height: 300,
+        height: 300
       },
+      buffer: null
     };
 
     this.images = {
-      autoMidHandle: false,
+      autoMidHandle: false
     };
 
     this.textMode = {
-      offset: { x: 0, y: 0 },
+      offset: { x: 0, y: 0 }
     };
   }
 
@@ -123,45 +92,48 @@ export class GameStateService {
     }
   }
 
-  public getScreenProperties(): ScreenProperties {
-    return this.screen;
+  public getAllImages(): BbScriptImage[] {
+    let result: BbScriptImage[] = [];
+
+    Object.values(this.global).forEach((e: any) => {
+      if (e instanceof BbScriptImage) {
+        result.push(e);
+      }
+    });
+
+    return result;
+  }
+
+  public getMilliSecs(): number {
+    return new Date().getTime() - this.initialTimeStamp.getMilliseconds();
+  }
+
+  public get screen(): BbScriptScreenProperties {
+    return this._screen;
   }
 
   public setScreenWidth(width: number): void {
-    this.screen.width = width;
+    this._screen.width = width;
   }
 
   public setScreenHeight(height: number): void {
-    this.screen.height = height;
+    this._screen.height = height;
   }
 
   public setScreenOrigin(origin: { x: number; y: number }): void {
-    this.screen.origin = origin;
+    this._screen.origin = origin;
   }
 
-  public setScreenColor(color: {
-    red: number;
-    green: number;
-    blue: number;
-  }): void {
-    this.screen.color = color;
+  public setScreenColor(color: { red: number; green: number; blue: number }): void {
+    this._screen.color = color;
   }
 
-  public setScreenClsColor(clsColor: {
-    red: number;
-    green: number;
-    blue: number;
-  }): void {
-    this.screen.clsColor = clsColor;
+  public setScreenClsColor(clsColor: { red: number; green: number; blue: number }): void {
+    this._screen.clsColor = clsColor;
   }
 
-  public setScreenViewport(viewport: {
-    beginX: number;
-    beginY: number;
-    width: number;
-    height: number;
-  }): void {
-    this.screen.viewport = viewport;
+  public setScreenViewport(viewport: { beginX: number; beginY: number; width: number; height: number }): void {
+    this._screen.viewport = viewport;
   }
 
   public getImagesProperties(): ImagesProperties {
@@ -170,6 +142,15 @@ export class GameStateService {
 
   public setImagesAutoMidHandle(active: boolean): void {
     this.images.autoMidHandle = active;
+
+    // update all existing images
+    this.getAllImages().forEach((image: BbScriptImage) => {
+      if (active) {
+        image.handle = { x: image.width / 2, y: image.height / 2 };
+      } else {
+        image.handle = { x: 0, y: 0 };
+      }
+    });
   }
 
   public getTextModeProperties(): TextModeProperties {
@@ -186,18 +167,13 @@ export class GameStateService {
     this[property] = value;
   }
 
-  setGlobal(variableName: string, value: any): any {
-    console.info('Set Global:', variableName, value);
-    this.global[variableName] = value;
+  setGlobal(id: string, value: any): any {
+    console.info('Set Global:', id, value);
+    this.global[id] = value;
   }
 
-  getGlobal(variableName: string): any {
-    return this.global[variableName];
-  }
-
-  getGlobal$(variableName: string): Observable<any> {
-    console.info(`Get Global ${variableName}:`, this.global[variableName]);
-    return of(this.global[variableName]);
+  getGlobal(id: string): any {
+    return this.global[id];
   }
 
   setDim(dimName: string, value: any): any {
@@ -299,11 +275,20 @@ export class GameStateService {
   }
 
   setAntiAliasing(enabled: boolean): void {
-    //TODO re-initialize BabylonJS engine to apply the new settings
+    // TODO: re-initialize BabylonJS engine to apply the new settings
     this.app.antiAliasing = enabled;
   }
 
   setWireFrame(enabled: boolean): void {
     this.app.wireFrame = enabled;
+  }
+
+  // FILE SYSTEM
+  public get fileSystem(): BbScriptFileSystem {
+    return this._fileSystem;
+  }
+
+  changeDirectory(path: string): void {
+    this._fileSystem.currentDirectory = path;
   }
 }

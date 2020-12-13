@@ -1,11 +1,11 @@
 import { Vector3, Mesh, Camera, Light } from '@babylonjs/core';
-import { Instance } from '../../types/3d/instance';
+import { BbScriptInstance } from '../../types/in-game/3d/instance';
 
 export class Entity {
   private _name: string;
   private _class: string;
   private _parent: Entity;
-  private _instance: Instance;
+  private _instance: BbScriptInstance;
 
   constructor(
     name: string,
@@ -35,7 +35,7 @@ export class Entity {
     return this._parent;
   }
 
-  get instance(): Instance {
+  get instance(): BbScriptInstance {
     return this._instance;
   }
 

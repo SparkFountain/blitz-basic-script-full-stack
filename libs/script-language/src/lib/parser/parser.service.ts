@@ -11,7 +11,7 @@ export class ParserService {
   createAbstractSyntax(code: string[]): AbstractSyntax {
     let result: AbstractSyntax = {
       globals: {},
-      statements: [],
+      codeBlocks: [],
       mainLoop: [],
       functions: [],
       types: {},

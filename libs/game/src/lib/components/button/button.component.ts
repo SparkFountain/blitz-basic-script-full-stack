@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ButtonStyle } from '../../enums/gui/buttons/button-style';
+import { GuiButtonStyle } from '../../enums/gui/buttons/button-style';
 
 @Component({
   selector: 'blitz-basic-script-button',
@@ -12,9 +12,9 @@ export class ButtonComponent {
   @Input('y') y: number;
   @Input('width') width: number;
   @Input('height') height: number;
-  @Input('style') style: ButtonStyle;
+  @Input('style') style: GuiButtonStyle;
 
-  public GuiButtonStyle: any = ButtonStyle;
+  public GuiButtonStyle: any = GuiButtonStyle;
 
   constructor() {}
 }

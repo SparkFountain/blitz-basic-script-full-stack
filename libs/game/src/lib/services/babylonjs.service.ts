@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { CameraType } from '../enums/camera/camera-type';
-import { BbScriptAxis } from '../enums/3d/axis';
 import { LightType } from '../enums/light/light-type';
 import {
   Engine,
@@ -25,6 +24,8 @@ import {
 } from '@babylonjs/core';
 import { GameService } from './game.service';
 import { Entity } from '../classes/3d/entity';
+import { BbScriptAxis } from '../enums/axis';
+import { BbScriptEntity } from '../classes/in-game/3d/entity';
 
 @Injectable({
   providedIn: 'root',
@@ -356,7 +357,7 @@ export class BabylonJSService {
   }
 
   async scaleMesh(
-    entity: Entity,
+    entity: BbScriptEntity,
     x: number,
     y: number,
     z: number,
@@ -367,7 +368,7 @@ export class BabylonJSService {
 
   /* ENTITIES */
   async moveEntity(
-    entity: Entity,
+    entity: BbScriptEntity,
     x: number,
     y: number,
     z: number
@@ -396,7 +397,7 @@ export class BabylonJSService {
   }
 
   async translateEntity(
-    entity: Entity,
+    entity: BbScriptEntity,
     x: number,
     y: number,
     z: number,
@@ -408,7 +409,7 @@ export class BabylonJSService {
   }
 
   async turnEntity(
-    entity: Entity,
+    entity: BbScriptEntity,
     pitch: number,
     yaw: number,
     roll: number,
@@ -419,7 +420,7 @@ export class BabylonJSService {
   }
 
   async alignToVector(
-    entity: Entity,
+    entity: BbScriptEntity,
     x: number,
     y: number,
     z: number,
@@ -447,8 +448,8 @@ export class BabylonJSService {
   }
 
   async pointEntity(
-    sourceEntity: Entity,
-    targetEntity: Entity,
+    sourceEntity: BbScriptEntity,
+    targetEntity: BbScriptEntity,
     roll: number
   ): Promise<void> {
     //TODO: implementation
