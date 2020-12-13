@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { GameStateService } from '../../game-state.service';
-import { BabylonJSService } from '../../babylon-js.service';
-import { Render2dService } from '../../render2d.service';
-import { BbScriptBuffer } from 'bbscript/src/classes/in-game/2d/buffer';
+import { BabylonJSService } from '../babylonjs.service';
+import { GameStateService } from '../game-state.service';
+import { Render2dService } from '../render2d.service';
+
+// TODO: re-implement BbScriptBuffer
+export interface BbScriptBuffer {}
 
 @Injectable()
 export class CommandsGraphics2dGraphicsService {

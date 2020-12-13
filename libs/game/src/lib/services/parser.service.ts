@@ -6,16 +6,16 @@ import { GeneralService } from './general.service';
 import { GameStateService } from './game-state.service';
 import { ParserState } from '../enums/parser/parser-state';
 import { LanguageService } from './language.service';
-import { ApiCommand } from '../interfaces/api/api-command';
-import { CommandsBasicsService } from './commands/basics.service';
-import { CommandsDataService } from './commands/data.service';
-import { CommandsGraphics2DService } from './commands/graphics2d.service';
-import { CommandsGraphics3DService } from './commands/graphics3d.service';
-import { CommandsGUIService } from './commands/gui.service';
-import { CommandsIOService } from './commands/io.service';
-import { CommandsSoundService } from './commands/sound.service';
 import { ConstStatement } from '../interfaces/statements/const';
 import { ParserStatementType } from '../enums/parser/parser-statement-type';
+import { CommandsBasicsService } from './basics.service';
+import { CommandsDataService } from './data.service';
+import { CommandsGraphics2DService } from './graphics2d.service';
+import { CommandsGraphics3DService } from './graphics3d.service';
+import { CommandsGUIService } from './gui.service copy';
+import { CommandsIOService } from './io.service';
+import { CommandsSoundService } from './sound.service';
+import { ApiCommand } from '../interfaces/api-command';
 
 type CommandResponse = { category: string; command: string; params: any[] };
 
@@ -23,70 +23,70 @@ type ConstContext = 'name' | 'assignmentOrComma' | 'value' | 'comma';
 type GlobalContext = 'variable' | 'commaOrAssignment' | 'expression';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ParserService {
   static MESSAGE = {
     ERROR: {
       DEPRECATED_KEYWORD: {
         EN: 'Deprecated key word',
-        DE: 'Veraltetes Schlüsselwort'
+        DE: 'Veraltetes Schlüsselwort',
       },
       DEPRECATED_COMMAND: {
         EN: 'Deprecated command',
-        DE: 'Veralteter Befehl'
+        DE: 'Veralteter Befehl',
       },
       INVALID_TOKEN: {
         EN: 'Invalid token',
-        DE: 'Ungültiges Token'
+        DE: 'Ungültiges Token',
       },
       INVALID_START_TOKEN: {
         EN: 'Invalid start token',
-        DE: 'Ungültiges Anfangstoken'
+        DE: 'Ungültiges Anfangstoken',
       },
       ILLEGAL_CONTEXT: {
         EN: 'Illegal token context',
-        DE: 'Ungültiger Kontext für dieses Token'
+        DE: 'Ungültiger Kontext für dieses Token',
       },
       VAR_NAME_EXPECTED: {
         EN: 'Expecting a variable name',
-        DE: 'Variablenname erwartet'
+        DE: 'Variablenname erwartet',
       },
       TOO_MANY_PARAMETERS: {
         EN: 'Too many parameters',
-        DE: 'Zu viele Parameter angegeben'
+        DE: 'Zu viele Parameter angegeben',
       },
       NOT_ENOUGH_PARAMETERS: {
         EN: 'Not enough parameters',
-        DE: 'Zu wenige Parameter angegeben'
+        DE: 'Zu wenige Parameter angegeben',
       },
       COMMA_MUST_BE_FOLLOWED_BY_EXPRESSION: {
         EN: 'Comma must be followed by another expression',
-        DE: 'Nach dem Komma muss eine weitere Anweisung folgen'
+        DE: 'Nach dem Komma muss eine weitere Anweisung folgen',
       },
       MISSING_OPENING_BRACKET: {
         EN: 'Missing opening bracket',
-        DE: 'Öffnende Klammer fehlt'
+        DE: 'Öffnende Klammer fehlt',
       },
       NO_MORE_TOKENS_ALLOWED: {
         EN: 'No more tokens allowed after last key word',
-        DE: 'Keine weiteren Tokens nach dem letzten Schlüsselwort erlaubt'
+        DE: 'Keine weiteren Tokens nach dem letzten Schlüsselwort erlaubt',
       },
       NO_CONDITION_BLOCK_OPENED: {
         EN: 'No condition block opened',
-        DE: 'Kein Bedingungsblock definiert'
+        DE: 'Kein Bedingungsblock definiert',
       },
       DUPLICATE_DECLARATION: {
         EN: 'Duplicate Declaration (prohibited)',
-        DE: 'Mehrfache Deklaration (verboten)'
+        DE: 'Mehrfache Deklaration (verboten)',
       },
       TODO: {
         EN: 'This error message is not implemented yet.',
-        DE: 'Diese Fehlermeldung wurde noch nicht implementiert.'
-      }
+        DE: 'Diese Fehlermeldung wurde noch nicht implementiert.',
+      },
     },
     INFO: {},
-    WARNING: {}
+    WARNING: {},
   };
 
   individuals: object;
@@ -110,9 +110,9 @@ export class ParserService {
     this.abstractSyntax = {
       globals: [],
       statements: [],
-      mainLoop$: [],
-      functions$: [],
-      types: []
+      mainLoop: [],
+      functions: [],
+      types: [],
     };
   }
 
@@ -138,15 +138,19 @@ export class ParserService {
       const: [],
       dim: [],
       fn: [],
-      type: []
+      type: [],
     };
 
     lexerCode.forEach((lexerTokens: LexerToken[]) => {
       for (let i = 0; i < lexerTokens.length; i++) {
         if (lexerTokens[i].which === LexerTokenCategory.INDIVIDUAL) {
-          if (i > 0 && lexerTokens[i - 1].which === LexerTokenCategory.KEYWORD) {
+          if (
+            i > 0 &&
+            lexerTokens[i - 1].which === LexerTokenCategory.KEYWORD
+          ) {
             //console.info('Previous token is a key word:', lexerTokens[i-1]);
-            let keywordValue = (lexerTokens[i - 1].value as string).toLowerCase();
+            let keywordValue = (lexerTokens[i - 1]
+              .value as string).toLowerCase();
             switch (keywordValue) {
               case 'global':
                 if (result.global.indexOf(keywordValue) === -1) {
@@ -256,14 +260,14 @@ export class ParserService {
   // [Sar]: [NumExpr] Sar [NumExpr]
   // [Sar]: [NumExpr] Shl [NumExpr]
   // [Sar]: [NumExpr] Shr [NumExpr]
-  createAbstractSyntax(lexerCode: Array<LexerToken[]>): AbstractSyntax {
+  createAbstractSyntaxOld(lexerCode: Array<LexerToken[]>): AbstractSyntax {
     // reset game code
     this.abstractSyntax = {
       globals: [],
       statements: [],
-      mainLoop$: [],
-      functions$: [],
-      types: []
+      mainLoop: [],
+      functions: [],
+      types: [],
     };
 
     // parse code line by line
@@ -271,9 +275,11 @@ export class ParserService {
       // perform token cleanup: remove comments
       const obsoleteTokenCategories: LexerTokenCategory[] = [
         LexerTokenCategory.COMMENT_MARKER,
-        LexerTokenCategory.COMMENT
+        LexerTokenCategory.COMMENT,
       ];
-      lexerTokens = lexerTokens.filter((token: LexerToken) => !obsoleteTokenCategories.includes(token.which));
+      lexerTokens = lexerTokens.filter(
+        (token: LexerToken) => !obsoleteTokenCategories.includes(token.which)
+      );
 
       console.info('INITIAL TOKENS:', lexerTokens);
 
@@ -375,19 +381,26 @@ export class ParserService {
             variableName = (token.value as string).toLowerCase();
             context = 'commaOrAssignment';
           } else {
-            console.error('Invalid global assignment (missing variable name)', token);
+            console.error(
+              'Invalid global assignment (missing variable name)',
+              token
+            );
           }
           break;
         case 'commaOrAssignment':
           if (token.which === LexerTokenCategory.COMMA) {
-            this.abstractSyntax.statements.push(
-              { type: ParserStatementType.GLOBAL, name: variableName, value: null }
-            )
+            this.abstractSyntax.statements.push({
+              type: ParserStatementType.GLOBAL,
+              name: variableName,
+              value: null,
+            });
             context = 'variable';
           } else if (token.which === LexerTokenCategory.ASSIGNMENT) {
             context = 'expression';
           } else {
-            console.error('Invalid token following global variable name (must be comma or assignment)');
+            console.error(
+              'Invalid token following global variable name (must be comma or assignment)'
+            );
           }
           break;
         case 'expression':
@@ -395,12 +408,15 @@ export class ParserService {
           this.parseExpression(remainingTokens);
 
           if (token.which === LexerTokenCategory.COMMAND) {
-            const cmdResponse: CommandResponse = this.simpleCommandParser(global.slice(2), true) as CommandResponse;
+            const cmdResponse: CommandResponse = this.simpleCommandParser(
+              global.slice(2),
+              true
+            ) as CommandResponse;
             this.abstractSyntax.statements.push({
               global: variableName,
               category: cmdResponse.category,
               command: cmdResponse.command,
-              params: cmdResponse.params
+              params: cmdResponse.params,
             });
             return;
           }
@@ -408,7 +424,10 @@ export class ParserService {
     });
   }
 
-  simpleCommandParser(initialTokens: LexerToken[], withReturn: boolean): void | CommandResponse {
+  simpleCommandParser(
+    initialTokens: LexerToken[],
+    withReturn: boolean
+  ): void | CommandResponse {
     // console.info('simpleCommandParser:', initialTokens);
 
     // for the moment, remove all commas
@@ -422,11 +441,13 @@ export class ParserService {
     let firstToken = reducedTokens[0];
 
     // get all params
-    const cmdFromJson = this.language.commands[(firstToken.value as string).toLowerCase()];
+    const cmdFromJson = this.language.commands[
+      (firstToken.value as string).toLowerCase()
+    ];
     let params: { name: string; optional: boolean }[] = cmdFromJson.params;
     let minParams: number = 0;
     const maxParams: number = params.length;
-    params.forEach(param => {
+    params.forEach((param) => {
       if (!param.optional) {
         minParams++;
       }
@@ -437,10 +458,14 @@ export class ParserService {
     if (commandParams >= minParams && commandParams <= maxParams) {
       reducedTokens.shift(); // remove command itself
       const finalParams: any[] = [];
-      reducedTokens.forEach(t => {
+      reducedTokens.forEach((t) => {
         if (t.which === LexerTokenCategory.VARIABLE) {
           finalParams.push(this.gameState.getGlobal(t.value as string)); // this function must NOT be called here!
-        } else if ([LexerTokenCategory.INTEGER, LexerTokenCategory.FLOAT].indexOf(t.which) > -1) {
+        } else if (
+          [LexerTokenCategory.INTEGER, LexerTokenCategory.FLOAT].indexOf(
+            t.which
+          ) > -1
+        ) {
           // convert numbers to correct numbers
           finalParams.push(Number(t.value));
         } else {
@@ -449,19 +474,21 @@ export class ParserService {
       });
 
       // push new statement to game code
-      const cmdCall = (firstToken.value as string).replace(/^\w/, c => c.toLowerCase());
+      const cmdCall = (firstToken.value as string).replace(/^\w/, (c) =>
+        c.toLowerCase()
+      );
       // console.info(`${cmdFromJson.category} ${cmdCall}`);
       if (withReturn) {
         return {
           category: cmdFromJson.category,
           command: cmdCall,
-          params: finalParams
+          params: finalParams,
         };
       } else {
         this.abstractSyntax.statements.push({
           category: cmdFromJson.category,
           command: cmdCall,
-          params: finalParams
+          params: finalParams,
         });
       }
     } else {
@@ -485,7 +512,7 @@ export class ParserService {
           LexerTokenCategory.GLOBAL,
           LexerTokenCategory.COMMAND,
           LexerTokenCategory.LABEL_DOT,
-          LexerTokenCategory.INDIVIDUAL
+          LexerTokenCategory.INDIVIDUAL,
         ];
         if (!validTokenCategories.includes(firstToken.which)) {
           console.error('Invalid token category:', firstToken);
@@ -498,7 +525,7 @@ export class ParserService {
             let newConst: ConstStatement = {
               type: ParserStatementType.CONST,
               name: '',
-              value: null
+              value: null,
             };
             for (let i = 1; i < tokens.length; i++) {
               const currentInnerToken = tokens[i];
@@ -508,20 +535,29 @@ export class ParserService {
                     newConst.name = currentInnerToken.value as string;
                     context = 'assignmentOrComma';
                   } else {
-                    console.error('Constant must have a name', currentInnerToken);
+                    console.error(
+                      'Constant must have a name',
+                      currentInnerToken
+                    );
                   }
                   break;
                 case 'assignmentOrComma':
-                  if (currentInnerToken.which === LexerTokenCategory.ASSIGNMENT) {
+                  if (
+                    currentInnerToken.which === LexerTokenCategory.ASSIGNMENT
+                  ) {
                     context = 'value';
-                  } else if (currentInnerToken.which === LexerTokenCategory.COMMA) {
+                  } else if (
+                    currentInnerToken.which === LexerTokenCategory.COMMA
+                  ) {
                     // push newConst to abstract syntax and reset its values
                     this.abstractSyntax.statements.push({ ...newConst });
                     newConst.name = '';
                     newConst.value = '';
                     context = 'name';
                   } else {
-                    console.error('Constant name must be followed by either a comma or assignment');
+                    console.error(
+                      'Constant name must be followed by either a comma or assignment'
+                    );
                   }
                   break;
                 case 'value':
@@ -529,7 +565,7 @@ export class ParserService {
                     LexerTokenCategory.INTEGER,
                     LexerTokenCategory.FLOAT,
                     LexerTokenCategory.STRING,
-                    LexerTokenCategory.BOOLEAN
+                    LexerTokenCategory.BOOLEAN,
                   ];
                   if (validCategories.includes(currentInnerToken.which)) {
                     newConst.value = currentInnerToken.value;
@@ -539,7 +575,9 @@ export class ParserService {
                     newConst.value = '';
                     context = 'comma';
                   } else {
-                    console.error('Invalid data type (must be Integer, Float, String or Boolean)');
+                    console.error(
+                      'Invalid data type (must be Integer, Float, String or Boolean)'
+                    );
                   }
                   break;
                 case 'comma':
@@ -668,16 +706,18 @@ export class ParserService {
             break;
           case LexerTokenCategory.COMMAND:
             const params = this.parseState(ParserState.COMMAND_CALL, tokens);
-            this.abstractSyntax.statements.push(
-              { type: ParserStatementType.COMMAND, name: firstToken.value, params: params }
-            )
+            this.abstractSyntax.statements.push({
+              type: ParserStatementType.COMMAND,
+              name: firstToken.value,
+              params: params,
+            });
             break;
           case LexerTokenCategory.LABEL_DOT:
             this.parseState(ParserState.LABEL, tokens);
             break;
           case LexerTokenCategory.INDIVIDUAL:
             let hasAssignment = false;
-            tokens.forEach(token => {
+            tokens.forEach((token) => {
               if (token.which === LexerTokenCategory.ASSIGNMENT) {
                 hasAssignment = true;
               }
@@ -725,7 +765,9 @@ export class ParserService {
         console.info('Command call with', tokens);
 
         let commandName = tokens[0].value as string;
-        let command: ApiCommand = this.language.commands[commandName.toLowerCase()];
+        let command: ApiCommand = this.language.commands[
+          commandName.toLowerCase()
+        ];
         console.info('Command:', command);
 
       // let service: string = `commands${command.category.charAt(0).toUpperCase()}${command.category.slice(
@@ -743,7 +785,10 @@ export class ParserService {
     let currentExpression: LexerToken[] = [];
     let links: LexerToken[] = [];
     tokens.forEach((token: LexerToken) => {
-      if (token.which === LexerTokenCategory.KEYWORD && linkValues.indexOf(token.value as string) > -1) {
+      if (
+        token.which === LexerTokenCategory.KEYWORD &&
+        linkValues.indexOf(token.value as string) > -1
+      ) {
         links.push(token);
 
         if (currentExpression.length > 0) {
@@ -781,7 +826,11 @@ export class ParserService {
     // [Or]: [BoolExpr] Or [BoolExpr]
     // [Xor]: [BoolExpr] Xor [BoolExpr]
 
-    let expectedTokens = [LexerTokenCategory.INTEGER, LexerTokenCategory.FLOAT, LexerTokenCategory.STRING];
+    let expectedTokens = [
+      LexerTokenCategory.INTEGER,
+      LexerTokenCategory.FLOAT,
+      LexerTokenCategory.STRING,
+    ];
     let validLeftExpression;
 
     //parse left hand boolean expression
@@ -802,7 +851,9 @@ export class ParserService {
         openBrackets++;
       } else if (token.which === LexerTokenCategory.BRACKET_CLOSE) {
         if (openBrackets === 0) {
-          console.error('Invalid expression (closing brackets without opening)');
+          console.error(
+            'Invalid expression (closing brackets without opening)'
+          );
           return;
         } else {
           openBrackets--;
@@ -822,7 +873,6 @@ export class ParserService {
         case LexerTokenCategory.FLOAT:
         case LexerTokenCategory.STRING:
         case LexerTokenCategory.BOOLEAN:
-
           break;
       }
     });
@@ -853,7 +903,7 @@ export class ParserService {
     }
     console.info(`Split by ${operator}:`, result);
     return result;
-  };
+  }
 
   splitTokens(tokens: LexerToken[], operator: LexerToken): any {
     const result: LexerToken[][] = [];
@@ -884,18 +934,21 @@ export class ParserService {
   // this will only take strings containing * operator [ no + ]
   parseMultiplicationSeparatedExpression(expression: string): number {
     const numbersString: string[] = this.split(expression, '*');
-    const numbers: number[] = numbersString.map(noStr => {
+    const numbers: number[] = numbersString.map((noStr) => {
       if (noStr[0] == '(') {
         const expr = noStr.substr(1, noStr.length - 2);
         // recursive call to the main function
         return this.parsePlusSeparatedExpression(expr);
       }
-      return +noStr;  // convert string to number
+      return +noStr; // convert string to number
     });
     const initialValue = 1.0;
-    const result = numbers.reduce((acc: number, no: number) => acc * no, initialValue);
+    const result = numbers.reduce(
+      (acc: number, no: number) => acc * no,
+      initialValue
+    );
     return result;
-  };
+  }
 
   // parseMultiplicationSeparatedTokens(tokens: LexerToken[]): any {
   //   const numbersString: string[] = this.splitTokens(tokens, '*');
@@ -916,12 +969,16 @@ export class ParserService {
   parseMinusSeparatedExpression(expression: string): number {
     const numbersString: string[] = this.split(expression, '-');
     console.info('Numbers String (minus):', numbersString);
-    const numbers: number[] = numbersString.map(noStr => this.parseMultiplicationSeparatedExpression(noStr));
+    const numbers: number[] = numbersString.map((noStr) =>
+      this.parseMultiplicationSeparatedExpression(noStr)
+    );
     console.info('Numbers (minus):', numbers);
     const initialValue: number = numbers[0];
-    const result: number = numbers.slice(1).reduce((acc, no) => acc - no, initialValue);
+    const result: number = numbers
+      .slice(1)
+      .reduce((acc, no) => acc - no, initialValue);
     return result;
-  };
+  }
 
   // parseMinusSeparatedTokens(tokens: LexerToken[]): any {
   //   const numbersString: string[] = this.splitTokens(tokens, '-');
@@ -937,12 +994,14 @@ export class ParserService {
   parsePlusSeparatedExpression(expression: string): number {
     const numbersString: string[] = this.split(expression, '+');
     console.info('Numbers string:', numbersString);
-    const numbers: number[] = numbersString.map(noStr => this.parseMinusSeparatedExpression(noStr));
+    const numbers: number[] = numbersString.map((noStr) =>
+      this.parseMinusSeparatedExpression(noStr)
+    );
     console.info('Numbers:', numbers);
     const initialValue: number = 0.0;
     const result: number = numbers.reduce((acc, no) => acc + no, initialValue);
     return result;
-  };
+  }
 
   // parsePlusSeparatedTokens(tokens: LexerToken[]): any {
   //   const numbersString: string[] = this.split(tokens, '+');
@@ -957,10 +1016,12 @@ export class ParserService {
   // parses a string consisting of mathematical terms
   parse(expression: string): number {
     // remove space characters
-    const result: number = this.parsePlusSeparatedExpression(expression.replace(/\s/g, ''));
+    const result: number = this.parsePlusSeparatedExpression(
+      expression.replace(/\s/g, '')
+    );
     console.info('RESULT:', result);
     return result;
-  };
+  }
 
   parseTokens(tokens: LexerToken[]): any {
     const result: number = 0; // this.parsePlusSeparatedTokens(tokens);

@@ -144,14 +144,14 @@
         style="width: 100%; min-height: 250px"
       ></textarea>
 
-      Command Formatter:
+      <!-- Command Formatter:
       <input #commandFormatter />
-      <button (click)="formatCommand()">Format</button>
+      <button (click)="formatCommand()">Format</button> -->
     </ng-container>
 
     <blitz-basic-script-editor [hidden]="playing"></blitz-basic-script-editor>
 
-    <blitz-basic-script-game *ngIf="playing"></blitz-basic-script-game>
+    <blitz-basic-script-game [code]="formatCode()" *ngIf="playing"></blitz-basic-script-game>
   </div>
 </div>
 

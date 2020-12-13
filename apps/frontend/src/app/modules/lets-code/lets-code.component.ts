@@ -179,16 +179,16 @@ export class LetsCodeComponent implements OnInit {
   }
 
   play(): void {
-    // this.playing = true;
-    // this.action = 'play';
+    this.playing = true;
+    this.action = 'play';
 
-    const tempCode = this.codeTemporary.nativeElement.value
-      .replace(/\r\n/g, '\n')
-      .split('\n');
+    // const tempCode = this.codeTemporary.nativeElement.value
+    //   .replace(/\r\n/g, '\n')
+    //   .split('\n');
 
-    const ast = this.parserService.parse(tempCode);
+    // const ast = this.parserService.parse(tempCode);
 
-    console.info('[AST]', ast);
+    // console.info('[AST]', ast);
   }
 
   debug(): void {
@@ -238,5 +238,9 @@ export class LetsCodeComponent implements OnInit {
 
   toggleSettings(): void {
     this.settingsOpen = !this.settingsOpen;
+  }
+
+  formatCode(): string[] {
+    return this.codeTemporary.nativeElement.value.split('\n');
   }
 }

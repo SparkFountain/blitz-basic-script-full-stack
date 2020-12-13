@@ -17,10 +17,11 @@ import { BabylonJSService } from './services/babylonjs.service';
 import { Render2dService } from './services/render2d.service';
 import { GuiService } from './services/gui.service';
 import {
-  ParserService,
   ParseResult,
+  ParserService,
 } from '@blitz-basic-script/script-language';
 import { InterpreterService } from './services/interpreter/interpreter.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'blitz-basic-script-game',
@@ -100,7 +101,8 @@ export class GameComponent implements OnInit, AfterViewInit {
     private render2dService: Render2dService,
     // private guiService: GuiService,
     private parserService: ParserService,
-    private interpreterService: InterpreterService
+    private interpreterService: InterpreterService,
+    private http: HttpClient
   ) {
     this.canvasFocused = false;
     this.playing = false;
@@ -126,11 +128,15 @@ export class GameComponent implements OnInit, AfterViewInit {
 
     // Initialize 2D Service
     this.render2dService.initCanvas(this.canvas2d.nativeElement);
-    console.info('initCanvas executed');
+    // console.info('initCanvas executed');
 
-    // parse code
-    const parseResult: ParseResult = this.parserService.parse(['If True Then xyz EndIf']);
-    console.info('[PARSE RESULT]', parseResult);
+    // Parse the Code
+    const abstractSyntax = this.parserService.createAbstractSyntax(this.code);
+    console.info('[ABSTRACT SYNTAX]', abstractSyntax);
+
+    // parse code with tsPEG
+    // const parseResult: ParseResult = this.parserService.parse(['If True Then xyz EndIf']);
+    // console.info('[PARSE RESULT]', parseResult);
 
     // const ast = this.interpreterService.initializeAbstractSyntax(
     //   abstractSyntax

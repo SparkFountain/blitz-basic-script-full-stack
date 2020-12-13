@@ -5,12 +5,8 @@ import { CommandsGraphics2dImagesService } from './graphics2d/images.service';
 import { CommandsGraphics2dMoviesService } from './graphics2d/movies.service';
 import { CommandsGraphics2dPixelService } from './graphics2d/pixel.service';
 import { CommandsGraphics2dTextService } from './graphics2d/text.service';
-import { GameMovie } from 'bbscript/src/interfaces/game/movie';
-import { GameFont } from 'bbscript/src/interfaces/game/font';
-import { BbScriptImage } from 'bbscript/src/classes/in-game/2d/image';
-import { BbScriptBuffer } from 'bbscript/src/classes/in-game/2d/buffer';
-import { BbScriptImageMode } from 'bbscript/src/enums/in-game/2d/image';
 import { CommandsGraphics2dGammaService } from './graphics2d/gamma.service';
+import { GameMovie } from '../interfaces/game/movie';
 
 @Injectable()
 export class CommandsGraphics2DService {
