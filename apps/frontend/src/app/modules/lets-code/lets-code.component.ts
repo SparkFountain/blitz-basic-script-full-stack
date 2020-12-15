@@ -10,7 +10,6 @@ import { FileOrFolder, FileType } from '@blitz-basic-script/ide';
 import { LetsCodeService } from '../../services/lets-code.service';
 
 import { Project } from '@blitz-basic-script/project';
-import { ParserService } from '@blitz-basic-script/script-language';
 
 export interface IdeSettings {
   theme: string;
@@ -26,9 +25,7 @@ export interface IdeSettings {
   styleUrls: ['./lets-code.component.scss'],
 })
 export class LetsCodeComponent implements OnInit {
-  // TODO: this is only a reference to a temporary textarea; remove it later
-  @ViewChild('codeTemporary') codeTemporary: ElementRef;
-  @ViewChild('commandFormatter') commandFormatter: ElementRef;
+  public code: string;
 
   public project: Project;
   public searchTerm: string;
@@ -57,7 +54,6 @@ export class LetsCodeComponent implements OnInit {
 
   constructor(
     private letsCodeService: LetsCodeService,
-    private parserService: ParserService,
     private changeDetection: ChangeDetectorRef
   ) {}
 
@@ -97,16 +93,6 @@ export class LetsCodeComponent implements OnInit {
     this.showFiles = true;
 
     this.getFiles();
-  }
-
-  // TODO: remove later
-  formatCommand(): void {
-    const command = this.commandFormatter.nativeElement.value.toLowerCase();
-    let result = '';
-    for (let i = 0; i < command.length; i++) {
-      result += `[${command[i]}${command[i].toUpperCase()}]`;
-    }
-    this.commandFormatter.nativeElement.value = result;
   }
 
   createFile(): void {
@@ -181,14 +167,6 @@ export class LetsCodeComponent implements OnInit {
   play(): void {
     this.playing = true;
     this.action = 'play';
-
-    // const tempCode = this.codeTemporary.nativeElement.value
-    //   .replace(/\r\n/g, '\n')
-    //   .split('\n');
-
-    // const ast = this.parserService.parse(tempCode);
-
-    // console.info('[AST]', ast);
   }
 
   debug(): void {
@@ -238,9 +216,5 @@ export class LetsCodeComponent implements OnInit {
 
   toggleSettings(): void {
     this.settingsOpen = !this.settingsOpen;
-  }
-
-  formatCode(): string[] {
-    return this.codeTemporary.nativeElement.value.split('\n');
   }
 }

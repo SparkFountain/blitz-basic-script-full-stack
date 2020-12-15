@@ -14,6 +14,7 @@ import {
 } from '@blitz-basic-script/script-language';
 
 import { GameModule } from '@blitz-basic-script/game';
+import { GameStateService } from 'libs/game/src/lib/services/game-state.service';
 
 @NgModule({
   imports: [
@@ -25,6 +26,6 @@ import { GameModule } from '@blitz-basic-script/game';
     GameModule,
   ],
   declarations: [LetsCodeComponent, EmptyProjectComponent, TemplatesComponent],
-  providers: [LexerService, LanguageService],
+  providers: [LexerService, LanguageService, GameStateService],
 })
 export class LetsCodeModule {}

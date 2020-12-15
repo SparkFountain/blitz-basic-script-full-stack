@@ -20,16 +20,13 @@ import { KeyCode } from './enums/events/key-codes';
 import { MouseCode } from './enums/events/mouse-codes';
 import { CodeBlock } from './interfaces/code/block';
 import { BbScriptScreenProperties } from './interfaces/game/state/screen';
-import { LexerToken } from './interfaces/lexer-token';
 import { BabylonJSService } from './services/babylonjs.service';
 import { GameStateService } from './services/game-state.service';
 import { GeneralService } from './services/general.service';
 import { GuiService } from './services/gui.service';
 import { InterpreterService } from './services/interpreter.service';
-import { LanguageService } from './services/language.service';
-import { LexerService } from './services/lexer.service';
-import { ParserService } from './services/parser.service';
 import { Render2dService } from './services/render2d.service';
+import { ParserService } from '@blitz-basic-script/script-language';
 
 @Component({
   selector: 'blitz-basic-script-game',
@@ -49,7 +46,7 @@ export class GameComponent implements OnInit, AfterViewInit {
         console.warn(
           'Playing is currently impossible due to work in progress on parser and interpreter.'
         );
-        this.play();
+        setTimeout(() => this.play(), 500); // use delay to avoid playing before canvas viewchildren are rendered
         break;
       case 'debug':
         console.warn('Debugging currently uses hard-coded statements.');
@@ -105,8 +102,6 @@ export class GameComponent implements OnInit, AfterViewInit {
   }
 
   constructor(
-    private language: LanguageService,
-    private lexer: LexerService,
     private parser: ParserService,
     private gameState: GameStateService,
     private babylonjs: BabylonJSService,
@@ -194,6 +189,8 @@ export class GameComponent implements OnInit, AfterViewInit {
   }
 
   play(): void {
+    console.info('[PLAAAAAAAY]');
+
     this.playing = true;
 
     // initialize BabylonJS Engine
@@ -210,13 +207,13 @@ export class GameComponent implements OnInit, AfterViewInit {
     // initialize GUI Service
     // this.gui.initCanvas(this.canvas3d.nativeElement);
 
-    // lex, parse and initialize abstract syntax
-    const tokens: LexerToken[][] = this.lexer.lexCode(this.code);
+    // parse and initialize abstract syntax
     const abstractSyntax: AbstractSyntax = this.parser.createAbstractSyntax(
-      tokens
-    );
-    this.interpreter.initializeAbstractSyntax(abstractSyntax);
-    this.interpreter.run();
+      this.code
+    ).then(() => {
+      this.interpreter.initializeAbstractSyntax(abstractSyntax);
+      this.interpreter.run();
+    });
   }
 
   playFake(): void {

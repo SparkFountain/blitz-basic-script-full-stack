@@ -10,9 +10,18 @@ import { DocumentationModule } from './modules/documentation/documentation.modul
 import { ProjectModule } from './modules/project/project.module';
 import { DocumentationService } from './modules/documentation/documentation.service';
 import { DatabaseService } from './modules/database/database.service';
+import { LanguageModule } from './modules/language/language.module';
 
 @Module({
-  imports: [AuthenticationModule, BlogModule, CodingModule, DocumentationModule, FileModule, ProjectModule],
+  imports: [
+    AuthenticationModule,
+    BlogModule,
+    CodingModule,
+    DocumentationModule,
+    FileModule,
+    ProjectModule,
+    LanguageModule,
+  ],
   controllers: [AppController],
   providers: [AppService, DatabaseService, DocumentationService],
 })
