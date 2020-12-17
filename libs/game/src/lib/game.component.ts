@@ -44,7 +44,7 @@ export class GameComponent implements OnInit, AfterViewInit {
     switch (name) {
       case 'play':
         console.warn(
-          'Playing is currently impossible due to work in progress on parser and interpreter.'
+          'Playing is currently very limited due to work in progress on parser and interpreter.'
         );
         setTimeout(() => this.play(), 500); // use delay to avoid playing before canvas viewchildren are rendered
         break;

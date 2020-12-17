@@ -68,8 +68,8 @@ export class CommandsGraphics2DService {
   async graphics(
     width: number,
     height: number,
-    depth: number,
-    mode: number
+    depth?: number,
+    mode?: number
   ): Promise<void> {
     return this.display.graphics(width, height, depth, mode);
   }
@@ -176,7 +176,7 @@ export class CommandsGraphics2DService {
     y: number,
     width: number,
     height: number,
-    filled: boolean
+    filled?: boolean
   ): Promise<void> {
     return this.graphicsService.oval(x, y, width, height, filled);
   }

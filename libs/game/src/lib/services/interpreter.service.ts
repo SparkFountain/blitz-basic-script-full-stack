@@ -385,10 +385,10 @@ export class InterpreterService {
         return this.graphics2d.gfxModeHeight(evaluatedParams[0]);
       case 'graphics':
         return this.graphics2d.graphics(
-          evaluatedParams[0],
-          evaluatedParams[1],
-          evaluatedParams[2],
-          evaluatedParams[3]
+          Number(evaluatedParams[0]),
+          Number(evaluatedParams[1]),
+          Number(evaluatedParams[2]),
+          Number(evaluatedParams[3])
         );
       case 'graphicsbuffer':
         return this.graphics2d.graphicsBuffer();
@@ -419,9 +419,9 @@ export class InterpreterService {
         );
       case 'color':
         return this.graphics2d.color(
-          evaluatedParams[0],
-          evaluatedParams[1],
-          evaluatedParams[2]
+          Number(evaluatedParams[0]),
+          Number(evaluatedParams[1]),
+          Number(evaluatedParams[2])
         );
       case 'copyrect':
         return this.graphics2d.copyRect(
@@ -440,10 +440,10 @@ export class InterpreterService {
         return this.graphics2d.frontBuffer();
       case 'line':
         return this.graphics2d.line(
-          evaluatedParams[0],
-          evaluatedParams[1],
-          evaluatedParams[2],
-          evaluatedParams[3]
+          Number(evaluatedParams[0]),
+          Number(evaluatedParams[1]),
+          Number(evaluatedParams[2]),
+          Number(evaluatedParams[3])
         );
       case 'loadbuffer':
         return this.graphics2d.loadBuffer(
@@ -454,19 +454,23 @@ export class InterpreterService {
         return this.graphics2d.origin(evaluatedParams[0], evaluatedParams[1]);
       case 'oval':
         return this.graphics2d.oval(
-          evaluatedParams[0],
-          evaluatedParams[1],
-          evaluatedParams[2],
-          evaluatedParams[3],
-          evaluatedParams[4]
+          Number(evaluatedParams[0]),
+          Number(evaluatedParams[1]),
+          Number(evaluatedParams[2]),
+          Number(evaluatedParams[3]),
+          evaluatedParams[4] !== undefined
+            ? Boolean(evaluatedParams[4])
+            : undefined
         );
       case 'rect':
         return this.graphics2d.rect(
-          evaluatedParams[0],
-          evaluatedParams[1],
-          evaluatedParams[2],
-          evaluatedParams[3],
-          evaluatedParams[4]
+          Number(evaluatedParams[0]),
+          Number(evaluatedParams[1]),
+          Number(evaluatedParams[2]),
+          Number(evaluatedParams[3]),
+          evaluatedParams[4] !== undefined
+            ? Boolean(evaluatedParams[4])
+            : undefined
         );
       case 'scanline':
         return this.graphics2d.scanLine();
@@ -728,7 +732,10 @@ export class InterpreterService {
       case 'colorRed':
         return this.graphics2d.colorRed();
       case 'plot':
-        return this.graphics2d.plot(evaluatedParams[0], evaluatedParams[1]);
+        return this.graphics2d.plot(
+          Number(evaluatedParams[0]),
+          Number(evaluatedParams[1])
+        );
       case 'fontascent':
         return this.graphics2d.fontAscent(evaluatedParams[0]);
       case 'fontdescent':
@@ -2281,12 +2288,8 @@ export class InterpreterService {
     // console.info('Expression', expression);
 
     switch (expression.constructor.name) {
-      case 'NumericExpression':
-        return (expression as NumericExpression).value;
-      case 'BooleanExpression':
-        return (expression as BooleanExpression).value;
-      case 'StringExpression':
-        return (expression as StringExpression).value;
+      case 'Expression':
+        return (expression as Expression).value;
       case 'VariableExpression':
         const varExpr: VariableExpression = expression as VariableExpression;
         switch (varExpr.scope) {
@@ -2326,10 +2329,9 @@ export class InterpreterService {
           }
         });
         return eval(result);
+      default:
+        return expression;
     }
-
-    console.warn('Expression could not be evaluated:', expression);
-    return null;
   }
 
   public async assign(assignment: Assignment): Promise<void> {

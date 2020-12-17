@@ -155,8 +155,8 @@ export class CommandsGraphics2dDisplayService {
   async graphics(
     width: number,
     height: number,
-    depth: number,
-    mode: number
+    depth?: number,
+    mode?: number
   ): Promise<void> {
     this.gameState.setScreenWidth(width);
     this.gameState.setScreenHeight(height);

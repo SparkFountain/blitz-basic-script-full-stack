@@ -4,7 +4,7 @@ import { AbstractSyntax, ApiCommand } from '@blitz-basic-script/game';
 import { HttpClient } from '@angular/common/http';
 import { ApiResponse } from 'libs/game/src/lib/interfaces/api/api-response';
 import { CommandStatement } from 'libs/game/src/lib/classes/command-statement';
-import { NumericExpression } from 'libs/game/src/lib/classes/expressions/numerical-expression';
+import { Value } from 'libs/game/src/lib/classes/expressions/expression';
 import { CodeBlock } from 'libs/game/src/lib/interfaces/code/block';
 
 @Injectable({
@@ -107,9 +107,7 @@ export class ParserService {
             // generate code block entry in abstract syntax
             resolve(
               new CommandStatement(command, [
-                ...params.map(
-                  (param: string) => new NumericExpression(Number(param))
-                ),
+                ...params.map((param) => param.trim()),
               ])
             );
           });
