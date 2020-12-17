@@ -188,7 +188,7 @@ export class GameComponent implements OnInit, AfterViewInit {
     this.interpreter.run();
   }
 
-  play(): void {
+  async play(): Promise<void> {
     console.info('[PLAAAAAAAY]');
 
     this.playing = true;
@@ -208,12 +208,12 @@ export class GameComponent implements OnInit, AfterViewInit {
     // this.gui.initCanvas(this.canvas3d.nativeElement);
 
     // parse and initialize abstract syntax
-    const abstractSyntax: AbstractSyntax = this.parser.createAbstractSyntax(
-      this.code
-    ).then(() => {
-      this.interpreter.initializeAbstractSyntax(abstractSyntax);
-      this.interpreter.run();
-    });
+    this.parser
+      .createAbstractSyntax(this.code)
+      .then((abstractSyntax: AbstractSyntax) => {
+        this.interpreter.initializeAbstractSyntax(abstractSyntax);
+        this.interpreter.run();
+      });
   }
 
   playFake(): void {
