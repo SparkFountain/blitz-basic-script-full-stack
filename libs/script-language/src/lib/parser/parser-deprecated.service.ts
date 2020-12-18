@@ -1,7 +1,5 @@
-import { LexerToken } from '../interfaces/lexer-token';
 import { LexerTokenCategory } from '../enums/lexer/lexer-token-category';
 import { Injectable } from '@angular/core';
-import { AbstractSyntax } from '../interfaces/abstract-syntax';
 import { GeneralService } from './general.service';
 import { GameStateService } from './game-state.service';
 import { ParserState } from '../enums/parser/parser-state';
@@ -12,10 +10,12 @@ import { CommandsBasicsService } from './commands/basics.service';
 import { CommandsDataService } from './commands/data.service';
 import { CommandsGraphics2DService } from './commands/graphics2d.service';
 import { CommandsGraphics3DService } from './commands/graphics3d.service';
-import { ApiCommand } from '../interfaces/api/api-command';
 import { CommandsIOService } from './commands/io.service';
 import { CommandsSoundService } from './commands/sound.service';
 import { CommandsGUIService } from './commands/gui.service';
+import { AbstractSyntax } from 'libs/script-language/src/lib/parser/interfaces/abstract-syntax';
+import { LexerToken } from 'libs/script-language/src/lib/lexer/interfaces/lexer-token';
+import { ApiCommand } from '@blitz-basic-script/api-interfaces';
 
 type CommandResponse = { category: string; command: string; params: any[] };
 

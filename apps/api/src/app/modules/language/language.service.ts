@@ -1,6 +1,6 @@
+import { ApiCommand } from '@blitz-basic-script/api-interfaces';
 import { Injectable } from '@nestjs/common';
 import { DatabaseService } from '../database/database.service';
-import { ApiCommand } from '@blitz-basic-script/game';
 
 @Injectable()
 export class LanguageService {

@@ -1,4 +1,4 @@
-import {Expression} from './expressions/expression';
+import { Expression } from '../../types/expression';
 
 export interface Assignment {
     variable: string;

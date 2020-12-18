@@ -26,6 +26,7 @@ import { GameService } from './game.service';
 import { Entity } from '../classes/3d/entity';
 import { BbScriptAxis } from '../enums/axis';
 import { BbScriptEntity } from '../classes/in-game/3d/entity';
+import { CodeBlock } from 'libs/script-language/src/lib/parser/interfaces/code/code-block';
 
 @Injectable({
   providedIn: 'root',
@@ -156,12 +157,12 @@ export class BabylonJSService {
     // let ground = MeshBuilder.CreateGround('ground1', { width: 6, height: 6, subdivisions: 2 }, this._scene);
   }
 
-  async mainLoop(statements: any[]): Promise<void> {
-    // Run the render loop.
+  async mainLoop(codeBlocks: CodeBlock[]): Promise<void> {
+    // run the render loop
     this._engine.runRenderLoop(() => {
       this._scene.render();
 
-      // TODO: execute all code blocks sequentially
+      // TODO: code execution?
     });
   }
 

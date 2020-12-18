@@ -7,10 +7,6 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { LogicalExpression } from './classes/expressions/logical-expression';
-import { NumericExpression } from './classes/expressions/numerical-expression';
-import { StringExpression } from './classes/expressions/string-expression';
-import { VariableExpression } from './classes/expressions/variable-expression';
 import { WhileLoop } from './classes/loops/while-loop';
 import { KeyCode } from './enums/events/key-codes';
 import { MouseCode } from './enums/events/mouse-codes';
@@ -119,70 +115,6 @@ export class GameComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {}
 
-  testInterpreter(): void {
-    this.playing = true;
-
-    // initialize BabylonJS Engine
-    this.babylonjs.initEngine(this.canvas3d.nativeElement);
-
-    // create the scene
-    this.babylonjs.createScene();
-
-    // initialize 2D Service
-    this.render2d.initCanvas(this.canvas2d.nativeElement);
-
-    const codeBlocks: CodeBlock[] = [
-      new WhileLoop(new LogicalExpression([], []), []),
-
-      // new Assignment('global', 'cone', new CommandStatement('CreateCone', []))
-      // new Assignment(
-      //   'global',
-      //   'result',
-      //   new ArithmeticExpression(
-      //     [
-      //       new NumericExpression(13),
-      //       new NumericExpression(15),
-      //       new NumericExpression(Math.PI),
-      //       new NumericExpression(8)
-      //     ],
-      //     ['+', '-', '/']
-      //   )
-      // ),
-      // new Assignment('global', 'answerOnEverything', new NumericExpression(42)),
-      // new CommandStatement('DebugLog', [new VariableExpression('global', 'answerOnEverything')]),
-      // new Assignment(
-      //   'global',
-      //   'image',
-      //   new CommandStatement('LoadImage', [new StringExpression('/assets/gfx/blitz.png')])
-      // ),
-      // new CommandStatement('DrawImage', [
-      //   new VariableExpression('global', 'image'),
-      //   new NumericExpression(50),
-      //   new NumericExpression(50)
-      // ]),
-      // new CommandStatement('Color', [
-      //   new NumericExpression(255),
-      //   new NumericExpression(255),
-      //   new NumericExpression(255)
-      // ]),
-      // new CommandStatement('Rect', [
-      //   new NumericExpression(75),
-      //   new NumericExpression(75),
-      //   new NumericExpression(150),
-      //   new NumericExpression(150)
-      // ])
-    ];
-
-    this.interpreter.initializeAbstractSyntax({
-      globals: {},
-      codeBlocks: codeBlocks,
-      mainLoop: [],
-      functions: [],
-      types: {},
-    });
-    this.interpreter.run();
-  }
-
   async play(): Promise<void> {
     console.info('[PLAAAAAAAY]');
 
@@ -207,7 +139,7 @@ export class GameComponent implements OnInit, AfterViewInit {
       .createAbstractSyntax(this.code)
       .then((abstractSyntax: AbstractSyntax) => {
         this.interpreter.initializeAbstractSyntax(abstractSyntax);
-        this.interpreter.run();
+        this.interpreter.runStatic();
       });
   }
 

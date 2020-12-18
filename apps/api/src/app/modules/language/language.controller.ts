@@ -1,11 +1,11 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import {
+  ApiCommand,
   ApiResponse,
   STATUS_SUCCESS,
 } from '@blitz-basic-script/api-interfaces';
 
 import { LanguageService } from './language.service';
-import { ApiCommand } from '@blitz-basic-script/game';
 
 @Controller('/language')
 export class LanguageController {

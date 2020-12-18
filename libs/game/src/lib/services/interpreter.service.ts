@@ -1,21 +1,16 @@
 import { Injectable } from '@angular/core';
-import { AbstractSyntax } from '@blitz-basic-script/game';
-import { Assignment } from '../classes/assignment';
-import { CommandStatement } from '../classes/command-statement';
+import { Assignment } from 'libs/script-language/src/lib/parser/classes/assignment';
+import { VariableExpression } from 'libs/script-language/src/lib/parser/classes/expressions/variable-expression';
+import { AbstractSyntax } from 'libs/script-language/src/lib/parser/interfaces/abstract-syntax';
+import { CodeBlock } from 'libs/script-language/src/lib/parser/interfaces/code/code-block';
+import { Term } from 'libs/script-language/src/lib/parser/interfaces/term';
+import { Expression } from 'libs/script-language/src/lib/parser/types/expression';
 import { IfBlock } from '../classes/conditions/if-block';
 import { SelectBlock } from '../classes/conditions/select-block';
-import { ArithmeticExpression } from '../classes/expressions/arithmetic-expression';
-import { BooleanExpression } from '../classes/expressions/boolean-expression';
-import { LogicalExpression } from '../classes/expressions/logical-expression';
-import { NumericExpression } from '../classes/expressions/numerical-expression';
-import { StringExpression } from '../classes/expressions/string-expression';
-import { VariableExpression } from '../classes/expressions/variable-expression';
 import { ForToLoop } from '../classes/loops/for-to-loop';
 import { RepeatLoop } from '../classes/loops/repeat-loop';
 import { WhileLoop } from '../classes/loops/while-loop';
-import { CodeBlock } from '../interfaces/code/block';
-import { Term } from '../types/arithmetic-term';
-import { Expression } from '../types/expression';
+import { CommandStatement } from '../interfaces/statements/command';
 import { CommandsBasicsService } from './commands/basics.service';
 import { CommandsDataService } from './commands/data.service';
 import { CommandsGraphics2DService } from './commands/graphics2d.service';
@@ -24,6 +19,10 @@ import { CommandsGUIService } from './commands/gui.service';
 import { CommandsIOService } from './commands/io.service';
 import { CommandsSoundService } from './commands/sound.service';
 import { GameStateService } from './game-state.service';
+import {
+  ArithmeticExpression,
+  LogicalExpression,
+} from '@blitz-basic-script/script-language';
 
 @Injectable({
   providedIn: 'root',
@@ -50,10 +49,24 @@ export class InterpreterService {
     console.info('Abstract Syntax:', abstractSyntax);
   }
 
-  public async run(): Promise<void> {
-    for (let i = 0; i < this.abstractSyntax.codeBlocks.length; i++) {
-      await this.interpreteCodeBlock(this.abstractSyntax.codeBlocks[i]);
+  public async runStatic(): Promise<void> {
+    for (let codeBlock of this.abstractSyntax.codeBlocks) {
+      await this.interpreteCodeBlock(codeBlock);
     }
+
+    // start main loop
+    if (this.abstractSyntax.mainLoop.length > 0) {
+      requestAnimationFrame(() => this.runMainLoop());
+    }
+  }
+
+  public async runMainLoop(): Promise<void> {
+    console.info('[MAIN LOOP]');
+
+    for (let codeBlock of this.abstractSyntax.mainLoop) {
+      await this.interpreteCodeBlock(codeBlock);
+    }
+    requestAnimationFrame(() => this.runMainLoop());
   }
 
   public async interpreteCodeBlock(codeBlock: CodeBlock): Promise<void> {
