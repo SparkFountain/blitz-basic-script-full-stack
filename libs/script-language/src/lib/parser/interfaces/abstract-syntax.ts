@@ -1,4 +1,4 @@
-import { CodeBlock } from './code/block';
+import { CodeBlock } from './code/code-block';
 
 export interface AbstractSyntax {
   globals: object; // TODO: remove?

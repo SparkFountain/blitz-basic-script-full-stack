@@ -1,20 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Parser, ParseResult } from './parser';
-import { AbstractSyntax, ApiCommand } from '@blitz-basic-script/game';
 import { HttpClient } from '@angular/common/http';
-import { ApiResponse } from 'libs/game/src/lib/interfaces/api/api-response';
-import { CommandStatement } from 'libs/game/src/lib/classes/command-statement';
-import { Value } from 'libs/game/src/lib/classes/expressions/expression';
-import { CodeBlock } from 'libs/game/src/lib/interfaces/code/block';
+import { AbstractSyntax } from './interfaces/abstract-syntax';
+import { CodeBlock } from './interfaces/code/code-block';
+import { ApiCommand, ApiResponse } from '@blitz-basic-script/api-interfaces';
+import { CommandStatement } from './classes/command-statement';
+import { Assignment } from './classes/assignment';
+import { VariableExpression } from './classes/expressions/variable-expression';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ParserService {
-  constructor(private http: HttpClient) {}
+  globals: string[];
 
-  // TODO: implement correct async workflow
+  constructor(private http: HttpClient) {
+    this.globals = [];
+  }
+
   async createAbstractSyntax(code: string[]): Promise<AbstractSyntax> {
+    this.globals = [];
+
     console.info('[CREATE ABSTRACT SYNTAX]');
 
     let result: AbstractSyntax = {
@@ -37,10 +42,21 @@ export class ParserService {
 
     // PARSE ALL LINES SEQUENTIALLY
     for (const line of codeFormatted) {
-      const codeBlock: CodeBlock = await this.parseLine(line);
-      console.info('[PARSER RESULT]', codeBlock);
+      const parserResult: CodeBlock | Assignment = await this.parseLine(line);
+      console.info('[PARSER RESULT]', parserResult);
 
-      result.codeBlocks.push(codeBlock);
+      switch (parserResult.constructor.name) {
+        case 'CodeBlock':
+        case 'CommandStatement':
+        case 'Assignment':
+          result.codeBlocks.push(parserResult);
+          break;
+        default:
+          console.warn(
+            "Parser doesn't know what to do with that:",
+            parserResult
+          );
+      }
     }
 
     return result;
@@ -60,7 +76,19 @@ export class ParserService {
       // assignment?
       if (line.match(regex.assignment)) {
         console.info('[ASSIGNMENT FOUND]', line);
-        resolve(null);
+
+        // global variable
+        if (new RegExp('^global', 'i').test(line)) {
+          const params: string[] = line
+            .substr(7)
+            .split(/\s|=/)
+            .filter((e) => e !== '');
+          // console.info('[GLOBAL ASSIGNMENT PARAMETERS]', params);
+
+          params[0] = params[0].toLowerCase();
+          this.globals.push(params[0]);
+          resolve(new Assignment('global', params[0], params[1]));
+        }
       }
 
       // if block / statement
@@ -102,12 +130,23 @@ export class ParserService {
 
             // parse parameters
             const params: string[] = line.split(',');
-            // console.info('[PARAMS]', params);
+            console.info('[PARAMS]', params);
 
             // generate code block entry in abstract syntax
             resolve(
               new CommandStatement(command, [
-                ...params.map((param) => param.trim()),
+                ...params.map((param) => {
+                  param = param.trim();
+
+                  if (this.globals.indexOf(param.toLowerCase()) > -1) {
+                    return new VariableExpression(
+                      'global',
+                      param.toLowerCase()
+                    );
+                  } else {
+                    return param;
+                  }
+                }),
               ])
             );
           });

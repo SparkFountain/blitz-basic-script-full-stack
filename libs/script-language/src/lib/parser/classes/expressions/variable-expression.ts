@@ -1,4 +1,4 @@
-import { AssignmentScope } from '../../types/assignment-scope';
+import { AssignmentScope } from 'libs/script-language/src/lib/parser/types/assignment-scope';
 
 export class VariableExpression {
   public scope: AssignmentScope;
