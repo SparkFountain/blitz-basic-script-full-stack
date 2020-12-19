@@ -10,5 +10,7 @@ export * from './lib/parser/classes/expressions/arithmetic-expression';
 export * from './lib/parser/classes/expressions/logical-expression';
 
 // interfaces
+export * from './lib/parser/interfaces/lexer-token';
+export * from './lib/parser/interfaces/abstract-syntax';
 
 // types

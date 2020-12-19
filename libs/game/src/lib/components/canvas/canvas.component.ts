@@ -1,10 +1,7 @@
 import { Component, Input, ViewChild, AfterViewInit, ElementRef, OnInit } from '@angular/core';
 import { Engine, FreeCamera, HemisphericLight, Light, Scene, Vector3 } from '@babylonjs/core';
-import { AbstractSyntax } from '../../interfaces/abstract-syntax';
-import { LexerToken } from '../../interfaces/lexer-token';
-import { LexerService } from '../../services/lexer.service';
-import { ParserService } from '../../services/parser.service';
 import { Render2dService } from '../../services/render2d.service';
+import { LexerService, ParserService, LexerToken, AbstractSyntax } from '@blitz-basic-script/script-language';
 
 @Component({
   selector: 'blitz-basic-script-canvas',
