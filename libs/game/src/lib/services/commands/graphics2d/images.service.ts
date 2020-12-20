@@ -6,7 +6,7 @@ import { BbScriptBuffer } from '../../../classes/in-game/2d/buffer';
 import { BbScriptImage } from '../../../classes/in-game/2d/image';
 import { BbScriptImageMode } from '../../../enums/in-game/2d/image';
 import { environment } from '../../../environment-deprecated/environment';
-import { ApiResponse } from '../../../interfaces/api/api-response';
+import { ApiResponse } from '@blitz-basic-script/api-interfaces';
 
 @Injectable()
 export class CommandsGraphics2dImagesService {

@@ -1,4 +1,4 @@
-import {LexerTokenCategory} from '../enums/lexer/lexer-token-category';
+import { LexerTokenCategory } from '@blitz-basic-script/script-language';
 
 export interface LexerToken {
     which: LexerTokenCategory;

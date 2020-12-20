@@ -1,5 +1,4 @@
-import { CodeBlock } from '../../interfaces/code/block';
-import { LogicalExpression } from '../expressions/logical-expression';
+import { LogicalExpression, CodeBlock } from '@blitz-basic-script/script-language';
 
 export class IfBlock {
   public conditions: LogicalExpression[]; // this array contains all If / ElseIf conditions

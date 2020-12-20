@@ -1,5 +1,4 @@
-import { CodeBlock } from '../../interfaces/code/block';
-import { LogicalExpression } from '../expressions/logical-expression';
+import { CodeBlock, LogicalExpression } from '@blitz-basic-script/script-language';
 
 export class WhileLoop {
   public condition: LogicalExpression;

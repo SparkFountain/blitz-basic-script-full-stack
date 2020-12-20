@@ -1,12 +1,31 @@
-import { Component, Input, ViewChild, AfterViewInit, ElementRef, OnInit } from '@angular/core';
-import { Engine, FreeCamera, HemisphericLight, Light, Scene, Vector3 } from '@babylonjs/core';
+import {
+  Component,
+  Input,
+  ViewChild,
+  AfterViewInit,
+  ElementRef,
+  OnInit,
+} from '@angular/core';
+import {
+  Engine,
+  FreeCamera,
+  HemisphericLight,
+  Light,
+  Scene,
+  Vector3,
+} from '@babylonjs/core';
 import { Render2dService } from '../../services/render2d.service';
-import { LexerService, ParserService, LexerToken, AbstractSyntax } from '@blitz-basic-script/script-language';
+import {
+  LexerService,
+  ParserService,
+  LexerToken,
+  AbstractSyntax,
+} from '@blitz-basic-script/script-language';
 
 @Component({
   selector: 'blitz-basic-script-canvas',
   templateUrl: 'canvas.html',
-  styleUrls: ['canvas.scss']
+  styleUrls: ['canvas.scss'],
 })
 export class BlitzBasicScriptCanvasComponent implements OnInit, AfterViewInit {
   @ViewChild('scene', { static: true }) scene: ElementRef<HTMLCanvasElement>;
@@ -15,7 +34,6 @@ export class BlitzBasicScriptCanvasComponent implements OnInit, AfterViewInit {
   sceneCtx: WebGLRenderingContext;
   guiCtx: CanvasRenderingContext2D;
 
-  tokens: LexerToken[][];
   gameCode: AbstractSyntax;
 
   private _code: string[];
@@ -31,7 +49,11 @@ export class BlitzBasicScriptCanvasComponent implements OnInit, AfterViewInit {
   private _camera: FreeCamera;
   private _light: Light;
 
-  constructor(private lexer: LexerService, private parser: ParserService, private graphics2dService: Render2dService) {
+  constructor(
+    private lexer: LexerService,
+    private parser: ParserService,
+    private graphics2dService: Render2dService
+  ) {
     console.info('[CANVAS COMPONENT] Initialized');
   }
 
@@ -61,7 +83,11 @@ export class BlitzBasicScriptCanvasComponent implements OnInit, AfterViewInit {
     this._scene = new Scene(this._engine);
 
     // Create a FreeCamera, and set its position to (x:0, y:5, z:-10).
-    this._camera = new FreeCamera('camera1', new Vector3(0, 5, -10), this._scene);
+    this._camera = new FreeCamera(
+      'camera1',
+      new Vector3(0, 5, -10),
+      this._scene
+    );
 
     // Target the camera to scene origin.
     this._camera.setTarget(Vector3.Zero());
@@ -70,7 +96,11 @@ export class BlitzBasicScriptCanvasComponent implements OnInit, AfterViewInit {
     this._camera.attachControl(this._canvas3D, false);
 
     // Create a basic light, aiming 0,1,0 - meaning, to the sky.
-    this._light = new HemisphericLight('light1', new Vector3(0, 1, 0), this._scene);
+    this._light = new HemisphericLight(
+      'light1',
+      new Vector3(0, 1, 0),
+      this._scene
+    );
 
     // Create a built-in "sphere" shape; with 16 segments and diameter of 2.
     // const sphere = MeshBuilder.CreateSphere('sphere',
@@ -84,10 +114,9 @@ export class BlitzBasicScriptCanvasComponent implements OnInit, AfterViewInit {
     //   { width: 6, height: 6, subdivisions: 2 }, this._scene);
   }
 
-  runGame() {
+  async runGame(): Promise<void> {
     this.graphics2dService.initCanvas(this._canvas2D);
-    this.tokens = this.lexer.lexCode(this._code);
-    this.gameCode = this.parser.createAbstractSyntax(this.tokens);
+    this.gameCode = await this.parser.createAbstractSyntax([]); // TODO: here comes source code array
     // console.info('Game code:', this.gameCode);
 
     // concat(...this.gameCode.statements).subscribe(() => {

@@ -18,7 +18,6 @@ import { GuiService } from './services/gui.service';
 import { InterpreterService } from './services/interpreter.service';
 import { Render2dService } from './services/render2d.service';
 import { ParserService } from '@blitz-basic-script/script-language';
-import { CodeBlock } from 'libs/script-language/src/lib/parser/interfaces/code/code-block';
 import { AbstractSyntax } from 'libs/script-language/src/lib/parser/interfaces/abstract-syntax';
 
 @Component({

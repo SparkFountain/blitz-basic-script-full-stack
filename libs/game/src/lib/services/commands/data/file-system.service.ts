@@ -4,8 +4,8 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { BbScriptDirectory } from '../../../classes/in-game/data/directory';
 import { BbScriptStream } from '../../../classes/in-game/data/stream';
 import { environment } from '../../../environment-deprecated/environment';
-import { ApiResponse } from '../../../interfaces/api/api-response';
 import { BbScriptFileType } from '../../../enums/in-game/file-system/file-type';
+import { ApiResponse } from '@blitz-basic-script/api-interfaces';
 
 @Injectable()
 export class CommandsDataFileSystemService {

@@ -1,4 +1,4 @@
-import { CodeBlock } from '../../interfaces/code/block';
+import { CodeBlock } from '@blitz-basic-script/script-language';
 
 export class SelectBlock {
   public expression: string;

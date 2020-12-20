@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { BbScriptChannel } from '../../../classes/in-game/sound/channel';
 import { BbScriptSound } from '../../../classes/in-game/sound/sound';
 import { BB_SCRIPT_CD_TRACK_MODE } from '../../../enums/in-game/sound/cd-track-mode';
-import { ApiResponse } from '../../../interfaces/api/api-response';
 import { environment } from '../../../environment-deprecated/environment';
+import { ApiResponse } from '@blitz-basic-script/api-interfaces';
 
 @Injectable()
 export class CommandsSoundMusicSamplesService {
