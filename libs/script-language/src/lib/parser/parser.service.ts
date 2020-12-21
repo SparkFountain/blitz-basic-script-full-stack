@@ -7,6 +7,8 @@ import { CommandStatement } from './classes/command-statement';
 import { Assignment } from './classes/assignment';
 import { VariableExpression } from './classes/expressions/variable-expression';
 import { Noop } from './classes/noop';
+import { Function, Parameter } from './classes/function';
+import { Type } from './classes/type';
 
 @Injectable({
   providedIn: 'root',
@@ -14,14 +16,14 @@ import { Noop } from './classes/noop';
 export class ParserService {
   globals: string[];
 
-  isMainLoop: boolean;
-  isFunction: boolean;
+  isMainLoop!: boolean;
+  currentFunction!: string;
 
   constructor(private http: HttpClient) {
     this.globals = [];
 
     this.isMainLoop = false;
-    this.isFunction = false;
+    this.currentFunction = '';
   }
 
   async createAbstractSyntax(code: string[]): Promise<AbstractSyntax> {
@@ -30,11 +32,10 @@ export class ParserService {
     console.info('[CREATE ABSTRACT SYNTAX]');
 
     let result: AbstractSyntax = {
-      globals: {},
       codeBlocks: [],
       mainLoop: [],
       functions: [],
-      types: {},
+      types: [],
     };
 
     // PREPROCESS CODE:
@@ -49,7 +50,10 @@ export class ParserService {
 
     // PARSE ALL LINES SEQUENTIALLY
     for (const line of codeFormatted) {
-      const parserResult: CodeBlock | Assignment = await this.parseLine(line);
+      const parserResult:
+        | CodeBlock
+        | Assignment
+        | Function = await this.parseLine(line);
       console.info('[PARSER RESULT]', parserResult);
 
       switch (parserResult.constructor.name) {
@@ -62,6 +66,8 @@ export class ParserService {
             result.codeBlocks.push(parserResult);
           }
           break;
+        case 'Function':
+          result.functions.push(parserResult as Function);
         case 'Noop':
           // do nothing and neither show a warning
           break;
@@ -77,14 +83,42 @@ export class ParserService {
   }
 
   // TODO: return type (can also be something else probably)
-  async parseLine(line: string): Promise<CodeBlock> {
+  async parseLine(line: string): Promise<CodeBlock | Assignment | Function> {
     const regex = {
       assignment: /\w\s?=\s?.+/,
       ifBlock: /if\s.+/i,
       forToNext: /for\s.+\sto.+(step\s.+)?/i,
       label: /\.\w/,
       command: /\b(\w+)\b/,
+      function: /function\s+(\w+)\((.*)\)/i,
+      type: /type\s+(\w+)/i,
     };
+    let match: RegExpMatchArray;
+
+    // function
+    match = line.match(regex.function);
+    if (match) {
+      let functionName: string = match[1];
+      let fullParams = match[2].split(',');
+      let formattedParams: Parameter[] = [];
+      fullParams.forEach((fullParam: string) => {
+        let paramSplit = fullParam.split('=');
+
+        let param: Parameter = {
+          name: paramSplit[0].trim(),
+          defaultValue: paramSplit.length > 1 ? paramSplit[1].trim() : undefined,
+        };
+        formattedParams.push(param);
+      });
+
+      this.currentFunction = functionName;
+      return new Function(functionName, formattedParams, []);
+    }
+
+    // type
+    match = line.match(regex.type);
+    if (match) {
+    }
 
     // main loop
     if (line.toLowerCase() === 'mainloop') {
