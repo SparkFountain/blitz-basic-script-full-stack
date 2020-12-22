@@ -94,42 +94,42 @@ export class ParserService {
   // TODO: add more return types
   async parseLine(line: string): Promise<CodeBlock | Assignment | Function> {
     const regex = {
-      dim: /^dim\s(\w+)$/i,
-      global: /^global\s(\w+)$/i,
-      local: /^local\s(\w+)$/i,
-      const: /^const\s(\w+)$/i,
-      assignment: /^\w+\s?=\s?.+$/,
-      command: /^(\w+)$/,
-      function: /^function\s(\w+)\((.*)\)$/i,
-      return: /^return\s?(\w+)/i,
-      type: /^type\s(\w+)$/i,
-      field: /^field\s(\w+)$/i,
-      if: /^if\s(.+)$/i,
-      elseif: /^elseif\s$/,
-      else: /^else$/i,
-      endif: /^endif$/,
-      select: /^select\s(\w+)$/i,
-      case: /^case\s(\w+)$/i,
-      default: /^default$/i,
-      forTo: /^for\s(\w+)\s*=\s*(\w+)\sto\s(\w+)(\sstep\s(\w+))?$/i,
-      forEach: /^for\s(\w+)\s*=\s*each\s(\w+)$/i,
-      next: /^next$/i,
-      while: /^while(\w+)$/i,
-      wend: /^wend$/i,
-      repeat: /^repeat$/i,
-      until: /^until(\w+)$/i,
-      forever: /^forever$/i,
-      mainLoop: /^mainloop$/i,
-      label: /^\.\w+$/,
-      delete: /^delete\s(\w+)$/i,
-      insert: /^insert\s(\w+)$/i,
-      end: /^end$/i,
-      include: /^include$/i,
-      stop: /^stop$/i,
-      data: /^data$/i,
-      exit: /^exit$/i,
-      restore: /^restore\s(\w+)$/i,
-      read: /^read\s(\w+)/i,
+      dim: new RegExp('^dim\s(\w+)$','i'),
+      global: new RegExp('^global\s(\w+)$','i'),
+      local: new RegExp('^local\s(\w+)$','i'),
+      const: new RegExp('^const\s(\w+)$','i'),
+      assignment: new RegExp('^\w+\s?=\s?.+$','i'),
+      command: new RegExp('^(\w+)$','i'),
+      function: new RegExp('^function\s(\w+)\((.*)\)$','i'),
+      return: new RegExp('^return\s?(\w+)','i'),
+      type: new RegExp('^type\s(\w+)$','i'),
+      field: new RegExp('^field\s(\w+)$','i'),
+      if: new RegExp('^if\s(.+)$','i'),
+      elseif: new RegExp('^elseif\s$','i'),
+      else: new RegExp('^else$','i'),
+      endif: new RegExp('^endif$','i'),
+      select: new RegExp('^select\s(\w+)$','i'),
+      case: new RegExp('^case\s(\w+)$','i'),
+      default: new RegExp('^default$','i'),
+      forTo: new RegExp('^for\s(\w+)\s*=\s*(\w+)\sto\s(\w+)(\sstep\s(\w+))?$','i'),
+      forEach: new RegExp('^for\s(\w+)\s*=\s*each\s(\w+)$','i'),
+      next: new RegExp('^next$','i'),
+      while: new RegExp('^while(\w+)$','i'),
+      wend: new RegExp('^wend$','i'),
+      repeat: new RegExp('^repeat$','i'),
+      until: new RegExp('^until(\w+)$','i'),
+      forever: new RegExp('^forever$','i'),
+      mainLoop: new RegExp('^mainloop$','i'),
+      label: new RegExp('^\.\w+$','i'),
+      delete: new RegExp('^delete\s(\w+)$','i'),
+      insert: new RegExp('^insert\s(\w+)$','i'),
+      end: new RegExp('^end$','i'),
+      include: new RegExp('^include$','i'),
+      stop: new RegExp('^stop$','i'),
+      data: new RegExp('^data$','i'),
+      exit: new RegExp('^exit$','i'),
+      restore: new RegExp('^restore\s(\w+)$','i'),
+      read: new RegExp('^read\s(\w+)','i'),
     };
     let match: RegExpMatchArray;
 
@@ -314,6 +314,26 @@ export class ParserService {
         stepValue,
         []
       );
+    }
+
+    // for each loop
+    match = line.match(regex.forEach);
+    if (match) {
+      console.info('[FOR TO LOOP FOUND]', match);
+
+      const loopVariable: string = match[1];
+      const loopVarType: string = match[2];
+
+      return new Noop(); // TODO: implement
+    }
+
+    // next
+    match = line.match(regex.next);
+    if (match) {
+      // TODO: implement stack for loops
+
+      console.info('[NEXT FOUND]', match);
+      return new Noop();  // TODO: implement
     }
 
     // while wend loop
