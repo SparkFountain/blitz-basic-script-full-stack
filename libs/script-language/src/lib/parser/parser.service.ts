@@ -12,6 +12,8 @@ import { Type } from './classes/type';
 import { ForToNext } from './classes/loops/for-to-next';
 import { RepeatUntil } from './classes/loops/repeat-until';
 import { WhileWend } from './classes/loops/while-wend';
+import { Field } from './classes/field';
+import { ParserError } from './classes/error';
 
 @Injectable({
   providedIn: 'root',
@@ -21,12 +23,16 @@ export class ParserService {
 
   isMainLoop!: boolean;
   currentFunction!: string;
+  currentType!: string;
+  isSelect!: boolean;
 
   constructor(private http: HttpClient) {
     this.globals = [];
 
     this.isMainLoop = false;
     this.currentFunction = '';
+    this.currentType = '';
+    this.isSelect = false;
   }
 
   async createAbstractSyntax(code: string[]): Promise<AbstractSyntax> {
@@ -87,24 +93,76 @@ export class ParserService {
 
   // TODO: add more return types
   async parseLine(line: string): Promise<CodeBlock | Assignment | Function> {
-    // TODO: space characters have been shortened to at most one (replace \s+ by \s)
     const regex = {
+      dim: /^dim\s(\w+)$/i,
+      global: /^global\s(\w+)$/i,
+      local: /^local\s(\w+)$/i,
+      const: /^const\s(\w+)$/i,
       assignment: /^\w+\s?=\s?.+$/,
-      if: /^if\s(.+)$/i,
-      elseif: /^elseif\s$/,
-      endif: /^endif\s$/,
-      forTo: /^for\s(\w+)\s*=\s*(\w+)\sto\s(\w+)(\sstep\s(\w+))?$/i,
-      while: /^while(\w+)$/i,
-      repeat: /^repeat$/i,
-      label: /^\.\w+$/,
       command: /^(\w+)$/,
       function: /^function\s(\w+)\((.*)\)$/i,
+      return: /^return\s?(\w+)/i,
       type: /^type\s(\w+)$/i,
+      field: /^field\s(\w+)$/i,
+      if: /^if\s(.+)$/i,
+      elseif: /^elseif\s$/,
+      else: /^else$/i,
+      endif: /^endif$/,
       select: /^select\s(\w+)$/i,
       case: /^case\s(\w+)$/i,
       default: /^default$/i,
+      forTo: /^for\s(\w+)\s*=\s*(\w+)\sto\s(\w+)(\sstep\s(\w+))?$/i,
+      forEach: /^for\s(\w+)\s*=\s*each\s(\w+)$/i,
+      next: /^next$/i,
+      while: /^while(\w+)$/i,
+      wend: /^wend$/i,
+      repeat: /^repeat$/i,
+      until: /^until(\w+)$/i,
+      forever: /^forever$/i,
+      mainLoop: /^mainloop$/i,
+      label: /^\.\w+$/,
+      delete: /^delete\s(\w+)$/i,
+      insert: /^insert\s(\w+)$/i,
+      end: /^end$/i,
+      include: /^include$/i,
+      stop: /^stop$/i,
+      data: /^data$/i,
+      exit: /^exit$/i,
+      restore: /^restore\s(\w+)$/i,
+      read: /^read\s(\w+)/i,
     };
     let match: RegExpMatchArray;
+
+    // dim (array)
+    match = line.match(regex.dim);
+    if (match) {
+      const arrayName: string = match[1];
+      return new Assignment('dim', arrayName, null);
+    }
+
+    // global
+    match = line.match(regex.global);
+    if (match) {
+      // TODO: initial assignment value; support multiple assignments in one line
+      const globalName: string = match[1];
+      return new Assignment('global', globalName, null);
+    }
+
+    // local
+    match = line.match(regex.local);
+    if (match) {
+      // TODO: initial assignment value; support multiple assignments in one line
+      const localName: string = match[1];
+      return new Assignment('local', localName, null);
+    }
+
+    // const
+    match = line.match(regex.const);
+    if (match) {
+      // TODO: initial assignment value; support multiple assignments in one line
+      const constName: string = match[1];
+      return new Assignment('const', constName, null);
+    }
 
     // function
     match = line.match(regex.function);
@@ -127,12 +185,96 @@ export class ParserService {
       return new Function(functionName, formattedParams, []);
     }
 
+    // return
+    match = line.match(regex.return);
+    if (match) {
+      let returnValue: string;
+      if (match[1]) {
+        returnValue = match[1];
+      } else {
+        returnValue = null;
+      }
+
+      return null; // TODO: introduce return statement
+    }
+
     // type
     match = line.match(regex.type);
     if (match) {
       const typeName: string = match[1];
 
+      this.currentType = typeName;
       return new Type(typeName, []);
+    }
+
+    // field
+    match = line.match(regex.field);
+    if (match) {
+      if (this.currentType === '') {
+        return new ParserError('Field declaration without Type', -1, -1); // TODO: line and offset
+      }
+
+      const fieldName: string = match[1];
+      return new Field(fieldName);
+    }
+
+    // if block / statement
+    match = line.match(regex.if);
+    if (match) {
+      console.info('[IF BLOCK / STATEMENT FOUND]', line);
+      return null;
+    }
+
+    // else if
+    match = line.match(regex.elseif);
+    if (match) {
+      console.info('[ELSEIF FOUND]', line);
+      return null;
+    }
+
+    // else
+    match = line.match(regex.else);
+    if (match) {
+      console.info('[ELSE FOUND]', line);
+      return null;
+    }
+
+    // endif
+    match = line.match(regex.endif);
+    if (match) {
+      console.info('[ENDIF FOUND]', line);
+      return null;
+    }
+
+    // select
+    match = line.match(regex.select);
+    if (match) {
+      console.info('[SELECT FOUND]', line);
+
+      this.isSelect = true;
+      return null;
+    }
+
+    // case
+    match = line.match(regex.case);
+    if (match) {
+      if (!this.isSelect) {
+        return new ParserError('Case without Select', -1, -1); // TODO: line and offset
+      }
+
+      console.info('[CASE FOUND]', line);
+      return null;
+    }
+
+    // default
+    match = line.match(regex.default);
+    if (match) {
+      if (!this.isSelect) {
+        return new ParserError('Default without Select', -1, -1); // TODO: line and offset
+      }
+
+      console.info('[DEFAULT FOUND]', line);
+      return null;
     }
 
     // main loop
@@ -149,12 +291,6 @@ export class ParserService {
     ) {
       this.isMainLoop = false;
       return new Noop();
-    }
-
-    // if block / statement
-    if (line.match(regex.if)) {
-      console.info('[IF BLOCK / STATEMENT FOUND]', line);
-      return null;
     }
 
     // for to next loop
