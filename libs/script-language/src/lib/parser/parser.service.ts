@@ -9,6 +9,9 @@ import { VariableExpression } from './classes/expressions/variable-expression';
 import { Noop } from './classes/noop';
 import { Function, Parameter } from './classes/function';
 import { Type } from './classes/type';
+import { ForToNext } from './classes/loops/for-to-next';
+import { RepeatUntil } from './classes/loops/repeat-until';
+import { WhileWend } from './classes/loops/while-wend';
 
 @Injectable({
   providedIn: 'root',
@@ -82,16 +85,24 @@ export class ParserService {
     return result;
   }
 
-  // TODO: return type (can also be something else probably)
+  // TODO: add more return types
   async parseLine(line: string): Promise<CodeBlock | Assignment | Function> {
+    // TODO: space characters have been shortened to at most one (replace \s+ by \s)
     const regex = {
-      assignment: /\w\s?=\s?.+/,
-      ifBlock: /if\s.+/i,
-      forToNext: /for\s.+\sto.+(step\s.+)?/i,
-      label: /\.\w/,
-      command: /\b(\w+)\b/,
-      function: /function\s+(\w+)\((.*)\)/i,
-      type: /type\s+(\w+)/i,
+      assignment: /^\w+\s?=\s?.+$/,
+      if: /^if\s(.+)$/i,
+      elseif: /^elseif\s$/,
+      endif: /^endif\s$/,
+      forTo: /^for\s(\w+)\s*=\s*(\w+)\sto\s(\w+)(\sstep\s(\w+))?$/i,
+      while: /^while(\w+)$/i,
+      repeat: /^repeat$/i,
+      label: /^\.\w+$/,
+      command: /^(\w+)$/,
+      function: /^function\s(\w+)\((.*)\)$/i,
+      type: /^type\s(\w+)$/i,
+      select: /^select\s(\w+)$/i,
+      case: /^case\s(\w+)$/i,
+      default: /^default$/i,
     };
     let match: RegExpMatchArray;
 
@@ -106,7 +117,8 @@ export class ParserService {
 
         let param: Parameter = {
           name: paramSplit[0].trim(),
-          defaultValue: paramSplit.length > 1 ? paramSplit[1].trim() : undefined,
+          defaultValue:
+            paramSplit.length > 1 ? paramSplit[1].trim() : undefined,
         };
         formattedParams.push(param);
       });
@@ -118,6 +130,9 @@ export class ParserService {
     // type
     match = line.match(regex.type);
     if (match) {
+      const typeName: string = match[1];
+
+      return new Type(typeName, []);
     }
 
     // main loop
@@ -136,34 +151,47 @@ export class ParserService {
       return new Noop();
     }
 
-    // assignment
-    if (line.match(regex.assignment)) {
-      console.info('[ASSIGNMENT FOUND]', line);
-
-      // global variable
-      if (new RegExp('^global', 'i').test(line)) {
-        const params: string[] = line
-          .substr(7)
-          .split(/\s|=/)
-          .filter((e) => e !== '');
-        // console.info('[GLOBAL ASSIGNMENT PARAMETERS]', params);
-
-        params[0] = params[0].toLowerCase();
-        this.globals.push(params[0]);
-        return new Assignment('global', params[0], params[1]);
-      }
-    }
-
     // if block / statement
-    if (line.match(regex.ifBlock)) {
+    if (line.match(regex.if)) {
       console.info('[IF BLOCK / STATEMENT FOUND]', line);
       return null;
     }
 
     // for to next loop
-    if (line.match(regex.forToNext)) {
-      console.info('[IF BLOCK / STATEMENT FOUND]', line);
-      return null;
+    match = line.match(regex.forTo);
+    if (match) {
+      console.info('[FOR TO LOOP FOUND]', match);
+
+      const loopVariable: string = match[1];
+      const initialValue: number = Number(match[2]);
+      const limitValue: number = Number(match[3]);
+      let stepValue: number;
+      if (match.hasOwnProperty('5')) {
+        stepValue = Number(match[5]);
+      } else {
+        stepValue = 1;
+      }
+
+      return new ForToNext(
+        new Assignment('local', loopVariable, initialValue),
+        limitValue,
+        stepValue,
+        []
+      );
+    }
+
+    // while wend loop
+    match = line.match(regex.while);
+    if (match) {
+      console.info('[WHILE LOOP FOUND]', match);
+      return new WhileWend(null, []);
+    }
+
+    // repeat loop
+    match = line.match(regex.repeat);
+    if (match) {
+      console.info('[REPEAT LOOP FOUND]', match);
+      return new RepeatUntil(null, []);
     }
 
     // label
@@ -209,6 +237,24 @@ export class ParserService {
           }
         }),
       ]);
+    }
+
+    // assignment
+    if (line.match(regex.assignment)) {
+      console.info('[ASSIGNMENT FOUND]', line);
+
+      // global variable
+      if (new RegExp('^global', 'i').test(line)) {
+        const params: string[] = line
+          .substr(7)
+          .split(/\s|=/)
+          .filter((e) => e !== '');
+        // console.info('[GLOBAL ASSIGNMENT PARAMETERS]', params);
+
+        params[0] = params[0].toLowerCase();
+        this.globals.push(params[0]);
+        return new Assignment('global', params[0], params[1]);
+      }
     }
 
     // invalid code line
