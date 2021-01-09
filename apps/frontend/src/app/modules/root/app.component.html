@@ -9,11 +9,11 @@
         height="32"
       />
     </a>
-    <div class="navbar-burger burger" data-target="navigationMenu">
+    <div class="navbar-burger burger" data-target="navigationMenu" (click)="toggleMobileMenu()">
       <span *ngFor="let i of [1, 2, 3]"></span>
     </div>
   </div>
-  <div id="navigationMenu" class="navbar-menu">
+  <div id="navigationMenu" class="navbar-menu" [ngClass]="{'is-active': mobileMenuOpen}">
     <div class="navbar-start">
       <ng-container *ngFor="let element of navigationElements.left">
         <div class="navbar-item has-dropdown is-hoverable">
