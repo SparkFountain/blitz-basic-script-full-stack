@@ -1,11 +1,10 @@
 import { NavigationLink } from './../../core/navigation/navigation-link';
 import { NavigationElement } from './../../core/navigation/navigation-element';
 import { NavigationMenu } from './../../core/navigation/navigation-menu';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { of, Subscription } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 import { AuthenticationService } from '../../services/authentication.service';
 
@@ -15,18 +14,14 @@ import { AuthenticationService } from '../../services/authentication.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
-  private routerEventSubscription: Subscription;
+  private routerEventSubscription!: Subscription;
 
-  public navigationElements: {
+  public navigationElements!: {
     left: NavigationMenu[];
     right: NavigationMenu[];
   };
 
-  public mobileMenu: {
-    open: boolean;
-    closing: boolean;
-    // context: MobileMenuContext
-  };
+  public mobileMenuOpen!: boolean;
   // public MobileMenuContext: any = MobileMenuContext;
   public Language = Language;
 
@@ -75,12 +70,8 @@ export class AppComponent implements OnInit, OnDestroy {
       right: [],
     };
 
-    // TODO: refactor -> initialize old mobile menu
-    this.mobileMenu = {
-      open: false,
-      closing: false,
-      // context: MobileMenuContext.DEFAULT
-    };
+    // mobile menu is closed at the beginning
+    this.mobileMenuOpen = false;
   }
 
   ngOnInit(): void {
@@ -113,18 +104,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   toggleMobileMenu(): void {
-    if (this.mobileMenu.open) {
-      this.mobileMenu.closing = true;
-      of(null)
-        .pipe(delay(500))
-        .subscribe(() => {
-          this.mobileMenu.open = false;
-          this.mobileMenu.closing = false;
-          // this.mobileMenu.context = MobileMenuContext.DEFAULT;
-        });
-    } else {
-      this.mobileMenu.open = true;
-    }
+    this.mobileMenuOpen = !this.mobileMenuOpen;
   }
 }
 

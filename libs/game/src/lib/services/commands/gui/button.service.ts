@@ -20,6 +20,12 @@ export class CommandsGuiButtonService {
     group: any,
     style?: GuiButtonStyle
   ): Promise<ButtonComponent> {
+    const button: HTMLButtonElement = window.document.createElement('button');
+    button.style.left = `${x}px`;
+    button.style.top = `${y}px`;
+    button.style.width = `${width}px`;
+    button.style.height = `${height}px`;
+
     //TODO
     return null;
   }
