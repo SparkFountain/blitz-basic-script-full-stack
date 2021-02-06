@@ -88,6 +88,7 @@ export class InterpreterService {
       case 'SelectCase':
         break;
       case 'ForToNext':
+        console.info('[RUN FOR TO NEXT]');
         break;
       case 'WhileWend':
         this.whileLoop(codeBlock as WhileLoop);

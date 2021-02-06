@@ -828,6 +828,7 @@ export class ParserService {
         case 'CodeBlock':
         case 'CommandStatement':
         case 'Assignment':
+        case 'ForToNext':
           if (this.isMainLoop) {
             result.mainLoop.push(parserResult);
           } else {
