@@ -1,9 +1,9 @@
-<h1 class="title is-1">{{ 'FOOTER.CONTACT.LABEL' | translate }}</h1>
+<h1 class="title is-1">{{ 'FOOTER.CONTACT.LABEL'  | transloco }}</h1>
 
 <div class="message is-info" *ngIf="section === 'form'">
   <div
     class="message-body"
-    [innerHTML]="'FOOTER.CONTACT.SUBTITLE' | translate"
+    [innerHTML]="'FOOTER.CONTACT.SUBTITLE'  | transloco"
   ></div>
 </div>
 
@@ -14,7 +14,7 @@
     <div class="field is-horizontal">
       <div class="field-label is-normal">
         <label class="label">{{
-          'FOOTER.CONTACT.EMAIL.LABEL' | translate
+          'FOOTER.CONTACT.EMAIL.LABEL'  | transloco
         }}</label>
       </div>
       <div class="field-body">
@@ -24,7 +24,7 @@
               [(ngModel)]="email"
               class="input"
               type="text"
-              [placeholder]="'FOOTER.CONTACT.EMAIL.PLACEHOLDER' | translate"
+              [placeholder]="'FOOTER.CONTACT.EMAIL.PLACEHOLDER'  | transloco"
               maxlength="32"
             />
             <span class="icon is-small is-left">
@@ -33,10 +33,10 @@
           </div>
           <p class="help is-danger">
             <span *ngIf="this.notices['email-empty']">{{
-              'EMAIL_EMPTY' | translate
+              'EMAIL_EMPTY'  | transloco
             }}</span>
             <span *ngIf="this.notices['email-invalid']">{{
-              'EMAIL_INVALID' | translate
+              'EMAIL_INVALID'  | transloco
             }}</span>
           </p>
         </div>
@@ -47,7 +47,7 @@
     <div class="field is-horizontal">
       <div class="field-label is-normal">
         <label class="label">{{
-          'FOOTER.CONTACT.NAME.LABEL' | translate
+          'FOOTER.CONTACT.NAME.LABEL'  | transloco
         }}</label>
       </div>
       <div class="field-body">
@@ -57,7 +57,7 @@
               [(ngModel)]="name"
               class="input"
               type="text"
-              [placeholder]="'FOOTER.CONTACT.NAME.PLACEHOLDER' | translate"
+              [placeholder]="'FOOTER.CONTACT.NAME.PLACEHOLDER'  | transloco"
               maxlength="32"
             />
             <span class="icon is-small is-left">
@@ -66,13 +66,13 @@
           </div>
           <p class="help is-danger">
             <span *ngIf="this.notices['name-too-short']">{{
-              'NAME_TOO_SHORT' | translate
+              'NAME_TOO_SHORT'  | transloco
             }}</span>
             <span *ngIf="this.notices['name-too-long']">{{
-              'NAME_TOO_LONG' | translate
+              'NAME_TOO_LONG'  | transloco
             }}</span>
             <span *ngIf="this.notices['name-must-be-alphanumeric']">{{
-              'NAME_MUST_BE_ALPHANUMERIC' | translate
+              'NAME_MUST_BE_ALPHANUMERIC'  | transloco
             }}</span>
           </p>
         </div>
@@ -83,7 +83,7 @@
     <div class="field is-horizontal">
       <div class="field-label is-normal">
         <label class="label">{{
-          'FOOTER.CONTACT.SUBJECT.LABEL' | translate
+          'FOOTER.CONTACT.SUBJECT.LABEL'  | transloco
         }}</label>
       </div>
       <div class="field-body">
@@ -92,22 +92,22 @@
             <span class="select">
               <select [(ngModel)]="subject">
                 <option value="bbscript">
-                  {{ 'FOOTER.CONTACT.SUBJECT.BBSCRIPT' | translate }}
+                  {{ 'FOOTER.CONTACT.SUBJECT.BBSCRIPT'  | transloco }}
                 </option>
                 <option value="website">
-                  {{ 'FOOTER.CONTACT.SUBJECT.WEBSITE' | translate }}
+                  {{ 'FOOTER.CONTACT.SUBJECT.WEBSITE'  | transloco }}
                 </option>
                 <option value="bug-report">
-                  {{ 'FOOTER.CONTACT.SUBJECT.BUG_REPORT' | translate }}
+                  {{ 'FOOTER.CONTACT.SUBJECT.BUG_REPORT'  | transloco }}
                 </option>
                 <option value="feature-request">
-                  {{ 'FOOTER.CONTACT.SUBJECT.FEATURE_REQUEST' | translate }}
+                  {{ 'FOOTER.CONTACT.SUBJECT.FEATURE_REQUEST'  | transloco }}
                 </option>
                 <option value="criticism">
-                  {{ 'FOOTER.CONTACT.SUBJECT.CRITICISM' | translate }}
+                  {{ 'FOOTER.CONTACT.SUBJECT.CRITICISM'  | transloco }}
                 </option>
                 <option value="individual">
-                  {{ 'FOOTER.CONTACT.SUBJECT.INDIVIDUAL' | translate }}
+                  {{ 'FOOTER.CONTACT.SUBJECT.INDIVIDUAL'  | transloco }}
                 </option>
               </select>
             </span>
@@ -120,7 +120,7 @@
     <div class="field is-horizontal">
       <div class="field-label is-normal">
         <label class="label">{{
-          'FOOTER.CONTACT.MESSAGE.LABEL' | translate
+          'FOOTER.CONTACT.MESSAGE.LABEL'  | transloco
         }}</label>
       </div>
       <div class="field-body">
@@ -130,13 +130,13 @@
               [(ngModel)]="message"
               class="textarea"
               placeholder="{{
-                'FOOTER.CONTACT.MESSAGE.PLACEHOLDER' | translate
+                'FOOTER.CONTACT.MESSAGE.PLACEHOLDER'  | transloco
               }}"
             ></textarea>
           </p>
           <p class="help is-danger">
             <span *ngIf="this.notices['message-empty']">{{
-              'MESSAGE_EMPTY' | translate
+              'MESSAGE_EMPTY'  | transloco
             }}</span>
           </p>
         </div>
@@ -160,11 +160,11 @@
       <div class="field-body">
         <div class="field">
           <div class="control is-expanded has-icons-left">
-            <p [innerHTML]="'FOOTER.CONTACT.DATA_AGREEMENT' | translate"></p>
+            <p [innerHTML]="'FOOTER.CONTACT.DATA_AGREEMENT'  | transloco"></p>
           </div>
           <p class="help is-danger">
             <span *ngIf="this.notices['data-agreement-must-be-accepted']">{{
-              'FOOTER.CONTACT.DATA_AGREEMENT_MUST_BE_ACCEPTED' | translate
+              'FOOTER.CONTACT.DATA_AGREEMENT_MUST_BE_ACCEPTED'  | transloco
             }}</span>
           </p>
         </div>
@@ -182,12 +182,12 @@
               (click)="send()"
               *ngIf="!sendingRequest"
             >
-              {{ 'FOOTER.CONTACT.SEND' | translate }}
+              {{ 'FOOTER.CONTACT.SEND'  | transloco }}
             </button>
             <button class="button is-primary" disabled *ngIf="sendingRequest">
               <i class="fa fa-spinner fa-spin" aria-hidden="true"></i
               >&nbsp;&nbsp;
-              {{ 'REGISTER.SENDING_REQUEST' | translate }}
+              {{ 'REGISTER.SENDING_REQUEST'  | transloco }}
             </button>
           </div>
         </div>
@@ -199,12 +199,12 @@
 <!-- SUCCESS -->
 <div class="message is-success" *ngIf="section === 'success'">
   <div class="message-header">
-    {{ 'FOOTER.CONTACT.SUCCESSFUL.TITLE' | translate }}
+    {{ 'FOOTER.CONTACT.SUCCESSFUL.TITLE'  | transloco }}
   </div>
   <div class="message-body">
-    <p>{{ 'FOOTER.CONTACT.SUCCESSFUL.MESSAGE' | translate }}</p>
+    <p>{{ 'FOOTER.CONTACT.SUCCESSFUL.MESSAGE'  | transloco }}</p>
     <p>
-      <a routerLink="/home">{{ 'PAGE_NOT_FOUND.HOME_PATH' | translate }}</a>
+      <a routerLink="/home">{{ 'PAGE_NOT_FOUND.HOME_PATH'  | transloco }}</a>
     </p>
   </div>
 </div>
@@ -212,12 +212,12 @@
 <!-- ERROR -->
 <div class="message is-danger" *ngIf="section === 'error'">
   <div class="message-header">
-    {{ 'FOOTER.CONTACT.ERROR.TITLE' | translate }}
+    {{ 'FOOTER.CONTACT.ERROR.TITLE'  | transloco }}
   </div>
   <div class="message-body">
-    <p>{{ 'FOOTER.CONTACT.ERROR.MESSAGE' | translate }}</p>
+    <p>{{ 'FOOTER.CONTACT.ERROR.MESSAGE'  | transloco }}</p>
     <p>
-      <a routerLink="/home">{{ 'PAGE_NOT_FOUND.HOME_PATH' | translate }}</a>
+      <a routerLink="/home">{{ 'PAGE_NOT_FOUND.HOME_PATH'  | transloco }}</a>
     </p>
   </div>
 </div>

@@ -1,23 +1,23 @@
-<h1 class="title is-1">{{ 'LOGIN' | translate }}</h1>
+<h1 class="title is-1">{{ 'LOGIN' | transloco }}</h1>
 
 <div class="card login-card">
   <div class="card-content">
     <div class="field is-horizontal">
       <div class="field-label is-normal">
-        <label class="label">{{ 'USER_NAME_OR_EMAIL.LABEL' | translate }}</label>
+        <label class="label">{{ 'USER_NAME_OR_EMAIL.LABEL' | transloco }}</label>
       </div>
       <div class="field-body">
         <div class="field">
           <div class="control is-expanded has-icons-left">
-            <input tabindex="0" [(ngModel)]="userOrEmail" class="input" type="text" [placeholder]="'USER_NAME_OR_EMAIL.PLACEHOLDER' | translate" maxlength="32" />
+            <input tabindex="0" [(ngModel)]="userOrEmail" class="input" type="text" [placeholder]="'USER_NAME_OR_EMAIL.PLACEHOLDER' | transloco" maxlength="32" />
             <span class="icon is-small is-left">
               <i class="fa fa-fw fa-user"></i>
             </span>
           </div>
           <p class="help is-danger">
-            <span *ngIf="this.notices['username-too-short']">{{ 'USERNAME_TOO_SHORT' | translate }}</span>
-            <span *ngIf="this.notices['username-too-long']">{{ 'USERNAME_TOO_LONG' | translate }}</span>
-            <span *ngIf="this.notices['input-invalid']">{{ 'INVALID_INPUT' | translate }}</span>
+            <span *ngIf="this.notices['username-too-short']">{{ 'USERNAME_TOO_SHORT' | transloco }}</span>
+            <span *ngIf="this.notices['username-too-long']">{{ 'USERNAME_TOO_LONG' | transloco }}</span>
+            <span *ngIf="this.notices['input-invalid']">{{ 'INVALID_INPUT' | transloco }}</span>
           </p>
         </div>
       </div>
@@ -25,22 +25,22 @@
 
     <div class="field is-horizontal">
       <div class="field-label is-normal">
-        <label class="label">{{ 'PASSWORD.LABEL' | translate }}</label>
-        <a tabindex="2" [routerLink]="'FORGOT_PASSWORD.PATH' | translate">{{ 'FORGOT_PASSWORD.LABEL' | translate }}</a>
+        <label class="label">{{ 'PASSWORD.LABEL' | transloco }}</label>
+        <a tabindex="2" [routerLink]="'FORGOT_PASSWORD.PATH' | transloco">{{ 'FORGOT_PASSWORD.LABEL' | transloco }}</a>
       </div>
       <div class="field-body">
         <div class="field">
           <div class="control is-expanded has-icons-left">
-            <input tabindex="1" [(ngModel)]="password" class="input" type="password" [placeholder]="'PASSWORD.PLACEHOLDER' | translate" />
+            <input tabindex="1" [(ngModel)]="password" class="input" type="password" [placeholder]="'PASSWORD.PLACEHOLDER' | transloco" />
             <span class="icon is-small is-left">
               <i class="fa fa-fw fa-key"></i>
             </span>
           </div>
           <p class="help is-danger">
             <span *ngIf="this.notices['username-password-combination-invalid']">{{
-              'USERNAME_PASSWORD_COMBINATION_INVALID' | translate
+              'USERNAME_PASSWORD_COMBINATION_INVALID' | transloco
             }}</span>
-            <span *ngIf="this.notices['password-too-short']">{{ 'PASSWORD_TOO_SHORT' | translate }}</span>
+            <span *ngIf="this.notices['password-too-short']">{{ 'PASSWORD_TOO_SHORT' | transloco }}</span>
           </p>
         </div>
       </div>
@@ -52,7 +52,7 @@
         <div class="field">
           <div class="control">
             <button class="button is-primary" (click)="login()">
-              {{ 'LOGIN' | translate }}
+              {{ 'LOGIN' | transloco }}
             </button>
           </div>
         </div>

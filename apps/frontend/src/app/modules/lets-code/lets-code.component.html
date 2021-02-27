@@ -1,4 +1,4 @@
-<h1 class="title is-1">{{ 'NAV.LETS_CODE.TITLE' | translate }}</h1>
+<h1 class="title is-1">{{ 'NAV.LETS_CODE.TITLE' | transloco }}</h1>
 
 <div class="columns">
   <div class="column is-1" *ngIf="!showFiles">TODO:</div>
@@ -33,7 +33,7 @@
         <!-- FILE BREADCRUMBS -->
         <nav class="breadcrumb">
           <ul>
-            <li>{{ 'LETS_CODE.FILES' | translate }}</li>
+            <li>{{ 'LETS_CODE.FILES' | transloco }}</li>
             <!-- <li
               *ngFor="let b of breadcrumbs; let i = index"
               [ngClass]="{ 'is-active': i === breadcrumbs.length - 1 }"
@@ -162,7 +162,7 @@
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
-      <p class="modal-card-title">{{ 'IDE.SETTINGS.TITLE' | translate }}</p>
+      <p class="modal-card-title">{{ 'IDE.SETTINGS.TITLE' | transloco }}</p>
       <button
         class="delete"
         aria-label="close"
@@ -173,7 +173,7 @@
       <!-- THEME -->
       <div class="field is-horizontal">
         <div class="field-label is-normal">
-          <label class="label">{{ 'IDE.SETTINGS.THEME' | translate }}</label>
+          <label class="label">{{ 'IDE.SETTINGS.THEME' | transloco }}</label>
         </div>
         <div class="field-body">
           <div class="field is-narrow">
@@ -195,7 +195,7 @@
       <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">{{
-            'IDE.SETTINGS.INDENTATION' | translate
+            'IDE.SETTINGS.INDENTATION' | transloco
           }}</label>
         </div>
         <div class="field-body">
@@ -221,7 +221,7 @@
       <div class="field is-horizontal">
         <div class="field-label">
           <label class="label">{{
-            'IDE.SETTINGS.SYNTAX_HIGHLIGHTING' | translate
+            'IDE.SETTINGS.SYNTAX_HIGHLIGHTING' | transloco
           }}</label>
         </div>
         <div class="field-body">
@@ -249,7 +249,7 @@
       <div class="field is-horizontal">
         <div class="field-label">
           <label class="label">{{
-            'IDE.SETTINGS.AUTO_COMPLETE' | translate
+            'IDE.SETTINGS.AUTO_COMPLETE' | transloco
           }}</label>
         </div>
         <div class="field-body">
@@ -268,7 +268,7 @@
       <!-- AUTO SAVE -->
       <div class="field is-horizontal">
         <div class="field-label">
-          <label class="label">{{ 'IDE.SETTINGS.AUTOSAVE' | translate }}</label>
+          <label class="label">{{ 'IDE.SETTINGS.AUTOSAVE' | transloco }}</label>
         </div>
         <div class="field-body">
           <div class="field is-narrow">
@@ -285,10 +285,10 @@
     </section>
     <footer class="modal-card-foot">
       <button class="button is-success">
-        {{ 'IDE.SETTINGS.SAVE' | translate }}
+        {{ 'IDE.SETTINGS.SAVE' | transloco }}
       </button>
       <button class="button" (click)="toggleSettings()">
-        {{ 'IDE.SETTINGS.CANCEL' | translate }}
+        {{ 'IDE.SETTINGS.CANCEL' | transloco }}
       </button>
     </footer>
   </div>

@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TermsOfUseRoutingModule } from './terms-of-use-routing.module';
 import { TermsOfUseComponent } from './terms-of-use.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @NgModule({
-  imports: [CommonModule, TermsOfUseRoutingModule, TranslateModule],
+  imports: [CommonModule, TermsOfUseRoutingModule, TranslocoModule],
   declarations: [TermsOfUseComponent],
   exports: [TermsOfUseComponent],
 })

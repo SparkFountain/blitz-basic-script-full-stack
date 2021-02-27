@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslocoModule } from '@ngneat/transloco';
 import { LetsCodeComponent } from './lets-code.component';
-import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
 import { LetsCodeRoutingModule } from './lets-code-routing.module';
 import { EmptyProjectComponent } from './empty-project/empty-project.component';
@@ -19,7 +19,7 @@ import { GameStateService } from 'libs/game/src/lib/services/game-state.service'
 @NgModule({
   imports: [
     CommonModule,
-    TranslateModule,
+    TranslocoModule,
     FormsModule,
     LetsCodeRoutingModule,
     IdeModule,

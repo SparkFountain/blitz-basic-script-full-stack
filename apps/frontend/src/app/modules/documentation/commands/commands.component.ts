@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslocoService } from '@ngneat/transloco';
 
 import { DocumentationService } from '../../../services/documentation.service';
 
@@ -43,7 +43,7 @@ export class CommandsComponent implements OnInit {
   activeTab: 'description' | 'infos' | 'codeExample';
 
   constructor(
-    private translate: TranslateService,
+    private translocoService: TranslocoService,
     private docsService: DocumentationService
   ) {}
 
@@ -54,13 +54,15 @@ export class CommandsComponent implements OnInit {
     this.codeExample = '';
 
     if (!this.category) {
-      this.headline = this.translate.instant('DOC.COMMANDS.HEADLINE');
-      this.description = this.translate.instant('DOC.COMMANDS.SUBTITLE');
+      this.headline = this.translocoService.translate('DOC.COMMANDS.HEADLINE');
+      this.description = this.translocoService.translate(
+        'DOC.COMMANDS.SUBTITLE'
+      );
     } else if (this.category && !this.subCategory) {
       this.docsService
         .get('commands', {
           category: this.category,
-          language: this.translate.currentLang,
+          language: this.translocoService.getActiveLang(),
         })
         .then((data: CommandCategoryDoc) => {
           this.headline = data.headline;
@@ -71,7 +73,7 @@ export class CommandsComponent implements OnInit {
         .get('commands', {
           category: this.category,
           subCategory: this.subCategory,
-          language: this.translate.currentLang,
+          language: this.translocoService.getActiveLang(),
         })
         .then((data: CommandCategoryDoc) => {
           this.headline = data.headline;
@@ -83,7 +85,7 @@ export class CommandsComponent implements OnInit {
           category: this.category,
           subCategory: this.subCategory,
           command: this.command,
-          language: this.translate.currentLang,
+          language: this.translocoService.getActiveLang(),
         })
         .then((data: CommandDoc) => {
           // console.info('[DATA]', data);

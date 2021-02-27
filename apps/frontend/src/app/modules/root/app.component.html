@@ -19,11 +19,11 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a
             class="navbar-link"
-            [routerLink]="'NAV.' + element.name + '.PATH' | translate"
+            [routerLink]="'NAV.' + element.name + '.PATH' | transloco"
           >
             <span
               ><i class="fa fa-fw {{ element.icon }}"></i>
-              {{ 'NAV.' + element.name + '.TITLE' | translate }}</span
+              {{ 'NAV.' + element.name + '.TITLE' | transloco }}</span
             >
           </a>
 
@@ -33,12 +33,12 @@
               *ngFor="let submenu of element.submenus"
               [routerLink]="
                 'NAV.' + element.name + '.SUBMENU.' + submenu + '.PATH'
-                  | translate
+                  | transloco
               "
             >
               {{
                 'NAV.' + element.name + '.SUBMENU.' + submenu + '.TITLE'
-                  | translate
+                  | transloco
               }}
             </a>
           </div>
@@ -67,26 +67,26 @@
           <span class="icon">
             <i class="fa fa-fw fa-comments-o"></i>
           </span>
-          <span>{{ 'NAV.LANGUAGE.TITLE' | translate }}</span>
+          <span>{{ 'NAV.LANGUAGE.TITLE' | transloco }}</span>
         </a>
 
         <div class="navbar-dropdown">
           <a class="navbar-item" (click)="changeLanguage('de')">
-            {{ 'NAV.LANGUAGE.DE' | translate }}
+            {{ 'NAV.LANGUAGE.DE' | transloco }}
           </a>
           <a class="navbar-item" (click)="changeLanguage('en')">
-            {{ 'NAV.LANGUAGE.EN' | translate }}
+            {{ 'NAV.LANGUAGE.EN' | transloco }}
           </a>
         </div>
       </div>
       <div class="navbar-item" *ngIf="!authService.userIsLoggedIn()">
         <div class="field is-grouped">
           <p class="control">
-            <a class="navbar-item" [routerLink]="'NAV.LOGIN.PATH' | translate">
+            <a class="navbar-item" [routerLink]="'NAV.LOGIN.PATH' | transloco">
               <span class="icon">
                 <i class="fa fa-fw fa-sign-in"></i>
               </span>
-              <span>{{ 'NAV.LOGIN.TITLE' | translate }}</span>
+              <span>{{ 'NAV.LOGIN.TITLE' | transloco }}</span>
             </a>
           </p>
         </div>
@@ -104,14 +104,14 @@
           </figure>
         </a>
         <div class="navbar-dropdown nav-avatar-dropdown">
-          <a class="navbar-item" [routerLink]="'NAV.ACCOUNT.PATH' | translate">
-            {{ 'NAV.ACCOUNT.PROFILE' | translate }}
+          <a class="navbar-item" [routerLink]="'NAV.ACCOUNT.PATH' | transloco">
+            {{ 'NAV.ACCOUNT.PROFILE' | transloco }}
           </a>
-          <a class="navbar-item" [routerLink]="'NAV.MEDALS.PATH' | translate">
-            {{ 'NAV.ACCOUNT.MEDALS' | translate }}
+          <a class="navbar-item" [routerLink]="'NAV.MEDALS.PATH' | transloco">
+            {{ 'NAV.ACCOUNT.MEDALS' | transloco }}
           </a>
           <a class="navbar-item">
-            {{ 'LOGOUT' | translate }}
+            {{ 'LOGOUT' | transloco }}
           </a>
         </div>
       </div>
@@ -120,12 +120,12 @@
           <p class="control">
             <a
               class="navbar-item"
-              [routerLink]="'NAV.REGISTER.PATH' | translate"
+              [routerLink]="'NAV.REGISTER.PATH' | transloco"
             >
               <span class="icon">
                 <i class="fa fa-fw fa-user-plus"></i>
               </span>
-              <span>{{ 'NAV.REGISTER.TITLE' | translate }}</span>
+              <span>{{ 'NAV.REGISTER.TITLE' | transloco }}</span>
             </a>
           </p>
         </div>
@@ -143,19 +143,19 @@
   <div class="nav-left">
     <a [ngClass]="{'active': router.url === '/'}" routerLink="">
       <i class="fa fa-fw fa-info-circle"></i>
-      {{'NAV.ABOUT' | translate}}
+      {{'NAV.ABOUT' | transloco}}
     </a>
     <a [ngClass]="{'active': router.url === '/lexer'}" routerLink="lexer">
       <i class="fa fa-fw fa-i-cursor"></i>
-      {{'NAV.LEXER' | translate}}
+      {{'NAV.LEXER' | transloco}}
     </a>
     <a [ngClass]="{'active': router.url === '/commands'}" routerLink="commands">
       <i class="fa fa-fw fa-tachometer"></i>
-      {{'NAV.COMMANDS' | translate}}
+      {{'NAV.COMMANDS' | transloco}}
     </a>
     <a [ngClass]="{'active': router.url === '/gaming'}" routerLink="gaming">
       <i class="fa fa-fw fa-gamepad"></i>
-      {{'NAV.GAMING' | translate}}
+      {{'NAV.GAMING' | transloco}}
     </a>
   </div>
 
@@ -168,15 +168,15 @@
     <div class="dropdown">
       <a class="menu" target="_blank">
         <span class="icon"><i class="fa fa-fw fa-comment-o"></i></span>
-        <span>&nbsp;&nbsp;&nbsp;{{'LANGUAGE' | translate}}&nbsp;&nbsp;</span>
+        <span>&nbsp;&nbsp;&nbsp;{{'LANGUAGE' | transloco}}&nbsp;&nbsp;</span>
         <span class="icon"><i class="fa fa-angle-down"></i></span>
       </a>
       <div class="dropdown-content">
         <a (click)="changeLanguage(Language.ENGLISH)">
-          {{'NAV_EN' | translate}}
+          {{'NAV_EN' | transloco}}
         </a>
         <a (click)="changeLanguage(Language.GERMAN)">
-          {{'NAV_DE' | translate}}
+          {{'NAV_DE' | transloco}}
         </a>
       </div>
     </div>
@@ -195,42 +195,42 @@
   <ng-container *ngIf="mobileMenu.context === MobileMenuContext.DEFAULT">
     <div class="mobile-nav-container">
       <div (click)="mobileMenu.context = MobileMenuContext.HOME">
-        <a>{{'NAV_HOME' | translate}} <i class="fa fa-fw fa-caret-right"></i></a>
+        <a>{{'NAV_HOME' | transloco}} <i class="fa fa-fw fa-caret-right"></i></a>
       </div>
 
       <div (click)="mobileMenu.context = MobileMenuContext.CODING">
-        <a>{{'NAV_EDITOR' | translate}} <i class="fa fa-fw fa-caret-right"></i></a>
+        <a>{{'NAV_EDITOR' | transloco}} <i class="fa fa-fw fa-caret-right"></i></a>
       </div>
 
       <div (click)="mobileMenu.context = MobileMenuContext.PROJECTS">
-        <a>{{'NAV_PROJECTS' | translate}} <i class="fa fa-fw fa-caret-right"></i></a>
+        <a>{{'NAV_PROJECTS' | transloco}} <i class="fa fa-fw fa-caret-right"></i></a>
       </div>
 
       <div (click)="mobileMenu.context = MobileMenuContext.DOCUMENTATION">
-        <a>{{'NAV_DOC' | translate}} <i class="fa fa-fw fa-caret-right"></i></a>
+        <a>{{'NAV_DOC' | transloco}} <i class="fa fa-fw fa-caret-right"></i></a>
       </div>
     </div>
     <div class="mobile-nav-container">
       <div (click)="mobileMenu.context = MobileMenuContext.LANGUAGE">
-        <a>{{'NAV_LANGUAGE' | translate}} <i class="fa fa-fw fa-caret-right"></i></a>
+        <a>{{'NAV_LANGUAGE' | transloco}} <i class="fa fa-fw fa-caret-right"></i></a>
       </div>
       <div>
         <a href="https://github.com/SparkFountain/blitz-basic-script-full-stack/" target="_blank"
           (click)="toggleMobileMenu()">GitHub</a>
       </div>
       <div>
-        <a routerLink="register" (click)="toggleMobileMenu()">{{'SIGN_IN' | translate}}</a>
+        <a routerLink="register" (click)="toggleMobileMenu()">{{'SIGN_IN' | transloco}}</a>
       </div>
     </div>
     <div class="mobile-nav-container">
       <div>
-        <a routerLink="terms-of-use" (click)="toggleMobileMenu()">{{'NAV_TERMS' | translate}}</a>
+        <a routerLink="terms-of-use" (click)="toggleMobileMenu()">{{'NAV_TERMS' | transloco}}</a>
       </div>
       <div>
-        <a routerLink="disclaimer" (click)="toggleMobileMenu()">{{'FOOTER.DISCLAIMER' | translate}}</a>
+        <a routerLink="disclaimer" (click)="toggleMobileMenu()">{{'FOOTER.DISCLAIMER' | transloco}}</a>
       </div>
       <div>
-        <a routerLink="imprint" (click)="toggleMobileMenu()">{{'FOOTER.IMPRINT' | translate}}</a>
+        <a routerLink="imprint" (click)="toggleMobileMenu()">{{'FOOTER.IMPRINT' | transloco}}</a>
       </div>
     </div>
   </ng-container>
@@ -239,31 +239,31 @@
       <div (click)="mobileMenu.context = MobileMenuContext.DEFAULT">
         <div>
           <a>
-            <i class="fa fa-fw fa-caret-left"></i> {{'NAV_HOME' | translate}}
+            <i class="fa fa-fw fa-caret-left"></i> {{'NAV_HOME' | transloco}}
           </a>
         </div>
 
         <div>
           <a routerLink="home" (click)="toggleMobileMenu()">
-            <i class="fa fa-fw fa-home"></i> {{'NAV_MISSION' | translate}}
+            <i class="fa fa-fw fa-home"></i> {{'NAV_MISSION' | transloco}}
           </a>
         </div>
 
         <div>
           <a routerLink="news-blog" (click)="toggleMobileMenu()">
-            <i class="fa fa-fw fa-newspaper-o"></i> {{'NAV_NEWS_BLOG' | translate}}
+            <i class="fa fa-fw fa-newspaper-o"></i> {{'NAV_NEWS_BLOG' | transloco}}
           </a>
         </div>
 
         <div>
           <a routerLink="features" (click)="toggleMobileMenu()">
-            <i class="fa fa-fw fa-cubes"></i> {{'NAV_FEATURES' | translate}}
+            <i class="fa fa-fw fa-cubes"></i> {{'NAV_FEATURES' | transloco}}
           </a>
         </div>
 
         <div>
           <a routerLink="comparison-to-blitz-basic" (click)="toggleMobileMenu()">
-            <i class="fa fa-fw fa-balance-scale"></i> {{'NAV_COMPARISON' | translate}}
+            <i class="fa fa-fw fa-balance-scale"></i> {{'NAV_COMPARISON' | transloco}}
           </a>
         </div>
       </div>
@@ -274,25 +274,25 @@
       <div (click)="mobileMenu.context = MobileMenuContext.DEFAULT">
         <div>
           <a>
-            <i class="fa fa-fw fa-caret-left"></i> {{'NAV_EDITOR' | translate}}
+            <i class="fa fa-fw fa-caret-left"></i> {{'NAV_EDITOR' | transloco}}
           </a>
         </div>
 
         <div>
           <a routerLink="lets-code/empty-project" (click)="toggleMobileMenu()">
-            <i class="fa fa-fw fa-file-text"></i> {{'NAV_CODING_EMPTY' | translate}}
+            <i class="fa fa-fw fa-file-text"></i> {{'NAV_CODING_EMPTY' | transloco}}
           </a>
         </div>
 
         <div>
           <a routerLink="lets-code/game-templates" (click)="toggleMobileMenu()">
-            <i class="fa fa-fw fa-gamepad"></i> {{'NAV_CODING_TEMPLATE' | translate}}
+            <i class="fa fa-fw fa-gamepad"></i> {{'NAV_CODING_TEMPLATE' | transloco}}
           </a>
         </div>
 
         <div>
           <a routerLink="lets-code/my-projects" (click)="toggleMobileMenu()">
-            <i class="fa fa-fw fa-user-circle-o"></i> {{'NAV_CODING_MY_PROJECTS' | translate}}
+            <i class="fa fa-fw fa-user-circle-o"></i> {{'NAV_CODING_MY_PROJECTS' | transloco}}
           </a>
         </div>
       </div>
@@ -301,7 +301,7 @@
   <ng-container *ngIf="mobileMenu.context === MobileMenuContext.PROJECTS">
     <div class="mobile-nav-container">
       <div (click)="mobileMenu.context = MobileMenuContext.DEFAULT">
-        <a><i class="fa fa-fw fa-caret-left"></i> {{'NAV_PROJECTS' | translate}}</a>
+        <a><i class="fa fa-fw fa-caret-left"></i> {{'NAV_PROJECTS' | transloco}}</a>
       </div>
     </div>
   </ng-container>
@@ -309,43 +309,43 @@
     <div class="mobile-nav-container">
       <div (click)="mobileMenu.context = MobileMenuContext.DEFAULT">
         <a>
-          <i class="fa fa-fw fa-caret-left"></i> {{'NAV_DOC' | translate}}
+          <i class="fa fa-fw fa-caret-left"></i> {{'NAV_DOC' | transloco}}
         </a>
       </div>
 
       <div>
         <a routerLink="docs/tutorials" (click)="toggleMobileMenu()">
-          <i class="fa fa-fw fa-info-circle"></i> {{'NAV_DOC_TUTORIALS' | translate}}
+          <i class="fa fa-fw fa-info-circle"></i> {{'NAV_DOC_TUTORIALS' | transloco}}
         </a>
       </div>
 
       <div>
         <a routerLink="docs/keywords" (click)="toggleMobileMenu()">
-          <i class="fa fa-fw fa-key"></i> {{'NAV_DOC_KEYWORDS' | translate}}
+          <i class="fa fa-fw fa-key"></i> {{'NAV_DOC_KEYWORDS' | transloco}}
         </a>
       </div>
 
       <div>
         <a routerLink="docs/commands" (click)="toggleMobileMenu()">
-          <i class="fa fa-fw fa-book"></i> {{'NAV_DOC_COMMANDS' | translate}}
+          <i class="fa fa-fw fa-book"></i> {{'NAV_DOC_COMMANDS' | transloco}}
         </a>
       </div>
 
       <div>
         <a routerLink="docs/constants-and-scancodes" (click)="toggleMobileMenu()">
-          <i class="fa fa-fw fa-list-ol"></i> {{'NAV_DOC_CONSTANTS_SCANCODES' | translate}}
+          <i class="fa fa-fw fa-list-ol"></i> {{'NAV_DOC_CONSTANTS_SCANCODES' | transloco}}
         </a>
       </div>
 
       <div>
         <a routerLink="docs/differences-to-blitz-basic" (click)="toggleMobileMenu()">
-          <i class="fa fa-fw fa-exchange"></i> {{'NAV_DOC_DIFFERENCES_BB' | translate}}
+          <i class="fa fa-fw fa-exchange"></i> {{'NAV_DOC_DIFFERENCES_BB' | transloco}}
         </a>
       </div>
 
       <div>
         <a routerLink="docs/migration-guide" (click)="toggleMobileMenu()">
-          <i class="fa fa-fw fa-code-fork"></i> {{'NAV_DOC_MIGRATION_GUIDE' | translate}}
+          <i class="fa fa-fw fa-code-fork"></i> {{'NAV_DOC_MIGRATION_GUIDE' | transloco}}
         </a>
       </div>
     </div>
@@ -353,15 +353,15 @@
   <ng-container *ngIf="mobileMenu.context === MobileMenuContext.LANGUAGE">
     <div class="mobile-nav-container">
       <div (click)="mobileMenu.context = MobileMenuContext.DEFAULT">
-        <a><i class="fa fa-fw fa-caret-left"></i> {{'NAV_LANGUAGE' | translate}}</a>
+        <a><i class="fa fa-fw fa-caret-left"></i> {{'NAV_LANGUAGE' | transloco}}</a>
       </div>
 
       <div (click)="changeLanguage(Language.ENGLISH)">
-        <a>{{'NAV_EN' | translate}}</a>
+        <a>{{'NAV_EN' | transloco}}</a>
       </div>
 
       <div (click)="changeLanguage(Language.GERMAN)">
-        <a>{{'NAV_DE' | translate}}</a>
+        <a>{{'NAV_DE' | transloco}}</a>
       </div>
     </div>
   </ng-container>
@@ -378,20 +378,20 @@
 <!-- FOOTER -->
 <footer class="footer">
   <div class="content has-text-centered">
-    <a [routerLink]="'FOOTER.CONTACT.PATH' | translate" class="is-link">{{
-      'FOOTER.CONTACT.LABEL' | translate
+    <a [routerLink]="'FOOTER.CONTACT.PATH' | transloco" class="is-link">{{
+      'FOOTER.CONTACT.LABEL' | transloco
     }}</a>
     <br />
-    <a [routerLink]="'FOOTER.TERMS.PATH' | translate" class="is-link">{{
-      'FOOTER.TERMS.LABEL' | translate
+    <a [routerLink]="'FOOTER.TERMS.PATH' | transloco" class="is-link">{{
+      'FOOTER.TERMS.LABEL' | transloco
     }}</a>
     <br />
-    <a [routerLink]="'FOOTER.DISCLAIMER.PATH' | translate" class="is-link">{{
-      'FOOTER.DISCLAIMER.LABEL' | translate
+    <a [routerLink]="'FOOTER.DISCLAIMER.PATH' | transloco" class="is-link">{{
+      'FOOTER.DISCLAIMER.LABEL' | transloco
     }}</a>
     <br />
-    <a [routerLink]="'FOOTER.IMPRINT.PATH' | translate" class="is-link">{{
-      'FOOTER.IMPRINT.LABEL' | translate
+    <a [routerLink]="'FOOTER.IMPRINT.PATH' | transloco" class="is-link">{{
+      'FOOTER.IMPRINT.LABEL' | transloco
     }}</a>
   </div>
 </footer>

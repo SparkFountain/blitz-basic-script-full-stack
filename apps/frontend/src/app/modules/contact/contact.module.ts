@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactComponent } from './contact.component';
 import { ContactRoutingModule } from './contact-routing.module';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ContactRoutingModule, TranslateModule],
+  imports: [CommonModule, FormsModule, ContactRoutingModule, TranslocoModule],
   declarations: [ContactComponent],
 })
 export class ContactModule {}

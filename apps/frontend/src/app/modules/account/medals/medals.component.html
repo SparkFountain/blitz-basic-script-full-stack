@@ -1,23 +1,23 @@
-<h1 class="title is-1">{{ 'ACCOUNT.MEDALS.TITLE' | translate }}</h1>
+<h1 class="title is-1">{{ 'ACCOUNT.MEDALS.TITLE' | transloco }}</h1>
 
 <div class="tabs is-boxed">
   <ul>
     <li [ngClass]="{ 'is-active': section === 'community' }">
       <a (click)="section = 'community'">
         <span class="icon is-small"><i class="fa fa-users"></i></span>
-        <span>{{ 'ACCOUNT.MEDALS.COMMUNITY.TITLE' | translate }}</span>
+        <span>{{ 'ACCOUNT.MEDALS.COMMUNITY.TITLE' | transloco }}</span>
       </a>
     </li>
     <li [ngClass]="{ 'is-active': section === 'learning' }">
       <a (click)="section = 'learning'">
         <span class="icon is-small"><i class="fa fa-graduation-cap"></i></span>
-        <span>{{ 'ACCOUNT.MEDALS.LEARNING.TITLE' | translate }}</span>
+        <span>{{ 'ACCOUNT.MEDALS.LEARNING.TITLE' | transloco }}</span>
       </a>
     </li>
     <li [ngClass]="{ 'is-active': section === 'coding' }">
       <a (click)="section = 'coding'">
         <span class="icon is-small"><i class="fa fa-dashboard"></i></span>
-        <span>{{ 'ACCOUNT.MEDALS.CODING.TITLE' | translate }}</span>
+        <span>{{ 'ACCOUNT.MEDALS.CODING.TITLE' | transloco }}</span>
       </a>
     </li>
   </ul>
@@ -28,9 +28,9 @@
     <table class="table is-striped">
       <thead>
         <tr>
-          <th>{{ 'ACCOUNT.MEDALS.TABLE.NAME' | translate }}</th>
-          <th>{{ 'ACCOUNT.MEDALS.TABLE.DESCRIPTION' | translate }}</th>
-          <th>{{ 'ACCOUNT.MEDALS.TABLE.WON' | translate }}</th>
+          <th>{{ 'ACCOUNT.MEDALS.TABLE.NAME' | transloco }}</th>
+          <th>{{ 'ACCOUNT.MEDALS.TABLE.DESCRIPTION' | transloco }}</th>
+          <th>{{ 'ACCOUNT.MEDALS.TABLE.WON' | transloco }}</th>
         </tr>
       </thead>
       <tbody>

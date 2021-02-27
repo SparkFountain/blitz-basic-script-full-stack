@@ -1,11 +1,11 @@
 <div class="columns">
   <div class="column is-4 blog-navigation">
     <section class="section">
-      <h1 class="title">{{ 'BLOG.TITLE' | translate }}</h1>
+      <h1 class="title">{{ 'BLOG.TITLE'  | transloco }}</h1>
       <hr />
 
       <nav class="pagination">
-        {{ 'BLOG.PAGE' | translate }}&nbsp;&nbsp;&nbsp;
+        {{ 'BLOG.PAGE'  | transloco }}&nbsp;&nbsp;&nbsp;
         <ul class="pagination-list">
           <li *ngFor="let page of pages">
             <a

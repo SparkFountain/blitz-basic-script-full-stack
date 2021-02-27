@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { TranslocoService } from '@ngneat/transloco';
 import { Subscription } from 'rxjs';
-import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-disclaimer',
@@ -11,13 +11,13 @@ export class DisclaimerComponent implements OnInit, OnDestroy {
   language: string;
   languageSubscription: Subscription;
 
-  constructor(private translateService: TranslateService) {}
+  constructor(private translocoService: TranslocoService) {}
 
   ngOnInit(): void {
-    this.language = this.translateService.currentLang;
-    this.languageSubscription = this.translateService.onLangChange.subscribe(
-      (event: LangChangeEvent) => {
-        this.language = event.lang;
+    this.language = this.translocoService.getActiveLang();
+    this.languageSubscription = this.translocoService.langChanges$.subscribe(
+      (language: string) => {
+        this.language = language;
       }
     );
   }

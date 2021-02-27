@@ -5,11 +5,11 @@ import {
   Router,
 } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { TranslateService } from '@ngx-translate/core';
 import { ApiResponse } from '@blitz-basic-script/api-interfaces';
 import { environment } from '../../../environments/environment';
 import { DocumentationService } from '../../services/documentation.service';
 import { NavigationElement } from '@blitz-basic-script/documentation';
+import { TranslocoService } from '@ngneat/transloco';
 
 export interface DocCategory {
   title: string;
@@ -53,7 +53,7 @@ export class DocumentationComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
-    private translate: TranslateService,
+    private translocoService: TranslocoService,
     private documentationService: DocumentationService
   ) {
     this.breadcrumbs = [];
@@ -63,9 +63,8 @@ export class DocumentationComponent implements OnInit {
     const snapshot: ActivatedRouteSnapshot = this.route.snapshot;
     // console.info('[SNAPSHOT ROUTE]', snapshot);
 
-
     const navParams: NavParams = {
-      language: this.translate.currentLang,
+      language: this.translocoService.getActiveLang(),
     };
     for (let i = 0; i <= 3; i++) {
       if (snapshot.url[i]) {
@@ -90,11 +89,15 @@ export class DocumentationComponent implements OnInit {
 
     // console.info('[NAV PARAMS]', navParams);
 
-    this.documentationService.getBreadcrumbs(navParams).then((breadcrumbs: Breadcrumb[]) => this.breadcrumbs = breadcrumbs);
-    this.documentationService.getNavigation(navParams).then((navElements: NavigationElement[]) => {
-      console.info('[NAV ELEMENTS]', navElements);
-      this.navElements = navElements;
-    });
+    this.documentationService
+      .getBreadcrumbs(navParams)
+      .then((breadcrumbs: Breadcrumb[]) => (this.breadcrumbs = breadcrumbs));
+    this.documentationService
+      .getNavigation(navParams)
+      .then((navElements: NavigationElement[]) => {
+        console.info('[NAV ELEMENTS]', navElements);
+        this.navElements = navElements;
+      });
   }
 
   ngOnInit(): void {}

@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { ApiResponse } from '@blitz-basic-script/api-interfaces';
 import { BlogEntry } from '@blitz-basic-script/blog';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BlogService {
   constructor(
-    private translateService: TranslateService,
+    private translocoService: TranslocoService,
     private http: HttpClient
   ) {}
 
@@ -26,7 +26,7 @@ export class BlogService {
       .get(`${environment.apiServer}/blog`, {
         params: {
           page: page.toString(),
-          language: this.translateService.currentLang,
+          language: this.translocoService.getActiveLang(),
         },
       })
       .toPromise()

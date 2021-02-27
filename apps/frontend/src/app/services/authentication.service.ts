@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
 
 import { User } from '@blitz-basic-script/authentication';
 import { ApiResponse } from '@blitz-basic-script/api-interfaces';
+import { TranslocoService } from '@ngneat/transloco';
 
 // TODO: refactor -> move somewhere else
 const ApiServer = {
@@ -18,7 +18,7 @@ export class AuthenticationService {
   public token: BehaviorSubject<string>;
   public user: User;
 
-  constructor(private http: HttpClient, public translate: TranslateService) {
+  constructor(private http: HttpClient, public transloco: TranslocoService) {
     this.token = new BehaviorSubject<string>('');
   }
 
@@ -33,7 +33,7 @@ export class AuthenticationService {
       .set('email', email)
       .set('password', password)
       .set('termsAccepted', termsAccepted.toString())
-      .set('language', this.translate.currentLang);
+      .set('language', this.transloco.getActiveLang());
 
     return this.http
       .post<ApiResponse<any>>(`${ApiServer.url}/auth/register`, body)

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TranslateService } from '@ngx-translate/core';
 
 import { Template } from '@blitz-basic-script/coding';
 import { environment } from '../../environments/environment';
 import { ApiResponse } from '@blitz-basic-script/api-interfaces';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ import { ApiResponse } from '@blitz-basic-script/api-interfaces';
 export class LetsCodeService {
   constructor(
     private http: HttpClient,
-    private translateService: TranslateService
+    private translocoService: TranslocoService
   ) {}
 
   getKeywords(): Promise<string[]> {
@@ -32,7 +32,7 @@ export class LetsCodeService {
   getTemplates(): Promise<Template[]> {
     return this.http
       .get(`${environment.apiServer}/coding/templates`, {
-        params: { language: this.translateService.currentLang },
+        params: { language: this.translocoService.getActiveLang() },
       })
       .toPromise()
       .then((response: ApiResponse<Template[]>) => response.data);

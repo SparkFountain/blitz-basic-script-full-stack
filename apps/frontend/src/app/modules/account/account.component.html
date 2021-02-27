@@ -1,4 +1,4 @@
-<h1 class="title is-1">{{ 'ACCOUNT.PROFILE.TITLE' | translate }}</h1>
+<h1 class="title is-1">{{ 'ACCOUNT.PROFILE.TITLE' | transloco }}</h1>
 
 <!-- CONTACT FORM -->
 <div class="card register-card">
@@ -7,7 +7,7 @@
     <div class="field is-horizontal">
       <div class="field-label is-normal">
         <label class="label">{{
-          'ACCOUNT.PROFILE.USERNAME' | translate
+          'ACCOUNT.PROFILE.USERNAME' | transloco
         }}</label>
       </div>
       <div class="field-body">
@@ -17,7 +17,7 @@
               [(ngModel)]="name"
               class="input"
               type="text"
-              [placeholder]="'FOOTER.CONTACT.NAME.PLACEHOLDER' | translate"
+              [placeholder]="'FOOTER.CONTACT.NAME.PLACEHOLDER' | transloco"
               maxlength="32"
             />
             <span class="icon is-small is-left">
@@ -31,7 +31,7 @@
     <!-- EMAIL -->
     <div class="field is-horizontal">
       <div class="field-label is-normal">
-        <label class="label">{{ 'ACCOUNT.PROFILE.EMAIL' | translate }}</label>
+        <label class="label">{{ 'ACCOUNT.PROFILE.EMAIL' | transloco }}</label>
       </div>
       <div class="field-body">
         <div class="field">
@@ -40,7 +40,7 @@
               [(ngModel)]="email"
               class="input"
               type="text"
-              [placeholder]="'FOOTER.CONTACT.EMAIL.PLACEHOLDER' | translate"
+              [placeholder]="'FOOTER.CONTACT.EMAIL.PLACEHOLDER' | transloco"
               maxlength="32"
             />
             <span class="icon is-small is-left">
@@ -55,7 +55,7 @@
     <div class="field is-horizontal">
       <div class="field-label is-normal">
         <label class="label">{{
-          'ACCOUNT.PROFILE.PASSWORD' | translate
+          'ACCOUNT.PROFILE.PASSWORD' | transloco
         }}</label>
       </div>
       <div class="field-body">
@@ -65,7 +65,7 @@
               [(ngModel)]="password"
               class="input"
               type="text"
-              [placeholder]="'FOOTER.CONTACT.NAME.PLACEHOLDER' | translate"
+              [placeholder]="'FOOTER.CONTACT.NAME.PLACEHOLDER' | transloco"
               maxlength="32"
             />
             <span class="icon is-small is-left">
@@ -79,7 +79,7 @@
     <!-- AVATAR -->
     <div class="field is-horizontal">
       <div class="field-label is-normal">
-        <label class="label">{{ 'ACCOUNT.PROFILE.AVATAR' | translate }}</label>
+        <label class="label">{{ 'ACCOUNT.PROFILE.AVATAR' | transloco }}</label>
       </div>
       <div class="field-body">
         <div class="field">
@@ -101,13 +101,13 @@
         <div class="field">
           <div class="control">
             <button class="button is-primary">
-              {{ 'ACCOUNT.PROFILE.CHANGE_SETTINGS' | translate }}
+              {{ 'ACCOUNT.PROFILE.CHANGE_SETTINGS' | transloco }}
             </button>
             <button class="button is-success">
-              {{ 'ACCOUNT.PROFILE.SAVE' | translate }}
+              {{ 'ACCOUNT.PROFILE.SAVE' | transloco }}
             </button>
             <button class="button">
-              {{ 'ACCOUNT.PROFILE.CANCEL' | translate }}
+              {{ 'ACCOUNT.PROFILE.CANCEL' | transloco }}
             </button>
           </div>
         </div>

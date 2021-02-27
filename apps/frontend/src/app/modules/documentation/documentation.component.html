@@ -1,4 +1,4 @@
-<h1 class="title is-1">{{ 'DOC.TITLE' | translate }}</h1>
+<h1 class="title is-1">{{ 'DOC.TITLE'  | transloco }}</h1>
 
 <nav class="breadcrumb">
   <ul>
@@ -13,7 +13,7 @@
     <input
       class="input is-small"
       type="text"
-      placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
+      placeholder="{{ 'SEARCH.PLACEHOLDER'  | transloco }}"
       [(ngModel)]="searchTerm"
     />
   </p>
@@ -23,7 +23,7 @@
       (click)="search()"
       [disabled]="searchTerm.length < 1"
     >
-      {{ 'SEARCH.BUTTON' | translate }}
+      {{ 'SEARCH.BUTTON'  | transloco }}
     </button>
   </p>
 </div>
@@ -45,7 +45,7 @@
 
   <div class="column is-9">
     <ng-container *ngIf="isSection('')">
-      <p>{{ 'DOC.LANDING.TEXT_01' | translate }}</p>
+      <p>{{ 'DOC.LANDING.TEXT_01'  | transloco }}</p>
 
       <div class="columns is-multiline">
         <div class="column is-half" *ngFor="let item of []">
@@ -53,11 +53,11 @@
             <div class="message-header">
               <span
                 ><i [class]="'fa fa-fw fa-' + item.icon"></i>
-                {{ 'DOC.' + item.title + '.TITLE' | translate }}</span
+                {{ 'DOC.' + item.title + '.TITLE'  | transloco }}</span
               >
             </div>
             <div class="message-body">
-              {{ 'DOC.' + item.title + '.HEADLINE' | translate }}
+              {{ 'DOC.' + item.title + '.HEADLINE'  | transloco }}
             </div>
           </div>
         </div>

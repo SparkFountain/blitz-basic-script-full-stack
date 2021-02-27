@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 
 import { BlogEntry } from '@blitz-basic-script/blog';
-import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { TranslocoService } from '@ngneat/transloco';
 import { Subscription } from 'rxjs';
 import { BlogService } from '../../../services/blog.service';
 
@@ -26,24 +26,23 @@ export class BlogComponent implements OnInit, OnDestroy {
   pages: number[];
   currentPage: number;
 
-  @ViewChildren('blogEntriesRendered') blogEntriesRendered: QueryList<
-    ElementRef
-  >;
+  @ViewChildren('blogEntriesRendered')
+  blogEntriesRendered: QueryList<ElementRef>;
 
   constructor(
     private readonly blogService: BlogService,
-    private readonly translateService: TranslateService
+    private readonly translocoService: TranslocoService
   ) {}
 
   ngOnInit(): void {
-    this.language = this.translateService.currentLang;
-    this.languageSubscription = this.translateService.onLangChange.subscribe(
-      (event: LangChangeEvent) => {
+    this.language = this.translocoService.getActiveLang();
+    this.languageSubscription = this.translocoService.langChanges$.subscribe(
+      (event: any) => {
         this.language = event.lang;
         this.getBlogEntries(this.currentPage);
       }
     );
-    this.dateFormat = this.translateService.instant('BLOG.DATE_FORMAT');
+    this.dateFormat = this.translocoService.translate('BLOG.DATE_FORMAT');
 
     this.blogEntries = [];
     this.pages = [1];

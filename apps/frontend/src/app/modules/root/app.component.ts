@@ -1,12 +1,12 @@
 import { NavigationLink } from './../../core/navigation/navigation-link';
 import { NavigationElement } from './../../core/navigation/navigation-element';
 import { NavigationMenu } from './../../core/navigation/navigation-menu';
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { AuthenticationService } from '../../services/authentication.service';
+import { getBrowserLang, TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'blitz-basic-script-root',
@@ -26,16 +26,14 @@ export class AppComponent implements OnInit, OnDestroy {
   public Language = Language;
 
   constructor(
-    public translate: TranslateService,
     public router: Router,
-    public authService: AuthenticationService
+    public authService: AuthenticationService,
+    private transloco: TranslocoService
   ) {
     // this language will be used as a fallback when a translation isn't found in the current language
-    this.translate.setDefaultLang('en');
+    this.transloco.setDefaultLang('en');
 
-    const browserLang = this.translate.getBrowserLang();
-    this.translate.use(browserLang.match(/en|de/) ? browserLang : 'en');
-    this.translate.addLangs(['en', 'de']);
+    const browserLang = getBrowserLang();
 
     // initialize navigation
     this.navigationElements = {
@@ -100,7 +98,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   changeLanguage(language: string): void {
-    this.translate.use(language);
+    this.transloco.setActiveLang(language);
   }
 
   toggleMobileMenu(): void {
