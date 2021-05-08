@@ -1,0 +1,164 @@
+<!-- NAVIGATION (DESKTOP AND TABLET) -->
+<nav class="navbar is-fixed-top">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://blitzbasicscript.com">
+      <img
+        src="../../../assets/gfx/logo.png"
+        alt="BlitzBasicScript: Your Game Scripting Engine"
+        width="32"
+        height="32"
+      />
+    </a>
+    <div class="navbar-burger burger" data-target="navigationMenu" (click)="toggleMobileMenu()">
+      <span *ngFor="let i of [1, 2, 3]"></span>
+    </div>
+  </div>
+  <div id="navigationMenu" class="navbar-menu" [ngClass]="{'is-active': mobileMenuOpen}">
+    <div class="navbar-start">
+      <ng-container *ngFor="let element of navigationElements.left">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a
+            class="navbar-link"
+            [routerLink]="'NAV.' + element.name + '.PATH' | transloco"
+          >
+            <span
+              ><i class="fa fa-fw {{ element.icon }}"></i>
+              {{ 'NAV.' + element.name + '.TITLE' | transloco }}</span
+            >
+          </a>
+
+          <div class="navbar-dropdown">
+            <a
+              class="navbar-item"
+              *ngFor="let submenu of element.submenus"
+              [routerLink]="
+                'NAV.' + element.name + '.SUBMENU.' + submenu + '.PATH'
+                  | transloco
+              "
+            >
+              {{
+                'NAV.' + element.name + '.SUBMENU.' + submenu + '.TITLE'
+                  | transloco
+              }}
+            </a>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="field is-grouped">
+          <p class="control">
+            <a
+              class="navbar-item"
+              href="https://github.com/SparkFountain/blitz-basic-script-full-stack/"
+              target="_blank"
+            >
+              <span class="icon">
+                <i class="fa fa-fw fa-github"></i>
+              </span>
+              <span>GitHub</span>
+            </a>
+          </p>
+        </div>
+      </div>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          <span class="icon">
+            <i class="fa fa-fw fa-comments-o"></i>
+          </span>
+          <span>{{ 'NAV.LANGUAGE.TITLE' | transloco }}</span>
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" (click)="changeLanguage('de')">
+            {{ 'NAV.LANGUAGE.DE' | transloco }}
+          </a>
+          <a class="navbar-item" (click)="changeLanguage('en')">
+            {{ 'NAV.LANGUAGE.EN' | transloco }}
+          </a>
+        </div>
+      </div>
+      <div class="navbar-item" *ngIf="!authService.userIsLoggedIn()">
+        <div class="field is-grouped">
+          <p class="control">
+            <a class="navbar-item" [routerLink]="'NAV.LOGIN.PATH' | transloco">
+              <span class="icon">
+                <i class="fa fa-fw fa-sign-in"></i>
+              </span>
+              <span>{{ 'NAV.LOGIN.TITLE' | transloco }}</span>
+            </a>
+          </p>
+        </div>
+      </div>
+      <div
+        class="navbar-item has-dropdown is-hoverable"
+        *ngIf="authService.userIsLoggedIn()"
+      >
+        <a class="navbar-link is-arrowless">
+          <figure class="image nav-avatar">
+            <img
+              class="is-rounded"
+              src="https://bulma.io/images/placeholders/32x32.png"
+            />
+          </figure>
+        </a>
+        <div class="navbar-dropdown nav-avatar-dropdown">
+          <a class="navbar-item" [routerLink]="'NAV.ACCOUNT.PATH' | transloco">
+            {{ 'NAV.ACCOUNT.PROFILE' | transloco }}
+          </a>
+          <a class="navbar-item" [routerLink]="'NAV.MEDALS.PATH' | transloco">
+            {{ 'NAV.ACCOUNT.MEDALS' | transloco }}
+          </a>
+          <a class="navbar-item">
+            {{ 'LOGOUT' | transloco }}
+          </a>
+        </div>
+      </div>
+      <div class="navbar-item" *ngIf="!authService.userIsLoggedIn()">
+        <div class="field is-grouped">
+          <p class="control">
+            <a
+              class="navbar-item"
+              [routerLink]="'NAV.REGISTER.PATH' | transloco"
+            >
+              <span class="icon">
+                <i class="fa fa-fw fa-user-plus"></i>
+              </span>
+              <span>{{ 'NAV.REGISTER.TITLE' | transloco }}</span>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE CONTENT -->
+<!-- <app-gaming></app-gaming> -->
+
+<!-- NORMAL BBSCRIPT PAGES -->
+<div id="bbscript-page-content">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="content has-text-centered">
+    <a [routerLink]="'FOOTER.CONTACT.PATH' | transloco" class="is-link">{{
+      'FOOTER.CONTACT.LABEL' | transloco
+    }}</a>
+    <br />
+    <a [routerLink]="'FOOTER.TERMS.PATH' | transloco" class="is-link">{{
+      'FOOTER.TERMS.LABEL' | transloco
+    }}</a>
+    <br />
+    <a [routerLink]="'FOOTER.DISCLAIMER.PATH' | transloco" class="is-link">{{
+      'FOOTER.DISCLAIMER.LABEL' | transloco
+    }}</a>
+    <br />
+    <a [routerLink]="'FOOTER.IMPRINT.PATH' | transloco" class="is-link">{{
+      'FOOTER.IMPRINT.LABEL' | transloco
+    }}</a>
+  </div>
+</footer>

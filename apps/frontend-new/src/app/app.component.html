@@ -1,0 +1,148 @@
+<header>
+  <nav *ngIf="!enableIdeNavigation">
+    <ul class="left-content">
+      <li>
+        <img class="logo" src="/assets/gfx/logo.png" routerLink="/home" />
+      </li>
+      <li>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <i class="fa fa-home" aria-hidden="true"></i>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </li>
+      <li>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <i class="fa fa-gamepad" aria-hidden="true"></i>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </li>
+      <li>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </li>
+      <li>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <i class="fa fa-book" aria-hidden="true"></i>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </li>
+    </ul>
+
+    <ul class="right-content">
+      <li>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <i class="fa fa-language" aria-hidden="true"></i>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </li>
+      <li>
+        <button mat-button>
+          <a
+            href="https://github.com/SparkFountain/blitz-basic-script-full-stack/"
+            target="_blank"
+          >
+            <i class="fa fa-github" aria-hidden="true"></i>
+          </a>
+        </button>
+      </li>
+      <li>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <i class="fa fa-user" aria-hidden="true"></i>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </li>
+    </ul>
+  </nav>
+
+  <nav *ngIf="enableIdeNavigation">
+    <ul class="left-content">
+      <li>
+        <img class="logo" src="/assets/gfx/logo.png" routerLink="/home" />
+      </li>
+      <li>
+        <button mat-button>
+          <i class="fa fa-times-circle" aria-hidden="true"></i>
+        </button>
+      </li>
+      <li>
+        <button mat-button>
+          <i class="fa fa-object-ungroup" aria-hidden="true"></i>
+        </button>
+      </li>
+      <li>
+        <button mat-button>
+          <i class="fa fa-eye" aria-hidden="true"></i>
+        </button>
+      </li>
+    </ul>
+
+    <ul class="center-content">
+      <li>
+        <button mat-button>
+          <i class="fa fa-play-circle" aria-hidden="true"></i>
+        </button>
+      </li>
+      <li>
+        <button mat-button>
+          <i class="fa fa-stop-circle" aria-hidden="true"></i>
+        </button>
+      </li>
+      <li>Mein erstes Spiel</li>
+    </ul>
+
+    <ul class="right-content">
+      <li>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <i class="fa fa-language" aria-hidden="true"></i>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </li>
+      <li>
+        <button mat-button>
+          <a
+            href="https://github.com/SparkFountain/blitz-basic-script-full-stack/"
+            target="_blank"
+          >
+            <i class="fa fa-github" aria-hidden="true"></i>
+          </a>
+        </button>
+      </li>
+      <li>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <i class="fa fa-user" aria-hidden="true"></i>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
