@@ -1,1 +1,18 @@
-<p>ide works!</p>
+<div class="scene"></div>
+
+<div class="main-container" [ngSwitch]="activeMainComponent$ | async">
+  <div class="ui" *ngSwitchCase="'ui'">
+    UI
+  </div>
+  <div class="3d" *ngSwitchCase="'3d'">
+    3D
+  </div>
+  <div class="editor" *ngSwitchCase="'editor'">
+    EDITOR
+  </div>
+  <div class="editor" *ngSwitchDefault></div>
+</div>
+
+<div class="inspector"></div>
+
+<div class="assets"></div>

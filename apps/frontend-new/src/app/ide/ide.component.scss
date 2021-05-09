@@ -1,0 +1,47 @@
+:host {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.scene {
+  overflow: auto;
+  min-width: 200px;
+  width: 18vw;
+  height: 80vh;
+  resize: horizontal;
+
+  background: red;
+}
+
+.main-container {
+  overflow: auto;
+  min-width: 200px;
+  width: 60vw;
+  height: 80vh;
+  resize: horizontal;
+
+  background: yellow;
+}
+
+.inspector {
+  overflow: auto;
+  min-width: 200px;
+  width: 18vw;
+  height: 80vh;
+  resize: horizontal;
+
+  background: green;
+}
+
+.assets {
+  overflow: auto;
+  min-width: 200px;
+  width: 100vw;
+  height: 20vh;
+  resize: horizontal;
+
+  background: blue;
+}

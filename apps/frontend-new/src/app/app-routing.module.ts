@@ -12,6 +12,15 @@ const routes: Routes = [
     loadChildren: () => import('./ide/ide.module').then((m) => m.IdeModule),
   },
   {
+    path: 'tutorials',
+    loadChildren: () =>
+      import('./tutorials/tutorials.module').then((m) => m.TutorialsModule),
+  },
+  {
+    path: 'docs',
+    loadChildren: () => import('./docs/docs.module').then((m) => m.DocsModule),
+  },
+  {
     path: 'not-found',
     loadChildren: () =>
       import('./not-found/not-found.module').then((m) => m.NotFoundModule),

@@ -5,22 +5,14 @@
         <img class="logo" src="/assets/gfx/logo.png" routerLink="/home" />
       </li>
       <li>
-        <button mat-button [matMenuTriggerFor]="menu">
+        <button mat-button routerLink="/home">
           <i class="fa fa-home" aria-hidden="true"></i>
         </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>Item 1</button>
-          <button mat-menu-item>Item 2</button>
-        </mat-menu>
       </li>
       <li>
-        <button mat-button [matMenuTriggerFor]="menu">
+        <button mat-button routerLink="game-development">
           <i class="fa fa-gamepad" aria-hidden="true"></i>
         </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>Item 1</button>
-          <button mat-menu-item>Item 2</button>
-        </mat-menu>
       </li>
       <li>
         <button mat-button [matMenuTriggerFor]="menu">
@@ -80,7 +72,7 @@
         <img class="logo" src="/assets/gfx/logo.png" routerLink="/home" />
       </li>
       <li>
-        <button mat-button>
+        <button mat-button routerLink="/home">
           <i class="fa fa-times-circle" aria-hidden="true"></i>
         </button>
       </li>
