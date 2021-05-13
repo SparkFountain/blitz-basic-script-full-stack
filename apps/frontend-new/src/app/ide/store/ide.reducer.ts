@@ -11,6 +11,7 @@ export const initialState: IdeState = {
   },
   activeMainComponent: '3d',
   assetBreadcrumbs: [],
+  sceneTree: [],
 };
 
 const _ideReducer = createReducer(
@@ -36,6 +37,12 @@ const _ideReducer = createReducer(
     return {
       ...state,
       activeMainComponent: 'editor' as 'ui' | '3d' | 'editor',
+    };
+  }),
+  on(IdeActions.addEntityToScene, (state: IdeState, { entity }) => {
+    return {
+      ...state,
+      sceneTree: [...state.sceneTree, entity],
     };
   })
 );

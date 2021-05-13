@@ -1,3 +1,5 @@
+import { GameEntity } from '../scene/scene-tree/game-entity.interface';
+
 export interface IdeState {
   windowActive: {
     scene: boolean;
@@ -7,4 +9,5 @@ export interface IdeState {
   };
   activeMainComponent: 'ui' | '3d' | 'editor';
   assetBreadcrumbs: string[];
+  sceneTree: GameEntity[];
 }

@@ -1,4 +1,5 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
+import { GameEntity } from '../scene/scene-tree/game-entity.interface';
 
 const ideActionPrefix = '[IDE COMPONENT]';
 
@@ -12,4 +13,9 @@ export const select3dMode = createAction(`${ideActionPrefix} Select 3D Mode`);
 
 export const selectEditorMode = createAction(
   `${ideActionPrefix} Select Editor Mode`
+);
+
+export const addEntityToScene = createAction(
+  `${ideActionPrefix} Add Entity To Scene`,
+  props<{ entity: GameEntity }>()
 );

@@ -10,3 +10,8 @@ export const selectActiveMainComponent = createSelector(
     return state?.ide?.activeMainComponent;
   }
 );
+
+export const selectSceneTree = createSelector(
+  selectIdeFeature,
+  (state: any) => state?.ide?.sceneTree
+);

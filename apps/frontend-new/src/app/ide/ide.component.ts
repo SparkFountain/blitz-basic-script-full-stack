@@ -1,55 +1,16 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 
+import * as IdeActions from './store/ide.actions';
 import * as IdeSelectors from './store/ide.selectors';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import * as ace from 'ace-builds';
-import {
-  MatTreeFlatDataSource,
-  MatTreeFlattener,
-} from '@angular/material/tree';
-import { FlatTreeControl } from '@angular/cdk/tree';
 
 import * as BABYLON from '@babylonjs/core';
 import { Asset } from './assets/asset/asset.interface';
-
-/**
- * Food data with nested structure.
- * Each node has a name and an optional list of children.
- */
-interface FoodNode {
-  name: string;
-  children?: FoodNode[];
-}
-
-const TREE_DATA: FoodNode[] = [
-  {
-    name: 'Fruit',
-    children: [{ name: 'Apple' }, { name: 'Banana' }, { name: 'Fruit loops' }],
-  },
-  {
-    name: 'Vegetables',
-    children: [
-      {
-        name: 'Green',
-        children: [{ name: 'Broccoli' }, { name: 'Brussels sprouts' }],
-      },
-      {
-        name: 'Orange',
-        children: [{ name: 'Pumpkins' }, { name: 'Carrots' }],
-      },
-    ],
-  },
-];
-
-/** Flat node with expandable and level information */
-interface ExampleFlatNode {
-  expandable: boolean;
-  name: string;
-  level: number;
-}
+import { GameEntity } from './scene/scene-tree/game-entity.interface';
 
 interface Breadcrumb {
   label: string;
@@ -66,10 +27,6 @@ export class IdeComponent implements OnInit {
   @ViewChild('editor') private editor: ElementRef<HTMLElement>;
   @ViewChild('canvas3d') private canvas3d: ElementRef<HTMLCanvasElement>;
 
-  treeControl: FlatTreeControl<any>;
-  treeFlattener;
-  dataSource;
-
   // ASSETS
   breadcrumbs: Breadcrumb[];
   assets: Asset[];
@@ -85,24 +42,6 @@ export class IdeComponent implements OnInit {
   constructor(private store: Store<any>) {}
 
   ngOnInit(): void {
-    this.treeControl = new FlatTreeControl<ExampleFlatNode>(
-      (node) => node.level,
-      (node) => node.expandable
-    );
-
-    this.treeFlattener = new MatTreeFlattener(
-      this._transformer,
-      (node) => node.level,
-      (node) => node.expandable,
-      (node) => node.children
-    );
-
-    this.dataSource = new MatTreeFlatDataSource(
-      this.treeControl,
-      this.treeFlattener
-    );
-    this.dataSource.data = TREE_DATA;
-
     this.breadcrumbs = [
       {
         label: 'Assets',
@@ -146,22 +85,12 @@ export class IdeComponent implements OnInit {
               setTimeout(() => this.setupBabylonJs(), 0); // TODO: optimize
               break;
             case 'editor':
-              setTimeout(() => this.setupAceEditor(), 0);
+              setTimeout(() => this.setupAceEditor(), 0); // TODO: optimize
               break;
           }
         })
       );
   }
-
-  private _transformer = (node: FoodNode, level: number) => {
-    return {
-      expandable: !!node.children && node.children.length > 0,
-      name: node.name,
-      level: level,
-    };
-  };
-
-  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
   setupAceEditor(): void {
     // setup ACE editor
@@ -242,5 +171,19 @@ export class IdeComponent implements OnInit {
 
   handleDrop($event: DragEvent): void {
     console.log('[HANDLE DROP]', $event);
+
+    const entity: GameEntity = {
+      name: 'Palm Tree',
+      children: [
+        {
+          name: 'Leaf'
+        },
+        {
+          name: 'Trunk'
+        }
+      ]
+    };
+
+    this.store.dispatch(IdeActions.addEntityToScene({entity}));
   }
 }
