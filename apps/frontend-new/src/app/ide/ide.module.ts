@@ -7,6 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { ideReducer } from './store/ide.reducer';
 import { TranslocoModule } from '@ngneat/transloco';
 import { MatTreeModule } from '@angular/material/tree';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { InspectorModule } from './inspector/inspector.module';
 import { AssetsModule } from './assets/assets.module';
@@ -22,6 +23,7 @@ import { SceneModule } from './scene/scene.module';
     }),
     TranslocoModule,
     MatTreeModule,
+    MatButtonModule,
     MatIconModule,
     SceneModule,
     InspectorModule,

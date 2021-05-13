@@ -146,7 +146,7 @@ export class IdeComponent implements OnInit {
               setTimeout(() => this.setupBabylonJs(), 0); // TODO: optimize
               break;
             case 'editor':
-              this.setupAceEditor();
+              setTimeout(() => this.setupAceEditor(), 0);
               break;
           }
         })
@@ -172,7 +172,7 @@ export class IdeComponent implements OnInit {
     );
 
     const aceEditor = ace.edit(this.editor.nativeElement);
-    aceEditor.session.setValue('Graphics 640, 480, 32 ');
+    aceEditor.session.setValue('Graphics 640, 480, 32, 2');
 
     aceEditor.setTheme('ace/theme/twilight');
     aceEditor.session.setMode('ace/mode/vbscript');
@@ -188,7 +188,7 @@ export class IdeComponent implements OnInit {
     this.scene = new BABYLON.Scene(this.engine);
     this.camera = new BABYLON.FreeCamera(
       'ideCamera',
-      new BABYLON.Vector3(0, 5, -10),
+      new BABYLON.Vector3(0, 2, -10),
       this.scene
     );
     this.camera.attachControl(this.canvas3d.nativeElement, false);
@@ -234,5 +234,13 @@ export class IdeComponent implements OnInit {
     } else {
       return 500;
     }
+  }
+
+  handleDragOver($event: DragEvent): void {
+    $event.preventDefault();
+  }
+
+  handleDrop($event: DragEvent): void {
+    console.log('[HANDLE DROP]', $event);
   }
 }

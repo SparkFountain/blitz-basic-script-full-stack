@@ -1,4 +1,8 @@
-<div class="scene">
+<div
+  class="scene"
+  (dragover)="handleDragOver($event)"
+  (drop)="handleDrop($event)"
+>
   <h2 class="title">{{ 'IDE.SCENE.TITLE' | transloco }}</h2>
 
   <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
@@ -64,6 +68,7 @@
   <div class="elements">
     <ng-container *ngFor="let asset of assets">
       <blitz-basic-script-asset
+        draggable="true"
         [image]="asset.image"
         [icon]="asset.icon"
         [ref]="asset.ref"
