@@ -9,7 +9,7 @@ export const initialState: IdeState = {
     inspector: true,
     assets: true,
   },
-  activeMainComponent: '3d',
+  activeMainComponent: 'editor',
   assetBreadcrumbs: [],
   sceneTree: [],
 };

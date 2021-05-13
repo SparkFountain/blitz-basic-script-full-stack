@@ -101,10 +101,21 @@ export class IdeComponent implements OnInit {
     );
 
     const aceEditor = ace.edit(this.editor.nativeElement);
+    aceEditor.session.setOptions({ tabSize: 2 });
     aceEditor.session.setValue('Graphics 640, 480, 32, 2');
 
-    aceEditor.setTheme('ace/theme/twilight');
+    // aceEditor.setTheme('ace/theme/ambiance');
     aceEditor.session.setMode('ace/mode/vbscript');
+    console.log('[ACE MODE]', aceEditor.session.getMode());
+
+    aceEditor.commands.addCommand({
+      name: 'formatCode',
+      bindKey: { win: 'Ctrl-Alt-L', mac: 'Command-Alt-L' },
+      exec: (editor: ace.Ace.Editor) => {
+        console.log('[REFORMAT CODE]', editor);
+      },
+      readOnly: true, // false if this command should not apply in readOnly mode
+    });
   }
 
   setupBabylonJs(): void {
@@ -176,14 +187,14 @@ export class IdeComponent implements OnInit {
       name: 'Palm Tree',
       children: [
         {
-          name: 'Leaf'
+          name: 'Leaf',
         },
         {
-          name: 'Trunk'
-        }
-      ]
+          name: 'Trunk',
+        },
+      ],
     };
 
-    this.store.dispatch(IdeActions.addEntityToScene({entity}));
+    this.store.dispatch(IdeActions.addEntityToScene({ entity }));
   }
 }

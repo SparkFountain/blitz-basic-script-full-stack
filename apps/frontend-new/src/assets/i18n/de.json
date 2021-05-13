@@ -4,7 +4,8 @@
   },
   "IDE": {
     "SCENE": {
-      "TITLE": "Szene"
+      "TITLE": "Szene",
+      "NO_GAME_ENTITIES": "Wähle ein Asset und ziehe es in diesen Bereich, um es in der Szene zu platzieren."
     },
     "INSPECTOR": {
       "TITLE": "Inspektor",
