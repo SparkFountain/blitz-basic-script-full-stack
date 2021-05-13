@@ -19,6 +19,24 @@ const _ideReducer = createReducer(
     return {
       ...state,
     };
+  }),
+  on(IdeActions.selectUiMode, (state: IdeState) => {
+    return {
+      ...state,
+      activeMainComponent: 'ui' as 'ui' | '3d' | 'editor',
+    };
+  }),
+  on(IdeActions.select3dMode, (state: IdeState) => {
+    return {
+      ...state,
+      activeMainComponent: '3d' as 'ui' | '3d' | 'editor',
+    };
+  }),
+  on(IdeActions.select3dMode, (state: IdeState) => {
+    return {
+      ...state,
+      activeMainComponent: 'editor' as 'ui' | '3d' | 'editor',
+    };
   })
 );
 

@@ -1,5 +1,23 @@
 {
   "HOME": {
     "SUBTITLE": "Deine Game Scripting Engine"
+  },
+  "IDE": {
+    "SCENE": {
+      "TITLE": "Szene"
+    },
+    "INSPECTOR": {
+      "TITLE": "Inspektor",
+      "NAME": "Name",
+      "WIDTH": "Breite",
+      "HEIGHT": "Höhe",
+      "FRAMES": "Einzelbilder",
+      "POSITION_X": "Horizontale Position",
+      "POSITION_Y": "Vertikale Position",
+      "ROTATION": "Rotation",
+      "HANDLE_X": "Horizontaler Bezugspunkt",
+      "HANDLE_Y": "Vertikaler Bezugspunkt",
+      "ALPHA_COLOR": "Transparenzfarbe"
+    }
   }
 }

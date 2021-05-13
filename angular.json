@@ -454,7 +454,8 @@
             "assets": ["apps/frontend-new/src/assets"],
             "styles": [
               "apps/frontend-new/src/styles.scss",
-              "node_modules/font-awesome/css/font-awesome.css"
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/material-design-icons/iconfont/material-icons.css"
             ],
             "scripts": []
           },

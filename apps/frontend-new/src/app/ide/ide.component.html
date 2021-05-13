@@ -1,18 +1,73 @@
-<div class="scene"></div>
+<div class="scene">
+  <h2 class="title">{{ 'IDE.SCENE.TITLE' | transloco }}</h2>
 
-<div class="main-container" [ngSwitch]="activeMainComponent$ | async">
-  <div class="ui" *ngSwitchCase="'ui'">
-    UI
-  </div>
-  <div class="3d" *ngSwitchCase="'3d'">
-    3D
-  </div>
-  <div class="editor" *ngSwitchCase="'editor'">
-    EDITOR
-  </div>
-  <div class="editor" *ngSwitchDefault></div>
+  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <!-- This is the tree node template for leaf nodes -->
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+      <!-- use a disabled button to provide padding for tree leaf -->
+      <button mat-icon-button disabled></button>
+      {{ node.name }}
+    </mat-tree-node>
+    <!-- This is the tree node template for expandable nodes -->
+    <mat-tree-node
+      *matTreeNodeDef="let node; when: hasChild"
+      matTreeNodePadding
+    >
+      <button
+        mat-icon-button
+        matTreeNodeToggle
+        [attr.aria-label]="'Toggle ' + node.name"
+      >
+        <mat-icon class="mat-icon-rtl-mirror">
+          {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
+        </mat-icon>
+      </button>
+      {{ node.name }}
+    </mat-tree-node>
+  </mat-tree>
 </div>
 
-<div class="inspector"></div>
+<div
+  class="main-container"
+  #mainContainer
+  [ngSwitch]="activeMainComponent$ | async"
+>
+  <div class="ui" *ngSwitchCase="'ui'">UI</div>
+  <div class="3d" *ngSwitchCase="'3d'">
+    <canvas
+      [width]="getCanvasWidth()"
+      [height]="getCanvasHeight()"
+      #canvas3d
+    ></canvas>
+  </div>
+  <div *ngSwitchCase="'editor'" class="editor" #editor></div>
+</div>
 
-<div class="assets"></div>
+<div class="inspector">
+  <h2 class="title">{{ 'IDE.INSPECTOR.TITLE' | transloco }}</h2>
+
+  <blitz-basic-script-image-inspector></blitz-basic-script-image-inspector>
+</div>
+
+<div class="assets">
+  <div class="breadcrumbs">
+    <ng-container *ngFor="let breadcrumb of breadcrumbs; let i = index">
+      <span [ngClass]="{ linked: breadcrumb.url !== undefined }">
+        {{ breadcrumb.label }}
+      </span>
+      <span *ngIf="i < breadcrumbs.length - 1">
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+      </span>
+    </ng-container>
+  </div>
+
+  <div class="elements">
+    <ng-container *ngFor="let asset of assets">
+      <blitz-basic-script-asset
+        [image]="asset.image"
+        [icon]="asset.icon"
+        [ref]="asset.ref"
+      ></blitz-basic-script-asset>
+    </ng-container>
+  </div>
+</div>
