@@ -1,0 +1,24 @@
+mat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: calc(100vh - 300px);
+
+  video {
+    width: 100%;
+    height: calc(100% - 50px);
+  }
+
+  .dots {
+    width: 80px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+
+    * {
+      cursor: pointer;
+    }
+  }
+}

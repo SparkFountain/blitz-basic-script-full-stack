@@ -5,7 +5,14 @@
   align-items: center;
 }
 
-mat-card {
+h1 {
+  margin-bottom: 0;
+}
+
+h2 {
+  margin-bottom: 50px;
+}
+
+blitz-basic-script-jumbotron {
   width: calc(100% - 100px);
-  height: calc(100vh - 270px);
 }

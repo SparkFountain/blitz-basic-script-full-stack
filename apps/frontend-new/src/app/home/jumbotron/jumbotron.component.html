@@ -1,0 +1,17 @@
+<mat-card>
+  <video src="/assets/jumbotron/{{ videos[videoIndex] }}" autoplay loop></video>
+
+  <div class="dots">
+    <ng-container *ngFor="let video of videos; let i = index">
+      <i
+        class="fa"
+        [ngClass]="{
+          'fa-dot-circle-o': videoIndex !== i,
+          'fa-circle': videoIndex === i
+        }"
+        aria-hidden="true"
+        (click)="videoIndex = i"
+      ></i>
+    </ng-container>
+  </div>
+</mat-card>
