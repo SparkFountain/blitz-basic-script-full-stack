@@ -41,7 +41,7 @@
 .main-container {
   overflow: hidden;
   min-width: 200px;
-  width: 60vw;
+  width: calc(60vw - 17px);
   height: 80vh;
 
   border-color: black;
@@ -50,7 +50,8 @@
 
   // resize: horizontal;
 
-  canvas {
+  canvas,
+  blitz-basic-script-editor {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -111,10 +112,4 @@
       margin-right: 20px;
     }
   }
-}
-
-.editor {
-  width: 100%;
-  height: 100%;
-  margin: 0;
 }

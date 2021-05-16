@@ -9,16 +9,16 @@ const routes: Routes = [
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'ueberblick', redirectTo: '/home', pathMatch: 'full' },
-  {
-    path: 'blog',
-    loadChildren: () =>
-      import('../home/blog/blog.module').then((m) => m.BlogModule),
-  },
-  {
-    path: 'features',
-    loadChildren: () =>
-      import('../home/features/features.module').then((m) => m.FeaturesModule),
-  },
+  // {
+  //   path: 'blog',
+  //   loadChildren: () =>
+  //     import('../home/blog/blog.module').then((m) => m.BlogModule),
+  // },
+  // {
+  //   path: 'features',
+  //   loadChildren: () =>
+  //     import('../home/features/features.module').then((m) => m.FeaturesModule),
+  // },
   {
     path: 'lets-code',
     loadChildren: () =>
@@ -29,69 +29,69 @@ const routes: Routes = [
     loadChildren: () =>
       import('../lets-code/lets-code.module').then((m) => m.LetsCodeModule),
   },
-  {
-    path: 'projects',
-    loadChildren: () =>
-      import('../projects/projects.module').then((m) => m.ProjectsModule),
-  },
-  {
-    path: 'projekte',
-    loadChildren: () =>
-      import('../projects/projects.module').then((m) => m.ProjectsModule),
-  },
-  {
-    path: 'tutorials',
-    loadChildren: () =>
-      import('../tutorials/tutorials.module').then((m) => m.TutorialsModule),
-  },
-  {
-    path: 'documentation',
-    loadChildren: () =>
-      import('../documentation/documentation.module').then(
-        (m) => m.DocumentationModule
-      ),
-  },
-  {
-    path: 'dokumentation',
-    loadChildren: () =>
-      import('../documentation/documentation.module').then(
-        (m) => m.DocumentationModule
-      ),
-  },
-  {
-    path: 'account',
-    loadChildren: () =>
-      import('../account/account.module').then((m) => m.AccountModule),
-  },
-  {
-    path: 'nutzerkonto',
-    loadChildren: () =>
-      import('../account/account.module').then((m) => m.AccountModule),
-  },
-  {
-    path: 'login',
-    loadChildren: () =>
-      import('../account/login/login.module').then((m) => m.LoginModule),
-  },
-  {
-    path: 'anmelden',
-    loadChildren: () =>
-      import('../account/login/login.module').then((m) => m.LoginModule),
-  },
-  {
-    path: 'register',
-    loadChildren: () =>
-      import('../account/register/register.module').then(
-        (m) => m.RegisterModule
-      ),
-  },
-  {
-    path: 'registrieren',
-    loadChildren: () =>
-      import('../account/register/register.module').then(
-        (m) => m.RegisterModule
-      ),
-  },
+  // {
+  //   path: 'projects',
+  //   loadChildren: () =>
+  //     import('../projects/projects.module').then((m) => m.ProjectsModule),
+  // },
+  // {
+  //   path: 'projekte',
+  //   loadChildren: () =>
+  //     import('../projects/projects.module').then((m) => m.ProjectsModule),
+  // },
+  // {
+  //   path: 'tutorials',
+  //   loadChildren: () =>
+  //     import('../tutorials/tutorials.module').then((m) => m.TutorialsModule),
+  // },
+  // {
+  //   path: 'documentation',
+  //   loadChildren: () =>
+  //     import('../documentation/documentation.module').then(
+  //       (m) => m.DocumentationModule
+  //     ),
+  // },
+  // {
+  //   path: 'dokumentation',
+  //   loadChildren: () =>
+  //     import('../documentation/documentation.module').then(
+  //       (m) => m.DocumentationModule
+  //     ),
+  // },
+  // {
+  //   path: 'account',
+  //   loadChildren: () =>
+  //     import('../account/account.module').then((m) => m.AccountModule),
+  // },
+  // {
+  //   path: 'nutzerkonto',
+  //   loadChildren: () =>
+  //     import('../account/account.module').then((m) => m.AccountModule),
+  // },
+  // {
+  //   path: 'login',
+  //   loadChildren: () =>
+  //     import('../account/login/login.module').then((m) => m.LoginModule),
+  // },
+  // {
+  //   path: 'anmelden',
+  //   loadChildren: () =>
+  //     import('../account/login/login.module').then((m) => m.LoginModule),
+  // },
+  // {
+  //   path: 'register',
+  //   loadChildren: () =>
+  //     import('../account/register/register.module').then(
+  //       (m) => m.RegisterModule
+  //     ),
+  // },
+  // {
+  //   path: 'registrieren',
+  //   loadChildren: () =>
+  //     import('../account/register/register.module').then(
+  //       (m) => m.RegisterModule
+  //     ),
+  // },
   // {
   //   path: 'account',
   //   loadChildren: () => import('./account/account.module').then(m => m.AccountModule)

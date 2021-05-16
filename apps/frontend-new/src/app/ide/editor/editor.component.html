@@ -1,0 +1,22 @@
+<div class="toolbar">
+  <div class="toolbar-right">
+    <i class="fa fa-cogs" aria-hidden="true" (click)="openEditorSettings()"></i>
+    <i class="fa fa-floppy-o" aria-hidden="true" (click)="saveScript()"></i>
+  </div>
+
+  <div class="toolbar-center">
+    <i class="fa fa-undo" aria-hidden="true" (click)="undo()"></i>
+    <i class="fa fa-repeat" aria-hidden="true" (click)="redo()"></i>
+  </div>
+
+  <div class="toolbar-left">
+    <i
+      class="fa fa-medkit"
+      aria-hidden="true"
+      (click)="activateCodeAssistant()"
+    ></i>
+    <i class="fa fa-magic" aria-hidden="true" (click)="formatCode()"></i>
+  </div>
+</div>
+
+<div class="editor" #editor></div>

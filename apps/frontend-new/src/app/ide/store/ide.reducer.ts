@@ -12,6 +12,7 @@ export const initialState: IdeState = {
   activeMainComponent: 'editor',
   assetBreadcrumbs: [],
   sceneTree: [],
+  showEditorSettingsDialog: false,
 };
 
 const _ideReducer = createReducer(
@@ -21,30 +22,34 @@ const _ideReducer = createReducer(
       ...state,
     };
   }),
-  on(IdeActions.selectUiMode, (state: IdeState) => {
-    return {
-      ...state,
-      activeMainComponent: 'ui' as 'ui' | '3d' | 'editor',
-    };
-  }),
-  on(IdeActions.select3dMode, (state: IdeState) => {
-    return {
-      ...state,
-      activeMainComponent: '3d' as 'ui' | '3d' | 'editor',
-    };
-  }),
-  on(IdeActions.select3dMode, (state: IdeState) => {
-    return {
-      ...state,
-      activeMainComponent: 'editor' as 'ui' | '3d' | 'editor',
-    };
-  }),
-  on(IdeActions.addEntityToScene, (state: IdeState, { entity }) => {
-    return {
-      ...state,
-      sceneTree: [...state.sceneTree, entity],
-    };
-  })
+  on(IdeActions.selectUiMode, (state: IdeState) => ({
+    ...state,
+    activeMainComponent: 'ui' as 'ui' | '3d' | 'editor',
+  })),
+  on(IdeActions.select3dMode, (state: IdeState) => ({
+    ...state,
+    activeMainComponent: '3d' as 'ui' | '3d' | 'editor',
+  })),
+  on(IdeActions.select3dMode, (state: IdeState) => ({
+    ...state,
+    activeMainComponent: 'editor' as 'ui' | '3d' | 'editor',
+  })),
+  on(IdeActions.addEntityToScene, (state: IdeState, { entity }) => ({
+    ...state,
+    sceneTree: [...state.sceneTree, entity],
+  })),
+  on(IdeActions.openEditorSettingsDialog, (state: IdeState) => ({
+    ...state,
+    showEditorSettingsDialog: true,
+  })),
+  on(IdeActions.closeEditorSettingsDialog, (state: IdeState) => ({
+    ...state,
+    showEditorSettingsDialog: false,
+  })),
+  on(IdeActions.cancelEditorSettings, (state: IdeState) => ({
+    ...state,
+    showEditorSettingsDialog: false,
+  }))
 );
 
 export function ideReducer(state, action) {

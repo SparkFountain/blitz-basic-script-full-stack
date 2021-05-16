@@ -9,9 +9,11 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { InspectorModule } from './inspector/inspector.module';
 import { AssetsModule } from './assets/assets.module';
 import { SceneModule } from './scene/scene.module';
+import { EditorModule } from './editor/editor.module';
+import { ImportChooserComponent } from './import-chooser/import-chooser.component';
 
 @NgModule({
-  declarations: [IdeComponent],
+  declarations: [IdeComponent, ImportChooserComponent],
   imports: [
     CommonModule,
     IdeRoutingModule,
@@ -22,6 +24,7 @@ import { SceneModule } from './scene/scene.module';
     SceneModule,
     InspectorModule,
     AssetsModule,
+    EditorModule,
   ],
 })
 export class IdeModule {}

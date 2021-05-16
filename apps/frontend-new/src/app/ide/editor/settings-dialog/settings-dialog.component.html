@@ -1,0 +1,76 @@
+<h1 mat-dialog-title>{{ 'IDE.EDITOR.SETTINGS.TITLE' | transloco }}</h1>
+<div class="dialog-content" mat-dialog-content>
+  <form [formGroup]="formGroup" class="dialog-content-form">
+    <div>
+      <h2>{{ 'IDE.EDITOR.SETTINGS.DISPLAY' | transloco }}</h2>
+
+      <mat-form-field>
+        <mat-label>{{ 'IDE.EDITOR.SETTINGS.THEME' | transloco }}</mat-label>
+        <mat-select formControlName="theme">
+          <mat-option *ngFor="let theme of themes" [value]="theme">
+            {{ theme }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="formGroup.get('theme')?.invalid">
+          {{ 'SELECT_REQUIRED' | transloco }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>
+          {{ 'IDE.EDITOR.SETTINGS.INDENTATION' | transloco }}
+        </mat-label>
+        <input
+          matInput
+          formControlName="indentation"
+          type="number"
+          min="1"
+          max="8"
+        />
+      </mat-form-field>
+
+      <mat-slide-toggle formControlName="autoSave">
+        {{ 'IDE.EDITOR.SETTINGS.AUTOSAVE' | transloco }}
+      </mat-slide-toggle>
+    </div>
+
+    <mat-divider [vertical]="true"></mat-divider>
+
+    <div>
+      <h2>{{ 'IDE.EDITOR.SETTINGS.SHORT_CODES' | transloco }}</h2>
+
+      <mat-form-field>
+        <mat-label>
+          {{ 'IDE.EDITOR.SETTINGS.FORMAT_CODE' | transloco }}
+        </mat-label>
+        <input matInput formControlName="formatCode" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>
+          {{ 'IDE.EDITOR.SETTINGS.CODE_ASSISTANT' | transloco }}
+        </mat-label>
+        <input matInput formControlName="codeAssistant" />
+      </mat-form-field>
+
+      <ul>
+        <li>
+          <b>{{ 'IDE.EDITOR.SETTINGS.UNDO.LABEL' | transloco }}:</b>
+          {{ 'IDE.EDITOR.SETTINGS.UNDO.SHORT_CODE' | transloco }}
+        </li>
+        <li>
+          <b>{{ 'IDE.EDITOR.SETTINGS.REDO.LABEL' | transloco }}:</b>
+          {{ 'IDE.EDITOR.SETTINGS.REDO.SHORT_CODE' | transloco }}
+        </li>
+        <li>
+          <b>{{ 'IDE.EDITOR.SETTINGS.SAVE.LABEL' | transloco }}:</b>
+          {{ 'IDE.EDITOR.SETTINGS.SAVE.SHORT_CODE' | transloco }}
+        </li>
+      </ul>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button color="primary" (click)="saveSettings()">{{ 'SAVE' | transloco }}</button>
+  <button mat-button color="warn" (click)="cancelSettings()">{{ 'CANCEL' | transloco }}</button>
+</div>

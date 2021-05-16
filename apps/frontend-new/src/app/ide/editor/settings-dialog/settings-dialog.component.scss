@@ -1,0 +1,45 @@
+h2 {
+  text-align: center;
+  font-size: 14px;
+}
+
+.mat-dialog-title {
+  text-align: center;
+}
+
+.dialog-content {
+  width: 100%;
+  height: calc(100% - 100px);
+}
+
+.dialog-content-form {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  mat-divider {
+    width: 1px;
+    height: 100%;
+  }
+}
+
+.mat-dialog-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  line-height: 150%;
+}

@@ -10,4 +10,5 @@ export interface IdeState {
   activeMainComponent: 'ui' | '3d' | 'editor';
   assetBreadcrumbs: string[];
   sceneTree: GameEntity[];
+  showEditorSettingsDialog: boolean;
 }

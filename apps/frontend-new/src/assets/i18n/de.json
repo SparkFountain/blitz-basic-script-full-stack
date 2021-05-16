@@ -1,4 +1,8 @@
 {
+  "SAVE": "Speichern",
+  "CANCEL": "Abbrechen",
+  "FIELD_REQUIRED": "Dieses Feld wird benötigt",
+  "SELECT_REQUIRED": "Bitte wähle eine Option aus",
   "HOME": {
     "SUBTITLE": "Deine Game Scripting Engine"
   },
@@ -19,6 +23,30 @@
       "HANDLE_X": "Horizontaler Bezugspunkt",
       "HANDLE_Y": "Vertikaler Bezugspunkt",
       "ALPHA_COLOR": "Transparenzfarbe"
+    },
+    "EDITOR": {
+      "SETTINGS": {
+        "TITLE": "Einstellungen",
+        "THEME": "Editor-Theme",
+        "DISPLAY": "Darstellung",
+        "SHORT_CODES": "Kurzbefehle",
+        "INDENTATION": "Einrücken (Anzahl Leerzeichen)",
+        "AUTOSAVE": "Automatisch speichern",
+        "FORMAT_CODE": "Code formatieren",
+        "CODE_ASSISTANT": "Code-Assistent aktivieren",
+        "UNDO": {
+          "LABEL": "Rückgängig",
+          "SHORT_CODE": "Strg + Z"
+        },
+        "REDO": {
+          "LABEL": "Wiederholen",
+          "SHORT_CODE": "Strg + Y"
+        },
+        "SAVE": {
+          "LABEL": "Speichern",
+          "SHORT_CODE": "Strg + S"
+        }
+      }
     }
   }
 }

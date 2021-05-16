@@ -1,4 +1,4 @@
-<h1 class="title is-1">{{ 'DOC.TITLE'  | transloco }}</h1>
+<h1 class="title is-1">{{ 'DOC.TITLE' | transloco }}</h1>
 
 <nav class="breadcrumb">
   <ul>
@@ -13,7 +13,7 @@
     <input
       class="input is-small"
       type="text"
-      placeholder="{{ 'SEARCH.PLACEHOLDER'  | transloco }}"
+      placeholder="{{ 'SEARCH.PLACEHOLDER' | transloco }}"
       [(ngModel)]="searchTerm"
     />
   </p>
@@ -23,7 +23,7 @@
       (click)="search()"
       [disabled]="searchTerm.length < 1"
     >
-      {{ 'SEARCH.BUTTON'  | transloco }}
+      {{ 'SEARCH.BUTTON' | transloco }}
     </button>
   </p>
 </div>
@@ -45,7 +45,7 @@
 
   <div class="column is-9">
     <ng-container *ngIf="isSection('')">
-      <p>{{ 'DOC.LANDING.TEXT_01'  | transloco }}</p>
+      <p>{{ 'DOC.LANDING.TEXT_01' | transloco }}</p>
 
       <div class="columns is-multiline">
         <div class="column is-half" *ngFor="let item of []">
@@ -53,32 +53,32 @@
             <div class="message-header">
               <span
                 ><i [class]="'fa fa-fw fa-' + item.icon"></i>
-                {{ 'DOC.' + item.title + '.TITLE'  | transloco }}</span
+                {{ 'DOC.' + item.title + '.TITLE' | transloco }}</span
               >
             </div>
             <div class="message-body">
-              {{ 'DOC.' + item.title + '.HEADLINE'  | transloco }}
+              {{ 'DOC.' + item.title + '.HEADLINE' | transloco }}
             </div>
           </div>
         </div>
       </div>
     </ng-container>
 
-    <app-keywords
+    <!-- <app-keywords
       *ngIf="isSection('keywords') || isSection('schluesselwoerter')"
-    ></app-keywords>
+    ></app-keywords> -->
     <app-commands
       *ngIf="isSection('commands') || isSection('befehle')"
       [category]="level2"
       [subCategory]="level3"
       [command]="level4"
     ></app-commands>
-    <app-constants-and-scancodes
+    <!-- <app-constants-and-scancodes
       *ngIf="
         isSection('constants-and-scancodes') ||
         isSection('konstanten-und-scancodes')
       "
-    ></app-constants-and-scancodes>
+    ></app-constants-and-scancodes> -->
     <app-differences-to-blitz-basic
       *ngIf="
         isSection('differences-to-blitz-basic') ||

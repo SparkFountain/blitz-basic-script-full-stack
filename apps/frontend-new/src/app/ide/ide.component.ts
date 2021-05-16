@@ -6,8 +6,6 @@ import * as IdeSelectors from './store/ide.selectors';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import * as ace from 'ace-builds';
-
 import * as BABYLON from '@babylonjs/core';
 import { Asset } from './assets/asset/asset.interface';
 import { GameEntity } from './scene/scene-tree/game-entity.interface';
@@ -24,7 +22,6 @@ interface Breadcrumb {
 })
 export class IdeComponent implements OnInit {
   @ViewChild('mainContainer') private mainContainer: ElementRef<HTMLDivElement>;
-  @ViewChild('editor') private editor: ElementRef<HTMLElement>;
   @ViewChild('canvas3d') private canvas3d: ElementRef<HTMLCanvasElement>;
 
   // ASSETS
@@ -85,37 +82,11 @@ export class IdeComponent implements OnInit {
               setTimeout(() => this.setupBabylonJs(), 0); // TODO: optimize
               break;
             case 'editor':
-              setTimeout(() => this.setupAceEditor(), 0); // TODO: optimize
+              // setTimeout(() => this.setupAceEditor(), 0); // TODO: optimize
               break;
           }
         })
       );
-  }
-
-  setupAceEditor(): void {
-    // setup ACE editor
-    ace.config.set('fontSize', '14px');
-    ace.config.set(
-      'basePath',
-      'https://unpkg.com/ace-builds@1.4.12/src-noconflict'
-    );
-
-    const aceEditor = ace.edit(this.editor.nativeElement);
-    aceEditor.session.setOptions({ tabSize: 2 });
-    aceEditor.session.setValue('Graphics 640, 480, 32, 2');
-
-    // aceEditor.setTheme('ace/theme/ambiance');
-    aceEditor.session.setMode('ace/mode/vbscript');
-    console.log('[ACE MODE]', aceEditor.session.getMode());
-
-    aceEditor.commands.addCommand({
-      name: 'formatCode',
-      bindKey: { win: 'Ctrl-Alt-L', mac: 'Command-Alt-L' },
-      exec: (editor: ace.Ace.Editor) => {
-        console.log('[REFORMAT CODE]', editor);
-      },
-      readOnly: true, // false if this command should not apply in readOnly mode
-    });
   }
 
   setupBabylonJs(): void {

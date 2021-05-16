@@ -15,3 +15,8 @@ export const selectSceneTree = createSelector(
   selectIdeFeature,
   (state: any) => state?.ide?.sceneTree
 );
+
+export const showEditorSettingsDialog = createSelector(
+  selectIdeFeature,
+  (state: any) => state?.ide?.showEditorSettingsDialog
+);
