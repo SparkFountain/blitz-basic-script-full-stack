@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-const prefix = '[Docs]';
+const prefix = '[Home]';
 
 export const changeMessage = createAction(
   `${prefix} Change Message`,

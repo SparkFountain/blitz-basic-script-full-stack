@@ -70,5 +70,34 @@ export const selectMessage = (state: AppState) => state.${prefix}.message;
 fs.writeFileSync(`${dir}/${prefix}.selectors.ts`, selectorsContent);
 
 // create effects file
-const effectsContent = ``;
+const effectsContent = `import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+import { of } from 'rxjs';
+import { catchError, exhaustMap, map } from 'rxjs/operators';
+import { AppState } from 'src/app/interfaces/app-state.interface';
+import * as ${prefixUpper}Actions from './${prefix}.actions';
+
+@Injectable()
+export class ${prefixUpper}Effects {
+  constructor(
+    private store: Store<AppState>,
+    private actions$: Actions,
+    private ${prefix}Service: ${prefixUpper}Service
+  ) {}
+
+  getMessage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(${prefixUpper}Actions.getMessage),
+      exhaustMap(() =>
+        this.${prefix}Service.getMessage$().pipe(
+          map((message: string) =>
+            FlightsActions.getMessageSuccess({ message })
+          ),
+          catchError(() => of(${prefixUpper}Actions.getMessageFailed()))
+        )
+      )
+    )
+  );
+`;
 fs.writeFileSync(`${dir}/${prefix}.effects.ts`, effectsContent);

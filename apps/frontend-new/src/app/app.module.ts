@@ -8,6 +8,8 @@ import { TranslocoRootModule } from './transloco-root.module';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { metaReducers, reducers } from './reducers';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,9 +20,13 @@ import { StoreModule } from '@ngrx/store';
     TranslocoRootModule,
     MatMenuModule,
     MatButtonModule,
-    StoreModule.forRoot({ }),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+    }),
+    EffectsModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
