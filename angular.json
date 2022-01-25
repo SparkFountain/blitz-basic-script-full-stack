@@ -20,7 +20,6 @@
             "main": "apps/frontend/src/main.ts",
             "polyfills": "apps/frontend/src/polyfills.ts",
             "tsConfig": "apps/frontend/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "apps/frontend/src/favicon.png",
               "apps/frontend/src/assets"
@@ -30,7 +29,13 @@
               "apps/frontend/src/assets/style/bulmaswatch.min.css",
               "node_modules/font-awesome/css/font-awesome.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -61,7 +66,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -450,14 +456,19 @@
             "main": "apps/frontend-new/src/main.ts",
             "polyfills": "apps/frontend-new/src/polyfills.ts",
             "tsConfig": "apps/frontend-new/tsconfig.app.json",
-            "aot": true,
             "assets": ["apps/frontend-new/src/assets"],
             "styles": [
               "apps/frontend-new/src/styles.scss",
               "node_modules/font-awesome/css/font-awesome.css",
               "node_modules/material-design-icons/iconfont/material-icons.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -487,7 +498,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
