@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import '../../styles.scss';
 
 :host {
@@ -92,7 +93,7 @@
 
     span.linked {
       cursor: pointer;
-      color: mat-color($primary, default);
+      color: mat.get-color-from-palette($primary, default);
     }
 
     .fa-angle-right {
