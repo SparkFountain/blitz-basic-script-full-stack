@@ -8,8 +8,9 @@ describe('TermsOfUseComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TermsOfUseComponent],
-    }).compileComponents();
+    declarations: [TermsOfUseComponent],
+    teardown: { destroyAfterEach: false }
+}).compileComponents();
   }));
 
   beforeEach(() => {

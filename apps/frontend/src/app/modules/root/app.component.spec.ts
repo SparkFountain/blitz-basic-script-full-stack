@@ -7,9 +7,10 @@ import { TranslocoModule } from '@ngneat/transloco';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent],
-      imports: [HttpClientModule, RouterTestingModule, TranslocoModule],
-    }).compileComponents();
+    declarations: [AppComponent],
+    imports: [HttpClientModule, RouterTestingModule, TranslocoModule],
+    teardown: { destroyAfterEach: false }
+}).compileComponents();
   }));
 
   it('should create the app', () => {

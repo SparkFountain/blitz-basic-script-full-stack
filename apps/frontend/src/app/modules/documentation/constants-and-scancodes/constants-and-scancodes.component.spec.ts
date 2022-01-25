@@ -8,8 +8,9 @@ describe('ConstantsAndScancodesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConstantsAndScancodesComponent ]
-    })
+    declarations: [ConstantsAndScancodesComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 

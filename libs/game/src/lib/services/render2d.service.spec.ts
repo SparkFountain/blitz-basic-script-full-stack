@@ -6,7 +6,7 @@ describe('Render2dService', () => {
   let service: Render2dService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ teardown: { destroyAfterEach: false } });
     service = TestBed.inject(Render2dService);
   });
 

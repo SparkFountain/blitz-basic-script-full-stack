@@ -6,7 +6,7 @@ describe('BabylonjsService', () => {
   let service: BabylonjsService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ teardown: { destroyAfterEach: false } });
     service = TestBed.inject(BabylonjsService);
   });
 

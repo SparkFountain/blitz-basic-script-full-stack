@@ -6,7 +6,7 @@ describe('GeneralService', () => {
   let service: GeneralService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ teardown: { destroyAfterEach: false } });
     service = TestBed.inject(GeneralService);
   });
 

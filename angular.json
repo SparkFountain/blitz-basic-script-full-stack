@@ -48,7 +48,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -87,16 +86,6 @@
             "browserTarget": "frontend:build"
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/frontend/tsconfig.app.json",
-              "apps/frontend/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/frontend/**/*"]
-          }
-        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
@@ -124,13 +113,6 @@
             "production": {
               "devServerTarget": "frontend:serve:production"
             }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/frontend-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/frontend-e2e/**/*"]
           }
         }
       }
@@ -170,16 +152,6 @@
             "buildTarget": "api:build"
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/api/tsconfig.app.json",
-              "apps/api/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/api/**/*"]
-          }
-        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
@@ -196,16 +168,6 @@
       "projectType": "library",
       "schematics": {},
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/api-interfaces/tsconfig.lib.json",
-              "libs/api-interfaces/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/api-interfaces/**/*"]
-          }
-        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
@@ -222,16 +184,6 @@
       "sourceRoot": "libs/ide/src",
       "prefix": "blitz-basic-script",
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/ide/tsconfig.lib.json",
-              "libs/ide/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/ide/**/*"]
-          }
-        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
@@ -254,16 +206,6 @@
       "projectType": "library",
       "schematics": {},
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/blog/tsconfig.lib.json",
-              "libs/blog/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/blog/**/*"]
-          }
-        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
@@ -280,16 +222,6 @@
       "projectType": "library",
       "schematics": {},
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/coding/tsconfig.lib.json",
-              "libs/coding/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/coding/**/*"]
-          }
-        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
@@ -306,16 +238,6 @@
       "projectType": "library",
       "schematics": {},
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/documentation/tsconfig.lib.json",
-              "libs/documentation/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/documentation/**/*"]
-          }
-        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
@@ -332,16 +254,6 @@
       "projectType": "library",
       "schematics": {},
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/project/tsconfig.lib.json",
-              "libs/project/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/project/**/*"]
-          }
-        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
@@ -358,16 +270,6 @@
       "projectType": "library",
       "schematics": {},
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/authentication/tsconfig.lib.json",
-              "libs/authentication/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/authentication/**/*"]
-          }
-        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
@@ -384,16 +286,6 @@
       "sourceRoot": "libs/script-language/src",
       "prefix": "blitz-basic-script",
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/script-language/tsconfig.lib.json",
-              "libs/script-language/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/script-language/**/*"]
-          }
-        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
@@ -416,16 +308,6 @@
       "sourceRoot": "libs/game/src",
       "prefix": "blitz-basic-script",
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/game/tsconfig.lib.json",
-              "libs/game/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/game/**/*"]
-          }
-        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {

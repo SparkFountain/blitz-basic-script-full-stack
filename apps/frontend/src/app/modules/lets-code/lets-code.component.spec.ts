@@ -8,8 +8,9 @@ describe('IdeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LetsCodeComponent],
-    }).compileComponents();
+    declarations: [LetsCodeComponent],
+    teardown: { destroyAfterEach: false }
+}).compileComponents();
   }));
 
   beforeEach(() => {

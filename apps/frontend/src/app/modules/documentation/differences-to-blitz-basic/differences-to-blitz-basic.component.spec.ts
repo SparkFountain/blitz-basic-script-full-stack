@@ -8,8 +8,9 @@ describe('DifferencesToBlitzBasicComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DifferencesToBlitzBasicComponent ]
-    })
+    declarations: [DifferencesToBlitzBasicComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 
