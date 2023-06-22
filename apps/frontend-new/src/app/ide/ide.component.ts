@@ -10,6 +10,10 @@ import * as BABYLON from '@babylonjs/core';
 import { Asset } from './assets/asset/asset.interface';
 import { GameEntity } from './scene/scene-tree/game-entity.interface';
 
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+
+import * as interact from 'interact';
+
 interface Breadcrumb {
   label: string;
   url?: string;
@@ -23,6 +27,11 @@ interface Breadcrumb {
 export class IdeComponent implements OnInit {
   @ViewChild('mainContainer') private mainContainer: ElementRef<HTMLDivElement>;
   @ViewChild('canvas3d') private canvas3d: ElementRef<HTMLCanvasElement>;
+
+  // font awesome
+  fa = {
+    angleRight: faAngleRight,
+  };
 
   // ASSETS
   breadcrumbs: Breadcrumb[];

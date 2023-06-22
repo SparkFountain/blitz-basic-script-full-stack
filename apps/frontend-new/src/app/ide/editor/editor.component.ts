@@ -15,6 +15,15 @@ import * as IdeActions from '../store/ide.actions';
 import * as IdeSelectors from '../store/ide.selectors';
 import { SettingsDialogComponent } from './settings-dialog/settings-dialog.component';
 
+import {
+  faCogs,
+  faSave,
+  faUndo,
+  faRedo,
+  faMedkit,
+  faMagic,
+} from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'blitz-basic-script-editor',
   templateUrl: './editor.component.html',
@@ -22,6 +31,16 @@ import { SettingsDialogComponent } from './settings-dialog/settings-dialog.compo
 })
 export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('editor') private editor: ElementRef<HTMLElement>;
+
+  // font awesome
+  fa = {
+    cogs: faCogs,
+    save: faSave,
+    undo: faUndo,
+    redo: faRedo,
+    medKit: faMedkit,
+    magic: faMagic,
+  };
 
   subscriptions: Subscription[];
   aceEditor!: ace.Ace.Editor;
@@ -58,7 +77,9 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach((subscription: Subscription) => subscription.unsubscribe());
+    this.subscriptions.forEach((subscription: Subscription) =>
+      subscription.unsubscribe()
+    );
   }
 
   setupAceEditor(): void {

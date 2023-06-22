@@ -4,6 +4,21 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs';
 
+import {
+  faHome,
+  faGamepad,
+  faGraduationCap,
+  faBook,
+  faLanguage,
+  faUser,
+  faTimesCircle,
+  faCubes,
+  faObjectUngroup,
+  faEye,
+  faPlayCircle,
+  faStopCircle,
+} from '@fortawesome/free-solid-svg-icons';
+
 import * as IdeActions from './ide/store/ide.actions';
 import * as IdeSelectors from './ide/store/ide.selectors';
 
@@ -13,6 +28,24 @@ import * as IdeSelectors from './ide/store/ide.selectors';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
+  // font awesome
+  fa = {
+    home: faHome,
+    gamepad: faGamepad,
+    graduationCap: faGraduationCap,
+    book: faBook,
+    language: faLanguage,
+    // github: faGithub
+    user: faUser,
+    timesCircle: faTimesCircle,
+    cubes: faCubes,
+    objectUngroup: faObjectUngroup,
+    eye: faEye,
+    playCircle: faPlayCircle,
+    stopCircle: faStopCircle,
+
+  };
+
   subscriptions!: Subscription[];
 
   enableIdeNavigation!: boolean;

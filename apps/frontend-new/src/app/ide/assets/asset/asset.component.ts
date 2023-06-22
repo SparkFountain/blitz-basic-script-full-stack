@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class AssetComponent implements OnInit {
   @Input() image?: HTMLImageElement;
   @Input() icon?: string;
-  @Input() ref: any;  // TODO: type definition
+  @Input() ref: any; // TODO: type definition
 
   constructor() {}
 

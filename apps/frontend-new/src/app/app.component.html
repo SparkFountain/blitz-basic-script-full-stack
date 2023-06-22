@@ -6,17 +6,17 @@
       </li>
       <li>
         <button mat-button routerLink="/home">
-          <i class="fa fa-home" aria-hidden="true"></i>
+          <fa-icon [icon]="fa.home"></fa-icon>
         </button>
       </li>
       <li>
         <button mat-button routerLink="game-development">
-          <i class="fa fa-gamepad" aria-hidden="true"></i>
+          <fa-icon [icon]="fa.gamepad"></fa-icon>
         </button>
       </li>
       <li>
         <button mat-button [matMenuTriggerFor]="menu">
-          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+          <fa-icon [icon]="fa.graduationCap"></fa-icon>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>Item 1</button>
@@ -25,7 +25,7 @@
       </li>
       <li>
         <button mat-button [matMenuTriggerFor]="menu">
-          <i class="fa fa-book" aria-hidden="true"></i>
+          <fa-icon [icon]="fa.book"></fa-icon>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>Item 1</button>
@@ -37,7 +37,7 @@
     <ul class="right-content">
       <li>
         <button mat-button [matMenuTriggerFor]="menu">
-          <i class="fa fa-language" aria-hidden="true"></i>
+          <fa-icon [icon]="fa.language"></fa-icon>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>Item 1</button>
@@ -50,13 +50,14 @@
             href="https://github.com/SparkFountain/blitz-basic-script-full-stack/"
             target="_blank"
           >
-            <i class="fa fa-github" aria-hidden="true"></i>
+            <!-- TODO: get github icon -->
+            <!-- <fa-icon [icon]="fa.github"></fa-icon> -->
           </a>
         </button>
       </li>
       <li>
         <button mat-button [matMenuTriggerFor]="menu">
-          <i class="fa fa-user" aria-hidden="true"></i>
+          <fa-icon [icon]="fa.user"></fa-icon>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>Item 1</button>
@@ -73,7 +74,7 @@
       </li>
       <li>
         <button mat-button routerLink="/home">
-          <i class="fa fa-times-circle" aria-hidden="true"></i>
+          <fa-icon [icon]="fa.timesCircle"></fa-icon>
         </button>
       </li>
       <li>
@@ -82,19 +83,19 @@
           *ngIf="(activeIdeMainComponent$ | async) === 'ui'"
           (click)="select3dMode()"
         >
-          <i class="fa fa-cubes" aria-hidden="true"></i>
+          <fa-icon [icon]="fa.cubes"></fa-icon>
         </button>
         <button
           mat-button
           *ngIf="(activeIdeMainComponent$ | async) === '3d'"
           (click)="selectUiMode()"
         >
-          <i class="fa fa-object-ungroup" aria-hidden="true"></i>
+          <fa-icon [icon]="fa.objectUngroup"></fa-icon>
         </button>
       </li>
       <li>
         <button mat-button>
-          <i class="fa fa-eye" aria-hidden="true"></i>
+          <fa-icon [icon]="fa.eye"></fa-icon>
         </button>
       </li>
     </ul>
@@ -102,12 +103,12 @@
     <ul class="center-content">
       <li>
         <button mat-button>
-          <i class="fa fa-play-circle" aria-hidden="true"></i>
+          <fa-icon [icon]="fa.playCircle"></fa-icon>
         </button>
       </li>
       <li>
         <button mat-button>
-          <i class="fa fa-stop-circle" aria-hidden="true"></i>
+          <fa-icon [icon]="fa.stopCircle"></fa-icon>
         </button>
       </li>
       <li>Mein erstes Spiel</li>
@@ -116,7 +117,7 @@
     <ul class="right-content">
       <li>
         <button mat-button [matMenuTriggerFor]="menu">
-          <i class="fa fa-language" aria-hidden="true"></i>
+          <fa-icon [icon]="fa.language"></fa-icon>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>Item 1</button>
@@ -129,13 +130,14 @@
             href="https://github.com/SparkFountain/blitz-basic-script-full-stack/"
             target="_blank"
           >
-            <i class="fa fa-github" aria-hidden="true"></i>
+            <!-- TODO: get github icon -->
+            <!-- <fa-icon [icon]="fa.github"></fa-icon> -->
           </a>
         </button>
       </li>
       <li>
         <button mat-button [matMenuTriggerFor]="menu">
-          <i class="fa fa-user" aria-hidden="true"></i>
+          <fa-icon [icon]="fa.user"></fa-icon>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>Item 1</button>

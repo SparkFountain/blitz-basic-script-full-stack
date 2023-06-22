@@ -11,6 +11,7 @@ import { AssetsModule } from './assets/assets.module';
 import { SceneModule } from './scene/scene.module';
 import { EditorModule } from './editor/editor.module';
 import { ImportChooserComponent } from './import-chooser/import-chooser.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [IdeComponent, ImportChooserComponent],
@@ -21,6 +22,7 @@ import { ImportChooserComponent } from './import-chooser/import-chooser.componen
       ide: ideReducer,
     }),
     TranslocoModule,
+    FontAwesomeModule,
     SceneModule,
     InspectorModule,
     AssetsModule,

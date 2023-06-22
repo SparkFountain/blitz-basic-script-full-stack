@@ -3,15 +3,10 @@
 
   <div class="dots">
     <ng-container *ngFor="let video of videos; let i = index">
-      <i
-        class="fa"
-        [ngClass]="{
-          'fa-dot-circle-o': videoIndex !== i,
-          'fa-circle': videoIndex === i
-        }"
-        aria-hidden="true"
+      <fa-icon
+        [icon]="videoIndex === i ? fa.dotCircleO : fa.circle"
         (click)="videoIndex = i"
-      ></i>
+      ></fa-icon>
     </ng-container>
   </div>
 </mat-card>

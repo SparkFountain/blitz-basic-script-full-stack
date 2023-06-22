@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { metaReducers, reducers } from './reducers';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,15 +19,15 @@ import { metaReducers, reducers } from './reducers';
     BrowserAnimationsModule,
     HttpClientModule,
     TranslocoRootModule,
+    FontAwesomeModule,
     MatMenuModule,
     MatButtonModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
     }),
     EffectsModule.forRoot(),
-
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

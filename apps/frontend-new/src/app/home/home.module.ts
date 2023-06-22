@@ -8,11 +8,20 @@ import { MatCardModule } from '@angular/material/card';
 import { JumbotronComponent } from './jumbotron/jumbotron.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { HomeEffects } from '../core/store/home/home.effects';
+import { reducer } from '../core/store/home/home.reducer';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [HomeComponent, JumbotronComponent],
-  imports: [CommonModule, HomeRoutingModule, TranslocoModule, MatCardModule, StoreModule.forFeature('home', reducer),
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    TranslocoModule,
+    FontAwesomeModule,
+    MatCardModule,
+    StoreModule.forFeature('home', reducer),
     EffectsModule.forFeature([HomeEffects]),
   ],
 })
-export class HomeModule { }
+export class HomeModule {}

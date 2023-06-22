@@ -1,21 +1,17 @@
 <div class="toolbar">
   <div class="toolbar-right">
-    <i class="fa fa-cogs" aria-hidden="true" (click)="openEditorSettings()"></i>
-    <i class="fa fa-floppy-o" aria-hidden="true" (click)="saveScript()"></i>
+    <fa-icon [icon]="fa.cogs" (click)="openEditorSettings()"></fa-icon>
+    <fa-icon [icon]="fa.save" (click)="saveScript()"></fa-icon>
   </div>
 
   <div class="toolbar-center">
-    <i class="fa fa-undo" aria-hidden="true" (click)="undo()"></i>
-    <i class="fa fa-repeat" aria-hidden="true" (click)="redo()"></i>
+    <fa-icon [icon]="fa.undo" (click)="undo()"></fa-icon>
+    <fa-icon [icon]="fa.redo" (click)="redo()"></fa-icon>
   </div>
 
   <div class="toolbar-left">
-    <i
-      class="fa fa-medkit"
-      aria-hidden="true"
-      (click)="activateCodeAssistant()"
-    ></i>
-    <i class="fa fa-magic" aria-hidden="true" (click)="formatCode()"></i>
+    <fa-icon [icon]="fa.medKit" (click)="activateCodeAssistant()"></fa-icon>
+    <fa-icon [icon]="fa.magic" (click)="formatCode()"></fa-icon>
   </div>
 </div>
 
