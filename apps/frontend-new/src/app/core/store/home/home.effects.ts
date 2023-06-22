@@ -5,14 +5,15 @@ import { of } from 'rxjs';
 import { catchError, exhaustMap, map } from 'rxjs/operators';
 import { AppState } from '../../../app.state.interface';
 import { HomeService } from '../../../services/home.service';
+import * as HomeActions from './home.actions';
 
 @Injectable()
 export class HomeEffects {
   constructor(
     private store: Store<AppState>,
-    private actions$: Actions,
-    private homeService: HomeService
-  ) {}
+    private actions$: Actions
+  ) // private homeService: HomeService
+  {}
 
   // getMessage$ = createEffect(() =>
   //   this.actions$.pipe(
